@@ -30,25 +30,26 @@ export function TestimonialsSection() {
   const activeTestimonial = testimonials[current] || testimonials[0];
 
   return (
-    <section className="py-20 md:py-28 bg-sand/50 dark:bg-card/30 relative overflow-hidden">
+    <section className="py-20 md:py-28 bg-[#FAF8F5] relative overflow-hidden">
       <div className="container mx-auto px-4 max-w-5xl relative z-10">
         {/* Section Header */}
         <div className="text-center space-y-4 mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-forest/10 dark:bg-brass/10 border border-forest/20 text-xs font-semibold text-forest dark:text-brass uppercase tracking-wider">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/90 border border-amber-300/80 text-[11px] font-mono tracking-widest text-amber-900 font-semibold uppercase shadow-xs">
+            <span className="h-2 w-2 rounded-full bg-brass animate-pulse" />
             <span>{tTestimonials("eyebrow")}</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-foreground">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-stone-900 tracking-tight">
             {tTestimonials("title")}
           </h2>
-          <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+          <p className="text-sm sm:text-base text-stone-600 leading-relaxed">
             {tTestimonials("subtitle")}
           </p>
         </div>
 
         {/* Testimonial Card */}
-        <div className="relative rounded-3xl bg-card border border-border p-8 sm:p-14 shadow-xl">
+        <div className="relative rounded-3xl bg-white border border-stone-200/90 p-8 sm:p-14 shadow-lg">
           {/* Quote Icon Background */}
-          <div className="absolute top-6 right-8 rtl:right-auto rtl:left-8 text-brass/10 dark:text-brass/20 pointer-events-none">
+          <div className="absolute top-6 right-8 rtl:right-auto rtl:left-8 text-amber-500/10 pointer-events-none">
             <Quote className="h-24 w-24" />
           </div>
 
@@ -76,7 +77,7 @@ export function TestimonialsSection() {
               {/* Author Info */}
               <div className="flex items-center justify-between pt-4 border-t border-border/60">
                 <div className="flex items-center gap-4">
-                  <div className="h-12 w-12 rounded-full bg-forest text-sand-light flex items-center justify-center font-display font-bold text-lg shadow-md">
+                  <div className="h-12 w-12 rounded-full bg-[#F4EFE6] text-amber-900 border border-amber-300/80 flex items-center justify-center font-display font-bold text-lg shadow-xs">
                     {activeTestimonial.initials}
                   </div>
                   <div>

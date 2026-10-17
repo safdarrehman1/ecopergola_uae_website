@@ -15,9 +15,9 @@ export function BlogTeaserSection() {
   const posts = getLocalizedBlog(locale);
 
   return (
-    <section className="py-20 md:py-28 bg-sand/40 dark:bg-card/20 relative overflow-hidden">
+    <section className="py-20 md:py-28 bg-[#FAF8F5] relative overflow-hidden">
       {/* Decorative ambient background */}
-      <div className="absolute top-1/3 left-10 w-80 h-80 bg-forest/5 dark:bg-brass/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/3 left-10 w-80 h-80 bg-amber-200/20 rounded-full blur-3xl pointer-events-none" />
 
       <div className="container mx-auto px-4 max-w-7xl relative z-10">
         {/* Section Header */}
@@ -28,8 +28,8 @@ export function BlogTeaserSection() {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto space-y-4 mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-forest/10 dark:bg-brass/10 border border-forest/20 dark:border-brass/20 text-xs font-bold text-forest dark:text-brass uppercase tracking-wider shadow-sm">
-            <Sparkles className="h-3.5 w-3.5 text-brass" />
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/90 border border-amber-300/80 text-[11px] font-mono tracking-widest text-amber-900 font-semibold uppercase shadow-xs">
+            <span className="h-2 w-2 rounded-full bg-brass animate-pulse" />
             <span>{tBlog("eyebrow")}</span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-foreground tracking-tight">
@@ -49,7 +49,7 @@ export function BlogTeaserSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group rounded-3xl bg-card border border-border overflow-hidden shadow-sm hover:border-brass/60 hover:shadow-[0_20px_45px_-12px_rgba(184,137,90,0.3)] transition-all duration-500 flex flex-col justify-between"
+              className="group rounded-3xl bg-white border border-stone-200/90 overflow-hidden shadow-sm hover:border-brass/70 hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
             >
               <div>
                 {/* Featured Image */}
@@ -59,12 +59,12 @@ export function BlogTeaserSection() {
                     alt={post.title}
                     fill
                     sizes="(max-width: 768px) 100vw, 33vw"
-                    className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-stone-950/40 via-transparent to-transparent" />
 
                   <div className="absolute top-4 left-4 rtl:left-auto rtl:right-4 z-10">
-                    <Badge variant="brass" className="text-[10px] font-bold uppercase tracking-wider shadow-md">
+                    <Badge variant="brass" className="text-[10px] font-bold uppercase tracking-wider shadow-xs">
                       {locale === "ar" ? "العمارة والتصميم" : locale === "fr" ? "Architecture" : post.category}
                     </Badge>
                   </div>
@@ -95,14 +95,14 @@ export function BlogTeaserSection() {
               </div>
 
               {/* Author & Read More Link */}
-              <div className="p-6 pt-0 border-t border-border/50 flex items-center justify-between">
+              <div className="p-6 pt-0 border-t border-stone-100 flex items-center justify-between">
                 <span className="text-xs text-muted-foreground font-medium truncate max-w-[150px]">
                   {post.author.name}
                 </span>
 
                 <Link
                   href={`/blog/${post.slug}`}
-                  className="inline-flex items-center gap-1 text-xs font-bold text-forest dark:text-brass group-hover:underline uppercase tracking-wider"
+                  className="inline-flex items-center gap-1 text-xs font-bold text-brass group-hover:text-brass-dark uppercase tracking-wider transition-colors"
                 >
                   <span>{tBlog("readArticle")}</span>
                   <ArrowRight className="h-3.5 w-3.5 rtl:rotate-180 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform" />
@@ -118,7 +118,7 @@ export function BlogTeaserSection() {
             asChild
             variant="outline"
             size="lg"
-            className="rounded-xl font-semibold hover:border-brass border-border bg-card/80 backdrop-blur-md"
+            className="rounded-xl font-semibold hover:border-brass border-stone-200 bg-white hover:bg-stone-50 text-stone-900 shadow-xs"
           >
             <Link href="/blog">
               <span>{tBlog("viewAll")}</span>

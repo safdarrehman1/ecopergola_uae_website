@@ -1,0 +1,538 @@
+{
+  "header": [
+    {
+      "id": "nav-home",
+      "label": {
+        "en": "Home",
+        "ar": "الرئيسية",
+        "fr": "Accueil"
+      },
+      "href": "/",
+      "groups": [],
+      "children": []
+    },
+    {
+      "id": "nav-pergola-types",
+      "label": {
+        "en": "Pergola Types",
+        "ar": "أنواع البرجولات",
+        "fr": "Types de Pergolas"
+      },
+      "href": "/pergola-types",
+      "featuredCard": {
+        "title": {
+          "en": "Bio-Climatic Louvered Pergola",
+          "ar": "برجولا بيوكليماتيك ذكية",
+          "fr": "Pergola Bioclimatique à Lames"
+        },
+        "description": {
+          "en": "Motorized 0°-140° rotation with smart rain and wind automation sensors.",
+          "ar": "تحكم ذكي بالدوران وحساسات طقس مدمجة.",
+          "fr": "Rotation motorisée 0°-140° avec capteurs météo."
+        },
+        "href": "/pergola-types/louvered-pergola",
+        "image": {
+          "src": "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80&auto=format&fit=crop",
+          "alt": {
+            "en": "Louvered Pergola Dubai Luxury"
+          }
+        },
+        "cta": {
+          "en": "Explore Specifications",
+          "ar": "عرض المواصفات",
+          "fr": "Voir les Spécifications"
+        }
+      },
+      "groups": [
+        {
+          "groupTitle": {
+            "en": "By Material",
+            "ar": "حسب المادة",
+            "fr": "Par Matériau"
+          },
+          "items": [
+            {
+              "label": {
+                "en": "Aluminum Pergolas",
+                "ar": "برجولات ألمنيوم",
+                "fr": "Pergolas en Aluminium"
+              },
+              "href": "/pergola-types/aluminum-pergola"
+            },
+            {
+              "label": {
+                "en": "Wooden Pergolas",
+                "ar": "برجولات خشبية",
+                "fr": "Pergolas en Bois"
+              },
+              "href": "/pergola-types/wooden-pergola"
+            },
+            {
+              "label": {
+                "en": "Steel Pergolas",
+                "ar": "برجولات فولاذية",
+                "fr": "Pergolas en Acier"
+              },
+              "href": "/pergola-types/steel-pergola"
+            },
+            {
+              "label": {
+                "en": "Fiberglass Pergolas",
+                "ar": "برجولات فايبر جلاس",
+                "fr": "Pergolas en Fibre de Verre"
+              },
+              "href": "/pergola-types/fiberglass-pergola"
+            },
+            {
+              "label": {
+                "en": "Vinyl / PVC Pergolas",
+                "ar": "برجولات فينيل",
+                "fr": "Pergolas en Vinyle"
+              },
+              "href": "/pergola-types/vinyl-pvc-pergola"
+            },
+            {
+              "label": {
+                "en": "Concrete Pergolas",
+                "ar": "برجولات خرسانية",
+                "fr": "Pergolas en Béton"
+              },
+              "href": "/pergola-types/concrete-pergola"
+            }
+          ]
+        },
+        {
+          "groupTitle": {
+            "en": "By Roof System",
+            "ar": "حسب نظام السقف",
+            "fr": "Par Système de Toit"
+          },
+          "items": [
+            {
+              "label": {
+                "en": "Motorized Louvered",
+                "ar": "شرائح ذكية بيوكليماتيك",
+                "fr": "Lames Orientables"
+              },
+              "href": "/pergola-types/louvered-pergola"
+            },
+            {
+              "label": {
+                "en": "Retractable Canopy",
+                "ar": "سقف قماشي قابل للطي",
+                "fr": "Toile Rétractable"
+              },
+              "href": "/pergola-types/retractable-pergola"
+            },
+            {
+              "label": {
+                "en": "Solid Insulated Roof",
+                "ar": "سقف معزول ثابت",
+                "fr": "Toiture Fixe Isolée"
+              },
+              "href": "/pergola-types/fixed-roof-pergola"
+            },
+            {
+              "label": {
+                "en": "Gable Pitched Roof",
+                "ar": "سقف مائل جمالوني",
+                "fr": "Toit en Pignon"
+              },
+              "href": "/pergola-types/gable-pergola"
+            },
+            {
+              "label": {
+                "en": "Arched Curved Roof",
+                "ar": "سقف مقوس انسيابي",
+                "fr": "Toiture Cintrée"
+              },
+              "href": "/pergola-types/arched-pergola"
+            }
+          ]
+        },
+        {
+          "groupTitle": {
+            "en": "Specialty Structures",
+            "ar": "هياكل تخصصية",
+            "fr": "Structures d'Exception"
+          },
+          "items": [
+            {
+              "label": {
+                "en": "Poolside Cabana",
+                "ar": "كابانا المسابح",
+                "fr": "Cabana de Piscine"
+              },
+              "href": "/pergola-types/cabana-pergola"
+            },
+            {
+              "label": {
+                "en": "Garden Gazebo",
+                "ar": "جازيبو الحدائق",
+                "fr": "Gazebo de Jardin"
+              },
+              "href": "/pergola-types/gazebo"
+            },
+            {
+              "label": {
+                "en": "Grand Event Pavilion",
+                "ar": "بافيليون الفعاليات",
+                "fr": "Pavillon de Réception"
+              },
+              "href": "/pergola-types/pavilion"
+            },
+            {
+              "label": {
+                "en": "Flyover Breezeway",
+                "ar": "برجولا فلاي أوفر",
+                "fr": "Passerelle Flyover"
+              },
+              "href": "/pergola-types/flyover-pergola"
+            },
+            {
+              "label": {
+                "en": "Corner L-Shape",
+                "ar": "برجولا زاوية",
+                "fr": "Pergola d'Angle"
+              },
+              "href": "/pergola-types/corner-pergola"
+            }
+          ]
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "nav-services",
+      "label": {
+        "en": "Services",
+        "ar": "الخدمات",
+        "fr": "Services"
+      },
+      "href": "/services",
+      "groups": [
+        {
+          "groupTitle": {
+            "en": "Architectural Glazing",
+            "ar": "الزجاج المعماري",
+            "fr": "Vitrage Architectural"
+          },
+          "items": [
+            {
+              "label": {
+                "en": "Facade Design & Fabrication",
+                "ar": "تصميم وتصنيع الواجهات",
+                "fr": "Conception & Fabrication de Façades"
+              },
+              "href": "/services/facade-design-fabrication"
+            },
+            {
+              "label": {
+                "en": "Minimal Sliding Doors",
+                "ar": "أبواب منزلقة دقيقة",
+                "fr": "Portes Coulissantes Minimalistes"
+              },
+              "href": "/services/minimal-sliding-doors"
+            },
+            {
+              "label": {
+                "en": "Glass Room Extensions",
+                "ar": "غرف زجاجية وملحقات",
+                "fr": "Extensions & Vérandas Vitrées"
+              },
+              "href": "/services/glass-room-extensions"
+            },
+            {
+              "label": {
+                "en": "Frameless Balustrades",
+                "ar": "درابزين زجاجي بدون إطار",
+                "fr": "Garde-Corps en Verre"
+              },
+              "href": "/services/glass-railings-balustrades"
+            }
+          ]
+        },
+        {
+          "groupTitle": {
+            "en": "Engineering & Fabrication",
+            "ar": "الهندسة والتصنيع",
+            "fr": "Ingénierie & Fabrication"
+          },
+          "items": [
+            {
+              "label": {
+                "en": "Bespoke Aluminum Fabrication",
+                "ar": "تصنيع ألمنيوم مخصص",
+                "fr": "Fabrication Aluminium sur Mesure"
+              },
+              "href": "/services/bespoke-aluminum-fabrication"
+            },
+            {
+              "label": {
+                "en": "Sustainable Building Solutions",
+                "ar": "حلول البناء المستدام",
+                "fr": "Solutions de Bâtiment Durable"
+              },
+              "href": "/services/sustainable-building-solutions"
+            },
+            {
+              "label": {
+                "en": "Spiral Glass Staircases",
+                "ar": "سلالم زجاجية وحلزونية",
+                "fr": "Escaliers Hélicoïdaux & Verre"
+              },
+              "href": "/services/spiral-glass-staircases"
+            },
+            {
+              "label": {
+                "en": "Smart Glass Partitions",
+                "ar": "قواطع زجاجية ذكية",
+                "fr": "Cloisons Vitrées Intelligentes"
+              },
+              "href": "/services/smart-glass-partitions"
+            }
+          ]
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "nav-products",
+      "label": {
+        "en": "Products",
+        "ar": "المنتجات",
+        "fr": "Produits"
+      },
+      "href": "/products",
+      "groups": [],
+      "children": [
+        {
+          "label": {
+            "en": "Metro 20 Minimal Slider",
+            "ar": "أبواب مترو 20 المنزلقة",
+            "fr": "Baie Coulissante Metro 20"
+          },
+          "href": "/products#metro-20-minimal-slider"
+        },
+        {
+          "label": {
+            "en": "Commercial Glass Facades",
+            "ar": "واجهات زجاجية تجارية",
+            "fr": "Façades Vitrées Tertiaires"
+          },
+          "href": "/products#commercial-glass-facades"
+        },
+        {
+          "label": {
+            "en": "Bio-Climatic Pergolas",
+            "ar": "برجولات بيوكليماتيك",
+            "fr": "Pergolas Bioclimatiques"
+          },
+          "href": "/products#bio-climatic-pergolas"
+        },
+        {
+          "label": {
+            "en": "Transparent Living Spaces",
+            "ar": "غرف زجاجية شفافة",
+            "fr": "Vérandas Panoramiques"
+          },
+          "href": "/products#transparent-living-spaces"
+        },
+        {
+          "label": {
+            "en": "Glass Spiral Staircases",
+            "ar": "سلالم زجاجية حلزونية",
+            "fr": "Escaliers en Verre Suspendus"
+          },
+          "href": "/products#glass-spiral-staircases"
+        }
+      ]
+    },
+    {
+      "id": "nav-projects",
+      "label": {
+        "en": "Portfolio",
+        "ar": "المشاريع",
+        "fr": "Réalisations"
+      },
+      "href": "/projects",
+      "groups": [],
+      "children": []
+    },
+    {
+      "id": "nav-about",
+      "label": {
+        "en": "About",
+        "ar": "من نحن",
+        "fr": "À Propos"
+      },
+      "href": "/about",
+      "groups": [],
+      "children": []
+    },
+    {
+      "id": "nav-blog",
+      "label": {
+        "en": "Insights",
+        "ar": "المقالات",
+        "fr": "Blog"
+      },
+      "href": "/blog",
+      "groups": [],
+      "children": []
+    },
+    {
+      "id": "nav-contact",
+      "label": {
+        "en": "Contact",
+        "ar": "اتصل بنا",
+        "fr": "Contact"
+      },
+      "href": "/contact",
+      "groups": [],
+      "children": []
+    }
+  ],
+  "footer": {
+    "services": [
+      {
+        "label": {
+          "en": "Facade Design & Fabrication"
+        },
+        "href": "/services/facade-design-fabrication"
+      },
+      {
+        "label": {
+          "en": "Minimal Sliding Doors"
+        },
+        "href": "/services/minimal-sliding-doors"
+      },
+      {
+        "label": {
+          "en": "Sustainable Building Solutions"
+        },
+        "href": "/services/sustainable-building-solutions"
+      },
+      {
+        "label": {
+          "en": "Glass Room Extensions"
+        },
+        "href": "/services/glass-room-extensions"
+      },
+      {
+        "label": {
+          "en": "Glass Railings & Balustrades"
+        },
+        "href": "/services/glass-railings-balustrades"
+      },
+      {
+        "label": {
+          "en": "Bespoke Aluminum Fabrication"
+        },
+        "href": "/services/bespoke-aluminum-fabrication"
+      }
+    ],
+    "pergolas": [
+      {
+        "label": {
+          "en": "Aluminum Pergola"
+        },
+        "href": "/pergola-types/aluminum-pergola"
+      },
+      {
+        "label": {
+          "en": "Louvered Bio-Climatic Pergola"
+        },
+        "href": "/pergola-types/louvered-pergola"
+      },
+      {
+        "label": {
+          "en": "Retractable Pergola"
+        },
+        "href": "/pergola-types/retractable-pergola"
+      },
+      {
+        "label": {
+          "en": "Wooden Pergola"
+        },
+        "href": "/pergola-types/wooden-pergola"
+      },
+      {
+        "label": {
+          "en": "Steel Pergola"
+        },
+        "href": "/pergola-types/steel-pergola"
+      },
+      {
+        "label": {
+          "en": "Poolside Cabana Pergola"
+        },
+        "href": "/pergola-types/cabana-pergola"
+      }
+    ],
+    "company": [
+      {
+        "label": {
+          "en": "About Eco Pergola"
+        },
+        "href": "/about"
+      },
+      {
+        "label": {
+          "en": "Featured Portfolio"
+        },
+        "href": "/projects"
+      },
+      {
+        "label": {
+          "en": "Latest Insights & News"
+        },
+        "href": "/blog"
+      },
+      {
+        "label": {
+          "en": "FAQ & Consultations"
+        },
+        "href": "/faq"
+      },
+      {
+        "label": {
+          "en": "Contact Our Engineers"
+        },
+        "href": "/contact"
+      },
+      {
+        "label": {
+          "en": "Download Product Catalogue (PDF)"
+        },
+        "href": "/catalog/eco-pergola-catalogue-2026.pdf"
+      }
+    ],
+    "legal": [
+      {
+        "label": {
+          "en": "Privacy Policy"
+        },
+        "href": "/privacy-policy"
+      },
+      {
+        "label": {
+          "en": "Terms & Conditions"
+        },
+        "href": "/terms"
+      },
+      {
+        "label": {
+          "en": "Warranty Terms"
+        },
+        "href": "/faq"
+      },
+      {
+        "label": {
+          "en": "Photo Credits"
+        },
+        "href": "/credits"
+      }
+    ]
+  }
+}

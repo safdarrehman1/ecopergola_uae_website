@@ -1,0 +1,164 @@
+[
+  {
+    "id": "53c65227-2925-4a70-8c56-51053fc01981",
+    "slug": "areas-served-uae",
+    "status": "published",
+    "featured": true,
+    "order": 0,
+    "verified": true,
+    "seo": {
+      "noindex": false
+    },
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z",
+    "question": {
+      "en": "What areas do you serve in UAE?"
+    },
+    "answer": {
+      "en": "We provide services throughout Dubai and all emirates including Abu Dhabi, Sharjah, Ajman, Ras Al Khaimah, Fujairah, and Umm Al Quwain. Our installation team travels across UAE for residential, commercial, and industrial projects."
+    },
+    "category": {
+      "en": "General"
+    },
+    "pages": [
+      "general",
+      "services",
+      "pergola-types"
+    ]
+  },
+  {
+    "id": "01e236c1-96db-45a3-bd6f-7e6a5ec07a55",
+    "slug": "installation-timeline",
+    "status": "published",
+    "featured": true,
+    "order": 1,
+    "verified": true,
+    "seo": {
+      "noindex": false
+    },
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z",
+    "question": {
+      "en": "How long does installation typically take?"
+    },
+    "answer": {
+      "en": "Installation timeline varies by project size. Small residential projects take 3-7 days, medium commercial projects 2-4 weeks, and large facade systems 6-12 weeks. We provide detailed timelines during consultation."
+    },
+    "category": {
+      "en": "Installation"
+    },
+    "pages": [
+      "general",
+      "services",
+      "pergola-types"
+    ]
+  },
+  {
+    "id": "dd09c748-bb28-4c9e-b9df-69e1848683b0",
+    "slug": "warranty-coverage",
+    "status": "published",
+    "featured": true,
+    "order": 2,
+    "verified": true,
+    "seo": {
+      "noindex": false
+    },
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z",
+    "question": {
+      "en": "Do you offer warranty on products and installation?"
+    },
+    "answer": {
+      "en": "Yes! We offer a comprehensive 10-year warranty on all aluminum and glass products, plus 2 years on installation workmanship. Our premium German-engineered systems come with manufacturer warranties up to 15 years."
+    },
+    "category": {
+      "en": "Warranty"
+    },
+    "pages": [
+      "general",
+      "services",
+      "pergola-types"
+    ]
+  },
+  {
+    "id": "afe299f3-a15c-474b-a815-895ced865c9a",
+    "slug": "climate-suitability",
+    "status": "published",
+    "featured": true,
+    "order": 3,
+    "verified": true,
+    "seo": {
+      "noindex": false
+    },
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z",
+    "question": {
+      "en": "Are your products suitable for Dubai's climate?"
+    },
+    "answer": {
+      "en": "Absolutely! All our products are specifically designed and tested for UAE's harsh climate. They feature UV-resistant coatings, thermal breaks, and high-performance glass to withstand extreme heat, humidity, and sandstorms."
+    },
+    "category": {
+      "en": "General"
+    },
+    "pages": [
+      "general",
+      "services",
+      "pergola-types"
+    ]
+  },
+  {
+    "id": "535f8268-934f-4c2d-bac8-f00de185dd42",
+    "slug": "residential-commercial-capability",
+    "status": "published",
+    "featured": false,
+    "order": 4,
+    "verified": true,
+    "seo": {
+      "noindex": false
+    },
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z",
+    "question": {
+      "en": "Can you handle both residential and commercial projects?"
+    },
+    "answer": {
+      "en": "Yes, we specialize in both sectors. From luxury villas and apartments to hotels, offices, and shopping centers. We've completed over 500 projects including high-rise towers, standalone villas, and commercial complexes."
+    },
+    "category": {
+      "en": "General"
+    },
+    "pages": [
+      "general",
+      "services",
+      "pergola-types"
+    ]
+  },
+  {
+    "id": "4f5ffef9-5f89-4fb8-a3eb-001917821a53",
+    "slug": "free-consultation-quotation",
+    "status": "published",
+    "featured": false,
+    "order": 5,
+    "verified": true,
+    "seo": {
+      "noindex": false
+    },
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z",
+    "question": {
+      "en": "Do you provide free consultation and quotation?"
+    },
+    "answer": {
+      "en": "Yes! We offer complimentary on-site consultations, 3D design visualization, and detailed quotations at no charge. Our expert team will assess your requirements and provide tailored solutions within 24-48 hours."
+    },
+    "category": {
+      "en": "Customization"
+    },
+    "pages": [
+      "general",
+      "services",
+      "pergola-types"
+    ]
+  }
+]

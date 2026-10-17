@@ -12,6 +12,7 @@ import { Breadcrumb, getBreadcrumbSchema } from "@/components/seo/Breadcrumb";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ContactSection } from "@/components/sections/ContactSection";
+import { getSiteSettings } from "@/lib/content/store";
 
 export function generateStaticParams() {
   const params: { locale: string; slug: string }[] = [];
@@ -52,6 +53,8 @@ export async function generateMetadata({
   };
 }
 
+export const dynamicParams = true;
+
 export default async function BlogPostPage({
   params,
 }: {
@@ -60,10 +63,12 @@ export default async function BlogPostPage({
   const { locale, slug } = await params;
   setRequestLocale(locale);
 
-  const post = getLocalizedBlogPost(slug, locale);
+  const [post, settings, tNav] = await Promise.all([
+    Promise.resolve(getLocalizedBlogPost(slug, locale)),
+    getSiteSettings(),
+    getTranslations({ locale, namespace: "nav" }),
+  ]);
   if (!post) notFound();
-
-  const tNav = await getTranslations({ locale, namespace: "nav" });
 
   const breadcrumbs = [
     { name: tNav("home"), url: siteConfig.domain },
@@ -109,17 +114,12 @@ export default async function BlogPostPage({
       />
 
       {/* Header */}
-      <section className="relative pt-32 pb-16 md:pt-40 md:pb-24 lg:pt-44 bg-ink text-sand-light overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <Image
-            src={post.image}
-            alt={post.title}
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover brightness-[0.28]"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/65 to-transparent" />
+      <section className="relative pt-24 pb-16 md:pt-28 md:pb-20 lg:pt-32 bg-gradient-to-b from-[#FAF8F5] via-[#F4EFE6] to-[#FFFFFF] text-stone-900 border-b border-stone-200/60 overflow-hidden">
+        {/* Soft Ambient Architectural Light Rays & Grid Texture */}
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-amber-200/25 rounded-full blur-[140px]" />
+          <div className="absolute -bottom-20 -left-20 w-[400px] h-[400px] bg-stone-300/30 rounded-full blur-[120px]" />
+          <div className="absolute inset-0 bg-[radial-gradient(#d6cfc4_1px,transparent_1px)] [background-size:28px_28px] opacity-40" />
         </div>
 
         <div className="container mx-auto px-4 max-w-5xl relative z-10">
@@ -137,14 +137,14 @@ export default async function BlogPostPage({
               {locale === "ar" ? "العمارة والتصميم" : locale === "fr" ? "Architecture" : post.category}
             </Badge>
 
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-display text-white leading-tight min-w-0 break-words text-balance">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-display text-stone-900 leading-tight min-w-0 break-words text-balance">
               {post.title}
             </h1>
 
-            <div className="flex flex-wrap items-center gap-4 text-xs text-sand-dark pt-2 border-t border-white/15">
+            <div className="flex flex-wrap items-center gap-4 text-xs text-stone-600 pt-2 border-t border-stone-200/80">
               <span className="flex items-center gap-1.5">
                 <User className="h-3.5 w-3.5 text-brass" />
-                <span>{post.author.name}</span>
+                <span className="font-medium">{post.author.name}</span>
               </span>
               <span>•</span>
               <span className="flex items-center gap-1.5">
@@ -277,7 +277,7 @@ export default async function BlogPostPage({
       </section>
 
       {/* Global Contact Section */}
-      <ContactSection />
+      <ContactSection settings={settings} />
     </>
   );
 }

@@ -1,15 +1,14 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { Link, usePathname } from "@/i18n/routing";
-import { useLocale, useTranslations } from "next-intl";
-import { Menu, ArrowRight, Phone, MessageSquare, Building2, Layers } from "lucide-react";
+import { useLocale } from "next-intl";
+import { Menu, ArrowRight, X, ChevronDown, Layers, Building2, SlidersHorizontal } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
 import { LanguageSwitcher } from "@/components/layout/LanguageSwitcher";
 import { siteConfig } from "@/lib/siteConfig";
-import { getLocalizedServices, getLocalizedPergolaTypes } from "@/data/localizedData";
 import { cn } from "@/lib/utils";
 import {
   NavigationMenu,
@@ -22,47 +21,29 @@ import {
 } from "@/components/ui/navigation-menu";
 
 export function Header() {
-  const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
   const locale = useLocale();
-  const tNav = useTranslations("nav");
-  const tCommon = useTranslations("common");
+  const isAr = locale === "ar";
+  const isFr = locale === "fr";
 
-  const localizedServices = getLocalizedServices(locale);
-  const localizedPergolas = getLocalizedPergolaTypes(locale);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 40);
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const quoteCta = isAr ? "طلب عرض سعر" : isFr ? "Demander un Devis" : "Request a Quote";
 
   return (
-    <header
-      className={cn(
-        "sticky top-0 z-40 w-full transition-all duration-300",
-        scrolled
-          ? "glass-nav py-3 shadow-lg shadow-black/5"
-          : "bg-background/95 backdrop-blur-md md:bg-transparent py-4 md:py-5"
-      )}
-    >
-      <div className="container mx-auto px-4 max-w-7xl flex items-center justify-between">
-        {/* Brand Logo - Pure Logo Without Text */}
+    <header className="w-full bg-background/95 backdrop-blur-md border-b border-border/70 transition-all duration-200">
+      <div className="container mx-auto px-5 sm:px-8 lg:px-12 max-w-[1240px] flex items-center justify-between h-16 sm:h-20">
+        {/* Prominent Architectural Brand Logo */}
         <Link
           href="/"
           aria-label="Eco Pergola"
-          className="flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-brass rounded-2xl group transition-transform hover:scale-105"
+          className="flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-brass rounded-xl group transition-transform hover:scale-[1.02]"
         >
-          <div className="relative h-20  w-20 sm:h-14 sm:w-14 rounded-2xl overflow-hidden bg-white/5 border border-border/40 flex items-center justify-center p-1 shadow-sm group-hover:border-brass transition-colors">
+          <div className="relative h-14 w-14 sm:h-16 sm:w-16 rounded-xl overflow-hidden bg-white border border-stone-200/90 flex items-center justify-center p-1 shadow-xs group-hover:border-brass/80 transition-all duration-300">
             <Image
               src="/images/logo.jpeg"
               alt="Eco Pergola"
-              width={56}
-              height={56}
+              width={68}
+              height={68}
               className="h-full w-full object-contain"
               priority
             />
@@ -70,19 +51,153 @@ export function Header() {
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden xl:flex items-center space-x-1 rtl:space-x-reverse">
+        <nav className="hidden lg:flex items-center space-x-1 rtl:space-x-reverse" aria-label="Main Navigation">
           <NavigationMenu>
             <NavigationMenuList>
               {/* Home */}
               <NavigationMenuItem>
-                <Link href="/#" legacyBehavior passHref>
+                <Link href="/" legacyBehavior passHref>
                   <NavigationMenuLink
                     className={cn(
                       navigationMenuTriggerStyle(),
                       pathname === "/" && "text-brass font-semibold"
                     )}
                   >
-                    {tNav("home")}
+                    {isAr ? "الرئيسية" : isFr ? "Accueil" : "Home"}
+                  </NavigationMenuLink>
+                </Link>
+              </NavigationMenuItem>
+
+              {/* Pergola Types Menu */}
+              <NavigationMenuItem>
+                <NavigationMenuTrigger
+                  className={cn(
+                    navigationMenuTriggerStyle(),
+                    pathname.startsWith("/pergola-types") && "text-brass font-semibold"
+                  )}
+                >
+                  {isAr ? "أنواع البرجولات" : isFr ? "Types de Pergolas" : "Pergola Types"}
+                </NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <div className="w-[500px] p-5 grid grid-cols-2 gap-4 bg-popover rounded-xl border border-border shadow-lg">
+                    <div className="space-y-2">
+                      <div className="text-xs font-bold uppercase tracking-wider text-brass px-2">
+                        {isAr ? "حسب نوع السقف" : isFr ? "Par Mécanisme" : "By Mechanism"}
+                      </div>
+                      <Link
+                        href="/pergola-types/louvered-pergola"
+                        className="block p-2 rounded-lg hover:bg-muted text-xs transition-colors"
+                      >
+                        <div className="font-semibold text-foreground">
+                          {isAr ? "برجولا شرائح ذكية" : isFr ? "Bioclimatique à Lames" : "Bio-Climatic Louvered"}
+                        </div>
+                        <div className="text-muted-foreground text-[11px] mt-0.5">
+                          {isAr ? "دوران 0°-140° بمحركات ذكية" : isFr ? "Lames motorisées orientables" : "Motorized 0°-140° rotation"}
+                        </div>
+                      </Link>
+                      <Link
+                        href="/pergola-types/retractable-pergola"
+                        className="block p-2 rounded-lg hover:bg-muted text-xs transition-colors"
+                      >
+                        <div className="font-semibold text-foreground">
+                          {isAr ? "سقف قماشي متحرك" : isFr ? "Toile Rétractable" : "Retractable Canopy"}
+                        </div>
+                        <div className="text-muted-foreground text-[11px] mt-0.5">
+                          {isAr ? "طي وفتح بلمسة زر" : isFr ? "Ouverture complète motorisée" : "Motorized sliding canopy"}
+                        </div>
+                      </Link>
+                      <Link
+                        href="/pergola-types/fixed-roof-pergola"
+                        className="block p-2 rounded-lg hover:bg-muted text-xs transition-colors"
+                      >
+                        <div className="font-semibold text-foreground">
+                          {isAr ? "سقف ثابت معزول" : isFr ? "Toiture Fixe Isolée" : "Fixed Insulated Roof"}
+                        </div>
+                        <div className="text-muted-foreground text-[11px] mt-0.5">
+                          {isAr ? "عزل حراري وحماية كاملة" : isFr ? "Protection solaire totale" : "Continuous solid shade"}
+                        </div>
+                      </Link>
+                    </div>
+
+                    <div className="space-y-2">
+                      <div className="text-xs font-bold uppercase tracking-wider text-brass px-2">
+                        {isAr ? "حسب المادة" : isFr ? "Par Matériau" : "By Material"}
+                      </div>
+                      <Link
+                        href="/pergola-types/aluminum-pergola"
+                        className="block p-2 rounded-lg hover:bg-muted text-xs transition-colors"
+                      >
+                        <div className="font-semibold text-foreground">
+                          {isAr ? "ألمنيوم 6063-T6" : isFr ? "Aluminium 6063-T6" : "Structural Aluminum"}
+                        </div>
+                        <div className="text-muted-foreground text-[11px] mt-0.5">
+                          {isAr ? "مقاوم للصدأ وبدون صيانة" : isFr ? "Sans entretien, anticorrosion" : "Rust-proof, marine grade"}
+                        </div>
+                      </Link>
+                      <Link
+                        href="/pergola-types/wooden-pergola"
+                        className="block p-2 rounded-lg hover:bg-muted text-xs transition-colors"
+                      >
+                        <div className="font-semibold text-foreground">
+                          {isAr ? "خشب طبيعي فاخر" : isFr ? "Bois Noble (Teck)" : "Luxury Hardwood"}
+                        </div>
+                        <div className="text-muted-foreground text-[11px] mt-0.5">
+                          {isAr ? "أخشاب تيك وإيروكو معالجة" : isFr ? "Teck et Iroko traités" : "Teak & Iroko timber"}
+                        </div>
+                      </Link>
+
+                      <div className="pt-2 border-t border-border/60">
+                        <Link
+                          href="/pergola-types"
+                          className="inline-flex items-center text-xs font-semibold text-brass hover:text-brass-dark px-2"
+                        >
+                          <span>{isAr ? "دليل البرجولات (19 نوع)" : isFr ? "Voir les 19 modèles" : "View All 19 Types"}</span>
+                          <ArrowRight className="h-3.5 w-3.5 ml-1 rtl:mr-1 rtl:ml-0 rtl:rotate-180" />
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+
+              {/* Services */}
+              <NavigationMenuItem>
+                <Link href="/services" legacyBehavior passHref>
+                  <NavigationMenuLink
+                    className={cn(
+                      navigationMenuTriggerStyle(),
+                      pathname.startsWith("/services") && "text-brass font-semibold"
+                    )}
+                  >
+                    {isAr ? "الخدمات" : isFr ? "Services" : "Services"}
+                  </NavigationMenuLink>
+                </Link>
+              </NavigationMenuItem>
+
+              {/* Products */}
+              <NavigationMenuItem>
+                <Link href="/products" legacyBehavior passHref>
+                  <NavigationMenuLink
+                    className={cn(
+                      navigationMenuTriggerStyle(),
+                      pathname.startsWith("/products") && "text-brass font-semibold"
+                    )}
+                  >
+                    {isAr ? "المنتجات" : isFr ? "Produits" : "Products"}
+                  </NavigationMenuLink>
+                </Link>
+              </NavigationMenuItem>
+
+              {/* Portfolio */}
+              <NavigationMenuItem>
+                <Link href="/projects" legacyBehavior passHref>
+                  <NavigationMenuLink
+                    className={cn(
+                      navigationMenuTriggerStyle(),
+                      pathname.startsWith("/projects") && "text-brass font-semibold"
+                    )}
+                  >
+                    {isAr ? "المشاريع" : isFr ? "Réalisations" : "Portfolio"}
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
@@ -96,222 +211,7 @@ export function Header() {
                       pathname === "/about" && "text-brass font-semibold"
                     )}
                   >
-                    {tNav("about")}
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
-
-              {/* Services Mega Menu */}
-              <NavigationMenuItem>
-                <NavigationMenuTrigger className={cn(pathname.startsWith("/services") && "text-brass font-semibold")}>
-                  {tNav("services")}
-                </NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <div className="grid w-[680px] gap-3 p-6 md:grid-cols-2 lg:w-[750px] bg-popover rounded-2xl shadow-2xl border border-border">
-                    <div className="col-span-2 pb-2 border-b border-border flex items-center justify-between">
-                      <div className="flex items-center gap-2">
-                        <Building2 className="h-4 w-4 text-brass" />
-                        <span className="text-sm font-bold font-display text-foreground">{tNav("specializedServices")}</span>
-                      </div>
-                      <Link
-                        href="/services"
-                        className="text-xs text-brass hover:underline flex items-center gap-1 font-semibold"
-                      >
-                        {tNav("allServices")} <ArrowRight className="h-3 w-3 rtl:rotate-180" />
-                      </Link>
-                    </div>
-
-                    {localizedServices.slice(0, 8).map((service) => (
-                      <Link
-                        key={service.id}
-                        href={`/services/${service.slug}`}
-                        className="group/item flex flex-col gap-0.5 rounded-md p-2.5 hover:bg-muted transition-colors"
-                      >
-                        <div className="text-xs font-bold text-foreground group-hover/item:text-brass flex items-center justify-between">
-                          <span>{service.title}</span>
-                          <ArrowRight className="h-3.5 w-3.5 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all text-brass rtl:rotate-180" />
-                        </div>
-                        <p className="text-[11px] text-muted-foreground line-clamp-1 leading-relaxed">
-                          {service.shortDescription}
-                        </p>
-                      </Link>
-                    ))}
-                  </div>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-
-              {/* Pergola Types Mega Menu: All 19 styles */}
-              <NavigationMenuItem>
-                <NavigationMenuTrigger className={cn(pathname.startsWith("/pergola-types") && "text-brass font-semibold")}>
-                  {tNav("pergolaTypes")}
-                </NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <div className="grid w-[780px] gap-5 p-6 md:grid-cols-3 lg:w-[920px] bg-popover rounded-2xl shadow-2xl border border-border">
-                    <div className="col-span-3 pb-2 border-b border-border flex items-center justify-between">
-                      <div className="flex items-center gap-2">
-                        <Layers className="h-4 w-4 text-brass" />
-                        <span className="text-sm font-bold font-display text-foreground">{tNav("all19Styles")}</span>
-                      </div>
-                      <Link
-                        href="/pergola-types"
-                        className="text-xs text-brass hover:underline flex items-center gap-1 font-semibold"
-                      >
-                        {tNav("viewCatalog")} <ArrowRight className="h-3 w-3 rtl:rotate-180" />
-                      </Link>
-                    </div>
-
-                    {/* Column 1: Modern & Metal */}
-                    <div className="flex flex-col gap-1.5">
-                      <span className="text-xs font-bold text-foreground dark:text-sand-light uppercase tracking-wider pb-1 border-b border-border/50">
-                        {tNav("modernAndMetal")}
-                      </span>
-                      {localizedPergolas
-                        .filter((p) =>
-                          [
-                            "aluminum-pergola",
-                            "modern-pergola",
-                            "metal-pergola",
-                            "steel-pergola",
-                            "minimalist-pergola",
-                            "luxury-pergola",
-                          ].includes(p.id)
-                        )
-                        .map((p) => (
-                          <Link
-                            key={p.id}
-                            href={`/pergola-types/${p.slug}`}
-                            className="text-xs hover:text-brass transition-colors py-1 flex items-center justify-between group/link text-muted-foreground hover:text-foreground"
-                          >
-                            <span className="truncate pr-1">{p.name}</span>
-                            {p.badge && (
-                              <span className="text-[9px] bg-brass/15 text-brass px-1.5 py-0.2 rounded font-semibold shrink-0">
-                                {p.badge}
-                              </span>
-                            )}
-                          </Link>
-                        ))}
-                    </div>
-
-                    {/* Column 2: Timber & Glass */}
-                    <div className="flex flex-col gap-1.5">
-                      <span className="text-xs font-bold text-foreground dark:text-sand-light uppercase tracking-wider pb-1 border-b border-border/50">
-                        {tNav("timberAndGlass")}
-                      </span>
-                      {localizedPergolas
-                        .filter((p) =>
-                          [
-                            "wooden-pergola",
-                            "traditional-pergola",
-                            "rustic-pergola",
-                            "white-pergola",
-                            "glass-roof-pergola",
-                            "pitched-roof-pergola",
-                          ].includes(p.id)
-                        )
-                        .map((p) => (
-                          <Link
-                            key={p.id}
-                            href={`/pergola-types/${p.slug}`}
-                            className="text-xs hover:text-brass transition-colors py-1 flex items-center justify-between group/link text-muted-foreground hover:text-foreground"
-                          >
-                            <span className="truncate pr-1">{p.name}</span>
-                            {p.badge && (
-                              <span className="text-[9px] bg-brass/15 text-brass px-1.5 py-0.2 rounded font-semibold shrink-0">
-                                {p.badge}
-                              </span>
-                            )}
-                          </Link>
-                        ))}
-                    </div>
-
-                    {/* Column 3: Bioclimatic & Special */}
-                    <div className="flex flex-col gap-1.5">
-                      <span className="text-xs font-bold text-foreground dark:text-sand-light uppercase tracking-wider pb-1 border-b border-border/50">
-                        {tNav("bioclimaticAndSpecial")}
-                      </span>
-                      {localizedPergolas
-                        .filter((p) =>
-                          [
-                            "louvered-pergola",
-                            "retractable-pergola",
-                            "bio-climatic-pergola",
-                            "motorized-pergola",
-                            "gazebo",
-                            "cabana-pergola",
-                            "pavilion",
-                          ].includes(p.id)
-                        )
-                        .map((p) => (
-                          <Link
-                            key={p.id}
-                            href={`/pergola-types/${p.slug}`}
-                            className="text-xs hover:text-brass transition-colors py-1 flex items-center justify-between group/link text-muted-foreground hover:text-foreground"
-                          >
-                            <span className="truncate pr-1">{p.name}</span>
-                            {p.badge && (
-                              <span className="text-[9px] bg-brass/15 text-brass px-1.5 py-0.2 rounded font-semibold shrink-0">
-                                {p.badge}
-                              </span>
-                            )}
-                          </Link>
-                        ))}
-                    </div>
-                  </div>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-
-              {/* Products */}
-              <NavigationMenuItem>
-                <Link href="/products" legacyBehavior passHref>
-                  <NavigationMenuLink
-                    className={cn(
-                      navigationMenuTriggerStyle(),
-                      pathname === "/products" && "text-brass font-semibold"
-                    )}
-                  >
-                    {tNav("products")}
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
-
-              {/* Projects */}
-              <NavigationMenuItem>
-                <Link href="/projects" legacyBehavior passHref>
-                  <NavigationMenuLink
-                    className={cn(
-                      navigationMenuTriggerStyle(),
-                      pathname === "/projects" && "text-brass font-semibold"
-                    )}
-                  >
-                    {tNav("portfolio")}
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
-
-              {/* Blog */}
-              <NavigationMenuItem>
-                <Link href="/blog" legacyBehavior passHref>
-                  <NavigationMenuLink
-                    className={cn(
-                      navigationMenuTriggerStyle(),
-                      pathname === "/blog" && "text-brass font-semibold"
-                    )}
-                  >
-                    {tNav("blog")}
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
-
-              {/* FAQ */}
-              <NavigationMenuItem>
-                <Link href="/faq" legacyBehavior passHref>
-                  <NavigationMenuLink
-                    className={cn(
-                      navigationMenuTriggerStyle(),
-                      pathname === "/faq" && "text-brass font-semibold"
-                    )}
-                  >
-                    {tNav("faq")}
+                    {isAr ? "من نحن" : isFr ? "À Propos" : "About"}
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
@@ -325,126 +225,85 @@ export function Header() {
                       pathname === "/contact" && "text-brass font-semibold"
                     )}
                   >
-                    {tNav("contact")}
+                    {isAr ? "اتصل بنا" : isFr ? "Contact" : "Contact"}
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
-        </div>
+        </nav>
 
-        {/* Right CTA Area: Phone, Language Switcher, Quote Button */}
+        {/* Right CTA Actions: Language Switcher & One Prominent "Request a Quote" Button */}
         <div className="flex items-center gap-3">
-          <LanguageSwitcher className="hidden sm:block" />
+          <div className="hidden sm:block">
+            <LanguageSwitcher />
+          </div>
 
           <Button
             asChild
-            variant="brass"
-            size="sm"
-            className="hidden md:inline-flex rounded-xl font-semibold shadow-md hover:shadow-brass/20"
+            className="h-10 px-5 rounded-xl bg-brass hover:bg-brass-light text-ink font-bold text-xs sm:text-sm shadow-md shadow-brass/25 transition-all hover:scale-[1.02] active:scale-[0.98]"
           >
             <Link href="/contact">
-              <Phone className="h-4 w-4 mr-1.5 rtl:ml-1.5 rtl:mr-0" />
-              <span>{tCommon("bookAppointment")}</span>
+              <span>{quoteCta}</span>
+              <ArrowRight className="h-3.5 w-3.5 ml-1.5 rtl:mr-1.5 rtl:ml-0 rtl:rotate-180 hidden sm:inline" />
             </Link>
           </Button>
 
-          {/* Mobile Menu Trigger */}
+          {/* Accessible Mobile Menu Sheet Trigger */}
           <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
-            <SheetTrigger asChild className="xl:hidden">
+            <SheetTrigger asChild>
               <Button
                 variant="outline"
                 size="icon"
-                className="h-10 w-10 rounded-xl border-border bg-background/50 backdrop-blur-md"
-                aria-label="Open Navigation Menu"
+                aria-label="Open Mobile Navigation Menu"
+                className="h-10 w-10 lg:hidden rounded-lg border-border"
               >
                 <Menu className="h-5 w-5" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[85vw] max-w-[400px] p-0 bg-background border-border flex flex-col">
-              <div className="p-6 border-b border-border flex items-center justify-between">
-                <Link
-                  href="/"
-                  aria-label="Eco Pergola"
-                  className="flex items-center"
-                  onClick={() => setMobileOpen(false)}
-                >
-                  <div className="relative h-11 w-11 rounded-xl overflow-hidden bg-white/5 border border-border/40 flex items-center justify-center p-1">
-                    <Image
-                      src="/images/logo.jpeg"
-                      alt="Eco Pergola"
-                      width={44}
-                      height={44}
-                      className="h-full w-full object-contain"
-                    />
+            <SheetContent side={isAr ? "right" : "left"} className="w-[300px] p-6 flex flex-col justify-between">
+              <div className="space-y-6">
+                <div className="flex items-center justify-between pb-4 border-b border-border">
+                  <div className="flex items-center">
+                    <div className="h-14 w-14 rounded-xl overflow-hidden border border-stone-200/90 p-1 bg-white shadow-xs">
+                      <Image src="/images/logo.jpeg" alt="Eco Pergola" width={56} height={56} className="object-contain w-full h-full" />
+                    </div>
                   </div>
-                </Link>
-                <div className="flex items-center gap-2">
-                  <LanguageSwitcher />
                 </div>
-              </div>
 
-              <div className="flex-1 overflow-y-auto p-6 space-y-6">
-                <nav className="flex flex-col space-y-1">
+                {/* Mobile Links */}
+                <div className="flex flex-col space-y-1 text-sm font-medium">
                   {[
-                    { href: "/", label: tNav("home") },
-                    { href: "/about", label: tNav("about") },
-                    { href: "/services", label: tNav("services") },
-                    { href: "/pergola-types", label: tNav("pergolaTypes") },
-                    { href: "/products", label: tNav("products") },
-                    { href: "/projects", label: tNav("portfolio") },
-                    { href: "/blog", label: tNav("blog") },
-                    { href: "/faq", label: tNav("faq") },
-                    { href: "/contact", label: tNav("contact") },
+                    { href: "/", label: isAr ? "الرئيسية" : isFr ? "Accueil" : "Home" },
+                    { href: "/pergola-types", label: isAr ? "أنواع البرجولات (19 نوع)" : isFr ? "Types de Pergolas" : "Pergola Types" },
+                    { href: "/services", label: isAr ? "الخدمات الهندسية" : isFr ? "Services" : "Specialized Services" },
+                    { href: "/products", label: isAr ? "المنتجات المعمارية" : isFr ? "Produits" : "Products Gallery" },
+                    { href: "/projects", label: isAr ? "معرض المشاريع" : isFr ? "Réalisations" : "Portfolio Projects" },
+                    { href: "/about", label: isAr ? "عن الشركة" : isFr ? "À Propos" : "About Us" },
+                    { href: "/contact", label: isAr ? "طلب عرض سعر وتواصل" : isFr ? "Contact & Devis" : "Contact & Consultation" },
                   ].map((item) => (
                     <Link
                       key={item.href}
                       href={item.href}
                       onClick={() => setMobileOpen(false)}
                       className={cn(
-                        "px-4 py-3 rounded-xl text-sm font-semibold transition-colors flex items-center justify-between",
-                        pathname === item.href
-                          ? "bg-forest/10 text-forest dark:bg-brass/10 dark:text-brass"
-                          : "hover:bg-muted text-foreground"
+                        "px-3 py-2.5 rounded-lg transition-colors hover:bg-muted text-foreground",
+                        pathname === item.href && "bg-muted text-brass font-semibold"
                       )}
                     >
-                      <span>{item.label}</span>
-                      <ArrowRight className="h-4 w-4 opacity-50 rtl:rotate-180" />
+                      {item.label}
                     </Link>
                   ))}
-                </nav>
-
-                <div className="p-4 rounded-2xl bg-card border border-border space-y-3">
-                  <div className="text-xs font-bold uppercase tracking-wider text-brass">
-                    {tCommon("contactInfo")}
-                  </div>
-                  <div className="space-y-2 text-xs text-muted-foreground">
-                    <p className="flex items-center gap-2">
-                      <Phone className="h-3.5 w-3.5 text-brass" />
-                      <span dir="ltr">{siteConfig.phoneDisplay}</span>
-                    </p>
-                    <p className="flex items-center gap-2">
-                      <MessageSquare className="h-3.5 w-3.5 text-brass" />
-                      <span>{siteConfig.workingHours.display}</span>
-                    </p>
-                  </div>
                 </div>
               </div>
 
-              <div className="p-6 border-t border-border bg-card space-y-3">
-                <Button asChild variant="brass" className="w-full rounded-xl font-semibold">
+              {/* Mobile Sheet Footer */}
+              <div className="pt-6 border-t border-border space-y-3">
+                <LanguageSwitcher />
+                <Button asChild className="w-full h-10 rounded-lg bg-brass hover:bg-brass-dark text-white font-semibold text-xs">
                   <Link href="/contact" onClick={() => setMobileOpen(false)}>
-                    <span>{tCommon("bookAppointment")}</span>
+                    {quoteCta}
                   </Link>
-                </Button>
-                <Button asChild variant="outline" className="w-full rounded-xl font-semibold">
-                  <a
-                    href={siteConfig.whatsappUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <span>{tCommon("whatsappUs")}</span>
-                  </a>
                 </Button>
               </div>
             </SheetContent>

@@ -1,207 +1,142 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
 import { Link } from "@/i18n/routing";
-import { useLocale, useTranslations } from "next-intl";
-import { motion, AnimatePresence } from "framer-motion";
-import { MapPin, Calendar, ArrowRight, Sparkles, ChevronDown, Check } from "lucide-react";
-import { getLocalizedProjects } from "@/data/localizedData";
-import { Badge } from "@/components/ui/badge";
+import { useLocale } from "next-intl";
+import { motion } from "framer-motion";
+import { MapPin, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { sectionVariants, itemFadeUp } from "@/lib/motion";
+import type { Project } from "@/lib/content/schemas";
 
-export function ProjectsSection() {
-  const [activeCategory, setActiveCategory] = useState<string>("All");
-  const [visibleCount, setVisibleCount] = useState<number>(3);
+interface ProjectsSectionProps {
+  projects?: Project[];
+  showAll?: boolean;
+}
+
+export function ProjectsSection({ projects = [], showAll = false }: ProjectsSectionProps) {
   const locale = useLocale();
-  const tProjects = useTranslations("projects");
-  const tCommon = useTranslations("common");
-  const projects = getLocalizedProjects(locale);
+  const isAr = locale === "ar";
+  const isFr = locale === "fr";
 
-  const categories = [
-    { key: "All", label: tProjects("all") },
-    { key: "Residential", label: tProjects("residential") },
-    { key: "Commercial", label: tProjects("commercial") },
-    { key: "Villa", label: tProjects("villa") },
-    { key: "Hospitality", label: tProjects("hospitality") },
-    { key: "Hotel", label: tProjects("hotel") },
-  ];
+  const featuredProjects = showAll ? projects : projects.slice(0, 3);
 
-  const filteredProjects = projects.filter((p) => {
-    if (activeCategory === "All") return true;
-    return (
-      p.category.toLowerCase().includes(activeCategory.toLowerCase()) ||
-      (activeCategory === "Residential" && p.category.includes("Residential")) ||
-      (activeCategory === "Commercial" && p.category.includes("Commercial"))
-    );
-  });
-
-  const displayedProjects = filteredProjects.slice(0, visibleCount);
-  const hasMore = visibleCount < filteredProjects.length;
-
-  const handleCategoryChange = (key: string) => {
-    setActiveCategory(key);
-    setVisibleCount(3);
-  };
+  const eyebrow = isAr ? "مشاريع مميزة تم تنفيذها" : isFr ? "Études de Cas Réalisées" : "Featured Case Studies";
+  const title = isAr
+    ? "مشاريع حقيقية تم تسليمها في دبي والإمارات"
+    : isFr
+    ? "Projets réels livrés avec succès à Dubaï"
+    : "Identifiable architectural projects delivered in Dubai";
+  const subtitle = isAr
+    ? "دراسات حالة موثقة تبرز نطاق الأعمال، المواد المستخدمة، والدقة الهندسية في الفلل والأبراج."
+    : isFr
+    ? "Des réalisations documentées mettant en avant le périmètre technique, les matériaux et la qualité d'exécution."
+    : "Documented case studies detailing structural scope, materials specified, and completed installations across premier UAE addresses.";
 
   return (
-    <section id="projects" className="py-20 md:py-28 bg-background relative overflow-hidden">
-      {/* Ambient decorative glow */}
-      <div className="absolute top-1/3 left-0 w-80 h-80 bg-forest/5 dark:bg-brass/5 rounded-full blur-3xl pointer-events-none" />
-
-      <div className="container mx-auto px-4 max-w-7xl relative z-10">
+    <section id="projects" className="py-16 sm:py-20 lg:py-24 bg-background relative">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-12 max-w-[1280px]">
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto space-y-4 mb-12"
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-40px" }}
+          className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-14"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-forest/10 dark:bg-brass/10 border border-forest/20 dark:border-brass/20 text-xs font-bold text-forest dark:text-brass uppercase tracking-wider shadow-sm">
-            <Sparkles className="h-3.5 w-3.5 text-brass" />
-            <span>{tProjects("eyebrow")}</span>
+          <div className="space-y-3 max-w-2xl">
+            <span className="text-[11px] sm:text-[12px] font-mono tracking-widest uppercase text-brass">
+              {eyebrow}
+            </span>
+            <h2 className="text-[28px] sm:text-[34px] md:text-[40px] font-semibold font-display text-foreground leading-[1.15] tracking-tight">
+              {title}
+            </h2>
+            <p className="text-[14px] sm:text-[15px] text-muted-foreground leading-relaxed">
+              {subtitle}
+            </p>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-foreground tracking-tight">
-            {tProjects("title")}
-          </h2>
-          <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-            {tProjects("subtitle")}
-          </p>
-        </motion.div>
 
-        {/* Category Filter Chips */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
-          {categories.map((cat) => (
-            <button
-              key={cat.key}
-              onClick={() => handleCategoryChange(cat.key)}
-              className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer ${
-                activeCategory === cat.key
-                  ? "bg-forest text-white shadow-md dark:bg-brass dark:text-ink scale-105"
-                  : "bg-card hover:bg-muted text-muted-foreground hover:text-foreground border border-border"
-              }`}
-            >
-              {cat.label}
-            </button>
-          ))}
-        </div>
-
-        {/* Projects Grid */}
-        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <AnimatePresence>
-            {displayedProjects.map((project, index) => (
-              <motion.div
-                layout
-                key={project.id}
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.35, delay: index * 0.06 }}
-                className="group rounded-3xl bg-card border border-border overflow-hidden shadow-sm hover:border-brass/60 hover:shadow-[0_20px_45px_-12px_rgba(184,137,90,0.3)] transition-all duration-500 flex flex-col justify-between"
-              >
-                <div>
-                  {/* Project Image */}
-                  <div className="relative h-64 w-full overflow-hidden bg-muted">
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent" />
-
-                    <div className="absolute top-4 left-4 rtl:left-auto rtl:right-4 z-10">
-                      <Badge variant="glass" className="text-[10px] font-bold uppercase tracking-wider bg-black/40 backdrop-blur-md border-white/20 text-white shadow-md">
-                        {project.category}
-                      </Badge>
-                    </div>
-
-                    <div className="absolute bottom-3 left-4 right-4 z-10 flex items-center justify-between text-xs text-sand-light">
-                      <div className="flex items-center gap-1.5 font-medium">
-                        <MapPin className="h-3.5 w-3.5 text-brass" />
-                        <span className="truncate max-w-[170px]">{project.location}</span>
-                      </div>
-                      <div className="flex items-center gap-1.5 bg-black/40 backdrop-blur-md px-2 py-0.5 rounded text-[11px] font-bold text-white">
-                        <Calendar className="h-3 w-3 text-brass" />
-                        <span>{project.year}</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Body Content */}
-                  <div className="p-6 space-y-3">
-                    <h3 className="text-xl font-bold font-display text-foreground group-hover:text-brass transition-colors leading-snug">
-                      {project.title}
-                    </h3>
-                    <p className="text-xs sm:text-sm text-muted-foreground line-clamp-2 leading-relaxed">
-                      {project.description}
-                    </p>
-
-                    {/* Scope Micro Chips */}
-                    <div className="pt-2.5 flex flex-wrap gap-1.5 border-t border-border/50">
-                      {project.scope?.slice(0, 2).map((item, i) => (
-                        <span
-                          key={i}
-                          className="inline-flex items-center gap-1 text-[10px] font-medium bg-sand/30 dark:bg-muted/40 text-muted-foreground px-2 py-0.5 rounded-md truncate max-w-full"
-                        >
-                          <Check className="h-2.5 w-2.5 text-brass shrink-0" />
-                          <span className="truncate">{item}</span>
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Footer Action */}
-                <div className="p-6 pt-0 border-t border-border/50">
-                  <div className="flex items-center justify-between pt-4">
-                    <div className="text-xs text-muted-foreground">
-                      <span className="font-semibold text-foreground">{project.location.split(",")[0]}</span>
-                    </div>
-                    <Link
-                      href={`/projects/${project.id}`}
-                      className="inline-flex items-center gap-1.5 text-xs font-bold text-forest dark:text-brass group-hover:underline uppercase tracking-wider"
-                    >
-                      <span>{tProjects("viewDetails")}</span>
-                      <ArrowRight className="h-3.5 w-3.5 rtl:rotate-180 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform" />
-                    </Link>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </motion.div>
-
-        {/* Load More & Explore Portfolio Buttons */}
-        <div className="mt-14 flex flex-col sm:flex-row items-center justify-center gap-4">
-          {hasMore && (
+          {!showAll && (
             <Button
-              variant="brass"
-              size="lg"
-              onClick={() => setVisibleCount((prev) => Math.min(filteredProjects.length, prev + 3))}
-              className="rounded-xl font-semibold shadow-md shadow-brass/20"
+              asChild
+              variant="outline"
+              className="self-start md:self-end h-10 px-5 rounded-lg border-border hover:border-brass/80 text-foreground text-xs font-semibold uppercase tracking-wider transition-all shrink-0"
             >
-              <span>{tCommon("loadMore")} ({filteredProjects.length - visibleCount} more)</span>
-              <ChevronDown className="h-4 w-4 ml-1.5 rtl:mr-1.5 rtl:ml-0" />
+              <Link href="/projects">
+                <span>{isAr ? "عرض كل المشاريع" : isFr ? "Toutes les Réalisations" : "View Full Portfolio"}</span>
+                <ArrowRight className="h-3.5 w-3.5 ml-1.5 rtl:mr-1.5 rtl:ml-0 rtl:rotate-180" />
+              </Link>
             </Button>
           )}
+        </motion.div>
 
-          <Button
-            asChild
-            variant="outline"
-            size="lg"
-            className="rounded-xl font-semibold hover:border-brass border-border bg-card/80 backdrop-blur-md"
-          >
-            <Link href="/projects">
-              <span>{tProjects("all")} (18 Projects)</span>
-              <ArrowRight className="h-4 w-4 rtl:rotate-180 ml-1.5 rtl:mr-1.5 rtl:ml-0" />
-            </Link>
-          </Button>
+        {/* Minimalist Projects Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          {featuredProjects.map((project, idx) => {
+            const projectTitle = project.title[locale as "en" | "ar" | "fr"] || project.title.en;
+            const projectLocation = project.location[locale as "en" | "ar" | "fr"] || project.location.en;
+            const projectSummary = project.summary[locale as "en" | "ar" | "fr"] || project.summary.en;
+
+            return (
+              <motion.article
+                key={project.id}
+                variants={itemFadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-30px" }}
+                transition={{ delay: idx * 0.08 }}
+                className="group rounded-2xl bg-card border border-border/80 overflow-hidden shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-xl hover:border-brass/70 transition-all duration-300 flex flex-col justify-between"
+              >
+                <div>
+                  {/* Clean Image Area */}
+                  <div className="relative aspect-[16/10] w-full overflow-hidden bg-muted">
+                    <Image
+                      src={project.image.src}
+                      alt={project.image.alt[locale as "en" | "ar" | "fr"] || project.image.alt.en || projectTitle}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      className="object-cover"
+                    />
+                    <div className="absolute top-3 left-3 rtl:left-auto rtl:right-3 z-10">
+                      <span className="inline-flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-md bg-white/90 backdrop-blur-md text-stone-900 font-semibold border border-white/80 shadow-xs">
+                        <MapPin className="h-2.5 w-2.5 text-brass" />
+                        <span>{projectLocation}</span>
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Clean Content Area */}
+                  <div className="p-5 sm:p-6 space-y-2.5">
+                    <div className="text-[11px] font-mono text-brass uppercase tracking-wider font-semibold">
+                      Case Study 0{idx + 1} • {project.year}
+                    </div>
+
+                    <h3 className="text-base font-bold text-foreground group-hover:text-brass transition-colors line-clamp-1">
+                      {projectTitle}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed line-clamp-2">
+                      {projectSummary}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Minimalist Solid Button with Proper Colors */}
+                <div className="p-5 sm:p-6 pt-0">
+                  <Link
+                    href={`/projects/${project.slug}`}
+                    className="w-full py-2.5 px-4 rounded-xl bg-[#F6F3EC] hover:bg-brass text-stone-800 hover:text-stone-950 border border-stone-200/90 hover:border-brass text-xs font-semibold transition-all duration-300 flex items-center justify-between group/btn shadow-xs hover:shadow-md"
+                  >
+                    <span>{isAr ? "دراسة الحالة الكاملة" : isFr ? "Lire l'Étude de Cas" : "Read Full Case Study"}</span>
+                    <ArrowRight className="h-4 w-4 text-brass group-hover/btn:text-stone-950 rtl:rotate-180 group-hover/btn:translate-x-1 rtl:group-hover/btn:-translate-x-1 transition-all" />
+                  </Link>
+                </div>
+              </motion.article>
+            );
+          })}
         </div>
       </div>
     </section>
   );
 }
 
+export default ProjectsSection;

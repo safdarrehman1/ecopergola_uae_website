@@ -3,9 +3,9 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/routing";
-import { CheckCircle2, ArrowRight } from "lucide-react";
-import { pergolaTypesData } from "@/data/pergola-types";
-import { getLocalizedPergola, getLocalizedPergolaTypes } from "@/data/localizedData";
+import { CheckCircle2, ArrowRight, ShieldCheck, Download, Layers } from "lucide-react";
+import { getCollection, getItem, getSiteSettings } from "@/lib/content/store";
+import { loc, locMedia } from "@/lib/content/utils";
 import { siteConfig } from "@/lib/siteConfig";
 import { routing } from "@/i18n/routing";
 import { Breadcrumb, getBreadcrumbSchema } from "@/components/seo/Breadcrumb";
@@ -13,11 +13,16 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ContactSection } from "@/components/sections/ContactSection";
 
-export function generateStaticParams() {
+export const dynamicParams = true;
+
+export async function generateStaticParams() {
+  const pergolas = await getCollection("pergola-types");
   const params: { locale: string; slug: string }[] = [];
   for (const locale of routing.locales) {
-    for (const pergola of pergolaTypesData) {
-      params.push({ locale, slug: pergola.slug });
+    for (const pergola of pergolas) {
+      if (pergola.slug) {
+        params.push({ locale, slug: pergola.slug });
+      }
     }
   }
   return params;
@@ -29,22 +34,25 @@ export async function generateMetadata({
   params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
   const { locale, slug } = await params;
-  const pergola = getLocalizedPergola(slug, locale) || pergolaTypesData.find((p) => p.slug === slug);
+  const pergola = await getItem("pergola-types", slug);
   if (!pergola) return {};
 
-  const title = `${pergola.name} in Dubai | Custom Installation | Eco Pergola`;
-  const description = pergola.description;
+  const name = loc(pergola.name, locale);
+  const description = loc(pergola.description, locale);
+  const metaTitle = loc(pergola.seo?.metaTitle, locale) || `${name} in Dubai | Custom Luxury Pergola | Eco Pergola`;
+  const metaDescription = loc(pergola.seo?.metaDescription, locale) || description;
+  const ogImg = locMedia(pergola.seo?.ogImage || pergola.image, locale);
 
   return {
-    title,
-    description,
+    title: metaTitle,
+    description: metaDescription,
     alternates: {
       canonical: `${siteConfig.domain}/${locale === "en" ? "" : locale + "/"}pergola-types/${slug}`,
     },
     openGraph: {
-      title,
-      description,
-      images: [{ url: pergola.image }],
+      title: metaTitle,
+      description: metaDescription,
+      images: [{ url: ogImg.src, alt: ogImg.alt }],
     },
   };
 }
@@ -57,42 +65,56 @@ export default async function PergolaDetailPage({
   const { locale, slug } = await params;
   setRequestLocale(locale);
 
-  const pergola = getLocalizedPergola(slug, locale);
-  if (!pergola) notFound();
+  const [pergola, allPergolas, settings, tDetails, tNav, tCommon] = await Promise.all([
+    getItem("pergola-types", slug),
+    getCollection("pergola-types"),
+    getSiteSettings(),
+    getTranslations({ locale, namespace: "details" }),
+    getTranslations({ locale, namespace: "nav" }),
+    getTranslations({ locale, namespace: "common" }),
+  ]);
 
-  const tDetails = await getTranslations({ locale, namespace: "details" });
-  const tNav = await getTranslations({ locale, namespace: "nav" });
-  const tCommon = await getTranslations({ locale, namespace: "common" });
+  if (!pergola || pergola.status !== "published") {
+    notFound();
+  }
+
+  const name = loc(pergola.name, locale);
+  const badge = loc(pergola.badge, locale);
+  const description = loc(pergola.description, locale);
+  const longDescription = loc(pergola.longDescription, locale);
+  const mainImage = locMedia(pergola.image, locale);
+
+  const galleryImages = (pergola.gallery || []).map((m) => locMedia(m, locale));
+  const allImages = [mainImage, ...galleryImages.filter((g) => g.src !== mainImage.src)];
 
   const breadcrumbs = [
     { name: tNav("home"), url: siteConfig.domain },
     { name: tNav("pergolaTypes"), url: `${siteConfig.domain}/pergola-types` },
-    { name: pergola.name, url: `${siteConfig.domain}/pergola-types/${pergola.slug}` },
+    { name, url: `${siteConfig.domain}/pergola-types/${pergola.slug}` },
   ];
 
+  // Authentic Schema.org Product without fake AggregateOffer price
   const productSchema = {
     "@context": "https://schema.org",
     "@type": "Product",
-    name: pergola.name,
-    description: pergola.longDescription,
-    image: pergola.image,
+    name,
+    description: longDescription || description,
+    image: mainImage.src,
     brand: {
       "@type": "Brand",
       name: siteConfig.name,
     },
-    offers: {
-      "@type": "AggregateOffer",
-      priceCurrency: "AED",
-      price: "15000",
-      priceValidUntil: "2026-12-31",
-      itemCondition: "https://schema.org/NewCondition",
-      availability: "https://schema.org/InStock",
-    },
+    category: "Outdoor Architectural Pergolas",
   };
 
-  const allPergolas = getLocalizedPergolaTypes(locale);
   const relatedPergolas = allPergolas
-    .filter((p) => p.id !== pergola.id && (p.material === pergola.material || p.roofType === pergola.roofType))
+    .filter(
+      (p) =>
+        p.id !== pergola.id &&
+        p.status === "published" &&
+        (p.roofType === pergola.roofType ||
+          p.material.some((m) => pergola.material.includes(m)))
+    )
     .slice(0, 3);
 
   return (
@@ -107,17 +129,12 @@ export default async function PergolaDetailPage({
       />
 
       {/* Hero Header */}
-      <section className="relative pt-32 pb-16 md:pt-40 md:pb-24 lg:pt-44 bg-ink text-sand-light overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <Image
-            src={pergola.image}
-            alt={pergola.name}
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover brightness-[0.28]"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/65 to-transparent" />
+      <section className="relative pt-24 pb-16 md:pt-28 md:pb-20 lg:pt-32 bg-gradient-to-b from-[#FAF8F5] via-[#F4EFE6] to-[#FFFFFF] text-stone-900 border-b border-stone-200/60 overflow-hidden">
+        {/* Soft Ambient Architectural Light Rays & Grid Texture */}
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-amber-200/25 rounded-full blur-[140px]" />
+          <div className="absolute -bottom-20 -left-20 w-[400px] h-[400px] bg-stone-300/30 rounded-full blur-[120px]" />
+          <div className="absolute inset-0 bg-[radial-gradient(#d6cfc4_1px,transparent_1px)] [background-size:28px_28px] opacity-40" />
         </div>
 
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
@@ -125,28 +142,29 @@ export default async function PergolaDetailPage({
             <Breadcrumb
               items={[
                 { label: tNav("pergolaTypes"), href: "/pergola-types" },
-                { label: pergola.name },
+                { label: name },
               ]}
             />
           </div>
 
           <div className="max-w-3xl space-y-4">
             <div className="flex items-center gap-2">
-              <span className="text-xs font-bold uppercase tracking-widest text-brass">
+              <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/90 border border-amber-300/80 text-[11px] font-mono tracking-widest uppercase text-amber-900 font-semibold shadow-xs">
+                <span className="h-2 w-2 rounded-full bg-brass animate-pulse" />
                 {locale === "ar" ? "طراز مظلة مخصص" : locale === "fr" ? "Modèle de Pergola sur Mesure" : "Custom Pergola Style"}
               </span>
-              {pergola.badge && (
+              {badge && (
                 <Badge variant="brass" className="text-[10px] font-bold">
-                  {pergola.badge}
+                  {badge}
                 </Badge>
               )}
             </div>
 
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-display text-white leading-tight min-w-0 break-words text-balance">
-              {pergola.name}
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-display text-stone-900 leading-tight min-w-0 break-words text-balance">
+              {name}
             </h1>
-            <p className="text-base sm:text-lg text-sand-dark leading-relaxed max-w-2xl">
-              {pergola.description}
+            <p className="text-base sm:text-lg text-stone-600 leading-relaxed max-w-2xl">
+              {description}
             </p>
           </div>
         </div>
@@ -158,29 +176,62 @@ export default async function PergolaDetailPage({
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_360px] xl:grid-cols-[minmax(0,1fr)_400px] lg:gap-12 xl:gap-16 items-start">
             {/* Left Narrative Column */}
             <article className="min-w-0 w-full space-y-12">
+              {/* Photo Gallery: Main + Thumbnails */}
+              <div className="space-y-4">
+                <div className="relative aspect-[16/10] w-full rounded-2xl overflow-hidden bg-muted border border-border">
+                  <Image
+                    src={mainImage.src}
+                    alt={mainImage.alt || name}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 800px"
+                    className="object-cover"
+                  />
+                </div>
+                {allImages.length > 1 && (
+                  <div className="grid grid-cols-4 gap-3">
+                    {allImages.slice(0, 4).map((img, idx) => (
+                      <div
+                        key={idx}
+                        className="relative aspect-[16/10] rounded-xl overflow-hidden bg-muted border border-border/80"
+                      >
+                        <Image
+                          src={img.src}
+                          alt={img.alt || `${name} view ${idx + 1}`}
+                          fill
+                          sizes="200px"
+                          className="object-cover"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+
               <div className="space-y-4">
                 <h2 className="text-2xl sm:text-3xl font-bold font-display text-foreground">
                   {locale === "ar" ? "التصميم الهندسي والمزايا" : locale === "fr" ? "Design Architectural & Caractéristiques" : "Architectural Design & Capabilities"}
                 </h2>
                 <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
-                  {pergola.longDescription}
+                  {longDescription || description}
                 </p>
               </div>
 
               {/* Key Features */}
-              <div className="space-y-5 p-6 sm:p-8 rounded-3xl bg-sand/40 dark:bg-card/40 border border-border">
-                <h3 className="text-xl font-bold font-display text-foreground">
-                  {tDetails("keyFeatures")}
-                </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  {pergola.features.map((feature, idx) => (
-                    <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-foreground">
-                      <CheckCircle2 className="h-4 w-4 text-forest dark:text-brass shrink-0 mt-0.5" />
-                      <span className="leading-snug">{feature}</span>
-                    </div>
-                  ))}
+              {pergola.features && pergola.features.length > 0 && (
+                <div className="space-y-5 p-6 sm:p-8 rounded-3xl bg-[#FAF8F5] border border-stone-200/90 shadow-sm">
+                  <h3 className="text-xl font-bold font-display text-foreground">
+                    {tDetails("keyFeatures")}
+                  </h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {pergola.features.map((feature, idx) => (
+                      <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-foreground">
+                        <CheckCircle2 className="h-4 w-4 text-brass shrink-0 mt-0.5" />
+                        <span className="leading-snug">{loc(feature, locale)}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              )}
 
               {/* Climate & Engineering Callout */}
               <div className="p-6 sm:p-8 rounded-3xl bg-card border border-border space-y-4 shadow-sm">
@@ -210,24 +261,24 @@ export default async function PergolaDetailPage({
                 </div>
 
                 <div className="space-y-3 text-xs sm:text-sm">
-                  {pergola.specs.map((spec, idx) => (
+                  {pergola.specs && pergola.specs.map((spec, idx) => (
                     <div key={idx} className="flex justify-between items-center py-1.5 border-b border-border/40 gap-4">
-                      <span className="text-muted-foreground font-medium shrink-0">{spec.label}</span>
-                      <span className="font-bold text-foreground text-right rtl:text-left truncate max-w-[200px]">{spec.value}</span>
+                      <span className="text-muted-foreground font-medium shrink-0">{loc(spec.label, locale)}</span>
+                      <span className="font-bold text-foreground text-right rtl:text-left truncate max-w-[200px]">{loc(spec.value, locale)}</span>
                     </div>
                   ))}
                 </div>
 
                 <div className="pt-2 space-y-3">
                   <Button asChild variant="brass" className="w-full rounded-xl font-bold shadow-md">
-                    <Link href="/contact">
+                    <a href="#contact">
                       <span>{tDetails("requestQuote")}</span>
                       <ArrowRight className="h-4 w-4 ml-1.5 rtl:rotate-180 rtl:mr-1.5 rtl:ml-0" />
-                    </Link>
+                    </a>
                   </Button>
                   <Button asChild variant="outline" className="w-full rounded-xl font-semibold">
                     <a
-                      href={siteConfig.whatsappUrl}
+                      href={settings.whatsapp ? `https://wa.me/${settings.whatsapp.replace(/[^0-9]/g, "")}` : siteConfig.whatsappUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -244,30 +295,35 @@ export default async function PergolaDetailPage({
                     {tDetails("relatedPergolas")}
                   </h4>
                   <div className="space-y-3">
-                    {relatedPergolas.map((rel) => (
-                      <Link
-                        key={rel.id}
-                        href={`/pergola-types/${rel.slug}`}
-                        className="flex items-center gap-3 p-2 rounded-xl hover:bg-card transition-colors group"
-                      >
-                        <div className="relative h-12 w-12 rounded-lg overflow-hidden shrink-0">
-                          <Image
-                            src={rel.image}
-                            alt={rel.name}
-                            fill
-                            className="object-cover"
-                          />
-                        </div>
-                        <div className="min-w-0">
-                          <span className="text-xs font-bold text-foreground group-hover:text-brass transition-colors block truncate">
-                            {rel.name}
-                          </span>
-                          <span className="text-[11px] text-muted-foreground line-clamp-1">
-                            {rel.description}
-                          </span>
-                        </div>
-                      </Link>
-                    ))}
+                    {relatedPergolas.map((rel) => {
+                      const relName = loc(rel.name, locale);
+                      const relDesc = loc(rel.description, locale);
+                      const relImg = locMedia(rel.image, locale);
+                      return (
+                        <Link
+                          key={rel.id}
+                          href={`/pergola-types/${rel.slug}`}
+                          className="flex items-center gap-3 p-2 rounded-xl hover:bg-card transition-colors group"
+                        >
+                          <div className="relative h-12 w-12 rounded-lg overflow-hidden shrink-0">
+                            <Image
+                              src={relImg.src}
+                              alt={relImg.alt || relName}
+                              fill
+                              className="object-cover"
+                            />
+                          </div>
+                          <div className="min-w-0">
+                            <span className="text-xs font-bold text-foreground group-hover:text-brass transition-colors block truncate">
+                              {relName}
+                            </span>
+                            <span className="text-[11px] text-muted-foreground line-clamp-1">
+                              {relDesc}
+                            </span>
+                          </div>
+                        </Link>
+                      );
+                    })}
                   </div>
                 </div>
               )}
@@ -277,7 +333,7 @@ export default async function PergolaDetailPage({
       </section>
 
       {/* Global Contact Section */}
-      <ContactSection />
+      <ContactSection settings={settings} />
     </>
   );
 }

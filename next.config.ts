@@ -14,6 +14,9 @@ const nextConfig: NextConfig = {
     ],
   },
   turbopack: {
+    resolveAlias: {
+      three: "./node_modules/three",
+    },
     rules: {
       "*.css": {
         loaders: ["@tailwindcss/turbopack"],

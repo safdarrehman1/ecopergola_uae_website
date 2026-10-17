@@ -1,0 +1,117 @@
+[
+  {
+    "id": "8a6589a4-be86-4fc7-9041-006b1a19375d",
+    "slug": "consultation-3d-design",
+    "status": "published",
+    "featured": true,
+    "order": 0,
+    "verified": true,
+    "seo": {
+      "noindex": true
+    },
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z",
+    "stepNumber": 1,
+    "title": {
+      "en": "On-Site Consultation & 3D Modeling",
+      "ar": "الاستشارة الميدانية والنمذجة ثلاثية الأبعاد",
+      "fr": "Consultation sur Site & Modélisation 3D"
+    },
+    "summary": {
+      "en": "Laser survey of your terrace or garden with photorealistic 3D rendering of the pergola in your actual outdoor space."
+    },
+    "icon": "Compass"
+  },
+  {
+    "id": "2858382d-14db-4273-b624-a085f6cb43d4",
+    "slug": "engineering-calculations",
+    "status": "published",
+    "featured": true,
+    "order": 1,
+    "verified": true,
+    "seo": {
+      "noindex": true
+    },
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z",
+    "stepNumber": 2,
+    "title": {
+      "en": "Structural Engineering & Approvals",
+      "ar": "الحسابات الإنشائية والموافقات البلدية",
+      "fr": "Ingénierie Structurelle & Autorisations"
+    },
+    "summary": {
+      "en": "Detailed wind load calculations (up to 4.5 kPa) compliant with Dubai Municipality and UAE Civil Defense codes."
+    },
+    "icon": "FileCheck"
+  },
+  {
+    "id": "770940f3-1527-4742-933f-f2511be72af2",
+    "slug": "cnc-precision-fabrication",
+    "status": "published",
+    "featured": true,
+    "order": 2,
+    "verified": true,
+    "seo": {
+      "noindex": true
+    },
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z",
+    "stepNumber": 3,
+    "title": {
+      "en": "Precision CNC Fabrication",
+      "ar": "التصنيع الدقيق بماكينات CNC",
+      "fr": "Fabrication de Précision CNC"
+    },
+    "summary": {
+      "en": "Multi-axis aluminum extrusion cutting, seamless concealed welding, and certified Qualicoat Class 2 coating."
+    },
+    "icon": "Wrench"
+  },
+  {
+    "id": "d4c8e1de-c9a9-43b8-8ad9-5deadaa358ae",
+    "slug": "clean-installation",
+    "status": "published",
+    "featured": true,
+    "order": 3,
+    "verified": true,
+    "seo": {
+      "noindex": true
+    },
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z",
+    "stepNumber": 4,
+    "title": {
+      "en": "Clean & Quiet Site Installation",
+      "ar": "التركيب النظيف والدقيق في الموقع",
+      "fr": "Installation Propre & Silencieuse"
+    },
+    "summary": {
+      "en": "Factory pre-assembled modular bays erected in 2-4 days by certified in-house teams with zero mess or disturbance."
+    },
+    "icon": "Hammer"
+  },
+  {
+    "id": "ddb9ded7-141a-492d-b394-eb8bce4708aa",
+    "slug": "handover-warranty",
+    "status": "published",
+    "featured": true,
+    "order": 4,
+    "verified": true,
+    "seo": {
+      "noindex": true
+    },
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z",
+    "stepNumber": 5,
+    "title": {
+      "en": "Commissioning, Smart Setup & 10Y Warranty",
+      "ar": "التشغيل الذكي والربط والضمان لـ 10 سنوات",
+      "fr": "Mise en Service, Connexion & Garantie 10 Ans"
+    },
+    "summary": {
+      "en": "Smartphone automation calibration, rain/wind sensor testing, and issuance of your official 10-year warranty certificate."
+    },
+    "icon": "ShieldCheck"
+  }
+]

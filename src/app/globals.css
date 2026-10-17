@@ -51,53 +51,53 @@
   /* Layout Dimensions */
   --header-h: 5.5rem;
 
-  /* Brand Tokens */
-  --ink: #0E1512;
-  --forest: #1F4D3A;
-  --forest-dark: #143326;
-  --forest-light: #2A664E;
-  --brass: #B8895A;
-  --brass-dark: #966D44;
-  --brass-light: #D4A373;
-  --sand: #F5F1EA;
-  --sand-light: #FAF8F5;
-  --sand-dark: #EAE4D9;
-  --glass: #7FB5C9;
-  --glass-light: #A3CFDF;
-  --aluminum: #C9CED2;
-  --aluminum-dark: #9BA2A8;
+  /* Brand Tokens - Architectural Noir, Radiant Champagne Gold, & Crisp Titanium */
+  --ink: #0A0E14;              /* Deep Carbon Obsidian Slate - rich, clean, zero muddy green */
+  --forest: #0D201A;           /* Deep Midnight Architectural Emerald */
+  --forest-dark: #07130F;
+  --forest-light: #16362C;
+  --brass: #C59B4B;            /* Radiant Champagne Brass / Architectural Warm Gold */
+  --brass-dark: #A97E32;       /* Deep Burnished Bronze */
+  --brass-light: #DFB86C;      /* Luminous Shimmer Gold */
+  --sand: #F8FAFC;             /* Modern Gallery Crisp Zinc / Platinum (no yellow tint) */
+  --sand-light: #FFFFFF;       /* Pure Crisp White */
+  --sand-dark: #E2E8F0;        /* Refined Slate Border/Stone */
+  --glass: #60A5FA;
+  --glass-light: #93C5FD;
+  --aluminum: #CBD5E1;
+  --aluminum-dark: #64748B;
   --white: #FFFFFF;
 
   /* shadcn UI semantic mapping (Light) */
   --background: #FFFFFF;
-  --foreground: #0E1512;
+  --foreground: #0A0E14;
 
   --card: #FFFFFF;
-  --card-foreground: #0E1512;
+  --card-foreground: #0A0E14;
 
   --popover: #FFFFFF;
-  --popover-foreground: #0E1512;
+  --popover-foreground: #0A0E14;
 
-  --primary: #1F4D3A;
-  --primary-foreground: #FFFFFF;
+  --primary: #C59B4B;          /* Radiant Champagne Gold primary action */
+  --primary-foreground: #0A0E14;
 
-  --secondary: #F5F1EA;
-  --secondary-foreground: #0E1512;
+  --secondary: #FAF8F5;
+  --secondary-foreground: #0A0E14;
 
-  --muted: #F0ECE5;
-  --muted-foreground: #5C6761;
+  --muted: #FAF8F5;
+  --muted-foreground: #57534E;
 
-  --accent: #B8895A;
-  --accent-foreground: #FFFFFF;
+  --accent: #C59B4B;           /* Champagne Gold */
+  --accent-foreground: #0A0E14;
 
   --destructive: #DC2626;
   --destructive-foreground: #FFFFFF;
 
-  --border: #E5E1D8;
-  --input: #E5E1D8;
-  --ring: #1F4D3A;
+  --border: #E7E5E4;           /* Warm stone hairline border */
+  --input: #E7E5E4;
+  --ring: #C59B4B;
 
-  --radius: 1rem;
+  --radius: 0.75rem;
 }
 
 @media (min-width: 1024px) {
@@ -107,33 +107,33 @@
 }
 
 .dark {
-  --background: #0E1512;
-  --foreground: #F5F1EA;
+  --background: #FFFFFF;
+  --foreground: #0A0E14;
 
-  --card: #151F1B;
-  --card-foreground: #F5F1EA;
+  --card: #FFFFFF;
+  --card-foreground: #0A0E14;
 
-  --popover: #151F1B;
-  --popover-foreground: #F5F1EA;
+  --popover: #FFFFFF;
+  --popover-foreground: #0A0E14;
 
-  --primary: #B8895A;
-  --primary-foreground: #0E1512;
+  --primary: #C59B4B;
+  --primary-foreground: #0A0E14;
 
-  --secondary: #1C2823;
-  --secondary-foreground: #F5F1EA;
+  --secondary: #FAF8F5;
+  --secondary-foreground: #0A0E14;
 
-  --muted: #1A2621;
-  --muted-foreground: #9CA8A1;
+  --muted: #FAF8F5;
+  --muted-foreground: #57534E;
 
-  --accent: #B8895A;
-  --accent-foreground: #0E1512;
+  --accent: #C59B4B;
+  --accent-foreground: #0A0E14;
 
   --destructive: #EF4444;
   --destructive-foreground: #FFFFFF;
 
-  --border: #23342C;
-  --input: #23342C;
-  --ring: #B8895A;
+  --border: #E7E5E4;
+  --input: #E7E5E4;
+  --ring: #C59B4B;
 }
 
 /* Base resets & typography */
@@ -274,4 +274,16 @@ html.lenis, html.lenis body {
 
 .lenis.lenis-scrolling iframe {
   pointer-events: none;
+}
+
+/* ThreeUI Shader Frame Container */
+.shader-frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 460px;
+  overflow: hidden;
+  border-radius: 1.5rem;
+  isolation: isolate;
+  background-color: #f1f1ef;
 }

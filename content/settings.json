@@ -1,0 +1,108 @@
+{
+  "name": "Eco Pergola",
+  "legalName": "Eco Pergola Aluminum & Glass Contracting LLC",
+  "tagline": {
+    "en": "Transforming Dubai's Skyline with Excellence",
+    "ar": "نبتكر مساحات خارجية فاخرة في دبي",
+    "fr": "Sublimer les Espaces Extérieurs de Prestige à Dubaï"
+  },
+  "description": {
+    "en": "Custom aluminum pergolas, glass facades, partitions, and architectural solutions in Dubai & UAE. ISO certified quality, serving premier residential and commercial projects.",
+    "ar": "برجولات ألمنيوم فاخرة مخصصة، واجهات زجاجية، وقواطع معمارية في دبي والإمارات. جودة معتمدة وفق أعلى المعايير.",
+    "fr": "Pergolas sur mesure en aluminium, façades vitrées et solutions architecturales à Dubaï et aux Émirats."
+  },
+  "domain": "https://ecopergola.ae",
+  "canonicalUrl": "https://ecopergola.ae",
+  "phone": "+97143403727",
+  "phoneDisplay": "+971 4 340 3727",
+  "whatsapp": "971553399107",
+  "whatsappDisplay": "+971 55 339 9107",
+  "whatsappUrl": "https://wa.me/971553399107",
+  "email": "info@ecopergola.ae",
+  "workingHours": {
+    "days": {
+      "en": "Mon – Sat",
+      "ar": "الإثنين - السبت",
+      "fr": "Lun – Sam"
+    },
+    "hours": {
+      "en": "8:00 AM – 6:00 PM",
+      "ar": "8:00 ص – 6:00 م",
+      "fr": "8h00 – 18h00"
+    },
+    "display": {
+      "en": "Mon - Sat: 8:00 AM - 6:00 PM",
+      "ar": "الإثنين - السبت: 8:00 ص - 6:00 م",
+      "fr": "Lun - Sam: 8h00 - 18h00"
+    },
+    "schema": "Mo,Tu,We,Th,Fr,Sa 08:00-18:00"
+  },
+  "address": {
+    "street": {
+      "en": "Al Quoz Industrial Area 3",
+      "ar": "منطقة القوز الصناعية 3",
+      "fr": "Al Quoz Industrial Area 3"
+    },
+    "poBox": "P.O. Box 390774",
+    "city": {
+      "en": "Dubai",
+      "ar": "دبي",
+      "fr": "Dubaï"
+    },
+    "region": "AE-DU",
+    "country": {
+      "en": "United Arab Emirates",
+      "ar": "الإمارات العربية المتحدة",
+      "fr": "Émirats Arabes Unis"
+    },
+    "full": {
+      "en": "Al Quoz Industrial Area 3, Dubai, United Arab Emirates, P.O. Box 390774",
+      "ar": "منطقة القوز الصناعية 3، دبي، الإمارات العربية المتحدة، ص.ب 390774",
+      "fr": "Al Quoz Industrial Area 3, Dubai, United Arab Emirates, P.O. Box 390774"
+    }
+  },
+  "geo": {
+    "latitude": 25.2048,
+    "longitude": 55.2708,
+    "region": "AE-DU",
+    "placename": "Dubai"
+  },
+  "social": {
+    "facebook": "https://facebook.com/ecopergola",
+    "twitter": "https://twitter.com/ecopergola",
+    "instagram": "https://instagram.com/ecopergola",
+    "linkedin": "https://linkedin.com/company/ecopergola"
+  },
+  "announcementBar": {
+    "enabled": true,
+    "text": {
+      "en": "Complimentary 3D Consultation & Engineering Site Survey in Dubai · 10-Year Warranty",
+      "ar": "استشارة ميدانية وتصميم ثلاثي الأبعاد مجاني في دبي · ضمان 10 سنوات",
+      "fr": "Consultation 3D et Étude Technique Offerte à Dubaï · Garantie 10 Ans"
+    },
+    "link": "/contact",
+    "badge": {
+      "en": "Spring 2026",
+      "ar": "عروض 2026",
+      "fr": "Offre 2026"
+    }
+  },
+  "seo": {
+    "defaultMetaTitle": {
+      "en": "Custom Aluminum Pergolas & Glass Systems Dubai | Eco Pergola",
+      "ar": "برجولات ألمنيوم وأنظمة زجاجية مخصصة في دبي | إيكو برجولا",
+      "fr": "Pergolas en Aluminium & Systèmes Vitrés à Dubaï | Eco Pergola"
+    },
+    "defaultMetaDescription": {
+      "en": "Premier manufacturer of luxury bio-climatic pergolas, minimal sliding doors, and architectural facade engineering in Dubai & UAE. 10-year warranty.",
+      "ar": "الشركة الرائدة في تصنيع البرجولات البيوكليماتيكية الفاخرة والأبواب المنزلقة الدقيقة والواجهات المعمارية في دبي والإمارات.",
+      "fr": "Concepteur et fabricant leader de pergolas bioclimatiques de luxe, baies coulissantes minimales et façades architecturales à Dubaï."
+    },
+    "ogImage": {
+      "src": "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=85&auto=format&fit=crop",
+      "alt": {
+        "en": "Eco Pergola Dubai Luxury Outdoor Architecture"
+      }
+    }
+  }
+}

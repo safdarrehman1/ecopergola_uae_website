@@ -33,24 +33,24 @@ export function LatestUpdatesSection() {
   }, [api, isPaused]);
 
   return (
-    <section className="py-12 bg-sand/60 dark:bg-card/40 border-y border-border relative overflow-hidden">
+    <section className="py-12 bg-[#FAF8F5] border-y border-stone-200/80 relative overflow-hidden">
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-8">
           <div className="flex items-center gap-3">
-            <div className="h-9 w-9 rounded-xl bg-forest/10 dark:bg-brass/10 flex items-center justify-center text-forest dark:text-brass">
-              <Bell className="h-4 w-4" />
+            <div className="h-10 w-10 rounded-xl bg-amber-50 border border-amber-200/60 flex items-center justify-center text-brass">
+              <Bell className="h-5 w-5" />
             </div>
             <div>
-              <span className="text-[11px] font-bold uppercase tracking-wider text-brass">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-amber-800">
                 {t("eyebrow")}
               </span>
-              <h2 className="text-xl sm:text-2xl font-bold font-display text-foreground">
+              <h2 className="text-xl sm:text-2xl font-bold font-display text-stone-900">
                 {t("title")}
               </h2>
             </div>
           </div>
 
-          <div className="hidden sm:flex items-center gap-2 text-xs text-muted-foreground">
+          <div className="hidden sm:flex items-center gap-2 text-xs text-stone-600 font-medium">
             <span className="h-2 w-2 rounded-full bg-emerald-500 animate-ping" />
             <span>{t("realtimeBadge")}</span>
           </div>
@@ -73,7 +73,7 @@ export function LatestUpdatesSection() {
             <CarouselContent className="-ml-4">
               {news.map((item) => (
                 <CarouselItem key={item.id} className="pl-4 md:basis-1/2 lg:basis-1/3">
-                  <div className="glass-card rounded-2xl p-6 h-full flex flex-col justify-between hover:border-brass/50 transition-all duration-300 group shadow-sm hover:shadow-md">
+                  <div className="bg-white rounded-2xl p-6 h-full flex flex-col justify-between border border-stone-200/90 hover:border-brass/70 transition-all duration-300 group shadow-sm hover:shadow-lg">
                     <div className="space-y-3">
                       <div className="flex items-center justify-between">
                         <Badge variant="brass" className="text-[10px] font-semibold">
@@ -94,10 +94,10 @@ export function LatestUpdatesSection() {
                       </p>
                     </div>
 
-                    <div className="pt-4 mt-2 border-t border-border/60">
+                    <div className="pt-4 mt-2 border-t border-stone-100">
                       <Link
                         href={item.ctaLink}
-                        className="inline-flex items-center gap-1.5 text-xs font-semibold text-forest dark:text-brass hover:underline group/btn"
+                        className="inline-flex items-center gap-1.5 text-xs font-semibold text-brass hover:text-brass-dark group/btn transition-colors"
                       >
                         <span>{item.ctaText}</span>
                         <ArrowRight className="h-3.5 w-3.5 rtl:rotate-180 group-hover/btn:translate-x-1 rtl:group-hover/btn:-translate-x-1 transition-transform" />
@@ -108,8 +108,8 @@ export function LatestUpdatesSection() {
               ))}
             </CarouselContent>
 
-            <CarouselPrevious className="hidden sm:flex -left-4 bg-background/80 hover:bg-brass hover:text-ink border-border" />
-            <CarouselNext className="hidden sm:flex -right-4 bg-background/80 hover:bg-brass hover:text-ink border-border" />
+            <CarouselPrevious className="hidden sm:flex -left-4 bg-white hover:bg-brass hover:text-stone-950 border-stone-200 shadow-sm" />
+            <CarouselNext className="hidden sm:flex -right-4 bg-white hover:bg-brass hover:text-stone-950 border-stone-200 shadow-sm" />
           </Carousel>
         </div>
       </div>

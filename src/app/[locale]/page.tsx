@@ -2,17 +2,20 @@ import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
 import { siteConfig } from "@/lib/siteConfig";
 import { getLocalBusinessSchema, getFaqSchema } from "@/lib/jsonld";
+import {
+  getCollection,
+  getSiteSettings,
+} from "@/lib/content/store";
 
 import { HeroSection } from "@/components/sections/HeroSection";
-import { LatestUpdatesSection } from "@/components/sections/LatestUpdatesSection";
+import { IntroductionSection } from "@/components/sections/IntroductionSection";
 import { ServicesSection } from "@/components/sections/ServicesSection";
 import { ProductsGallerySection } from "@/components/sections/ProductsGallerySection";
-import { AboutSection } from "@/components/sections/AboutSection";
 import { PergolaTypesSection } from "@/components/sections/PergolaTypesSection";
 import { ProjectsSection } from "@/components/sections/ProjectsSection";
-import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
+import { WhyChooseSection } from "@/components/sections/WhyChooseSection";
+import { ProcessSection } from "@/components/sections/ProcessSection";
 import { FaqSection } from "@/components/sections/FaqSection";
-import { BlogTeaserSection } from "@/components/sections/BlogTeaserSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 
 export async function generateMetadata({
@@ -28,13 +31,13 @@ export async function generateMetadata({
     ? "برجولات دبي | تصنيع الألمنيوم والزجاج الفاخر | إيكو برجولا"
     : isFr
     ? "Pergola Dubaï | Fabrication Aluminium & Verre | Eco Pergola"
-    : "Pergola Dubai | Aluminum & Glass Fabrication UAE | Eco Pergola";
+    : "Outdoor Spaces, Thoughtfully Engineered | Eco Pergola Dubai";
 
   const description = isAr
-    ? "برجولات ألمنيوم مخصصة، واجهات زجاجية، قواطع، وحلول معمارية مستدامة في دبي والإمارات. جودة معتمدة ومشاريع فاخرة."
+    ? "برجولات ألمنيوم مخصصة، واجهات زجاجية، قواطع، وحلول معمارية مستدامة في دبي والإمارات مع ضمان هيكلي 10 سنوات."
     : isFr
-    ? "Pergolas sur mesure en aluminium, façades en verre et solutions architecturales à Dubaï et aux Émirats. Qualité certifiée ISO."
-    : "Custom aluminum pergolas, glass facades, partitions, and architectural solutions in Dubai. ISO certified, serving premier residential and commercial projects.";
+    ? "Pergolas bioclimatiques en aluminium sur mesure, baies vitrées minimales et façades architecturales à Dubaï avec garantie décennale."
+    : "Custom bio-climatic pergolas, minimal sliding doors, and architectural facade engineering in Dubai & UAE. 10-year structural warranty.";
 
   return {
     title,
@@ -72,6 +75,29 @@ export default async function HomePage({
   const { locale } = await params;
   setRequestLocale(locale);
 
+  // Load all homepage data collections in parallel from the JSON store
+  const [
+    services,
+    products,
+    pergolas,
+    materials,
+    projects,
+    stats,
+    faqs,
+    processSteps,
+    settings,
+  ] = await Promise.all([
+    getCollection("services"),
+    getCollection("products"),
+    getCollection("pergola-types"),
+    getCollection("materials"),
+    getCollection("projects"),
+    getCollection("stats"),
+    getCollection("faqs"),
+    getCollection("process"),
+    getSiteSettings().catch(() => undefined),
+  ]);
+
   const localBusinessSchema = getLocalBusinessSchema();
   const faqSchema = getFaqSchema();
 
@@ -87,38 +113,35 @@ export default async function HomePage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
-      {/* 5.2 Hero */}
-      <HeroSection />
+      {/* 1. Hero: Architectural, Image-Led Composition with ThreeUI 3D Cylinder Gallery */}
+      <HeroSection settings={settings} />
 
-      {/* 5.3 Latest Updates */}
-      <LatestUpdatesSection />
+      {/* 2. Introduction: Concise Split Layout & Verified Metrics */}
+      <IntroductionSection stats={stats} />
 
-      {/* 5.4 Specialized Services */}
-      <ServicesSection />
+      {/* 3. Specialized Services: Curated Selection from JSON */}
+      <ServicesSection services={services} />
 
-      {/* 5.5 Products Gallery */}
-      <ProductsGallerySection />
+      {/* 4. Products Gallery: Consistently Cropped Grid & Lightbox */}
+      <ProductsGallerySection products={products} />
 
-      {/* 5.6 About / Who We Are */}
-      <AboutSection />
+      {/* 5. Pergola Types & Materials: Differences, Filters & Curated Selection */}
+      <PergolaTypesSection pergolas={pergolas} materials={materials} />
 
-      {/* 5.7 Pergola Types & Materials */}
-      <PergolaTypesSection />
+      {/* 6. Featured Projects: Real Identifiable Case Studies */}
+      <ProjectsSection projects={projects} />
 
-      {/* 5.8 Featured Projects Portfolio */}
-      <ProjectsSection />
+      {/* 7. Why Choose Eco Pergola: Supportable Engineering Standards */}
+      <WhyChooseSection />
 
-      {/* 5.9 Testimonials */}
-      <TestimonialsSection />
+      {/* 8. Process: 5 Operational Steps Stacking Naturally */}
+      <ProcessSection steps={processSteps} />
 
-      {/* 5.10 FAQ */}
-      <FaqSection />
+      {/* 9. FAQs: Accessible Radix Accordion */}
+      <FaqSection faqs={faqs} />
 
-      {/* 5.11 Latest Insights */}
-      <BlogTeaserSection />
-
-      {/* 5.12 Contact */}
-      <ContactSection />
+      {/* 10. Inquiry Section: Form with Clear Validation & Honest States */}
+      <ContactSection settings={settings} />
     </>
   );
 }

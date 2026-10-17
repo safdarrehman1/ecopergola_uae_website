@@ -61,7 +61,26 @@ export function getLocalBusinessSchema() {
   };
 }
 
-export function getFaqSchema() {
+import type { Faq } from "@/lib/content/schemas";
+import { loc } from "@/lib/content/utils";
+
+export function getFaqSchema(faqs?: Faq[], locale: string = "en") {
+  const items = faqs || [];
+  if (items.length > 0) {
+    return {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: items.map((item) => ({
+        "@type": "Question",
+        name: loc(item.question, locale),
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: loc(item.answer, locale),
+        },
+      })),
+    };
+  }
+
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",

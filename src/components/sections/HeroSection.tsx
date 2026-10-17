@@ -1,220 +1,174 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import { Link } from "@/i18n/routing";
-import { useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
 import { motion } from "framer-motion";
-import { ArrowRight, Phone, MessageSquare, ShieldCheck, ChevronDown } from "lucide-react";
+import { ArrowRight, ShieldCheck, Sparkles, Compass } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { siteConfig } from "@/lib/siteConfig";
+import { heroTextVariants, heroCopyTransition } from "@/lib/motion";
+import type { Settings } from "@/lib/content/schemas";
+import { Scene } from "@/components/threeui/Scene";
 
-export function HeroSection() {
-  const [count, setCount] = useState({ projects: 0, years: 0, satisfaction: 0 });
-  const tHero = useTranslations("hero");
+interface HeroSectionProps {
+  settings?: Settings;
+}
 
-  useEffect(() => {
-    const duration = 2000;
-    const steps = 50;
-    const interval = duration / steps;
-    let step = 0;
+export function HeroSection({ settings }: HeroSectionProps) {
+  const locale = useLocale();
+  const isAr = locale === "ar";
+  const isFr = locale === "fr";
 
-    const timer = setInterval(() => {
-      step++;
-      const progress = step / steps;
-      setCount({
-        projects: Math.floor(500 * progress),
-        years: Math.floor(10 * progress),
-        satisfaction: Math.floor(98 * progress),
-      });
+  const headline = isAr
+    ? "مساحات خارجية، بهندسة معمارية متقنة"
+    : isFr
+    ? "Des espaces extérieurs pensés et conçus avec précision"
+    : "Outdoor spaces, thoughtfully engineered";
 
-      if (step >= steps) {
-        clearInterval(timer);
-        setCount({ projects: 500, years: 10, satisfaction: 98 });
-      }
-    }, interval);
+  const subheadline = isAr
+    ? "برجولات بيوكليماتيكية ذكية، أبواب منزلقة دقيقة، وواجهات زجاجية مخصصة لمناخ دبي والإمارات مع ضمان هيكلي 10 سنوات."
+    : isFr
+    ? "Pergolas bioclimatiques motorisées, baies coulissantes minimales et façades architecturales conçues pour le climat de Dubaï avec garantie décennale."
+    : "Custom bio-climatic pergolas, minimal sliding glass systems, and architectural facades engineered for Dubai's climate with 10-year structural warranty.";
 
-    return () => clearInterval(timer);
-  }, []);
-
-  const headlineWords = [
-    tHero("titleWord1"),
-    tHero("titleWord2"),
-    tHero("titleWord3"),
-    tHero("titleWord4"),
-    tHero("titleWord5"),
-    tHero("titleWord6"),
-  ];
+  const primaryCta = isAr ? "طلب عرض سعر" : isFr ? "Demander un Devis" : "Request a Quote";
+  const secondaryCta = isAr ? "استكشف البرجولات" : isFr ? "Découvrir les Pergolas" : "Explore Pergolas";
+  const badgeText = isAr ? "تصنيع وتركيب في دبي والإمارات" : isFr ? "Conception & Fabrication à Dubaï" : "Engineered & Fabricated in Dubai";
 
   return (
-    <section className="relative min-h-[92vh] flex items-center justify-center overflow-hidden bg-ink text-sand-light pt-12 pb-24">
-      {/* Background Image with Slow Ken-Burns Zoom & Parallax */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
-        <motion.div
-          initial={{ scale: 1.15, opacity: 0 }}
-          animate={{ scale: 1.05, opacity: 1 }}
-          transition={{ duration: 2.4, ease: [0.16, 1, 0.3, 1] }}
-          className="relative w-full h-full"
-        >
-          <Image
-            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=90&auto=format&fit=crop"
-            alt="Luxury glass facade and architectural aluminum in Dubai"
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover object-center brightness-[0.35]"
-          />
-        </motion.div>
-
-        {/* Gradient & Noise Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/60 to-transparent z-10" />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/40 to-transparent z-10" />
-        <div className="absolute inset-0 noise-overlay opacity-30 z-10" />
+    <section className="relative min-h-[85vh] lg:min-h-[88vh] flex items-center overflow-hidden bg-gradient-to-b from-[#FAF8F5] via-[#F4EFE6] to-[#FFFFFF] text-stone-900 pt-8 pb-14 lg:py-16 border-b border-stone-200/60">
+      {/* Soft Ambient Architectural Light Rays & Grid Texture */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-amber-200/25 rounded-full blur-[140px]" />
+        <div className="absolute -bottom-20 -left-20 w-[500px] h-[500px] bg-stone-300/30 rounded-full blur-[120px]" />
+        <div className="absolute inset-0 bg-[radial-gradient(#d6cfc4_1px,transparent_1px)] [background-size:28px_28px] opacity-40" />
       </div>
 
-      <div className="container mx-auto px-4 max-w-7xl relative z-20">
-        <div className="max-w-3xl space-y-8">
-          {/* Eyebrow Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-forest/40 border border-forest-light/30 backdrop-blur-md text-xs font-semibold text-sand-light"
-          >
-            <span className="h-2 w-2 rounded-full bg-brass pulse-ring" />
-            <span className="tracking-widest uppercase text-brass">{tHero("eyebrow")}</span>
-          </motion.div>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-12 max-w-[1360px] relative z-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          
+          {/* Left Column: Value Proposition & Engineering Trust */}
+          <div className="lg:col-span-6 space-y-6">
+            {/* Minimalist Architectural Eyebrow */}
+            <motion.div
+              variants={heroTextVariants}
+              initial="hidden"
+              animate="visible"
+              className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/90 border border-amber-300/80 shadow-[0_2px_10px_rgba(197,155,75,0.12)] backdrop-blur-md text-[11px] font-mono tracking-widest uppercase text-stone-800"
+            >
+              <span className="h-2 w-2 rounded-full bg-brass animate-pulse" />
+              <span className="text-amber-900 font-semibold">{badgeText}</span>
+            </motion.div>
 
-          {/* H1 Split-Word Mask Reveal */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-display tracking-tight text-white leading-[1.1]">
-            {headlineWords.map((word, index) => (
-              <motion.span
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  duration: 0.7,
-                  delay: 0.15 + index * 0.08,
-                  ease: [0.16, 1, 0.3, 1],
-                }}
-                className="inline-block mr-3 rtl:mr-0 rtl:ml-3"
+            {/* Main H1 Headline */}
+            <motion.h1
+              variants={heroTextVariants}
+              initial="hidden"
+              animate="visible"
+              transition={{ ...heroCopyTransition, delay: 0.1 }}
+              className="text-[34px] sm:text-[44px] md:text-[52px] lg:text-[56px] xl:text-[62px] font-bold font-display tracking-tight text-stone-900 leading-[1.08] text-balance"
+            >
+              {headline}
+            </motion.h1>
+
+            {/* Supporting Paragraph */}
+            <motion.p
+              variants={heroTextVariants}
+              initial="hidden"
+              animate="visible"
+              transition={{ ...heroCopyTransition, delay: 0.2 }}
+              className="text-[15px] sm:text-[16px] text-stone-600 leading-[1.65] max-w-xl"
+            >
+              {subheadline}
+            </motion.p>
+
+            {/* Primary Action Buttons */}
+            <motion.div
+              variants={heroTextVariants}
+              initial="hidden"
+              animate="visible"
+              transition={{ ...heroCopyTransition, delay: 0.3 }}
+              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-1"
+            >
+              <Button
+                asChild
+                size="lg"
+                className="h-12 px-7 rounded-xl bg-gradient-to-r from-brass via-brass-light to-brass hover:brightness-105 text-stone-950 font-bold text-sm shadow-xl shadow-brass/25 transition-all hover:scale-[1.02] active:scale-[0.98]"
               >
-                {index === 1 || index === 3 ? (
-                  <span className="brass-gradient-text">{word}</span>
-                ) : (
-                  word
-                )}
-              </motion.span>
-            ))}
-          </h1>
+                <Link href="/contact">
+                  <span>{primaryCta}</span>
+                  <ArrowRight className="h-4 w-4 ml-2 rtl:mr-2 rtl:ml-0 rtl:rotate-180" />
+                </Link>
+              </Button>
 
-          {/* Subtitle / Paragraph */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-base sm:text-lg md:text-xl text-sand-dark max-w-2xl font-body leading-relaxed"
-          >
-            {tHero("description")}
-          </motion.p>
-
-          {/* CTAs */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="flex flex-wrap items-center gap-4 pt-4"
-          >
-            <Button
-              asChild
-              variant="brass"
-              size="lg"
-              className="rounded-xl font-semibold shadow-lg shadow-brass/25 hover:shadow-brass/40 transition-all text-base px-7"
-            >
-              <Link href="/services">
-                <span>{tHero("ctaServices")}</span>
-                <ArrowRight className="h-4 w-4 ml-2 rtl:rotate-180 rtl:mr-2 rtl:ml-0" />
-              </Link>
-            </Button>
-
-            <Button
-              asChild
-              variant="outline"
-              size="lg"
-              className="rounded-xl border-white/20 bg-white/5 hover:bg-white/10 text-white backdrop-blur-md text-base px-6"
-            >
-              <a
-                href={siteConfig.whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Button
+                asChild
+                variant="outline"
+                size="lg"
+                className="h-12 px-7 rounded-xl bg-white hover:bg-stone-50 text-stone-800 border-stone-300 shadow-xs transition-all hover:scale-[1.02] active:scale-[0.98]"
               >
-                <MessageSquare className="h-4 w-4 mr-2 rtl:ml-2 rtl:mr-0 text-brass" />
-                <span>{tHero("ctaWhatsapp")}</span>
-              </a>
-            </Button>
+                <Link href="/pergola-types">
+                  <span>{secondaryCta}</span>
+                </Link>
+              </Button>
+            </motion.div>
 
-            <Button
-              asChild
-              variant="ghost"
-              size="lg"
-              className="rounded-xl text-sand-light hover:text-brass hover:bg-white/5 text-base"
+            {/* Minimalist Specifications Line */}
+            <motion.div
+              variants={heroTextVariants}
+              initial="hidden"
+              animate="visible"
+              transition={{ ...heroCopyTransition, delay: 0.4 }}
+              className="pt-6 border-t border-stone-200/90 grid grid-cols-2 sm:grid-cols-3 gap-4 text-xs text-stone-700"
             >
-              <a href={`tel:${siteConfig.phone}`}>
-                <Phone className="h-4 w-4 mr-2 rtl:ml-2 rtl:mr-0 text-brass" />
-                <span>{tHero("ctaCall")}</span>
-              </a>
-            </Button>
-          </motion.div>
+              <div className="flex items-center gap-2">
+                <ShieldCheck className="h-4 w-4 text-brass shrink-0" />
+                <span className="font-semibold">{isAr ? "ضمان هيكلي 10 سنوات" : isFr ? "Garantie 10 ans" : "10-Year Warranty"}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Sparkles className="h-4 w-4 text-brass shrink-0" />
+                <span className="font-semibold">{isAr ? "طلاء كواليكوت فئة 2" : isFr ? "Qualicoat Classe 2" : "Qualicoat Class 2"}</span>
+              </div>
+              <div className="flex items-center gap-2 col-span-2 sm:col-span-1">
+                <Compass className="h-4 w-4 text-brass shrink-0" />
+                <span className="font-semibold">{isAr ? "ألمنيوم 6063-T6 معتمد" : isFr ? "Aluminium 6063-T6" : "6063-T6 Marine Grade"}</span>
+              </div>
+            </motion.div>
+          </div>
 
-          {/* Trust Banner Micro-Copy */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 1 }}
-            className="flex items-center gap-2 pt-2 text-xs text-sand-dark"
-          >
-            <ShieldCheck className="h-4 w-4 text-brass" />
-            <span>{tHero("isoBadge")}</span>
-          </motion.div>
+          {/* Right Column: ThreeUI 3D Cylinder Orbit Gallery with Project Images */}
+          <div className="lg:col-span-6 relative">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.98, y: 15 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              className="relative rounded-3xl overflow-hidden border border-stone-200/90 bg-white/80 shadow-[0_20px_50px_-10px_rgba(28,25,23,0.08)] backdrop-blur-xl group"
+            >
+              {/* 3D Scene Viewport */}
+              <div className="relative w-full h-[440px] sm:h-[480px] lg:h-[520px]">
+                <Scene
+                  speed={0.9}
+                  scale={1.00}
+                  opacity={1.00}
+                  hue={0}
+                  saturation={1.00}
+                  brightness={1.00}
+                  className="w-full h-full"
+                />
+
+                {/* Floating Project Tag */}
+                <div className="absolute bottom-4 left-4 z-10 flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/95 border border-stone-200 text-stone-800 text-[11px] font-mono shadow-md backdrop-blur-md pointer-events-none">
+                  <span className="w-1.5 h-1.5 rounded-full bg-brass animate-pulse" />
+                  <span>Palm Jumeirah & Emirates Hills Projects</span>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
         </div>
-      </div>
-
-      {/* Floating Interactive Stat Strip */}
-      <div className="absolute bottom-6 left-0 right-0 z-20 hidden lg:block">
-        <div className="container mx-auto px-4 max-w-7xl">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.1 }}
-            className="grid grid-cols-4 gap-6 p-6 rounded-2xl bg-forest-dark/40 backdrop-blur-xl border border-white/10 shadow-2xl"
-          >
-            <div className="border-r rtl:border-r-0 rtl:border-l border-white/10 pr-6 rtl:pr-0 rtl:pl-6">
-              <div className="text-3xl font-bold font-display text-brass">{count.projects}+</div>
-              <div className="text-xs text-sand-dark mt-1 font-medium">{tHero("stats.projects")}</div>
-            </div>
-
-            <div className="border-r rtl:border-r-0 rtl:border-l border-white/10 pr-6 rtl:pr-0 rtl:pl-6">
-              <div className="text-3xl font-bold font-display text-brass">{count.years}+</div>
-              <div className="text-xs text-sand-dark mt-1 font-medium">{tHero("stats.experience")}</div>
-            </div>
-
-            <div className="border-r rtl:border-r-0 rtl:border-l border-white/10 pr-6 rtl:pr-0 rtl:pl-6">
-              <div className="text-3xl font-bold font-display text-brass">{count.satisfaction}%</div>
-              <div className="text-xs text-sand-dark mt-1 font-medium">{tHero("stats.satisfaction")}</div>
-            </div>
-
-            <div>
-              <div className="text-3xl font-bold font-display text-brass">100%</div>
-              <div className="text-xs text-sand-dark mt-1 font-medium">{tHero("stats.certified")}</div>
-            </div>
-          </motion.div>
-        </div>
-      </div>
-
-      {/* Scroll Down Hint for Mobile */}
-      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 lg:hidden text-sand-dark animate-bounce">
-        <ChevronDown className="h-6 w-6 text-brass" />
       </div>
     </section>
   );
 }
+
+export default HeroSection;

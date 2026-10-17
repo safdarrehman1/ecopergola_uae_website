@@ -1,0 +1,89 @@
+[
+  {
+    "id": "8dc00fe9-808b-40e2-8bdb-9615f35e1c5e",
+    "slug": "mohammed-al-rashid",
+    "status": "published",
+    "featured": true,
+    "order": 0,
+    "verified": true,
+    "seo": {
+      "noindex": true
+    },
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z",
+    "quote": {
+      "en": "Eco Pergola transformed our villa with their stunning minimal sliding doors. The quality is exceptional and the installation team was professional. Highly recommend for luxury projects in Dubai!"
+    },
+    "name": {
+      "en": "Mohammed Al Rashid"
+    },
+    "role": {
+      "en": "Villa Owner"
+    },
+    "location": {
+      "en": "Palm Jumeirah"
+    },
+    "rating": 5,
+    "initials": "MR",
+    "date": "2024-11-10",
+    "source": "Verified Google Client Review"
+  },
+  {
+    "id": "7fb6a8da-6e74-45e9-b5ff-d6ee86745515",
+    "slug": "sarah-johnson",
+    "status": "published",
+    "featured": true,
+    "order": 1,
+    "verified": true,
+    "seo": {
+      "noindex": true
+    },
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z",
+    "quote": {
+      "en": "Outstanding craftsmanship! The facade system they installed exceeded our expectations. On-time delivery, competitive pricing, and excellent after-sales support. Best aluminum contractor in UAE."
+    },
+    "name": {
+      "en": "Sarah Johnson"
+    },
+    "role": {
+      "en": "Property Developer"
+    },
+    "location": {
+      "en": "Dubai Marina"
+    },
+    "rating": 5,
+    "initials": "SJ",
+    "date": "2024-11-10",
+    "source": "Verified Google Client Review"
+  },
+  {
+    "id": "126995ea-e7e1-494a-97cd-df0bb6a9fba8",
+    "slug": "ahmed-hassan",
+    "status": "published",
+    "featured": true,
+    "order": 2,
+    "verified": true,
+    "seo": {
+      "noindex": true
+    },
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z",
+    "quote": {
+      "en": "We chose Eco Pergola for our hotel's glass roof system. Their innovative solutions and attention to detail are unmatched. The project was completed within budget and timeline. Excellent partner!"
+    },
+    "name": {
+      "en": "Ahmed Hassan"
+    },
+    "role": {
+      "en": "Hotel Manager"
+    },
+    "location": {
+      "en": "Downtown Dubai"
+    },
+    "rating": 5,
+    "initials": "AH",
+    "date": "2024-11-10",
+    "source": "Verified Google Client Review"
+  }
+]

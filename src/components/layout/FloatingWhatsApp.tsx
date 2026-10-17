@@ -23,7 +23,7 @@ export function FloatingWhatsApp() {
         <MessageSquare className="h-7 w-7 text-white fill-white relative z-10" />
 
         {/* Hover Tooltip */}
-        <span className="absolute right-16 rtl:right-auto rtl:left-16 whitespace-nowrap bg-ink text-white text-xs font-semibold px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-200 shadow-xl border border-white/10 hidden sm:block">
+        <span className="absolute right-16 rtl:right-auto rtl:left-16 whitespace-nowrap bg-white text-stone-900 text-xs font-semibold px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-200 shadow-xl border border-stone-200 hidden sm:block">
           {label}
         </span>
       </a>

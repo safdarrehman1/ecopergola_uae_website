@@ -1,0 +1,182 @@
+[
+  {
+    "id": "e3877a96-350c-4c28-8b73-737e1c4b9f72",
+    "slug": "award-winning-facade-project",
+    "status": "published",
+    "featured": true,
+    "order": 0,
+    "verified": true,
+    "seo": {
+      "noindex": false
+    },
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z",
+    "date": "Nov 2025",
+    "monthYear": {
+      "en": "November 2025"
+    },
+    "title": {
+      "en": "Award-Winning Facade Project"
+    },
+    "summary": {
+      "en": "Eco Pergola wins \"Best Facade Installation\" for prestigious Dubai Marina residential tower featuring cutting-edge glass technology."
+    },
+    "badge": {
+      "en": "Industry Award"
+    },
+    "ctaText": {
+      "en": "Read More"
+    },
+    "ctaLink": "/projects/dubai-marina-luxury-tower",
+    "image": {
+      "src": "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80&auto=format&fit=crop",
+      "alt": {
+        "en": "Award-Winning Facade Project"
+      }
+    }
+  },
+  {
+    "id": "15057a8a-834f-4dc8-9b05-9b435388ac41",
+    "slug": "new-sustainable-product-line",
+    "status": "published",
+    "featured": true,
+    "order": 1,
+    "verified": true,
+    "seo": {
+      "noindex": false
+    },
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z",
+    "date": "Oct 2025",
+    "monthYear": {
+      "en": "October 2025"
+    },
+    "title": {
+      "en": "New Sustainable Product Line"
+    },
+    "summary": {
+      "en": "Introducing our LEED-certified bio-climatic pergola systems with 40% energy savings and superior thermal performance for UAE climate."
+    },
+    "badge": {
+      "en": "Sustainability"
+    },
+    "ctaText": {
+      "en": "Learn More"
+    },
+    "ctaLink": "/pergola-types/louvered-pergola",
+    "image": {
+      "src": "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80&auto=format&fit=crop",
+      "alt": {
+        "en": "New Sustainable Product Line"
+      }
+    }
+  },
+  {
+    "id": "2967cecf-daa0-450e-8faa-96828a806912",
+    "slug": "strategic-partnership-announcement",
+    "status": "published",
+    "featured": true,
+    "order": 2,
+    "verified": true,
+    "seo": {
+      "noindex": false
+    },
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z",
+    "date": "Sep 2025",
+    "monthYear": {
+      "en": "September 2025"
+    },
+    "title": {
+      "en": "Strategic Partnership Announcement"
+    },
+    "summary": {
+      "en": "Partnering with leading European manufacturers to bring next-generation minimal sliding systems to Dubai's luxury market."
+    },
+    "badge": {
+      "en": "Partnership"
+    },
+    "ctaText": {
+      "en": "View Details"
+    },
+    "ctaLink": "/services/minimal-sliding-doors",
+    "image": {
+      "src": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80&auto=format&fit=crop",
+      "alt": {
+        "en": "Strategic Partnership Announcement"
+      }
+    }
+  },
+  {
+    "id": "e7386327-d1a1-42c5-844b-7445a00d88fb",
+    "slug": "expanded-production-facility",
+    "status": "published",
+    "featured": false,
+    "order": 3,
+    "verified": true,
+    "seo": {
+      "noindex": false
+    },
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z",
+    "date": "Aug 2025",
+    "monthYear": {
+      "en": "August 2025"
+    },
+    "title": {
+      "en": "Expanded Production Facility"
+    },
+    "summary": {
+      "en": "Opening new 50,000 sq ft manufacturing facility in Dubai Industrial City with advanced CNC machinery and increased capacity."
+    },
+    "badge": {
+      "en": "Expansion"
+    },
+    "ctaText": {
+      "en": "Discover More"
+    },
+    "ctaLink": "/about",
+    "image": {
+      "src": "https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=800&q=80&auto=format&fit=crop",
+      "alt": {
+        "en": "Expanded Production Facility"
+      }
+    }
+  },
+  {
+    "id": "b67539bd-acd7-49b1-9ef9-003677d0e268",
+    "slug": "free-consultation-services",
+    "status": "published",
+    "featured": false,
+    "order": 4,
+    "verified": true,
+    "seo": {
+      "noindex": false
+    },
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z",
+    "date": "Jul 2025",
+    "monthYear": {
+      "en": "July 2025"
+    },
+    "title": {
+      "en": "Free Consultation Services"
+    },
+    "summary": {
+      "en": "Now offering complimentary on-site consultations and 3D visualization for all residential and commercial facade projects in UAE."
+    },
+    "badge": {
+      "en": "Complimentary Service"
+    },
+    "ctaText": {
+      "en": "Book Now"
+    },
+    "ctaLink": "/contact",
+    "image": {
+      "src": "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80&auto=format&fit=crop",
+      "alt": {
+        "en": "Free Consultation Services"
+      }
+    }
+  }
+]

@@ -111,14 +111,15 @@ export default async function LocaleLayout({
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
-          enableSystem
+          enableSystem={false}
+          forcedTheme="light"
           disableTransitionOnChange
         >
           <NextIntlClientProvider messages={messages} locale={locale}>
             <SmoothScroll>
               <ScrollProgress />
+              <TopBar />
               <div className="sticky top-0 z-40 w-full">
-                <TopBar />
                 <Header />
               </div>
               <main id="main-content" className="flex-1 pb-16 md:pb-0">

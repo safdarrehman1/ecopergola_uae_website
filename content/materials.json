@@ -1,0 +1,374 @@
+[
+  {
+    "id": "5a492610-6484-4dfa-8b2b-0651923966a5",
+    "slug": "aluminum",
+    "status": "published",
+    "featured": true,
+    "order": 0,
+    "verified": true,
+    "seo": {
+      "metaTitle": {
+        "en": "Aluminum Pergolas Dubai | Durable & Rust-Proof Material"
+      },
+      "metaDescription": {
+        "en": "Compare architectural aluminum 6063-T6 against other outdoor shade materials in Dubai."
+      },
+      "noindex": false
+    },
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z",
+    "name": {
+      "en": "Architectural Aluminum (6063-T6)",
+      "ar": "ألمنيوم معماري (6063-T6)",
+      "fr": "Aluminium Architectural (6063-T6)"
+    },
+    "tagline": {
+      "en": "Zero maintenance, rust-proof, Dubai's #1 choice",
+      "ar": "بدون صيانة، مقاوم للصدأ، الخيار الأول في دبي",
+      "fr": "Sans entretien, anticorrosion, le choix N°1 à Dubaï"
+    },
+    "description": {
+      "en": "Heavy-duty structural extruded aluminum treated with marine-grade Qualicoat Class 2 powder coating.",
+      "ar": "قطاعات ألمنيوم عالية المتانة مطلية بطبقات مسحوق كواليكوت فئة 2 البحرية.",
+      "fr": "Profilés en aluminium extrudé haute résistance avec finition poudre marine Qualicoat."
+    },
+    "durabilityScore": 10,
+    "maintenanceScore": 10,
+    "costLevel": "premium",
+    "windResistance": {
+      "en": "Tested to 140 km/h (Zone 3 UAE)"
+    },
+    "pros": [
+      {
+        "en": "100% rust-proof and corrosion resistant in coastal humidity"
+      },
+      {
+        "en": "Lightweight yet engineered for extreme spans"
+      },
+      {
+        "en": "Available in 200+ RAL colors and woodgrain finishes"
+      }
+    ],
+    "cons": [
+      {
+        "en": "Higher initial investment than treated pine"
+      }
+    ],
+    "bestFor": {
+      "en": "Modern villas, coastal properties, bio-climatic motorized roofs"
+    },
+    "lifespan": {
+      "en": "25+ Years"
+    }
+  },
+  {
+    "id": "f5776761-522b-48ee-86ed-1446252fd59e",
+    "slug": "wood",
+    "status": "published",
+    "featured": true,
+    "order": 1,
+    "verified": true,
+    "seo": {
+      "metaTitle": {
+        "en": "Hardwood Pergolas Dubai | Teak & Iroko Timber"
+      },
+      "metaDescription": {
+        "en": "Natural luxury hardwood pergolas treated for the UAE desert climate."
+      },
+      "noindex": false
+    },
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z",
+    "name": {
+      "en": "Luxury Hardwood (Teak & Iroko)",
+      "ar": "خشب طبيعي فاخر (تيك وإيروكو)",
+      "fr": "Bois Noble (Teck & Iroko)"
+    },
+    "tagline": {
+      "en": "Timeless organic warmth and natural charm",
+      "ar": "دفء طبيعي وسحر كلاسيكي أخاذ",
+      "fr": "Chaleur naturelle et authenticité intemporelle"
+    },
+    "description": {
+      "en": "Kiln-dried, autoclave treated premium tropical hardwoods finished with UV-blocking bio-oils.",
+      "ar": "أخشاب صلبة استوائية مجففة بالفرن ومعالجة بزيوت طبيعية مقاومة للأشعة فوق البنفسجية.",
+      "fr": "Bois exotiques de premier choix traités sous pression avec huiles de protection anti-UV."
+    },
+    "durabilityScore": 8,
+    "maintenanceScore": 6,
+    "costLevel": "luxury",
+    "windResistance": {
+      "en": "Heavy mass provides superior natural wind stability"
+    },
+    "pros": [
+      {
+        "en": "Unmatched organic luxury and natural cooling feel"
+      },
+      {
+        "en": "Custom artisan joinery and traditional craftsmanship"
+      },
+      {
+        "en": "Stays cool to the touch even under 45°C summer sun"
+      }
+    ],
+    "cons": [
+      {
+        "en": "Requires periodic oiling every 18-24 months in Dubai"
+      }
+    ],
+    "bestFor": {
+      "en": "Lush garden settings, classic villas, organic architectural themes"
+    },
+    "lifespan": {
+      "en": "15-20 Years"
+    }
+  },
+  {
+    "id": "ed175290-7e1a-4862-bdaf-9192547a6605",
+    "slug": "steel",
+    "status": "published",
+    "featured": false,
+    "order": 2,
+    "verified": true,
+    "seo": {
+      "metaTitle": {
+        "en": "Structural Steel Pergolas Dubai | Maximum Span & Strength"
+      },
+      "metaDescription": {
+        "en": "Galvanized structural steel pergolas for monumental spans and commercial projects."
+      },
+      "noindex": false
+    },
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z",
+    "name": {
+      "en": "Galvanized Structural Steel",
+      "ar": "فولاذ هيكلي مجلفن",
+      "fr": "Acier Galvanisé Structurel"
+    },
+    "tagline": {
+      "en": "Monumental spans, industrial strength",
+      "ar": "بحور إنشائية واسعة وقوة صناعية هائلة",
+      "fr": "Portées monumentales et robustesse industrielle"
+    },
+    "description": {
+      "en": "Hot-dip galvanized structural carbon steel with electrostatic epoxy / powder coating.",
+      "ar": "فولاذ كربوني هيكلي مجلفن بالغمس الساخن مع طلاء إلكتروستاتيكي مقاوم للعوامل الجوية.",
+      "fr": "Acier au carbone galvanisé à chaud avec revêtement époxy et thermolaqué."
+    },
+    "durabilityScore": 9,
+    "maintenanceScore": 8,
+    "costLevel": "premium",
+    "windResistance": {
+      "en": "Maximum structural load resistance up to Zone 4"
+    },
+    "pros": [
+      {
+        "en": "Spans up to 15 meters without intermediate columns"
+      },
+      {
+        "en": "Supports heavy suspended daybeds, rooftop AC, and solar panels"
+      },
+      {
+        "en": "Ultra-slender profiles with monumental load capacity"
+      }
+    ],
+    "cons": [
+      {
+        "en": "Heavy structure requiring reinforced concrete footings"
+      }
+    ],
+    "bestFor": {
+      "en": "Commercial venues, large event pavilions, cantilevered modern roofs"
+    },
+    "lifespan": {
+      "en": "25+ Years"
+    }
+  },
+  {
+    "id": "44057508-d84c-4577-abbf-bb7cb024d876",
+    "slug": "vinyl",
+    "status": "published",
+    "featured": false,
+    "order": 3,
+    "verified": true,
+    "seo": {
+      "metaTitle": {
+        "en": "Vinyl & PVC Pergolas Dubai | Maintenance-Free Outdoor Shade"
+      },
+      "metaDescription": {
+        "en": "High-impact vinyl pergolas with internal metal cores for zero maintenance."
+      },
+      "noindex": false
+    },
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z",
+    "name": {
+      "en": "High-Impact Vinyl / PVC",
+      "ar": "فينيل / PVC معزز",
+      "fr": "Vinyle / PVC Haute Résistance"
+    },
+    "tagline": {
+      "en": "Never needs paint, impervious to rot",
+      "ar": "لا يحتاج إلى طلاء، مقاوم للتآكل والتشقق",
+      "fr": "Sans peinture, insensible à la pourriture"
+    },
+    "description": {
+      "en": "UV-stabilized virgin vinyl outer profile with inner galvanized steel reinforcement.",
+      "ar": "هياكل فينيل معززة بحبيبات ثاني أكسيد التيتانيوم للحماية من الشمس مع قلب فولاذي داخلي.",
+      "fr": "Profilé vinyle stabilisé aux UV avec renforts internes en acier galvanisé."
+    },
+    "durabilityScore": 8,
+    "maintenanceScore": 10,
+    "costLevel": "moderate",
+    "windResistance": {
+      "en": "Engineered with internal structural anchors"
+    },
+    "pros": [
+      {
+        "en": "Zero maintenance: washes clean with a garden hose"
+      },
+      {
+        "en": "Never yellows, peels, chalks, or warps"
+      },
+      {
+        "en": "Cost effective compared to motorized aluminum"
+      }
+    ],
+    "cons": [
+      {
+        "en": "Limited color palette (predominantly white and beige)"
+      }
+    ],
+    "bestFor": {
+      "en": "Budget-conscious family gardens, rental properties, classic white gazebos"
+    },
+    "lifespan": {
+      "en": "20+ Years"
+    }
+  },
+  {
+    "id": "64cc01e2-2a83-4389-aa79-2c0ce5dece9c",
+    "slug": "fiberglass",
+    "status": "published",
+    "featured": false,
+    "order": 4,
+    "verified": true,
+    "seo": {
+      "metaTitle": {
+        "en": "Fiberglass FRP Pergolas Dubai | Beachfront & Marine Grade"
+      },
+      "metaDescription": {
+        "en": "100% saltwater corrosion proof fiberglass composite pergolas for coastal Dubai."
+      },
+      "noindex": false
+    },
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z",
+    "name": {
+      "en": "Pultruded Fiberglass Composite (FRP)",
+      "ar": "ألياف زجاجية بوليمرية (FRP)",
+      "fr": "Fibre de Verre Pultrudée (FRP)"
+    },
+    "tagline": {
+      "en": "Total immunity to coastal saltwater humidity",
+      "ar": "مناعة تامة ضد رطوبة وأملاح البحر",
+      "fr": "Immunité totale contre l'air salin côtier"
+    },
+    "description": {
+      "en": "High-strength fiber-reinforced polymer with automotive-grade gel coat finish.",
+      "ar": "مركبات بوليمرية معززة بالألياف الزجاجية مع طبقة طلاء جيل كوت فائقة الحماية.",
+      "fr": "Polymère renforcé de fibres avec finition gel-coat qualité automobile."
+    },
+    "durabilityScore": 10,
+    "maintenanceScore": 9,
+    "costLevel": "premium",
+    "windResistance": {
+      "en": "Exceptional tensile strength higher than structural steel"
+    },
+    "pros": [
+      {
+        "en": "Absolute zero corrosion in direct beach saltwater spray"
+      },
+      {
+        "en": "Lightweight and ideal for roof decks with load limits"
+      },
+      {
+        "en": "High thermal dimensional stability under direct sun"
+      }
+    ],
+    "cons": [
+      {
+        "en": "Requires specialist fabrication tools on site"
+      }
+    ],
+    "bestFor": {
+      "en": "Palm Jumeirah beachfronts, coastal marinas, rooftop terraces"
+    },
+    "lifespan": {
+      "en": "25+ Years"
+    }
+  },
+  {
+    "id": "146a8168-148c-4e54-b83a-99088f89420c",
+    "slug": "concrete",
+    "status": "published",
+    "featured": false,
+    "order": 5,
+    "verified": true,
+    "seo": {
+      "metaTitle": {
+        "en": "Architectural Concrete Pergolas Dubai | Permanent Modern Shade"
+      },
+      "metaDescription": {
+        "en": "Fair-faced architectural concrete pergolas for monumental contemporary villas."
+      },
+      "noindex": false
+    },
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z",
+    "name": {
+      "en": "Architectural Concrete",
+      "ar": "خرسانة معمارية مسلحة",
+      "fr": "Béton Architectural"
+    },
+    "tagline": {
+      "en": "Permanent sculptural mass, 50+ year lifespan",
+      "ar": "كتل معمارية دائمة تدوم لأكثر من 50 عاماً",
+      "fr": "Masse sculpturale permanente, durée de vie 50+ ans"
+    },
+    "description": {
+      "en": "Precast or cast-in-place C40/50 self-compacting concrete with epoxy-coated steel rebar.",
+      "ar": "خرسانة ذاتية الدمك عالية القوة مع حديد تسليح مطلي بالإيبوكسي المقاوم للرطوبة.",
+      "fr": "Béton autoplaçant C40/50 préfabriqué ou coulé en place avec armatures époxy."
+    },
+    "durabilityScore": 10,
+    "maintenanceScore": 10,
+    "costLevel": "luxury",
+    "windResistance": {
+      "en": "Immune to any wind velocity or storm event"
+    },
+    "pros": [
+      {
+        "en": "Monumental, permanent architectural integration into the estate"
+      },
+      {
+        "en": "Completely immune to desert heat, UV, and sandstorms"
+      },
+      {
+        "en": "Seamless finishes: off-shutter, travertine render, or micro-cement"
+      }
+    ],
+    "cons": [
+      {
+        "en": "Permanent installation that cannot be relocated or altered"
+      }
+    ],
+    "bestFor": {
+      "en": "Monumental luxury palaces, minimalist Mediterranean villas"
+    },
+    "lifespan": {
+      "en": "50+ Years"
+    }
+  }
+]

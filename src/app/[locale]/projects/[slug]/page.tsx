@@ -4,8 +4,8 @@ import { notFound } from "next/navigation";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/routing";
 import { MapPin, CheckCircle2, ArrowRight } from "lucide-react";
-import { projectsData } from "@/data/projects";
-import { getLocalizedProject, getLocalizedServices } from "@/data/localizedData";
+import { getCollection, getItem, getSiteSettings } from "@/lib/content/store";
+import { loc, locMedia } from "@/lib/content/utils";
 import { siteConfig } from "@/lib/siteConfig";
 import { routing } from "@/i18n/routing";
 import { Breadcrumb, getBreadcrumbSchema } from "@/components/seo/Breadcrumb";
@@ -13,11 +13,16 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ContactSection } from "@/components/sections/ContactSection";
 
-export function generateStaticParams() {
+export const dynamicParams = true;
+
+export async function generateStaticParams() {
+  const projects = await getCollection("projects");
   const params: { locale: string; slug: string }[] = [];
   for (const locale of routing.locales) {
-    for (const project of projectsData) {
-      params.push({ locale, slug: project.slug });
+    for (const project of projects) {
+      if (project.slug) {
+        params.push({ locale, slug: project.slug });
+      }
     }
   }
   return params;
@@ -29,22 +34,26 @@ export async function generateMetadata({
   params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
   const { locale, slug } = await params;
-  const project = getLocalizedProject(slug, locale) || projectsData.find((p) => p.slug === slug);
+  const project = await getItem("projects", slug);
   if (!project) return {};
 
-  const title = `${project.title} | Case Study | Eco Pergola Dubai`;
-  const description = `${project.title} in ${project.location} (${project.year}). ${project.description}.`;
+  const title = loc(project.title, locale);
+  const location = loc(project.location, locale);
+  const summary = loc(project.summary, locale);
+  const metaTitle = loc(project.seo?.metaTitle, locale) || `${title} | Case Study | Eco Pergola Dubai`;
+  const metaDescription = loc(project.seo?.metaDescription, locale) || `${title} in ${location} (${project.year}). ${summary}`;
+  const ogImg = locMedia(project.seo?.ogImage || project.image, locale);
 
   return {
-    title,
-    description,
+    title: metaTitle,
+    description: metaDescription,
     alternates: {
       canonical: `${siteConfig.domain}/${locale === "en" ? "" : locale + "/"}projects/${slug}`,
     },
     openGraph: {
-      title,
-      description,
-      images: [{ url: project.image }],
+      title: metaTitle,
+      description: metaDescription,
+      images: [{ url: ogImg.src, alt: ogImg.alt }],
     },
   };
 }
@@ -57,21 +66,54 @@ export default async function ProjectDetailPage({
   const { locale, slug } = await params;
   setRequestLocale(locale);
 
-  const project = getLocalizedProject(slug, locale);
-  if (!project) notFound();
+  const [project, allServices, settings, tDetails, tNav] = await Promise.all([
+    getItem("projects", slug),
+    getCollection("services"),
+    getSiteSettings(),
+    getTranslations({ locale, namespace: "details" }),
+    getTranslations({ locale, namespace: "nav" }),
+  ]);
 
-  const tDetails = await getTranslations({ locale, namespace: "details" });
-  const tNav = await getTranslations({ locale, namespace: "nav" });
+  if (!project || project.status !== "published") {
+    notFound();
+  }
+
+  const title = loc(project.title, locale);
+  const category = loc(project.category, locale);
+  const location = loc(project.location, locale);
+  const summary = loc(project.summary, locale);
+  const fullNarrative = loc(project.fullNarrative, locale) || summary;
+  const mainImage = locMedia(project.image, locale);
+
+  const galleryImages = (project.gallery || []).map((m) => locMedia(m, locale));
+  const allImages = [mainImage, ...galleryImages.filter((g) => g.src !== mainImage.src)];
 
   const breadcrumbs = [
     { name: tNav("home"), url: siteConfig.domain },
     { name: tNav("portfolio"), url: `${siteConfig.domain}/projects` },
-    { name: project.title, url: `${siteConfig.domain}/projects/${project.slug}` },
+    { name: title, url: `${siteConfig.domain}/projects/${project.slug}` },
   ];
 
-  const allServices = getLocalizedServices(locale);
-  const relatedServices = allServices.filter((s) =>
-    project.relatedServices.includes(s.id)
+  // Authentic Schema.org CaseStudy/Article
+  const projectSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: title,
+    description: summary,
+    image: mainImage.src,
+    author: {
+      "@type": "Organization",
+      name: siteConfig.name,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.name,
+    },
+    datePublished: `${project.year}-01-01`,
+  };
+
+  const relatedServices = allServices.filter(
+    (s) => s.status === "published" && (project.relatedServiceIds || []).includes(s.id)
   );
 
   return (
@@ -80,19 +122,18 @@ export default async function ProjectDetailPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(getBreadcrumbSchema(breadcrumbs)) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(projectSchema) }}
+      />
 
       {/* Hero Header */}
-      <section className="relative pt-32 pb-16 md:pt-40 md:pb-24 lg:pt-44 bg-ink text-sand-light overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <Image
-            src={project.image}
-            alt={project.title}
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover brightness-[0.28]"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/65 to-transparent" />
+      <section className="relative pt-24 pb-16 md:pt-28 md:pb-20 lg:pt-32 bg-gradient-to-b from-[#FAF8F5] via-[#F4EFE6] to-[#FFFFFF] text-stone-900 border-b border-stone-200/60 overflow-hidden">
+        {/* Soft Ambient Architectural Light Rays & Grid Texture */}
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-amber-200/25 rounded-full blur-[140px]" />
+          <div className="absolute -bottom-20 -left-20 w-[400px] h-[400px] bg-stone-300/30 rounded-full blur-[120px]" />
+          <div className="absolute inset-0 bg-[radial-gradient(#d6cfc4_1px,transparent_1px)] [background-size:28px_28px] opacity-40" />
         </div>
 
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
@@ -100,7 +141,7 @@ export default async function ProjectDetailPage({
             <Breadcrumb
               items={[
                 { label: tNav("portfolio"), href: "/projects" },
-                { label: project.title },
+                { label: title },
               ]}
             />
           </div>
@@ -108,19 +149,19 @@ export default async function ProjectDetailPage({
           <div className="max-w-3xl space-y-4">
             <div className="flex items-center gap-2">
               <Badge variant="brass" className="text-[10px] font-bold uppercase tracking-wider">
-                {project.category}
+                {category}
               </Badge>
-              <span className="text-xs text-sand-dark flex items-center gap-1">
+              <span className="text-xs text-stone-600 flex items-center gap-1 font-medium">
                 <MapPin className="h-3.5 w-3.5 text-brass" />
-                {project.location}
+                {location}
               </span>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-display text-white leading-tight min-w-0 break-words text-balance">
-              {project.title}
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-display text-stone-900 leading-tight min-w-0 break-words text-balance">
+              {title}
             </h1>
-            <p className="text-base sm:text-lg text-sand-dark leading-relaxed max-w-2xl">
-              {project.description}
+            <p className="text-base sm:text-lg text-stone-600 leading-relaxed max-w-2xl">
+              {summary}
             </p>
           </div>
         </div>
@@ -132,52 +173,62 @@ export default async function ProjectDetailPage({
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_360px] xl:grid-cols-[minmax(0,1fr)_400px] lg:gap-12 xl:gap-16 items-start">
             {/* Left Narrative Column */}
             <article className="min-w-0 w-full space-y-12">
+              {/* Photo Gallery: Main + Thumbnails */}
+              <div className="space-y-4">
+                <div className="relative aspect-[16/10] w-full rounded-2xl overflow-hidden bg-muted border border-border">
+                  <Image
+                    src={mainImage.src}
+                    alt={mainImage.alt || title}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 800px"
+                    className="object-cover"
+                  />
+                </div>
+                {allImages.length > 1 && (
+                  <div className="grid grid-cols-4 gap-3">
+                    {allImages.slice(0, 4).map((img, idx) => (
+                      <div
+                        key={idx}
+                        className="relative aspect-[16/10] rounded-xl overflow-hidden bg-muted border border-border/80"
+                      >
+                        <Image
+                          src={img.src}
+                          alt={img.alt || `${title} photo ${idx + 1}`}
+                          fill
+                          sizes="200px"
+                          className="object-cover"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+
               <div className="space-y-4">
                 <h2 className="text-2xl sm:text-3xl font-bold font-display text-foreground">
                   {locale === "ar" ? "تفاصيل المشروع والتنفيذ الهندسي" : locale === "fr" ? "Étude de Cas & Réalisation Technique" : "Project Narrative & Architectural Execution"}
                 </h2>
                 <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
-                  {project.fullNarrative}
+                  {fullNarrative}
                 </p>
               </div>
 
-              {/* Gallery Grid */}
-              <div className="space-y-4">
-                <h3 className="text-xl font-bold font-display text-foreground">
-                  {locale === "ar" ? "معرض صور المشروع" : locale === "fr" ? "Galerie du Projet" : "Project Gallery"}
-                </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {project.gallery.map((img, idx) => (
-                    <div
-                      key={idx}
-                      className="relative h-60 rounded-2xl overflow-hidden bg-muted border border-border shadow-sm"
-                    >
-                      <Image
-                        src={img}
-                        alt={`${project.title} photo ${idx + 1}`}
-                        fill
-                        sizes="(max-width: 768px) 100vw, 400px"
-                        className="object-cover hover:scale-105 transition-transform duration-500"
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
-
               {/* Engineering Scope */}
-              <div className="space-y-5 p-6 sm:p-8 rounded-3xl bg-sand/40 dark:bg-card/40 border border-border">
-                <h3 className="text-xl font-bold font-display text-foreground">
-                  {locale === "ar" ? "نطاق العمل والتنفيذ الهندسي" : locale === "fr" ? "Périmètre des Travaux & Ingénierie" : "Engineering Scope & Capabilities"}
-                </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  {project.scope.map((item, idx) => (
-                    <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-foreground">
-                      <CheckCircle2 className="h-4 w-4 text-forest dark:text-brass shrink-0 mt-0.5" />
-                      <span className="leading-snug">{item}</span>
-                    </div>
-                  ))}
+              {project.scope && project.scope.length > 0 && (
+                <div className="space-y-5 p-6 sm:p-8 rounded-3xl bg-sand/40 dark:bg-card/40 border border-border">
+                  <h3 className="text-xl font-bold font-display text-foreground">
+                    {locale === "ar" ? "نطاق العمل والتنفيذ الهندسي" : locale === "fr" ? "Périmètre des Travaux & Ingénierie" : "Engineering Scope & Capabilities"}
+                  </h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {project.scope.map((item, idx) => (
+                      <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-foreground">
+                        <CheckCircle2 className="h-4 w-4 text-forest dark:text-brass shrink-0 mt-0.5" />
+                        <span className="leading-snug">{loc(item, locale)}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              )}
             </article>
 
             {/* Right Sticky Sidebar */}
@@ -196,7 +247,7 @@ export default async function ProjectDetailPage({
                 <div className="space-y-3 text-xs sm:text-sm">
                   <div className="flex justify-between py-1.5 border-b border-border/40 gap-4">
                     <span className="text-muted-foreground">{locale === "ar" ? "الموقع" : locale === "fr" ? "Localisation" : "Location"}</span>
-                    <span className="font-bold text-foreground text-right rtl:text-left">{project.location}</span>
+                    <span className="font-bold text-foreground text-right rtl:text-left">{location}</span>
                   </div>
                   <div className="flex justify-between py-1.5 border-b border-border/40 gap-4">
                     <span className="text-muted-foreground">{locale === "ar" ? "سنة الإنجاز" : locale === "fr" ? "Année" : "Year"}</span>
@@ -204,29 +255,31 @@ export default async function ProjectDetailPage({
                   </div>
                   <div className="flex justify-between py-1.5 border-b border-border/40 gap-4">
                     <span className="text-muted-foreground">{locale === "ar" ? "الفئة" : locale === "fr" ? "Catégorie" : "Category"}</span>
-                    <span className="font-bold text-foreground text-right rtl:text-left">{project.category}</span>
+                    <span className="font-bold text-foreground text-right rtl:text-left">{category}</span>
                   </div>
                 </div>
 
                 {/* Materials Specs */}
-                <div className="pt-2 border-t border-border space-y-2">
-                  <div className="text-xs font-bold text-brass uppercase tracking-wider mb-2">
-                    {locale === "ar" ? "المواد والأنظمة المعمارية" : locale === "fr" ? "Matériaux & Systèmes Utilisés" : "Materials & Architectural Systems"}
-                  </div>
-                  {project.materials.map((mat, idx) => (
-                    <div key={idx} className="flex items-center gap-2 text-xs py-1 border-b border-border/30">
-                      <CheckCircle2 className="h-3.5 w-3.5 text-brass shrink-0" />
-                      <span className="font-semibold text-foreground">{mat}</span>
+                {project.materials && project.materials.length > 0 && (
+                  <div className="pt-2 border-t border-border space-y-2">
+                    <div className="text-xs font-bold text-brass uppercase tracking-wider mb-2">
+                      {locale === "ar" ? "المواد والأنظمة المعمارية" : locale === "fr" ? "Matériaux & Systèmes Utilisés" : "Materials & Architectural Systems"}
                     </div>
-                  ))}
-                </div>
+                    {project.materials.map((mat, idx) => (
+                      <div key={idx} className="flex items-center gap-2 text-xs py-1 border-b border-border/30">
+                        <CheckCircle2 className="h-3.5 w-3.5 text-brass shrink-0" />
+                        <span className="font-semibold text-foreground">{loc(mat, locale)}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
 
                 <div className="pt-2 space-y-3">
                   <Button asChild variant="brass" className="w-full rounded-xl font-bold shadow-md">
-                    <Link href="/contact">
+                    <a href="#contact">
                       <span>{tDetails("requestQuote")}</span>
                       <ArrowRight className="h-4 w-4 ml-1.5 rtl:rotate-180 rtl:mr-1.5 rtl:ml-0" />
-                    </Link>
+                    </a>
                   </Button>
                 </div>
               </div>
@@ -238,30 +291,34 @@ export default async function ProjectDetailPage({
                     {tNav("services")}
                   </h4>
                   <div className="space-y-3">
-                    {relatedServices.map((srv) => (
-                      <Link
-                        key={srv.id}
-                        href={`/services/${srv.slug}`}
-                        className="flex items-center gap-3 p-2 rounded-xl hover:bg-card transition-colors group"
-                      >
-                        <div className="relative h-12 w-12 rounded-lg overflow-hidden shrink-0">
-                          <Image
-                            src={srv.image}
-                            alt={srv.title}
-                            fill
-                            className="object-cover"
-                          />
-                        </div>
-                        <div className="min-w-0">
-                          <span className="text-xs font-bold text-foreground group-hover:text-brass transition-colors block truncate">
-                            {srv.title}
-                          </span>
-                          <span className="text-[11px] text-muted-foreground line-clamp-1">
-                            {srv.shortDescription}
-                          </span>
-                        </div>
-                      </Link>
-                    ))}
+                    {relatedServices.map((srv) => {
+                      const sTitle = loc(srv.title, locale);
+                      const sImg = locMedia(srv.image, locale);
+                      return (
+                        <Link
+                          key={srv.id}
+                          href={`/services/${srv.slug}`}
+                          className="flex items-center gap-3 p-2 rounded-xl hover:bg-card transition-colors group"
+                        >
+                          <div className="relative h-12 w-12 rounded-lg overflow-hidden shrink-0">
+                            <Image
+                              src={sImg.src}
+                              alt={sImg.alt || sTitle}
+                              fill
+                              className="object-cover"
+                            />
+                          </div>
+                          <div className="min-w-0">
+                            <span className="text-xs font-bold text-foreground group-hover:text-brass transition-colors block truncate">
+                              {sTitle}
+                            </span>
+                            <span className="text-[11px] text-muted-foreground line-clamp-1">
+                              {loc(srv.summary, locale)}
+                            </span>
+                          </div>
+                        </Link>
+                      );
+                    })}
                   </div>
                 </div>
               )}
@@ -271,7 +328,7 @@ export default async function ProjectDetailPage({
       </section>
 
       {/* Global Contact Section */}
-      <ContactSection />
+      <ContactSection settings={settings} />
     </>
   );
 }

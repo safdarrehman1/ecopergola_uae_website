@@ -124,17 +124,18 @@ export function AboutSection() {
         ];
 
   return (
-    <section id="about" className="py-20 md:py-28 bg-background relative overflow-hidden">
+    <section id="about" className="py-20 md:py-28 bg-[#FAF8F5] relative overflow-hidden">
       <div className="container mx-auto px-4 max-w-7xl">
         {/* Top Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-20">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-forest/10 dark:bg-brass/10 border border-forest/20 text-xs font-semibold text-forest dark:text-brass uppercase tracking-wider">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/90 border border-amber-300/80 text-[11px] font-mono tracking-widest text-amber-900 font-semibold uppercase shadow-xs">
+            <span className="h-2 w-2 rounded-full bg-brass animate-pulse" />
             <span>{tAbout("eyebrow")}</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-foreground">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-stone-900 tracking-tight">
             {tAbout("title")}
           </h2>
-          <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+          <p className="text-sm sm:text-base text-stone-600 leading-relaxed">
             {tAbout("subtitle")}
           </p>
         </div>
@@ -160,17 +161,17 @@ export function AboutSection() {
               whileInView={{ opacity: 1, x: 0, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="absolute -bottom-8 -right-4 sm:-right-8 rtl:-right-auto rtl:-left-4 sm:rtl:-left-8 w-60 sm:w-72 bg-card p-5 rounded-2xl shadow-2xl border border-border backdrop-blur-md"
+              className="absolute -bottom-8 -right-4 sm:-right-8 rtl:-right-auto rtl:-left-4 sm:rtl:-left-8 w-60 sm:w-72 bg-white p-5 rounded-2xl shadow-xl border border-stone-200/90"
             >
               <div className="flex items-center gap-3">
-                <div className="h-12 w-12 rounded-xl bg-brass flex items-center justify-center text-ink shrink-0 font-bold font-display text-xl">
+                <div className="h-12 w-12 rounded-xl bg-brass flex items-center justify-center text-stone-950 shrink-0 font-bold font-display text-xl">
                   {siteConfig.yearsExperience}
                 </div>
                 <div>
-                  <div className="text-xs font-bold uppercase tracking-wider text-brass">
+                  <div className="text-xs font-bold uppercase tracking-wider text-amber-800">
                     {tAbout("yearsOfExcellence")}
                   </div>
-                  <div className="text-xs text-muted-foreground">
+                  <div className="text-xs text-stone-600">
                     {tAbout("servingUae")}
                   </div>
                 </div>
@@ -200,7 +201,7 @@ export function AboutSection() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                 {whyChooseList.map((item, idx) => (
                   <div key={idx} className="flex items-center gap-2 text-xs sm:text-sm text-foreground font-medium">
-                    <CheckCircle2 className="h-4 w-4 text-forest dark:text-brass shrink-0" />
+                    <CheckCircle2 className="h-4 w-4 text-brass shrink-0" />
                     <span>{item}</span>
                   </div>
                 ))}
@@ -214,7 +215,7 @@ export function AboutSection() {
                   <ArrowRight className="h-4 w-4 ml-2 rtl:rotate-180 rtl:mr-2 rtl:ml-0" />
                 </Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="rounded-xl font-semibold">
+              <Button asChild variant="outline" size="lg" className="rounded-xl font-semibold border-stone-200 bg-white hover:bg-stone-50 text-stone-900">
                 <Link href="/contact">
                   <span>{tAbout("getEstimateCTA")}</span>
                 </Link>
@@ -244,9 +245,9 @@ export function AboutSection() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="rounded-2xl p-6 bg-card border border-border space-y-4 hover:border-brass/50 transition-all shadow-sm hover:shadow-md"
+                  className="rounded-2xl p-6 bg-white border border-stone-200/90 space-y-4 hover:border-brass/70 transition-all shadow-sm hover:shadow-lg"
                 >
-                  <div className="h-10 w-10 rounded-xl bg-forest/10 dark:bg-brass/10 flex items-center justify-center text-forest dark:text-brass">
+                  <div className="h-10 w-10 rounded-xl bg-amber-50 border border-amber-200/60 flex items-center justify-center text-brass">
                     <IconComp className="h-5 w-5" />
                   </div>
                   <h4 className="text-base font-bold font-display text-foreground">

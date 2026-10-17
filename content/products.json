@@ -1,0 +1,650 @@
+[
+  {
+    "id": "a9aa0c58-3ab9-49ad-8e52-26429a39e1af",
+    "slug": "metro-20-minimal-slider",
+    "status": "published",
+    "featured": true,
+    "order": 0,
+    "verified": true,
+    "seo": {
+      "metaTitle": {
+        "en": "Metro 20 Minimal Slider | Premium Architectural Products Dubai"
+      },
+      "metaDescription": {
+        "en": "Ultra-slim profiles with maximum glass area for seamless indoor-outdoor living experiences with premium aluminum framing. Precision engineered for UAE."
+      },
+      "ogImage": {
+        "src": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=85&auto=format&fit=crop",
+        "alt": {
+          "en": "Metro 20 Minimal Slider"
+        }
+      },
+      "noindex": false
+    },
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z",
+    "category": {
+      "en": "PANORAMIC SLIDER"
+    },
+    "title": {
+      "en": "Metro 20 Minimal Slider"
+    },
+    "summary": {
+      "en": "Ultra-slim profiles with maximum glass area for seamless indoor-outdoor living experiences with premium aluminum framing."
+    },
+    "image": {
+      "src": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=85&auto=format&fit=crop",
+      "alt": {
+        "en": "Metro 20 Minimal Slider showcase"
+      }
+    },
+    "gallery": [
+      {
+        "src": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=85&auto=format&fit=crop",
+        "alt": {
+          "en": "Metro 20 Minimal Slider detail view"
+        }
+      }
+    ],
+    "specs": [
+      {
+        "label": {
+          "en": "Profile Width"
+        },
+        "value": {
+          "en": "20mm Interlock"
+        }
+      },
+      {
+        "label": {
+          "en": "Max Height"
+        },
+        "value": {
+          "en": "Up to 4.5m"
+        }
+      },
+      {
+        "label": {
+          "en": "Glass"
+        },
+        "value": {
+          "en": "Double / Triple Glazed Low-E"
+        }
+      },
+      {
+        "label": {
+          "en": "Threshold"
+        },
+        "value": {
+          "en": "100% Flush Embedded Track"
+        }
+      }
+    ],
+    "features": [
+      {
+        "en": "Concealed outer frames recessed into floor, ceiling, and walls"
+      },
+      {
+        "en": "Effortless whisper-quiet roller bearings rated to 800kg"
+      },
+      {
+        "en": "Integrated motorized drive with smart phone app & wall switch control"
+      },
+      {
+        "en": "Superior thermal break technology designed for Dubai's extreme summers"
+      }
+    ],
+    "highlights": [
+      {
+        "en": "Profile Width: 20mm Interlock"
+      },
+      {
+        "en": "Max Height: Up to 4.5m"
+      },
+      {
+        "en": "Glass: Double / Triple Glazed Low-E"
+      }
+    ],
+    "catalogPdf": "/catalog/eco-pergola-catalogue-2026.pdf"
+  },
+  {
+    "id": "2d768cf8-eabb-4c91-b2a5-49557f0cf212",
+    "slug": "commercial-glass-facades",
+    "status": "published",
+    "featured": true,
+    "order": 1,
+    "verified": true,
+    "seo": {
+      "metaTitle": {
+        "en": "Commercial Glass Facades | Premium Architectural Products Dubai"
+      },
+      "metaDescription": {
+        "en": "High-performance facade systems for commercial buildings with advanced thermal and acoustic properties. Precision engineered for UAE."
+      },
+      "ogImage": {
+        "src": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=85&auto=format&fit=crop",
+        "alt": {
+          "en": "Commercial Glass Facades"
+        }
+      },
+      "noindex": false
+    },
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z",
+    "category": {
+      "en": "FACADE SYSTEMS"
+    },
+    "title": {
+      "en": "Commercial Glass Facades"
+    },
+    "summary": {
+      "en": "High-performance facade systems for commercial buildings with advanced thermal and acoustic properties."
+    },
+    "image": {
+      "src": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=85&auto=format&fit=crop",
+      "alt": {
+        "en": "Commercial Glass Facades showcase"
+      }
+    },
+    "gallery": [
+      {
+        "src": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=85&auto=format&fit=crop",
+        "alt": {
+          "en": "Commercial Glass Facades detail view"
+        }
+      }
+    ],
+    "specs": [
+      {
+        "label": {
+          "en": "System Type"
+        },
+        "value": {
+          "en": "Unitized & Stick Curtain Wall"
+        }
+      },
+      {
+        "label": {
+          "en": "Acoustic Rating"
+        },
+        "value": {
+          "en": "Up to 48 dB Rw"
+        }
+      },
+      {
+        "label": {
+          "en": "Thermal Value"
+        },
+        "value": {
+          "en": "Ucw ≤ 1.3 W/m²K"
+        }
+      },
+      {
+        "label": {
+          "en": "Wind Pressure"
+        },
+        "value": {
+          "en": "Up to 4.5 kPa certified"
+        }
+      }
+    ],
+    "features": [
+      {
+        "en": "Custom engineered aluminum mullions and transoms with thermal isolators"
+      },
+      {
+        "en": "Solar control coatings to reduce cooling energy demand by up to 35%"
+      },
+      {
+        "en": "Engineered seismic movement joints and pressure-equalized drainage"
+      },
+      {
+        "en": "Tested and certified to ASTM, CWCT, and UAE Civil Defense fire codes"
+      }
+    ],
+    "highlights": [
+      {
+        "en": "System Type: Unitized & Stick Curtain Wall"
+      },
+      {
+        "en": "Acoustic Rating: Up to 48 dB Rw"
+      },
+      {
+        "en": "Thermal Value: Ucw ≤ 1.3 W/m²K"
+      }
+    ],
+    "catalogPdf": "/catalog/eco-pergola-catalogue-2026.pdf"
+  },
+  {
+    "id": "60d98ef6-fc33-4c9d-929a-702a09a17b5d",
+    "slug": "bio-climatic-pergolas",
+    "status": "published",
+    "featured": true,
+    "order": 2,
+    "verified": true,
+    "seo": {
+      "metaTitle": {
+        "en": "Bio-Climatic Pergolas | Premium Architectural Products Dubai"
+      },
+      "metaDescription": {
+        "en": "Adjustable louver systems that provide optimal climate control for outdoor living spaces. Precision engineered for UAE."
+      },
+      "ogImage": {
+        "src": "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=85&auto=format&fit=crop",
+        "alt": {
+          "en": "Bio-Climatic Pergolas"
+        }
+      },
+      "noindex": false
+    },
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z",
+    "category": {
+      "en": "OUTDOOR SOLUTIONS"
+    },
+    "title": {
+      "en": "Bio-Climatic Pergolas"
+    },
+    "summary": {
+      "en": "Adjustable louver systems that provide optimal climate control for outdoor living spaces."
+    },
+    "image": {
+      "src": "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=85&auto=format&fit=crop",
+      "alt": {
+        "en": "Bio-Climatic Pergolas showcase"
+      }
+    },
+    "gallery": [
+      {
+        "src": "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=85&auto=format&fit=crop",
+        "alt": {
+          "en": "Bio-Climatic Pergolas detail view"
+        }
+      }
+    ],
+    "specs": [
+      {
+        "label": {
+          "en": "Louver Rotation"
+        },
+        "value": {
+          "en": "0° to 140° Motorized Tilt"
+        }
+      },
+      {
+        "label": {
+          "en": "Max Span"
+        },
+        "value": {
+          "en": "Up to 7.0m without intermediate posts"
+        }
+      },
+      {
+        "label": {
+          "en": "Guttering"
+        },
+        "value": {
+          "en": "Integrated perimeter drain channels"
+        }
+      },
+      {
+        "label": {
+          "en": "Lighting"
+        },
+        "value": {
+          "en": "Integrated dimmable RGB / Warm LED strips"
+        }
+      }
+    ],
+    "features": [
+      {
+        "en": "Automated rain, wind, and sun sensors with instant motorized closure"
+      },
+      {
+        "en": "Heavy-duty extruded architectural aluminum 6063-T6 construction"
+      },
+      {
+        "en": "Hidden internal downspouts preventing surface water splashing"
+      },
+      {
+        "en": "Compatible with motorized side zip screens and sliding glass walls"
+      }
+    ],
+    "highlights": [
+      {
+        "en": "Louver Rotation: 0° to 140° Motorized Tilt"
+      },
+      {
+        "en": "Max Span: Up to 7.0m without intermediate posts"
+      },
+      {
+        "en": "Guttering: Integrated perimeter drain channels"
+      }
+    ],
+    "catalogPdf": "/catalog/eco-pergola-catalogue-2026.pdf"
+  },
+  {
+    "id": "e50a0bc1-c8f5-40c9-a94d-e662214054f9",
+    "slug": "transparent-living-spaces",
+    "status": "published",
+    "featured": true,
+    "order": 3,
+    "verified": true,
+    "seo": {
+      "metaTitle": {
+        "en": "Transparent Living Spaces | Premium Architectural Products Dubai"
+      },
+      "metaDescription": {
+        "en": "Modern glass room extensions that bring natural light into your living spaces with minimal framing. Precision engineered for UAE."
+      },
+      "ogImage": {
+        "src": "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=1200&q=85&auto=format&fit=crop",
+        "alt": {
+          "en": "Transparent Living Spaces"
+        }
+      },
+      "noindex": false
+    },
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z",
+    "category": {
+      "en": "GLASS ROOMS"
+    },
+    "title": {
+      "en": "Transparent Living Spaces"
+    },
+    "summary": {
+      "en": "Modern glass room extensions that bring natural light into your living spaces with minimal framing."
+    },
+    "image": {
+      "src": "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=1200&q=85&auto=format&fit=crop",
+      "alt": {
+        "en": "Transparent Living Spaces showcase"
+      }
+    },
+    "gallery": [
+      {
+        "src": "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=1200&q=85&auto=format&fit=crop",
+        "alt": {
+          "en": "Transparent Living Spaces detail view"
+        }
+      }
+    ],
+    "specs": [
+      {
+        "label": {
+          "en": "Roof Glazing"
+        },
+        "value": {
+          "en": "Laminated Solar Control Glass"
+        }
+      },
+      {
+        "label": {
+          "en": "Frame Color"
+        },
+        "value": {
+          "en": "Custom RAL & Metallic Finishes"
+        }
+      },
+      {
+        "label": {
+          "en": "HVAC Integration"
+        },
+        "value": {
+          "en": "Thermal break suitable for AC cooling"
+        }
+      },
+      {
+        "label": {
+          "en": "Door Infill"
+        },
+        "value": {
+          "en": "Minimal Sliders or Bi-fold Glass Panels"
+        }
+      }
+    ],
+    "features": [
+      {
+        "en": "Creates an insulated four-season sunroom or garden lounge"
+      },
+      {
+        "en": "Full solar UV and infrared radiation protection (blocking 99% UV)"
+      },
+      {
+        "en": "Engineered structural steel or reinforced aluminum roof beams"
+      },
+      {
+        "en": "Custom built to exact site dimensions and terrace geometries"
+      }
+    ],
+    "highlights": [
+      {
+        "en": "Roof Glazing: Laminated Solar Control Glass"
+      },
+      {
+        "en": "Frame Color: Custom RAL & Metallic Finishes"
+      },
+      {
+        "en": "HVAC Integration: Thermal break suitable for AC cooling"
+      }
+    ],
+    "catalogPdf": "/catalog/eco-pergola-catalogue-2026.pdf"
+  },
+  {
+    "id": "124b765c-46c2-41dc-8c03-3eea0d708b4b",
+    "slug": "glass-spiral-staircases",
+    "status": "published",
+    "featured": false,
+    "order": 4,
+    "verified": true,
+    "seo": {
+      "metaTitle": {
+        "en": "Glass Spiral Staircases | Premium Architectural Products Dubai"
+      },
+      "metaDescription": {
+        "en": "Elegant glass spiral staircases with minimal aluminum railings for modern architectural statements. Precision engineered for UAE."
+      },
+      "ogImage": {
+        "src": "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=1200&q=85&auto=format&fit=crop",
+        "alt": {
+          "en": "Glass Spiral Staircases"
+        }
+      },
+      "noindex": false
+    },
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z",
+    "category": {
+      "en": "ARCHITECTURAL FEATURES"
+    },
+    "title": {
+      "en": "Glass Spiral Staircases"
+    },
+    "summary": {
+      "en": "Elegant glass spiral staircases with minimal aluminum railings for modern architectural statements."
+    },
+    "image": {
+      "src": "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=1200&q=85&auto=format&fit=crop",
+      "alt": {
+        "en": "Glass Spiral Staircases showcase"
+      }
+    },
+    "gallery": [
+      {
+        "src": "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=1200&q=85&auto=format&fit=crop",
+        "alt": {
+          "en": "Glass Spiral Staircases detail view"
+        }
+      }
+    ],
+    "specs": [
+      {
+        "label": {
+          "en": "Tread Material"
+        },
+        "value": {
+          "en": "Multi-layer Laminated Structural Glass"
+        }
+      },
+      {
+        "label": {
+          "en": "Structure"
+        },
+        "value": {
+          "en": "Stainless Steel / Aluminum Center Column"
+        }
+      },
+      {
+        "label": {
+          "en": "Handrail"
+        },
+        "value": {
+          "en": "Curved Glass or Brushed Brass / SS 316"
+        }
+      },
+      {
+        "label": {
+          "en": "Load Capacity"
+        },
+        "value": {
+          "en": "5.0 kN/m² Live Load Certified"
+        }
+      }
+    ],
+    "features": [
+      {
+        "en": "Anti-slip textured glass tread surface with LED edge illumination"
+      },
+      {
+        "en": "Seamless curved tempered glass side balustrades"
+      },
+      {
+        "en": "Precision robotic welding and mirror-polished / satin finishes"
+      },
+      {
+        "en": "A stunning centerpiece for luxury Dubai villas and penthouses"
+      }
+    ],
+    "highlights": [
+      {
+        "en": "Tread Material: Multi-layer Laminated Structural Glass"
+      },
+      {
+        "en": "Structure: Stainless Steel / Aluminum Center Column"
+      },
+      {
+        "en": "Handrail: Curved Glass or Brushed Brass / SS 316"
+      }
+    ],
+    "catalogPdf": "/catalog/eco-pergola-catalogue-2026.pdf"
+  },
+  {
+    "id": "57bfda74-8cac-413f-8b18-bdbfe37b41d8",
+    "slug": "professional-fabrication-team",
+    "status": "published",
+    "featured": false,
+    "order": 5,
+    "verified": true,
+    "seo": {
+      "metaTitle": {
+        "en": "Professional Fabrication Team | Premium Architectural Products Dubai"
+      },
+      "metaDescription": {
+        "en": "Skilled professionals delivering excellence in every project with precision, quality, and attention to detail. Precision engineered for UAE."
+      },
+      "ogImage": {
+        "src": "https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=1200&q=85&auto=format&fit=crop",
+        "alt": {
+          "en": "Professional Fabrication Team"
+        }
+      },
+      "noindex": false
+    },
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z",
+    "category": {
+      "en": "EXPERT CRAFTSMANSHIP"
+    },
+    "title": {
+      "en": "Professional Fabrication Team"
+    },
+    "summary": {
+      "en": "Skilled professionals delivering excellence in every project with precision, quality, and attention to detail."
+    },
+    "image": {
+      "src": "https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=1200&q=85&auto=format&fit=crop",
+      "alt": {
+        "en": "Professional Fabrication Team showcase"
+      }
+    },
+    "gallery": [
+      {
+        "src": "https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=1200&q=85&auto=format&fit=crop",
+        "alt": {
+          "en": "Professional Fabrication Team detail view"
+        }
+      }
+    ],
+    "specs": [
+      {
+        "label": {
+          "en": "Facility"
+        },
+        "value": {
+          "en": "Dubai Industrial Area Manufacturing Hub"
+        }
+      },
+      {
+        "label": {
+          "en": "Machinery"
+        },
+        "value": {
+          "en": "5-Axis CNC Milling & Precision Cutting"
+        }
+      },
+      {
+        "label": {
+          "en": "Certifications"
+        },
+        "value": {
+          "en": "ISO 9001, ISO 14001, ISO 45001"
+        }
+      },
+      {
+        "label": {
+          "en": "Team"
+        },
+        "value": {
+          "en": "Certified European & GCC Master Fabricators"
+        }
+      }
+    ],
+    "features": [
+      {
+        "en": "In-house precision CNC machining ensuring sub-millimeter tolerances"
+      },
+      {
+        "en": "Rigorous multi-stage quality control from raw extrusions to finished units"
+      },
+      {
+        "en": "Pre-assembly and factory testing prior to on-site installation"
+      },
+      {
+        "en": "Dedicated after-sales maintenance and warranty support team"
+      }
+    ],
+    "highlights": [
+      {
+        "en": "Facility: Dubai Industrial Area Manufacturing Hub"
+      },
+      {
+        "en": "Machinery: 5-Axis CNC Milling & Precision Cutting"
+      },
+      {
+        "en": "Certifications: ISO 9001, ISO 14001, ISO 45001"
+      }
+    ],
+    "catalogPdf": "/catalog/eco-pergola-catalogue-2026.pdf"
+  }
+]

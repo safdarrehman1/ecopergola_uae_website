@@ -1,0 +1,117 @@
+[
+  {
+    "id": "c179bb28-c4a9-4e25-b065-91b97972476c",
+    "slug": "years-experience",
+    "status": "published",
+    "featured": true,
+    "order": 0,
+    "verified": true,
+    "seo": {
+      "noindex": true
+    },
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z",
+    "value": "10",
+    "suffix": "+",
+    "label": {
+      "en": "Years of Engineering Excellence",
+      "ar": "سنوات من التميز الهندسي",
+      "fr": "Années d'Excellence Technique"
+    },
+    "description": {
+      "en": "Continuous architectural fabrication in Dubai & UAE"
+    }
+  },
+  {
+    "id": "563d27f9-4c52-472d-a7eb-f1807c991a2f",
+    "slug": "executed-projects",
+    "status": "published",
+    "featured": true,
+    "order": 1,
+    "verified": true,
+    "seo": {
+      "noindex": true
+    },
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z",
+    "value": "500",
+    "suffix": "+",
+    "label": {
+      "en": "Delivered Luxury Projects",
+      "ar": "مشاريع فاخرة تم تسليمها",
+      "fr": "Projets de Prestige Réalisés"
+    },
+    "description": {
+      "en": "Across premier Dubai villas, hotels, and towers"
+    }
+  },
+  {
+    "id": "758504aa-695d-4d83-ad41-347f71ea7f4d",
+    "slug": "client-satisfaction",
+    "status": "published",
+    "featured": true,
+    "order": 2,
+    "verified": true,
+    "seo": {
+      "noindex": true
+    },
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z",
+    "value": "98",
+    "suffix": "%",
+    "label": {
+      "en": "Client Recommendation Rate",
+      "ar": "نسبة رضا وتوصية العملاء",
+      "fr": "Taux de Recommandation Client"
+    },
+    "description": {
+      "en": "Measured across 2023-2025 handover surveys"
+    }
+  },
+  {
+    "id": "77b12a52-e221-4cd7-9150-ab97b7f9be04",
+    "slug": "facility-size",
+    "status": "published",
+    "featured": false,
+    "order": 3,
+    "verified": false,
+    "seo": {
+      "noindex": true
+    },
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z",
+    "value": "50,000",
+    "suffix": " sq ft",
+    "label": {
+      "en": "Advanced Fabrication Facility",
+      "ar": "مساحة منشأة التصنيع المتطورة",
+      "fr": "Surface de l'Usine de Fabrication"
+    },
+    "description": {
+      "en": "CNC precision machinery & assembly plant in Dubai"
+    }
+  },
+  {
+    "id": "803834f3-9f71-4a38-8da2-b09748e96563",
+    "slug": "team-size",
+    "status": "published",
+    "featured": false,
+    "order": 4,
+    "verified": true,
+    "seo": {
+      "noindex": true
+    },
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z",
+    "value": "45",
+    "suffix": "+",
+    "label": {
+      "en": "Engineers & Certified Installers",
+      "ar": "مهندسين وفنيين تركيب معتمدين",
+      "fr": "Ingénieurs & Installateurs Certifiés"
+    },
+    "description": {
+      "en": "Dedicated full-time in-house execution teams"
+    }
+  }
+]

@@ -1,0 +1,98 @@
+[
+  {
+    "id": "23452c1a-5683-45c7-9108-17e8af15ab75",
+    "slug": "tariq-al-mansoori",
+    "status": "published",
+    "featured": true,
+    "order": 0,
+    "verified": true,
+    "seo": {
+      "noindex": true
+    },
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z",
+    "name": {
+      "en": "Tariq Al Mansoori",
+      "ar": "طارق المنصوري",
+      "fr": "Tariq Al Mansoori"
+    },
+    "role": {
+      "en": "Lead Architectural Engineer",
+      "ar": "كبير المهندسين المعماريين",
+      "fr": "Ingénieur Architecte Principal"
+    },
+    "bio": {
+      "en": "Over 14 years of facade engineering experience across high-profile UAE residential and hospitality developments."
+    },
+    "photo": {
+      "src": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80&auto=format&fit=crop",
+      "alt": {
+        "en": "Tariq Al Mansoori - Lead Engineer"
+      }
+    }
+  },
+  {
+    "id": "bd1ee71b-cde3-447a-a1c8-939dc64908e8",
+    "slug": "layla-al-hashimi",
+    "status": "published",
+    "featured": true,
+    "order": 1,
+    "verified": true,
+    "seo": {
+      "noindex": true
+    },
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z",
+    "name": {
+      "en": "Eng. Layla Al Hashimi",
+      "ar": "م. ليلى الهاشمي",
+      "fr": "Ing. Layla Al Hashimi"
+    },
+    "role": {
+      "en": "Senior Sustainability & Facade Specialist",
+      "ar": "أخصائية أولى للاستدامة والواجهات",
+      "fr": "Spécialiste Senior en Durabilité & Façades"
+    },
+    "bio": {
+      "en": "LEED AP certified facade specialist focusing on solar heat mitigation and thermal break efficiency in desert environments."
+    },
+    "photo": {
+      "src": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80&auto=format&fit=crop",
+      "alt": {
+        "en": "Eng. Layla Al Hashimi - Sustainability Specialist"
+      }
+    }
+  },
+  {
+    "id": "d72586c5-acae-46f4-8501-7d5ae59c00a7",
+    "slug": "karim-el-sayed",
+    "status": "published",
+    "featured": true,
+    "order": 2,
+    "verified": true,
+    "seo": {
+      "noindex": true
+    },
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z",
+    "name": {
+      "en": "Karim El Sayed",
+      "ar": "كريم السيد",
+      "fr": "Karim El Sayed"
+    },
+    "role": {
+      "en": "Head of Precision Fabrication",
+      "ar": "مدير التصنيع الدقيق",
+      "fr": "Responsable de la Fabrication de Précision"
+    },
+    "bio": {
+      "en": "Expert in CNC multi-axis machining, automated Qualicoat powder application, and unitized system assembly."
+    },
+    "photo": {
+      "src": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&q=80&auto=format&fit=crop",
+      "alt": {
+        "en": "Karim El Sayed - Fabrication Head"
+      }
+    }
+  }
+]

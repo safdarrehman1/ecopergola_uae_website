@@ -1,0 +1,102 @@
+[
+  {
+    "id": "74a78a6c-cf42-44b8-a25f-b6802292c328",
+    "slug": "somfy-automation",
+    "status": "published",
+    "featured": true,
+    "order": 0,
+    "verified": true,
+    "seo": {
+      "noindex": true
+    },
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z",
+    "name": "Somfy Smart Automation",
+    "category": "Hardware",
+    "logo": {
+      "src": "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=400&q=80&auto=format&fit=crop",
+      "alt": {
+        "en": "Somfy Smart Motors & Actuators Logo"
+      }
+    },
+    "website": "https://www.somfy.com",
+    "description": {
+      "en": "French tubular motors and smart home weather sensor integration for bio-climatic louvers."
+    }
+  },
+  {
+    "id": "b13060e5-47bd-4abe-a6ca-475fa30e432c",
+    "slug": "guardian-glass",
+    "status": "published",
+    "featured": true,
+    "order": 1,
+    "verified": true,
+    "seo": {
+      "noindex": true
+    },
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z",
+    "name": "Guardian SunGuard Glass",
+    "category": "Glass",
+    "logo": {
+      "src": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&q=80&auto=format&fit=crop",
+      "alt": {
+        "en": "Guardian Glass Architectural Coatings Logo"
+      }
+    },
+    "website": "https://www.guardianglass.com",
+    "description": {
+      "en": "High-performance double silver low-E solar control glass manufactured for extreme GCC solar loads."
+    }
+  },
+  {
+    "id": "baa6d589-38c8-4609-afba-96d7d49defad",
+    "slug": "saint-gobain",
+    "status": "published",
+    "featured": true,
+    "order": 2,
+    "verified": true,
+    "seo": {
+      "noindex": true
+    },
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z",
+    "name": "Saint-Gobain Glass",
+    "category": "Glass",
+    "logo": {
+      "src": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&q=80&auto=format&fit=crop",
+      "alt": {
+        "en": "Saint-Gobain Glass Logo"
+      }
+    },
+    "website": "https://www.saint-gobain-glass.com",
+    "description": {
+      "en": "Acoustic laminated safety glazing and solar thermal insulation for minimal sliding glass doors."
+    }
+  },
+  {
+    "id": "70e226f6-af4f-44f1-b5e4-60675d0e6a62",
+    "slug": "jotun-powder-coatings",
+    "status": "published",
+    "featured": true,
+    "order": 3,
+    "verified": true,
+    "seo": {
+      "noindex": true
+    },
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z",
+    "name": "Jotun Durasol Architectural Powder Coatings",
+    "category": "Systems",
+    "logo": {
+      "src": "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=400&q=80&auto=format&fit=crop",
+      "alt": {
+        "en": "Jotun Architectural Coatings Logo"
+      }
+    },
+    "website": "https://www.jotun.com",
+    "description": {
+      "en": "Hyper-durable Qualicoat Class 2 coatings engineered for harsh UAE coastal UV and humidity resistance."
+    }
+  }
+]

@@ -1,0 +1,77 @@
+[
+  {
+    "id": "e5d941cb-ce7d-45a5-a3ee-bda669151d0c",
+    "slug": "qualicoat-class-2",
+    "status": "published",
+    "featured": true,
+    "order": 0,
+    "verified": true,
+    "seo": {
+      "noindex": true
+    },
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z",
+    "title": {
+      "en": "Qualicoat Seaside Class 2 Powder Coating",
+      "ar": "كواليكوت سي سايد فئة 2 للبيئات البحرية",
+      "fr": "Thermolaquage Qualicoat Seaside Classe 2"
+    },
+    "issuer": {
+      "en": "Qualicoat International Architectural Standard"
+    },
+    "number": "QC-UAE-2024-C2",
+    "summary": {
+      "en": "Guarantees 10+ years gloss retention and film integrity against coastal saltwater and UV radiation."
+    }
+  },
+  {
+    "id": "572dedc4-16c8-4bc0-b330-579c4fa3e21d",
+    "slug": "10-year-structural-warranty",
+    "status": "published",
+    "featured": true,
+    "order": 1,
+    "verified": true,
+    "seo": {
+      "noindex": true
+    },
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z",
+    "title": {
+      "en": "10-Year Comprehensive Structural Warranty",
+      "ar": "ضمان هيكلي شامل لمدة 10 سنوات",
+      "fr": "Garantie Structurelle Décennale Complète"
+    },
+    "issuer": {
+      "en": "Eco Pergola Quality Assurance Division"
+    },
+    "number": "EP-QA-WAR-10Y",
+    "summary": {
+      "en": "Covers aluminum structural frames, weld integrity, and extrusion deflection under engineered wind loads."
+    }
+  },
+  {
+    "id": "cca74376-1442-417a-bca5-851a0b2afb72",
+    "slug": "iso-9001-quality-management",
+    "status": "published",
+    "featured": false,
+    "order": 2,
+    "verified": false,
+    "seo": {
+      "noindex": true
+    },
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z",
+    "title": {
+      "en": "ISO 9001:2015 Quality Management System",
+      "ar": "نظام إدارة الجودة ISO 9001:2015",
+      "fr": "Système de Management de la Qualité ISO 9001"
+    },
+    "issuer": {
+      "en": "Awaiting Client Document (TUV / Bureau Veritas)"
+    },
+    "number": "AWAITING_CLIENT_REG_NUM",
+    "summary": {
+      "en": "Quality certified procurement, CNC machining, and architectural installation processes."
+    }
+  }
+]

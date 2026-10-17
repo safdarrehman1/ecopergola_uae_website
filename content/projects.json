@@ -1,0 +1,623 @@
+[
+  {
+    "id": "e2d48c35-a286-4411-9a8a-8cc61be7c85c",
+    "slug": "dubai-marina-luxury-tower",
+    "status": "published",
+    "featured": true,
+    "order": 0,
+    "verified": true,
+    "seo": {
+      "metaTitle": {
+        "en": "Dubai Marina Luxury Tower | Portfolio Case Study | Eco Pergola"
+      },
+      "metaDescription": {
+        "en": "Complete facade system with minimal sliding doors Completed in 2024 in Dubai Marina, Dubai, UAE."
+      },
+      "ogImage": {
+        "src": "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1200&q=85&auto=format&fit=crop",
+        "alt": {
+          "en": "Dubai Marina Luxury Tower"
+        }
+      },
+      "noindex": false
+    },
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z",
+    "title": {
+      "en": "Dubai Marina Luxury Tower"
+    },
+    "category": {
+      "en": "Residential"
+    },
+    "location": {
+      "en": "Dubai Marina, Dubai, UAE"
+    },
+    "emirate": "Dubai",
+    "year": "2024",
+    "summary": {
+      "en": "Complete facade system with minimal sliding doors"
+    },
+    "fullNarrative": {
+      "en": "A landmark high-rise residential tower overlooking Dubai Marina featuring custom-engineered unitized aluminum curtain wall systems and over 320 minimal sliding door balcony assemblies. The building envelope delivers an acoustic attenuation of 45 dB to shield residents from marina activity while offering floor-to-ceiling panoramic Arabian Gulf views."
+    },
+    "image": {
+      "src": "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1200&q=85&auto=format&fit=crop",
+      "alt": {
+        "en": "Dubai Marina Luxury Tower architectural exterior"
+      }
+    },
+    "gallery": [
+      {
+        "src": "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1200&q=85&auto=format&fit=crop",
+        "alt": {
+          "en": "Dubai Marina Luxury Tower gallery photo 1"
+        }
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=85&auto=format&fit=crop",
+        "alt": {
+          "en": "Dubai Marina Luxury Tower gallery photo 2"
+        }
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=85&auto=format&fit=crop",
+        "alt": {
+          "en": "Dubai Marina Luxury Tower gallery photo 3"
+        }
+      }
+    ],
+    "scope": [
+      {
+        "en": "Unitized structural glass curtain walling (14,500 m²)"
+      },
+      {
+        "en": "Minimal sliding doors for all terrace suites"
+      },
+      {
+        "en": "Structural glass balustrades with hidden shoe base channels"
+      },
+      {
+        "en": "Perimeter anodized architectural louver bands"
+      }
+    ],
+    "materials": [
+      {
+        "en": "6063-T6 Architectural Extruded Aluminum"
+      },
+      {
+        "en": "Guardian SunGuard Double Silver Low-E Glass"
+      },
+      {
+        "en": "Qualicoat Class 2 Anodized Matte Bronze"
+      },
+      {
+        "en": "AISI 316 Stainless Steel Hardware"
+      }
+    ],
+    "relatedServiceIds": [
+      "facade-design-fabrication",
+      "minimal-sliding-doors",
+      "installation-project-management"
+    ],
+    "clientTestimonial": {
+      "quote": {
+        "en": "Outstanding craftsmanship! The facade system they installed exceeded our expectations. On-time delivery, competitive pricing, and excellent after-sales support."
+      },
+      "author": {
+        "en": "Sarah Johnson"
+      },
+      "role": {
+        "en": "Property Developer, Dubai Marina"
+      }
+    }
+  },
+  {
+    "id": "d815cbe7-2e72-4eff-abf3-e3e5b38704e9",
+    "slug": "business-bay-corporate-center",
+    "status": "published",
+    "featured": true,
+    "order": 1,
+    "verified": true,
+    "seo": {
+      "metaTitle": {
+        "en": "Business Bay Corporate Center | Portfolio Case Study | Eco Pergola"
+      },
+      "metaDescription": {
+        "en": "High-performance glass facade with LEED certification Completed in 2024 in Business Bay, Dubai, UAE."
+      },
+      "ogImage": {
+        "src": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=85&auto=format&fit=crop",
+        "alt": {
+          "en": "Business Bay Corporate Center"
+        }
+      },
+      "noindex": false
+    },
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z",
+    "title": {
+      "en": "Business Bay Corporate Center"
+    },
+    "category": {
+      "en": "Commercial"
+    },
+    "location": {
+      "en": "Business Bay, Dubai, UAE"
+    },
+    "emirate": "Dubai",
+    "year": "2024",
+    "summary": {
+      "en": "High-performance glass facade with LEED certification"
+    },
+    "fullNarrative": {
+      "en": "A prestigious 38-story commercial headquarters in Business Bay achieved LEED Gold certification thanks to our sustainable double-skin thermally broken facade engineering. The facade reduces solar heat gain by 40% while flooding executive office floors with glare-free natural daylight."
+    },
+    "image": {
+      "src": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=85&auto=format&fit=crop",
+      "alt": {
+        "en": "Business Bay Corporate Center architectural exterior"
+      }
+    },
+    "gallery": [
+      {
+        "src": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=85&auto=format&fit=crop",
+        "alt": {
+          "en": "Business Bay Corporate Center gallery photo 1"
+        }
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=85&auto=format&fit=crop",
+        "alt": {
+          "en": "Business Bay Corporate Center gallery photo 2"
+        }
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1200&q=85&auto=format&fit=crop",
+        "alt": {
+          "en": "Business Bay Corporate Center gallery photo 3"
+        }
+      }
+    ],
+    "scope": [
+      {
+        "en": "High-performance double-glazed solar control curtain wall"
+      },
+      {
+        "en": "Integrated automated external shading louvers"
+      },
+      {
+        "en": "Frameless ground-floor lobby glass entrance portals"
+      },
+      {
+        "en": "Acoustic interior office partition walls"
+      }
+    ],
+    "materials": [
+      {
+        "en": "Hydro CIRCAL Low-Carbon Recycled Aluminum"
+      },
+      {
+        "en": "Saint-Gobain Cool-Lite SKN High-Performance Glass"
+      },
+      {
+        "en": "Thermally Broken Polyamide Insulating Struts"
+      }
+    ],
+    "relatedServiceIds": [
+      "sustainable-building-solutions",
+      "facade-design-fabrication",
+      "research-development"
+    ]
+  },
+  {
+    "id": "f6e4e267-efdb-4691-8297-8862a4b5c325",
+    "slug": "palm-jumeirah-private-villa",
+    "status": "published",
+    "featured": true,
+    "order": 2,
+    "verified": true,
+    "seo": {
+      "metaTitle": {
+        "en": "Palm Jumeirah Private Villa | Portfolio Case Study | Eco Pergola"
+      },
+      "metaDescription": {
+        "en": "Custom bio-climatic pergola with smart automation Completed in 2024 in Palm Jumeirah Frond K, Dubai, UAE."
+      },
+      "ogImage": {
+        "src": "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=85&auto=format&fit=crop",
+        "alt": {
+          "en": "Palm Jumeirah Private Villa"
+        }
+      },
+      "noindex": false
+    },
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z",
+    "title": {
+      "en": "Palm Jumeirah Private Villa"
+    },
+    "category": {
+      "en": "Villa"
+    },
+    "location": {
+      "en": "Palm Jumeirah Frond K, Dubai, UAE"
+    },
+    "emirate": "Dubai",
+    "year": "2024",
+    "summary": {
+      "en": "Custom bio-climatic pergola with smart automation"
+    },
+    "fullNarrative": {
+      "en": "A luxury beachfront mansion on Palm Jumeirah featuring a 120 m² bespoke multi-zone bio-climatic louvered pergola system integrated with smart home weather sensors, motorized vertical privacy screens, and 4.2m tall minimal sliding glass patio walls opening out to the private beach."
+    },
+    "image": {
+      "src": "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=85&auto=format&fit=crop",
+      "alt": {
+        "en": "Palm Jumeirah Private Villa architectural exterior"
+      }
+    },
+    "gallery": [
+      {
+        "src": "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=85&auto=format&fit=crop",
+        "alt": {
+          "en": "Palm Jumeirah Private Villa gallery photo 1"
+        }
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1200&q=85&auto=format&fit=crop",
+        "alt": {
+          "en": "Palm Jumeirah Private Villa gallery photo 2"
+        }
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1600585154084-4e5fe7c39198?w=1200&q=85&auto=format&fit=crop",
+        "alt": {
+          "en": "Palm Jumeirah Private Villa gallery photo 3"
+        }
+      }
+    ],
+    "scope": [
+      {
+        "en": "Multi-zone motorized louvered bio-climatic pergola (120 m²)"
+      },
+      {
+        "en": "Metro 20 minimal sliding glass doors (4.2m height)"
+      },
+      {
+        "en": "Integrated dimmable RGB LED and linear warm white cove lighting"
+      },
+      {
+        "en": "Concealed motorized ZIP drop screens with solar mesh"
+      }
+    ],
+    "materials": [
+      {
+        "en": "Marine-Grade Qualicoat Seaside Aluminum"
+      },
+      {
+        "en": "Somfy Smart IoT Motors & Weather Sensors"
+      },
+      {
+        "en": "Laminated Low-E Safety Glass"
+      }
+    ],
+    "relatedServiceIds": [
+      "minimal-sliding-doors",
+      "sustainable-building-solutions",
+      "installation-project-management"
+    ],
+    "clientTestimonial": {
+      "quote": {
+        "en": "Eco Pergola transformed our villa with their stunning minimal sliding doors. The quality is exceptional and the installation team was professional. Highly recommend for luxury projects in Dubai!"
+      },
+      "author": {
+        "en": "Mohammed Al Rashid"
+      },
+      "role": {
+        "en": "Villa Owner, Palm Jumeirah"
+      }
+    }
+  },
+  {
+    "id": "d6ae186b-026e-4800-bd75-0d7158d2ebac",
+    "slug": "downtown-dubai-restaurant",
+    "status": "published",
+    "featured": false,
+    "order": 3,
+    "verified": true,
+    "seo": {
+      "metaTitle": {
+        "en": "Downtown Dubai Restaurant | Portfolio Case Study | Eco Pergola"
+      },
+      "metaDescription": {
+        "en": "Retractable glass roof system with minimal framing Completed in 2024 in Downtown Dubai, UAE."
+      },
+      "ogImage": {
+        "src": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=85&auto=format&fit=crop",
+        "alt": {
+          "en": "Downtown Dubai Restaurant"
+        }
+      },
+      "noindex": false
+    },
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z",
+    "title": {
+      "en": "Downtown Dubai Restaurant"
+    },
+    "category": {
+      "en": "Hospitality"
+    },
+    "location": {
+      "en": "Downtown Dubai, UAE"
+    },
+    "emirate": "Dubai",
+    "year": "2024",
+    "summary": {
+      "en": "Retractable glass roof system with minimal framing"
+    },
+    "fullNarrative": {
+      "en": "A Michelin-selected rooftop fine dining venue in Downtown Dubai overlooking Burj Khalifa. Eco Pergola designed and installed a motorized retractable glass skylight roof and frameless guillotine vertical glass balustrades that transition the restaurant between open-air terrace dining and climate-controlled luxury."
+    },
+    "image": {
+      "src": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=85&auto=format&fit=crop",
+      "alt": {
+        "en": "Downtown Dubai Restaurant architectural exterior"
+      }
+    },
+    "gallery": [
+      {
+        "src": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=85&auto=format&fit=crop",
+        "alt": {
+          "en": "Downtown Dubai Restaurant gallery photo 1"
+        }
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=1200&q=85&auto=format&fit=crop",
+        "alt": {
+          "en": "Downtown Dubai Restaurant gallery photo 2"
+        }
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1200&q=85&auto=format&fit=crop",
+        "alt": {
+          "en": "Downtown Dubai Restaurant gallery photo 3"
+        }
+      }
+    ],
+    "scope": [
+      {
+        "en": "Motorized telescopic retractable glass roof structure"
+      },
+      {
+        "en": "Motorized vertical sliding guillotine glass windows"
+      },
+      {
+        "en": "Custom laser-cut aluminum privacy screens"
+      },
+      {
+        "en": "Integrated high-pressure climate misting lines"
+      }
+    ],
+    "materials": [
+      {
+        "en": "Heavy-Duty Structural Steel Framing with Powder Coat"
+      },
+      {
+        "en": "Double Glazed Tinted Solar Acoustic Glass"
+      },
+      {
+        "en": "Automated High-Torque Chain Drive Actuators"
+      }
+    ],
+    "relatedServiceIds": [
+      "glass-rooms-partitions",
+      "architectural-products",
+      "design-consultancy-services"
+    ],
+    "clientTestimonial": {
+      "quote": {
+        "en": "We chose Eco Pergola for our hotel's glass roof system. Their innovative solutions and attention to detail are unmatched. The project was completed within budget and timeline. Excellent partner!"
+      },
+      "author": {
+        "en": "Ahmed Hassan"
+      },
+      "role": {
+        "en": "Hotel Manager, Downtown Dubai"
+      }
+    }
+  },
+  {
+    "id": "d381b652-ea3b-45b3-8f06-e4f9eda0151c",
+    "slug": "jumeirah-beach-resort",
+    "status": "published",
+    "featured": false,
+    "order": 4,
+    "verified": true,
+    "seo": {
+      "metaTitle": {
+        "en": "Jumeirah Beach Resort | Portfolio Case Study | Eco Pergola"
+      },
+      "metaDescription": {
+        "en": "Panoramic sliding glass walls for beachfront suites Completed in 2023 in Jumeirah Beach, Dubai, UAE."
+      },
+      "ogImage": {
+        "src": "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=1200&q=85&auto=format&fit=crop",
+        "alt": {
+          "en": "Jumeirah Beach Resort"
+        }
+      },
+      "noindex": false
+    },
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z",
+    "title": {
+      "en": "Jumeirah Beach Resort"
+    },
+    "category": {
+      "en": "Hotel"
+    },
+    "location": {
+      "en": "Jumeirah Beach, Dubai, UAE"
+    },
+    "emirate": "Dubai",
+    "year": "2023",
+    "summary": {
+      "en": "Panoramic sliding glass walls for beachfront suites"
+    },
+    "fullNarrative": {
+      "en": "Upgrading 64 luxury beachfront suites with oversized 3-panel panoramic minimal sliding glass wall systems and custom poolside cabanas. Built with marine-grade coatings to withstand salty sea breezes while providing zero-threshold flush floor integration."
+    },
+    "image": {
+      "src": "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=1200&q=85&auto=format&fit=crop",
+      "alt": {
+        "en": "Jumeirah Beach Resort architectural exterior"
+      }
+    },
+    "gallery": [
+      {
+        "src": "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=1200&q=85&auto=format&fit=crop",
+        "alt": {
+          "en": "Jumeirah Beach Resort gallery photo 1"
+        }
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1600585154084-4e5fe7c39198?w=1200&q=85&auto=format&fit=crop",
+        "alt": {
+          "en": "Jumeirah Beach Resort gallery photo 2"
+        }
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1200&q=85&auto=format&fit=crop",
+        "alt": {
+          "en": "Jumeirah Beach Resort gallery photo 3"
+        }
+      }
+    ],
+    "scope": [
+      {
+        "en": "64 panoramic beachfront suite sliding door sets"
+      },
+      {
+        "en": "Custom poolside luxury cabana pergolas"
+      },
+      {
+        "en": "Frameless structural glass poolside balustrades"
+      }
+    ],
+    "materials": [
+      {
+        "en": "Qualicoat Seaside Certified Aluminum"
+      },
+      {
+        "en": "Heavy-Duty Micro-Bearing Stainless Steel Rollers"
+      },
+      {
+        "en": "Double Glazed Acoustic Low-E Safety Glass"
+      }
+    ],
+    "relatedServiceIds": [
+      "minimal-sliding-doors",
+      "architectural-products",
+      "installation-project-management"
+    ]
+  },
+  {
+    "id": "f5cad110-e631-4eef-ae3c-a3fc7e7bdcd3",
+    "slug": "arabian-ranches-estate",
+    "status": "published",
+    "featured": false,
+    "order": 5,
+    "verified": true,
+    "seo": {
+      "metaTitle": {
+        "en": "Arabian Ranches Estate | Portfolio Case Study | Eco Pergola"
+      },
+      "metaDescription": {
+        "en": "Outdoor living spaces with pergola and glass partitions Completed in 2024 in Arabian Ranches, Dubai, UAE."
+      },
+      "ogImage": {
+        "src": "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=85&auto=format&fit=crop",
+        "alt": {
+          "en": "Arabian Ranches Estate"
+        }
+      },
+      "noindex": false
+    },
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z",
+    "title": {
+      "en": "Arabian Ranches Estate"
+    },
+    "category": {
+      "en": "Residential"
+    },
+    "location": {
+      "en": "Arabian Ranches, Dubai, UAE"
+    },
+    "emirate": "Dubai",
+    "year": "2024",
+    "summary": {
+      "en": "Outdoor living spaces with pergola and glass partitions"
+    },
+    "fullNarrative": {
+      "en": "A complete luxury backyard transformation on a private Arabian Ranches villa plot including an expansive 85 m² freestanding aluminum pergola with motorized louvers, glass partition wind barriers, an outdoor kitchen pavilion, and integrated LED architectural landscape lighting."
+    },
+    "image": {
+      "src": "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=85&auto=format&fit=crop",
+      "alt": {
+        "en": "Arabian Ranches Estate architectural exterior"
+      }
+    },
+    "gallery": [
+      {
+        "src": "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=85&auto=format&fit=crop",
+        "alt": {
+          "en": "Arabian Ranches Estate gallery photo 1"
+        }
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=85&auto=format&fit=crop",
+        "alt": {
+          "en": "Arabian Ranches Estate gallery photo 2"
+        }
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1200&q=85&auto=format&fit=crop",
+        "alt": {
+          "en": "Arabian Ranches Estate gallery photo 3"
+        }
+      }
+    ],
+    "scope": [
+      {
+        "en": "Freestanding motorized louvered pergola (85 m²)"
+      },
+      {
+        "en": "Frameless glass wind barrier partitions"
+      },
+      {
+        "en": "Custom outdoor kitchen canopy with exhaust ducting"
+      },
+      {
+        "en": "Automated RGB/Warm ambient smart lighting package"
+      }
+    ],
+    "materials": [
+      {
+        "en": "Architectural 6063-T6 Aluminum in Matte Anthracite"
+      },
+      {
+        "en": "12mm Toughened Clear Glass with Polished Edges"
+      },
+      {
+        "en": "Teak Timber Accents & Decking Integration"
+      }
+    ],
+    "relatedServiceIds": [
+      "glass-rooms-partitions",
+      "architectural-products",
+      "design-consultancy-services"
+    ]
+  }
+]
