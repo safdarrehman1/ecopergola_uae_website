@@ -15,9 +15,9 @@ export function BlogTeaserSection() {
   const posts = getLocalizedBlog(locale);
 
   return (
-    <section className="py-20 md:py-28 bg-[#FAF8F5] relative overflow-hidden">
+    <section className="py-20 md:py-28 bg-[#F8FAFC] relative overflow-hidden">
       {/* Decorative ambient background */}
-      <div className="absolute top-1/3 left-10 w-80 h-80 bg-amber-200/20 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/3 left-10 w-80 h-80 bg-[#34AA49]/15 rounded-full blur-3xl pointer-events-none" />
 
       <div className="container mx-auto px-4 max-w-7xl relative z-10">
         {/* Section Header */}
@@ -28,7 +28,7 @@ export function BlogTeaserSection() {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto space-y-4 mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/90 border border-amber-300/80 text-[11px] font-mono tracking-widest text-amber-900 font-semibold uppercase shadow-xs">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/90 border border-emerald-300/80 text-[11px] font-mono tracking-widest text-emerald-950 font-semibold uppercase shadow-xs">
             <span className="h-2 w-2 rounded-full bg-brass animate-pulse" />
             <span>{tBlog("eyebrow")}</span>
           </div>

@@ -114,10 +114,10 @@ export default async function BlogPostPage({
       />
 
       {/* Header */}
-      <section className="relative pt-24 pb-16 md:pt-28 md:pb-20 lg:pt-32 bg-gradient-to-b from-[#FAF8F5] via-[#F4EFE6] to-[#FFFFFF] text-stone-900 border-b border-stone-200/60 overflow-hidden">
+      <section className="relative pt-24 pb-16 md:pt-28 md:pb-20 lg:pt-32 bg-gradient-to-b from-[#F8FAFC] via-[#F1F5F9] to-[#FFFFFF] text-stone-900 border-b border-stone-200/60 overflow-hidden">
         {/* Soft Ambient Architectural Light Rays & Grid Texture */}
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-amber-200/25 rounded-full blur-[140px]" />
+          <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-[#34AA49]/15 rounded-full blur-[140px]" />
           <div className="absolute -bottom-20 -left-20 w-[400px] h-[400px] bg-stone-300/30 rounded-full blur-[120px]" />
           <div className="absolute inset-0 bg-[radial-gradient(#d6cfc4_1px,transparent_1px)] [background-size:28px_28px] opacity-40" />
         </div>

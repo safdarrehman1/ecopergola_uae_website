@@ -33,15 +33,15 @@ export function LatestUpdatesSection() {
   }, [api, isPaused]);
 
   return (
-    <section className="py-12 bg-[#FAF8F5] border-y border-stone-200/80 relative overflow-hidden">
+    <section className="py-12 bg-[#F8FAFC] border-y border-stone-200/80 relative overflow-hidden">
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-8">
           <div className="flex items-center gap-3">
-            <div className="h-10 w-10 rounded-xl bg-amber-50 border border-amber-200/60 flex items-center justify-center text-brass">
+            <div className="h-10 w-10 rounded-xl bg-emerald-50 border border-emerald-200/60 flex items-center justify-center text-brass">
               <Bell className="h-5 w-5" />
             </div>
             <div>
-              <span className="text-[11px] font-bold uppercase tracking-wider text-amber-800">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-950">
                 {t("eyebrow")}
               </span>
               <h2 className="text-xl sm:text-2xl font-bold font-display text-stone-900">

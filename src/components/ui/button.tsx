@@ -4,30 +4,30 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 cursor-pointer select-none",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 cursor-pointer select-none",
   {
     variants: {
       variant: {
         default:
-          "bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm active:scale-[0.98]",
+          "bg-primary text-primary-foreground hover:bg-[#268537] shadow-xs active:translate-y-px",
         brass:
-          "bg-brass text-ink font-bold hover:bg-brass-light shadow-md shadow-brass/25 hover:shadow-lg active:scale-[0.98]",
+          "bg-brass text-white font-semibold hover:bg-brass-dark shadow-xs active:translate-y-px",
         destructive:
-          "bg-destructive text-destructive-foreground hover:bg-destructive/90 shadow-sm",
+          "bg-destructive text-destructive-foreground hover:bg-destructive/90 shadow-xs",
         outline:
-          "border border-border bg-background hover:bg-muted hover:text-foreground active:scale-[0.98]",
+          "border border-stone-300 bg-white text-stone-800 hover:bg-stone-50 hover:border-stone-400 active:translate-y-px",
         secondary:
-          "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        ghost: "hover:bg-muted hover:text-foreground",
+          "bg-secondary text-secondary-foreground hover:bg-[#EAE4D9]",
+        ghost: "hover:bg-stone-100 hover:text-stone-900",
         link: "text-primary underline-offset-4 hover:underline",
         glass:
-          "bg-white/10 dark:bg-black/20 backdrop-blur-md border border-white/20 text-white hover:bg-white/20 active:scale-[0.98]",
+          "bg-white/80 border border-stone-200 text-stone-800 hover:bg-white active:translate-y-px",
       },
       size: {
-        default: "h-11 px-5 py-2.5",
-        sm: "h-9 rounded-lg px-3.5 text-xs",
-        lg: "h-13 rounded-xl px-7 text-base font-semibold",
-        icon: "h-10 w-10",
+        default: "h-10 px-4 py-2",
+        sm: "h-8 rounded px-3 text-xs",
+        lg: "h-11 rounded-md px-6 text-sm font-semibold",
+        icon: "h-9 w-9",
       },
     },
     defaultVariants: {

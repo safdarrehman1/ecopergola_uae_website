@@ -30,20 +30,20 @@ export function Header() {
   const quoteCta = isAr ? "طلب عرض سعر" : isFr ? "Demander un Devis" : "Request a Quote";
 
   return (
-    <header className="w-full bg-background/95 backdrop-blur-md border-b border-border/70 transition-all duration-200">
-      <div className="container mx-auto px-5 sm:px-8 lg:px-12 max-w-[1240px] flex items-center justify-between h-16 sm:h-20">
-        {/* Prominent Architectural Brand Logo */}
+    <header className="w-full bg-white border-b border-stone-200 transition-all duration-200 sticky top-0 z-50">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl flex items-center justify-between h-16 sm:h-18">
+        {/* Architectural Brand Logo */}
         <Link
           href="/"
           aria-label="Eco Pergola"
-          className="flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-brass rounded-xl group transition-transform hover:scale-[1.02]"
+          className="flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md group"
         >
-          <div className="relative h-14 w-14 sm:h-16 sm:w-16 rounded-xl overflow-hidden bg-white border border-stone-200/90 flex items-center justify-center p-1 shadow-xs group-hover:border-brass/80 transition-all duration-300">
+          <div className="relative h-12 w-12 sm:h-14 sm:w-14 rounded-md overflow-hidden bg-white border border-stone-200 flex items-center justify-center p-1 shadow-xs group-hover:border-[#34AA49] transition-colors">
             <Image
               src="/images/logo.jpeg"
               alt="Eco Pergola"
-              width={68}
-              height={68}
+              width={56}
+              height={56}
               className="h-full w-full object-contain"
               priority
             />
@@ -56,7 +56,7 @@ export function Header() {
             <NavigationMenuList>
               {/* Home */}
               <NavigationMenuItem>
-                <Link href="/" legacyBehavior passHref>
+                <Link href="/#" legacyBehavior passHref>
                   <NavigationMenuLink
                     className={cn(
                       navigationMenuTriggerStyle(),
@@ -79,7 +79,7 @@ export function Header() {
                   {isAr ? "أنواع البرجولات" : isFr ? "Types de Pergolas" : "Pergola Types"}
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <div className="w-[500px] p-5 grid grid-cols-2 gap-4 bg-popover rounded-xl border border-border shadow-lg">
+                  <div className="w-[500px] p-5 grid grid-cols-2 gap-4 bg-white rounded-md border border-stone-200 shadow-md">
                     <div className="space-y-2">
                       <div className="text-xs font-bold uppercase tracking-wider text-brass px-2">
                         {isAr ? "حسب نوع السقف" : isFr ? "Par Mécanisme" : "By Mechanism"}
@@ -241,7 +241,7 @@ export function Header() {
 
           <Button
             asChild
-            className="h-10 px-5 rounded-xl bg-brass hover:bg-brass-light text-ink font-bold text-xs sm:text-sm shadow-md shadow-brass/25 transition-all hover:scale-[1.02] active:scale-[0.98]"
+            className="h-10 px-5 rounded-md bg-primary hover:bg-[#268537] text-white font-medium text-xs sm:text-sm shadow-xs transition-colors"
           >
             <Link href="/contact">
               <span>{quoteCta}</span>
@@ -256,17 +256,17 @@ export function Header() {
                 variant="outline"
                 size="icon"
                 aria-label="Open Mobile Navigation Menu"
-                className="h-10 w-10 lg:hidden rounded-lg border-border"
+                className="h-10 w-10 lg:hidden rounded-md border-stone-200"
               >
                 <Menu className="h-5 w-5" />
               </Button>
             </SheetTrigger>
             <SheetContent side={isAr ? "right" : "left"} className="w-[300px] p-6 flex flex-col justify-between">
               <div className="space-y-6">
-                <div className="flex items-center justify-between pb-4 border-b border-border">
+                <div className="flex items-center justify-between pb-4 border-b border-stone-200">
                   <div className="flex items-center">
-                    <div className="h-14 w-14 rounded-xl overflow-hidden border border-stone-200/90 p-1 bg-white shadow-xs">
-                      <Image src="/images/logo.jpeg" alt="Eco Pergola" width={56} height={56} className="object-contain w-full h-full" />
+                    <div className="h-12 w-12 rounded-md overflow-hidden border border-stone-200 p-1 bg-white shadow-xs">
+                      <Image src="/images/logo.jpeg" alt="Eco Pergola" width={48} height={48} className="object-contain w-full h-full" />
                     </div>
                   </div>
                 </div>
@@ -287,8 +287,8 @@ export function Header() {
                       href={item.href}
                       onClick={() => setMobileOpen(false)}
                       className={cn(
-                        "px-3 py-2.5 rounded-lg transition-colors hover:bg-muted text-foreground",
-                        pathname === item.href && "bg-muted text-brass font-semibold"
+                        "px-3 py-2 rounded-md transition-colors hover:bg-stone-100 text-stone-800",
+                        pathname === item.href && "bg-stone-100 text-primary font-semibold"
                       )}
                     >
                       {item.label}
@@ -298,9 +298,9 @@ export function Header() {
               </div>
 
               {/* Mobile Sheet Footer */}
-              <div className="pt-6 border-t border-border space-y-3">
+              <div className="pt-6 border-t border-stone-200 space-y-3">
                 <LanguageSwitcher />
-                <Button asChild className="w-full h-10 rounded-lg bg-brass hover:bg-brass-dark text-white font-semibold text-xs">
+                <Button asChild className="w-full h-10 rounded-md bg-primary hover:bg-[#268537] text-white font-medium text-xs">
                   <Link href="/contact" onClick={() => setMobileOpen(false)}>
                     {quoteCta}
                   </Link>

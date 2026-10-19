@@ -2,7 +2,7 @@
 
 import { Link } from "@/i18n/routing";
 import { useLocale } from "next-intl";
-import { ArrowRight, HelpCircle } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
@@ -34,34 +34,34 @@ export function FaqSection({ faqs = [] }: FaqSectionProps) {
     : "Confirmed guidance on UAE installation permits, structural timelines, and warranty terms.";
 
   return (
-    <section id="faq" className="py-14 sm:py-16 md:py-20 lg:py-24 bg-[#FAF8F5] relative">
-      <div className="container mx-auto px-5 sm:px-8 lg:px-12 max-w-[900px]">
-        {/* Section Header */}
+    <section id="faq" className="py-16 sm:py-20 lg:py-24 bg-[#FAF8F5] border-b border-stone-200">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+        {/* Centered Section Header */}
         <div className="text-center space-y-3 mb-12 sm:mb-14">
-          <span className="text-[12px] sm:text-[13px] font-medium tracking-wider uppercase text-brass">
+          <span className="inline-block text-xs font-semibold tracking-wider uppercase text-[#34AA49]">
             {eyebrow}
           </span>
-          <h2 className="text-[28px] sm:text-[32px] md:text-[38px] lg:text-[42px] font-semibold font-display text-foreground leading-[1.18] tracking-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold font-display text-stone-900 leading-tight">
             {title}
           </h2>
-          <p className="text-[15px] sm:text-[16px] text-muted-foreground leading-relaxed max-w-xl mx-auto">
+          <p className="text-sm sm:text-base text-stone-600 leading-relaxed max-w-xl mx-auto">
             {subtitle}
           </p>
         </div>
 
-        {/* Accessible Radix Accordion */}
-        <div className="rounded-2xl bg-white border border-stone-200/90 p-5 sm:p-8 shadow-sm">
+        {/* Clean Accordion Box */}
+        <div className="rounded-md bg-white border border-stone-200 p-6 sm:p-8 shadow-xs">
           <Accordion type="single" collapsible defaultValue={faqs[0]?.id || "areas-served-uae"} className="w-full">
             {faqs.map((faq) => {
               const question = faq.question[locale as "en" | "ar" | "fr"] || faq.question.en;
               const answer = faq.answer[locale as "en" | "ar" | "fr"] || faq.answer.en;
 
               return (
-                <AccordionItem key={faq.id} value={faq.id} className="border-stone-200/70">
-                  <AccordionTrigger className="text-left rtl:text-right text-sm sm:text-base font-semibold text-foreground hover:text-brass py-4 transition-colors">
+                <AccordionItem key={faq.id} value={faq.id} className="border-stone-200">
+                  <AccordionTrigger className="text-left rtl:text-right text-sm sm:text-base font-semibold text-stone-900 hover:text-[#34AA49] py-4 transition-colors">
                     {question}
                   </AccordionTrigger>
-                  <AccordionContent className="text-xs sm:text-sm text-muted-foreground leading-relaxed pb-4">
+                  <AccordionContent className="text-xs sm:text-sm text-stone-600 leading-relaxed pb-4">
                     {answer}
                   </AccordionContent>
                 </AccordionItem>
@@ -71,16 +71,16 @@ export function FaqSection({ faqs = [] }: FaqSectionProps) {
         </div>
 
         {/* Have More Questions Prompt */}
-        <div className="mt-8 p-5 sm:p-6 rounded-2xl bg-white border border-stone-200/90 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-sm">
+        <div className="mt-8 p-5 sm:p-6 rounded-md bg-white border border-stone-200 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xs">
           <div className="space-y-0.5 text-center sm:text-left rtl:sm:text-right">
-            <h4 className="text-sm font-semibold text-foreground">
+            <h4 className="text-sm font-semibold text-stone-900">
               {isAr ? "هل لديك متطلبات أو استفسار خاص؟" : isFr ? "Une question technique sur votre projet ?" : "Have specific technical questions?"}
             </h4>
-            <p className="text-xs text-muted-foreground">
+            <p className="text-xs text-stone-600">
               {isAr ? "مهندسونا جاهزون لتقديم الاستشارة والمعاينة الميدانية." : isFr ? "Nos ingénieurs sont à votre disposition pour une étude personnalisée." : "Our engineering team provides complimentary on-site assessments in Dubai."}
             </p>
           </div>
-          <Button asChild size="sm" className="h-9 px-4 rounded-xl bg-brass hover:bg-brass-light text-ink text-xs font-bold shrink-0 shadow-sm shadow-brass/20">
+          <Button asChild size="sm" className="h-9 px-4 rounded-md bg-[#34AA49] hover:bg-[#268537] text-white text-xs font-medium shrink-0 shadow-xs">
             <Link href="/contact">
               <span>{isAr ? "تحدث مع مهندس" : isFr ? "Contacter un Ingénieur" : "Speak with an Engineer"}</span>
               <ArrowRight className="h-3.5 w-3.5 ml-1.5 rtl:mr-1.5 rtl:ml-0 rtl:rotate-180" />
@@ -91,3 +91,5 @@ export function FaqSection({ faqs = [] }: FaqSectionProps) {
     </section>
   );
 }
+
+export default FaqSection;

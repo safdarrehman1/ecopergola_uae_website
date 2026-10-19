@@ -1,3 +1,5 @@
+overrides:
+  three: 0.149.0
 allowBuilds:
   '@parcel/watcher': true
   '@swc/core': true

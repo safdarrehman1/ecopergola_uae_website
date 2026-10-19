@@ -124,11 +124,11 @@ export function AboutSection() {
         ];
 
   return (
-    <section id="about" className="py-20 md:py-28 bg-[#FAF8F5] relative overflow-hidden">
+    <section id="about" className="py-20 md:py-28 bg-[#F8FAFC] relative overflow-hidden">
       <div className="container mx-auto px-4 max-w-7xl">
         {/* Top Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-20">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/90 border border-amber-300/80 text-[11px] font-mono tracking-widest text-amber-900 font-semibold uppercase shadow-xs">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/90 border border-emerald-300/80 text-[11px] font-mono tracking-widest text-emerald-950 font-bold uppercase shadow-xs">
             <span className="h-2 w-2 rounded-full bg-brass animate-pulse" />
             <span>{tAbout("eyebrow")}</span>
           </div>
@@ -164,11 +164,11 @@ export function AboutSection() {
               className="absolute -bottom-8 -right-4 sm:-right-8 rtl:-right-auto rtl:-left-4 sm:rtl:-left-8 w-60 sm:w-72 bg-white p-5 rounded-2xl shadow-xl border border-stone-200/90"
             >
               <div className="flex items-center gap-3">
-                <div className="h-12 w-12 rounded-xl bg-brass flex items-center justify-center text-stone-950 shrink-0 font-bold font-display text-xl">
+                <div className="h-12 w-12 rounded-xl bg-brass flex items-center justify-center text-white shrink-0 font-bold font-display text-xl">
                   {siteConfig.yearsExperience}
                 </div>
                 <div>
-                  <div className="text-xs font-bold uppercase tracking-wider text-amber-800">
+                  <div className="text-xs font-bold uppercase tracking-wider text-emerald-900">
                     {tAbout("yearsOfExcellence")}
                   </div>
                   <div className="text-xs text-stone-600">
@@ -247,7 +247,7 @@ export function AboutSection() {
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   className="rounded-2xl p-6 bg-white border border-stone-200/90 space-y-4 hover:border-brass/70 transition-all shadow-sm hover:shadow-lg"
                 >
-                  <div className="h-10 w-10 rounded-xl bg-amber-50 border border-amber-200/60 flex items-center justify-center text-brass">
+                  <div className="h-10 w-10 rounded-xl bg-emerald-50 border border-emerald-200/60 flex items-center justify-center text-brass">
                     <IconComp className="h-5 w-5" />
                   </div>
                   <h4 className="text-base font-bold font-display text-foreground">

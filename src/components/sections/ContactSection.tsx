@@ -186,55 +186,47 @@ export function ContactSection({ settings }: ContactSectionProps) {
     : "Receive a complimentary on-site laser survey, 3D spatial visualization, and itemized engineering estimate.";
 
   return (
-    <section id="contact" className="py-16 sm:py-20 lg:py-28 bg-gradient-to-b from-[#FAF8F5] via-white to-[#F5F2EA] relative overflow-hidden">
-      {/* Ambient Lighting & CAD Coordinates */}
-      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-10 right-10 w-[600px] h-[600px] bg-amber-200/20 rounded-full blur-[140px]" />
-        <div className="absolute bottom-10 left-10 w-[500px] h-[500px] bg-stone-300/25 rounded-full blur-[130px]" />
-        <div className="absolute inset-0 bg-[radial-gradient(#d6cfc4_1px,transparent_1px)] [background-size:32px_32px] opacity-35" />
-      </div>
-
-      <div className="container mx-auto px-4 sm:px-6 lg:px-12 max-w-[1320px] relative z-10">
+    <section id="contact" className="py-16 sm:py-20 lg:py-24 bg-white border-b border-stone-200 relative">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-3.5 mb-14 sm:mb-18">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-brass/30 text-[11px] font-mono tracking-widest uppercase text-brass font-bold">
-            <span className="w-2 h-2 rounded-full bg-brass animate-pulse" />
-            <span>{eyebrow}</span>
-          </div>
+        <div className="text-center max-w-3xl mx-auto space-y-3 mb-12 sm:mb-16">
+          <span className="inline-block text-xs font-semibold tracking-wider uppercase text-[#34AA49]">
+            {eyebrow}
+          </span>
 
-          <h2 className="text-[28px] sm:text-[36px] md:text-[44px] font-bold font-display text-stone-900 leading-[1.14] tracking-tight text-balance">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold font-display text-stone-900 leading-tight">
             {title}
           </h2>
 
-          <p className="text-[14px] sm:text-[16px] text-stone-600 leading-relaxed max-w-2xl mx-auto text-balance">
+          <p className="text-sm sm:text-base text-stone-600 leading-relaxed max-w-2xl mx-auto">
             {subtitle}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           
           {/* Left Column: Direct Engineering Channels & Concierge */}
-          <div className="lg:col-span-5 space-y-6">
+          <div className="lg:col-span-5 space-y-5">
             
             {/* Live Status Badge */}
-            <div className="p-4 rounded-2xl bg-white border border-stone-200/90 shadow-sm flex items-center justify-between">
-              <div className="flex items-center gap-2.5">
-                <span className="relative flex h-3 w-3">
+            <div className="p-3.5 rounded-md bg-[#FAF8F5] border border-stone-200 shadow-xs flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <span className="relative flex h-2.5 w-2.5">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                  <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500" />
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#34AA49]" />
                 </span>
-                <span className="text-xs font-mono font-semibold text-stone-900">
+                <span className="text-xs font-medium text-stone-900">
                   {isAr ? "مكتب المهندسين جاهز لاستقبال طلبك" : isFr ? "Bureau d'Ingénierie Ouvert" : "Engineering Desk Live"}
                 </span>
               </div>
-              <span className="text-[10px] font-mono uppercase tracking-wider text-stone-500 bg-stone-100 px-2 py-0.5 rounded-md font-semibold">
+              <span className="text-[10px] font-mono uppercase tracking-wider text-stone-600 bg-white border border-stone-200 px-2 py-0.5 rounded font-semibold">
                 {isAr ? "استجابة < ساعتين" : isFr ? "Rép. < 2h" : "Resp. < 2h"}
               </span>
             </div>
 
             {/* Direct Channel Cards */}
-            <div className="rounded-3xl border border-stone-200/90 bg-white p-6 sm:p-7 space-y-5 shadow-[0_4px_24px_-6px_rgba(28,25,23,0.06)]">
+            <div className="rounded-md border border-stone-200 bg-white p-5 sm:p-6 space-y-4 shadow-xs">
               <div className="border-b border-stone-100 pb-3">
                 <h3 className="text-base font-bold text-stone-900">
                   {isAr ? "قنوات التواصل المباشر مع المهندسين" : isFr ? "Lignes Directes d'Ingénierie" : "Senior Engineering Channels"}
@@ -244,17 +236,17 @@ export function ContactSection({ settings }: ContactSectionProps) {
                 </p>
               </div>
 
-              <div className="space-y-3.5">
+              <div className="space-y-3">
                 
                 {/* Instant WhatsApp Card */}
                 <a
                   href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3.5 rounded-2xl bg-emerald-50/70 border border-emerald-200/80 hover:border-emerald-500/80 flex items-center justify-between text-stone-900 transition-all group cursor-pointer hover:shadow-md"
+                  className="p-3.5 rounded-md bg-[#FAF8F5] border border-stone-200 hover:border-[#34AA49] flex items-center justify-between text-stone-900 transition-colors group cursor-pointer"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="h-10 w-10 rounded-xl bg-[#25D366] text-white flex items-center justify-center shrink-0 shadow-sm group-hover:scale-105 transition-transform">
+                    <div className="h-9 w-9 rounded-md bg-[#25D366] text-white flex items-center justify-center shrink-0">
                       <MessageSquare className="h-5 w-5" />
                     </div>
                     <div>
@@ -275,22 +267,22 @@ export function ContactSection({ settings }: ContactSectionProps) {
                 {/* Direct Phone Line */}
                 <a
                   href={`tel:${phoneRaw}`}
-                  className="p-3.5 rounded-2xl bg-stone-50 hover:bg-amber-50/60 border border-stone-200/70 hover:border-brass/70 flex items-center justify-between text-stone-900 transition-all group cursor-pointer"
+                  className="p-3.5 rounded-md bg-white hover:bg-stone-50 border border-stone-200 hover:border-[#34AA49] flex items-center justify-between text-stone-900 transition-colors group cursor-pointer"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="h-10 w-10 rounded-xl bg-white text-brass border border-stone-200/90 flex items-center justify-center shrink-0 shadow-xs group-hover:scale-105 transition-transform">
-                      <Phone className="h-5 w-5 text-brass" />
+                    <div className="h-9 w-9 rounded-md bg-stone-50 text-[#34AA49] border border-stone-200 flex items-center justify-center shrink-0">
+                      <Phone className="h-4 w-4" />
                     </div>
                     <div>
-                      <div className="text-[11px] font-mono uppercase text-stone-500 font-semibold">
+                      <div className="text-[11px] uppercase text-stone-500 font-medium">
                         {isAr ? "الاتصال الهاتفي المباشر" : isFr ? "Ligne Directe" : "Direct Telephone"}
                       </div>
-                      <div className="font-bold text-sm text-stone-900" dir="ltr">
+                      <div className="font-semibold text-sm text-stone-900" dir="ltr">
                         {phoneDisplay}
                       </div>
                     </div>
                   </div>
-                  <div className="text-xs font-semibold text-brass flex items-center gap-1 opacity-90 group-hover:opacity-100 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform">
+                  <div className="text-xs font-medium text-[#34AA49] flex items-center gap-1">
                     <span>{isAr ? "اتصال" : isFr ? "Appeler" : "Call"}</span>
                     <ArrowRight className="h-3.5 w-3.5 rtl:rotate-180" />
                   </div>
@@ -299,22 +291,22 @@ export function ContactSection({ settings }: ContactSectionProps) {
                 {/* Direct Email */}
                 <a
                   href={`mailto:${email}`}
-                  className="p-3.5 rounded-2xl bg-stone-50 hover:bg-amber-50/60 border border-stone-200/70 hover:border-brass/70 flex items-center justify-between text-stone-900 transition-all group cursor-pointer"
+                  className="p-3.5 rounded-md bg-white hover:bg-stone-50 border border-stone-200 hover:border-[#34AA49] flex items-center justify-between text-stone-900 transition-colors group cursor-pointer"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="h-10 w-10 rounded-xl bg-white text-brass border border-stone-200/90 flex items-center justify-center shrink-0 shadow-xs group-hover:scale-105 transition-transform">
-                      <Mail className="h-5 w-5 text-brass" />
+                    <div className="h-9 w-9 rounded-md bg-stone-50 text-[#34AA49] border border-stone-200 flex items-center justify-center shrink-0">
+                      <Mail className="h-4 w-4" />
                     </div>
                     <div>
-                      <div className="text-[11px] font-mono uppercase text-stone-500 font-semibold">
+                      <div className="text-[11px] uppercase text-stone-500 font-medium">
                         {isAr ? "البريد الإلكتروني المباشر" : isFr ? "Courriel Technique" : "Engineering Email"}
                       </div>
-                      <div className="font-bold text-xs sm:text-sm text-stone-900">
+                      <div className="font-semibold text-xs sm:text-sm text-stone-900">
                         {email}
                       </div>
                     </div>
                   </div>
-                  <div className="text-xs font-semibold text-brass flex items-center gap-1 opacity-90 group-hover:opacity-100 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform">
+                  <div className="text-xs font-medium text-[#34AA49] flex items-center gap-1">
                     <span>{isAr ? "مراسلة" : isFr ? "Écrire" : "Email"}</span>
                     <ArrowRight className="h-3.5 w-3.5 rtl:rotate-180" />
                   </div>
@@ -341,23 +333,23 @@ export function ContactSection({ settings }: ContactSectionProps) {
               </div>
             </div>
 
-            {/* 3-Step Consultation Guarantee Pill Card */}
-            <div className="p-5 rounded-3xl bg-amber-50/70 border border-amber-200/80 space-y-3">
-              <div className="flex items-center gap-2 text-amber-900 text-xs font-mono font-bold uppercase tracking-wider">
-                <ShieldCheck className="h-4 w-4 text-brass" />
+            {/* 3-Step Consultation Guarantee Card */}
+            <div className="p-5 rounded-md bg-[#FAF8F5] border border-stone-200 space-y-3">
+              <div className="flex items-center gap-2 text-stone-900 text-xs font-semibold uppercase tracking-wider">
+                <ShieldCheck className="h-4 w-4 text-[#34AA49]" />
                 <span>{isAr ? "ما ستحصل عليه في استشارتك المجانية" : isFr ? "Votre Pack Étude Gratuit" : "What You Receive (100% Free)"}</span>
               </div>
               <ul className="space-y-2 text-xs text-stone-700 font-medium">
                 <li className="flex items-center gap-2">
-                  <CheckCircle2 className="h-3.5 w-3.5 text-brass shrink-0" />
+                  <CheckCircle2 className="h-3.5 w-3.5 text-[#34AA49] shrink-0" />
                   <span>{isAr ? "معاينة ميدانية بالليزر لقياسات مطابقة لـ ±1.5 مم" : isFr ? "Relevé laser 3D précis à ±1.5 mm sur votre villa" : "On-site laser survey with ±1.5mm precision tolerance"}</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle2 className="h-3.5 w-3.5 text-brass shrink-0" />
+                  <CheckCircle2 className="h-3.5 w-3.5 text-[#34AA49] shrink-0" />
                   <span>{isAr ? "تصميم ثلاثي الأبعاد واقعي مدمج في حديقة فيلتك" : isFr ? "Modélisation 3D photoréaliste intégrée à votre jardin" : "Photorealistic 3D rendering in your actual outdoor space"}</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle2 className="h-3.5 w-3.5 text-brass shrink-0" />
+                  <CheckCircle2 className="h-3.5 w-3.5 text-[#34AA49] shrink-0" />
                   <span>{isAr ? "عرض سعر هندسي تفصيلي بدون أي التزام مالي" : isFr ? "Devis d'ingénierie détaillé sans aucun engagement" : "Itemized structural quotation with zero purchase obligation"}</span>
                 </li>
               </ul>
@@ -365,9 +357,9 @@ export function ContactSection({ settings }: ContactSectionProps) {
 
           </div>
 
-          {/* Right Column: Luxury Interactive Quote Specification Form */}
+          {/* Right Column: Quote Specification Form */}
           <div className="lg:col-span-7">
-            <div className="rounded-3xl border border-stone-200/90 bg-white p-6 sm:p-8 lg:p-9 shadow-[0_12px_40px_-10px_rgba(28,25,23,0.08)] space-y-6">
+            <div className="rounded-md border border-stone-200 bg-white p-6 sm:p-8 shadow-xs space-y-6">
               
               <div className="border-b border-stone-100 pb-4 flex flex-wrap items-center justify-between gap-2">
                 <div>
@@ -378,7 +370,7 @@ export function ContactSection({ settings }: ContactSectionProps) {
                     {isAr ? "حدد متطلبات مساحتك الخارجية ليقوم مهندسونا بإعداد دراسة مخصصة" : isFr ? "Précisez votre besoin pour recevoir une étude technique personnalisée" : "Specify your outdoor scope to receive a tailored engineering proposal"}
                   </p>
                 </div>
-                <span className="text-[10px] font-mono px-2.5 py-1 rounded-full bg-amber-50 text-brass border border-amber-200/70 font-bold uppercase tracking-wider">
+                <span className="text-[10px] px-2.5 py-1 rounded bg-stone-100 text-[#34AA49] border border-stone-200 font-bold uppercase tracking-wider">
                   {isAr ? "معاينة مجانية" : isFr ? "Étude Offerte" : "Zero Obligation"}
                 </span>
               </div>
@@ -429,10 +421,10 @@ export function ContactSection({ settings }: ContactSectionProps) {
                           key={s.id}
                           type="button"
                           onClick={() => setValue("solution", s.id, { shouldValidate: true })}
-                          className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
+                          className={`px-3 py-1.5 rounded-md text-xs font-medium transition-colors cursor-pointer ${
                             isSelected
-                              ? "bg-brass text-stone-950 border border-brass shadow-sm font-bold scale-[1.02]"
-                              : "bg-stone-50 hover:bg-stone-100 text-stone-700 border border-stone-200/80"
+                              ? "bg-[#34AA49] text-white border border-[#34AA49] shadow-xs"
+                              : "bg-stone-50 hover:bg-stone-100 text-stone-700 border border-stone-200"
                           }`}
                         >
                           {s.chip}
@@ -446,7 +438,7 @@ export function ContactSection({ settings }: ContactSectionProps) {
                     value={selectedSolution || ""}
                     onValueChange={(val) => setValue("solution", val, { shouldValidate: true })}
                   >
-                    <SelectTrigger className="h-11 rounded-xl border-stone-200 text-xs sm:text-sm bg-white focus:ring-brass/40">
+                    <SelectTrigger className="h-10 rounded-md border-stone-200 text-xs sm:text-sm bg-white focus:ring-[#34AA49]/30">
                       <SelectValue placeholder={isAr ? "أو اختر من القائمة الكاملة" : isFr ? "Ou sélectionner dans la liste" : "Or choose from all systems"} />
                     </SelectTrigger>
                     <SelectContent>
@@ -465,13 +457,13 @@ export function ContactSection({ settings }: ContactSectionProps) {
                   {/* 1. Name */}
                   <div className="space-y-1.5">
                     <label className="text-xs font-bold text-stone-800 flex items-center gap-1.5">
-                      <User className="h-3.5 w-3.5 text-brass" />
+                      <User className="h-3.5 w-3.5 text-[#34AA49]" />
                       <span>{isAr ? "الاسم الكامل *" : isFr ? "Nom & Prénom *" : "Full Name *"}</span>
                     </label>
                     <Input
                       {...register("name")}
                       placeholder={isAr ? "مثال: محمد المنصوري" : isFr ? "ex: Marc Dupont" : "e.g. Tariq Al Mansoori"}
-                      className="h-11 rounded-xl border-stone-200 text-xs sm:text-sm bg-stone-50/50 focus:bg-white focus:ring-brass/40"
+                      className="h-10 rounded-md border-stone-200 text-xs sm:text-sm bg-stone-50/50 focus:bg-white focus:ring-[#34AA49]/30"
                     />
                     {errors.name && <p className="text-xs text-rose-600 font-medium">{errors.name.message}</p>}
                   </div>
@@ -479,14 +471,14 @@ export function ContactSection({ settings }: ContactSectionProps) {
                   {/* 2. Phone or Email */}
                   <div className="space-y-1.5">
                     <label className="text-xs font-bold text-stone-800 flex items-center gap-1.5">
-                      <Phone className="h-3.5 w-3.5 text-brass" />
+                      <Phone className="h-3.5 w-3.5 text-[#34AA49]" />
                       <span>{isAr ? "رقم الهاتف أو البريد *" : isFr ? "Téléphone ou Email *" : "Phone or Email *"}</span>
                     </label>
                     <Input
                       {...register("contact")}
                       dir="ltr"
                       placeholder="+971 50 123 4567 or email@domain.com"
-                      className="h-11 rounded-xl border-stone-200 text-xs sm:text-sm bg-stone-50/50 focus:bg-white focus:ring-brass/40"
+                      className="h-10 rounded-md border-stone-200 text-xs sm:text-sm bg-stone-50/50 focus:bg-white focus:ring-[#34AA49]/30"
                     />
                     {errors.contact && <p className="text-xs text-rose-600 font-medium">{errors.contact.message}</p>}
                   </div>
@@ -495,11 +487,11 @@ export function ContactSection({ settings }: ContactSectionProps) {
                 {/* Location / Area Select */}
                 <div className="space-y-1.5">
                   <label className="text-xs font-bold text-stone-800 flex items-center gap-1.5">
-                    <MapPin className="h-3.5 w-3.5 text-brass" />
+                    <MapPin className="h-3.5 w-3.5 text-[#34AA49]" />
                     <span>{isAr ? "موقع المشروع في الإمارات *" : isFr ? "Emplacement du Projet *" : "Project Location in UAE *"}</span>
                   </label>
                   <Select onValueChange={(val) => setValue("location", val, { shouldValidate: true })}>
-                    <SelectTrigger className="h-11 rounded-xl border-stone-200 text-xs sm:text-sm bg-stone-50/50 focus:bg-white focus:ring-brass/40">
+                    <SelectTrigger className="h-10 rounded-md border-stone-200 text-xs sm:text-sm bg-stone-50/50 focus:bg-white focus:ring-[#34AA49]/30">
                       <SelectValue placeholder={isAr ? "حدد المنطقة أو المجمع السكني (مثل: نخلة جميرا، دبي هيلز...)" : isFr ? "Sélectionner la zone (ex: Palm Jumeirah, Dubai Hills...)" : "Select area / community (e.g. Palm Jumeirah, Dubai Hills...)"} />
                     </SelectTrigger>
                     <SelectContent>
@@ -516,7 +508,7 @@ export function ContactSection({ settings }: ContactSectionProps) {
                 {/* Optional Message / Dimensions */}
                 <div className="space-y-1.5">
                   <label className="text-xs font-bold text-stone-800 flex items-center gap-1.5">
-                    <Compass className="h-3.5 w-3.5 text-brass" />
+                    <Compass className="h-3.5 w-3.5 text-[#34AA49]" />
                     <span>{isAr ? "تفاصيل إضافية أو أبعاد تقريبية (اختياري)" : isFr ? "Dimensions Approximatives ou Détails (Facultatif)" : "Project Notes & Approximate Dimensions (Optional)"}</span>
                   </label>
                   <Textarea
@@ -529,7 +521,7 @@ export function ContactSection({ settings }: ContactSectionProps) {
                         ? "ex: Pergola bioclimatique 6m x 4m pour terrasse avec éclairage LED intégré et baies coulissantes..."
                         : "e.g. Looking for a 6m x 4m motorized bio-climatic pergola for our patio with integrated LED & sliding glass..."
                     }
-                    className="rounded-xl border-stone-200 text-xs sm:text-sm bg-stone-50/50 focus:bg-white focus:ring-brass/40"
+                    className="rounded-md border-stone-200 text-xs sm:text-sm bg-stone-50/50 focus:bg-white focus:ring-[#34AA49]/30"
                   />
                 </div>
 
@@ -538,11 +530,11 @@ export function ContactSection({ settings }: ContactSectionProps) {
                   <Button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full h-12 rounded-xl bg-gradient-to-r from-brass via-brass-light to-brass hover:brightness-105 text-stone-950 font-bold text-sm uppercase tracking-wider shadow-lg shadow-brass/25 transition-all cursor-pointer hover:scale-[1.01] active:scale-[0.99]"
+                    className="w-full h-11 rounded-md bg-[#34AA49] hover:bg-[#268537] text-white font-medium text-sm shadow-xs transition-colors cursor-pointer"
                   >
                     {isSubmitting ? (
                       <span className="flex items-center gap-2">
-                        <span className="h-4 w-4 border-2 border-stone-900/40 border-t-stone-900 rounded-full animate-spin" />
+                        <span className="h-4 w-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />
                         <span>{isAr ? "جارٍ تسجيل طلبك..." : isFr ? "Transmission en cours..." : "Submitting Inquiry..."}</span>
                       </span>
                     ) : (

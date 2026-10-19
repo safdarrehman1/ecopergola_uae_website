@@ -162,6 +162,9 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+overrides:
+  three: 0.149.0
+
 importers:
 
   .:
@@ -390,7 +393,7 @@ packages:
     peerDependencies:
       react: '>=18 <20'
       react-dom: '>=18 <20'
-      three: '>=0.149 <1'
+      three: 0.149.0
 
   '@dnd-kit/accessibility@3.1.1':
     resolution: {integrity: sha512-2P+YgaXF+gRsIihwwY1gCsQSYnu9Zyj2py8kY5fFvUM1qm2WA2u639R6YNVfU4GWr+ZM5mqEsfHZZLoRONbemw==}
