@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Link } from "@/i18n/routing";
 import { useLocale } from "next-intl";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { sectionVariants, itemFadeUp } from "@/lib/motion";
 import type { Product } from "@/lib/content/schemas";
@@ -35,7 +35,7 @@ export function ProductsGallerySection({ products = [], showAll = false }: Produ
     : "Engineered systems developed for thermal efficiency, acoustic insulation, and seamless architectural continuity.";
 
   return (
-    <section id="products" className="py-16 sm:py-20 lg:py-24 bg-background relative">
+    <section id="products" className="py-16 sm:py-20 lg:py-24 bg-[#0A0F1D] text-white relative">
       <div className="container mx-auto px-4 sm:px-6 lg:px-12 max-w-[1280px]">
         {/* Section Header */}
         <motion.div
@@ -43,16 +43,16 @@ export function ProductsGallerySection({ products = [], showAll = false }: Produ
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-40px" }}
-          className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-14"
+          className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16"
         >
           <div className="space-y-3 max-w-2xl">
-            <span className="text-[11px] sm:text-[12px] font-mono tracking-widest uppercase text-brass">
+            <span className="text-[11px] sm:text-[12px] font-mono tracking-widest uppercase text-teal-400 font-bold">
               {eyebrow}
             </span>
-            <h2 className="text-[28px] sm:text-[34px] md:text-[40px] font-semibold font-display text-foreground leading-[1.15] tracking-tight">
+            <h2 className="text-[28px] sm:text-[36px] md:text-[44px] font-extrabold font-display text-white leading-[1.12] tracking-tight">
               {title}
             </h2>
-            <p className="text-[14px] sm:text-[15px] text-muted-foreground leading-relaxed">
+            <p className="text-[14px] sm:text-[15px] text-slate-300 leading-relaxed">
               {subtitle}
             </p>
           </div>
@@ -60,18 +60,17 @@ export function ProductsGallerySection({ products = [], showAll = false }: Produ
           {!showAll && (
             <Button
               asChild
-              variant="outline"
-              className="self-start md:self-end h-10 px-5 rounded-lg border-border hover:border-brass/80 text-foreground text-xs font-semibold uppercase tracking-wider transition-all shrink-0"
+              className="self-start md:self-end h-11 px-6 rounded-full border border-teal-500/30 bg-slate-900/80 hover:bg-teal-500/20 text-white text-xs font-bold uppercase tracking-wider transition-all shrink-0"
             >
               <Link href="/products">
                 <span>{isAr ? "عرض جميع المنتجات" : isFr ? "Tous les Produits" : "View All Products"}</span>
-                <ArrowRight className="h-3.5 w-3.5 ml-1.5 rtl:mr-1.5 rtl:ml-0 rtl:rotate-180" />
+                <ArrowRight className="h-4 w-4 ml-2 rtl:mr-2 rtl:ml-0 rtl:rotate-180 text-teal-400" />
               </Link>
             </Button>
           )}
         </motion.div>
 
-        {/* Minimalist Products Grid */}
+        {/* Modern Bold Products Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {displayedProducts.map((product, idx) => {
             const productTitle = product.title[locale as "en" | "ar" | "fr"] || product.title.en;
@@ -86,44 +85,45 @@ export function ProductsGallerySection({ products = [], showAll = false }: Produ
                 whileInView="visible"
                 viewport={{ once: true, margin: "-30px" }}
                 transition={{ delay: idx * 0.06 }}
-                className="group rounded-2xl bg-card border border-border/80 overflow-hidden shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-xl hover:border-brass/70 transition-all duration-300 flex flex-col justify-between"
+                className="group rounded-3xl bg-slate-900/90 border border-white/10 overflow-hidden shadow-xl hover:shadow-[0_20px_50px_rgba(13,148,136,0.15)] hover:border-teal-500/50 transition-all duration-300 flex flex-col justify-between"
               >
                 <div>
                   {/* Clean Image Area */}
-                  <div className="relative aspect-[16/10] w-full overflow-hidden bg-muted">
+                  <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-800">
                     <Image
                       src={product.image.src}
                       alt={product.image.alt[locale as "en" | "ar" | "fr"] || product.image.alt.en || productTitle}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      className="object-cover"
+                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                     />
-                    <div className="absolute top-3 left-3 rtl:left-auto rtl:right-3 z-10">
-                      <span className="text-[10px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-md bg-white/90 backdrop-blur-md text-stone-900 font-semibold border border-white/80 shadow-xs">
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent" />
+                    <div className="absolute top-3 left-3 rtl:left-auto rtl:right-3">
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-950/80 backdrop-blur-md border border-white/10 text-teal-300 text-[10px] font-mono font-bold tracking-wider uppercase">
                         {productCategory}
                       </span>
                     </div>
                   </div>
 
-                  {/* Clean Content Area */}
-                  <div className="p-5 sm:p-6 space-y-2.5">
-                    <h3 className="text-base font-bold text-foreground group-hover:text-brass transition-colors line-clamp-1">
+                  {/* Content Area */}
+                  <div className="p-6 space-y-2.5">
+                    <h3 className="text-lg font-bold font-display text-white group-hover:text-teal-300 transition-colors line-clamp-1">
                       {productTitle}
                     </h3>
-                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed line-clamp-2">
+                    <p className="text-xs sm:text-sm text-slate-300 leading-relaxed line-clamp-2">
                       {productSummary}
                     </p>
                   </div>
                 </div>
 
-                {/* Minimalist Solid Button with Proper Colors */}
-                <div className="p-5 sm:p-6 pt-0">
+                {/* Pill CTA Button */}
+                <div className="p-6 pt-0">
                   <Link
-                    href={`/products#${product.slug}`}
-                    className="w-full py-2.5 px-4 rounded-xl bg-[#F6F3EC] hover:bg-brass text-stone-800 hover:text-stone-950 border border-stone-200/90 hover:border-brass text-xs font-semibold transition-all duration-300 flex items-center justify-between group/btn shadow-xs hover:shadow-md"
+                    href={`/products/${product.slug}`}
+                    className="w-full py-2.5 px-4 rounded-xl bg-slate-800/80 hover:bg-[#34AA49] text-white hover:text-white border border-white/10 hover:border-[#34AA49] text-xs font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-between group/btn shadow-sm"
                   >
-                    <span>{isAr ? "المواصفات الهندسية" : isFr ? "Spécifications Techniques" : "Technical Specs"}</span>
-                    <ArrowRight className="h-4 w-4 text-brass group-hover/btn:text-stone-950 rtl:rotate-180 group-hover/btn:translate-x-1 rtl:group-hover/btn:-translate-x-1 transition-all" />
+                    <span>{isAr ? "تفاصيل المنتج" : isFr ? "Détails du Produit" : "View Product"}</span>
+                    <ArrowRight className="h-4 w-4 text-teal-400 group-hover/btn:text-white rtl:rotate-180 group-hover/btn:translate-x-1 rtl:group-hover/btn:-translate-x-1 transition-all" />
                   </Link>
                 </div>
               </motion.article>

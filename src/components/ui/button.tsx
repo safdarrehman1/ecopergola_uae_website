@@ -4,30 +4,32 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 cursor-pointer select-none",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full text-xs sm:text-sm font-bold tracking-wider uppercase transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#34AA49] focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 cursor-pointer select-none",
   {
     variants: {
       variant: {
         default:
-          "bg-primary text-primary-foreground hover:bg-[#268537] shadow-xs active:translate-y-px",
+          "bg-[#34AA49] hover:bg-[#268537] text-white shadow-md shadow-[#34AA49]/25 hover:shadow-lg hover:shadow-[#34AA49]/35 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] border border-emerald-400/30",
         brass:
-          "bg-brass text-white font-semibold hover:bg-brass-dark shadow-xs active:translate-y-px",
+          "bg-[#34AA49] hover:bg-[#268537] text-white shadow-md shadow-[#34AA49]/25 hover:shadow-lg hover:shadow-[#34AA49]/35 hover:-translate-y-0.5 active:scale-[0.98] border border-emerald-400/30",
         destructive:
-          "bg-destructive text-destructive-foreground hover:bg-destructive/90 shadow-xs",
+          "bg-rose-600 text-white hover:bg-rose-700 shadow-sm",
         outline:
-          "border border-stone-300 bg-white text-stone-800 hover:bg-stone-50 hover:border-stone-400 active:translate-y-px",
+          "border border-white/20 bg-slate-900/90 text-white hover:bg-slate-800 hover:border-white/40 hover:-translate-y-0.5 active:scale-[0.98] shadow-sm",
         secondary:
-          "bg-secondary text-secondary-foreground hover:bg-[#EAE4D9]",
-        ghost: "hover:bg-stone-100 hover:text-stone-900",
-        link: "text-primary underline-offset-4 hover:underline",
+          "bg-slate-800 hover:bg-slate-700 text-slate-100 hover:text-white border border-white/10 hover:-translate-y-0.5 shadow-sm",
+        ghost:
+          "text-slate-300 hover:text-white hover:bg-white/10 transition-colors",
+        link:
+          "text-[#34AA49] underline-offset-4 hover:underline lowercase font-normal",
         glass:
-          "bg-white/80 border border-stone-200 text-stone-800 hover:bg-white active:translate-y-px",
+          "bg-white/10 backdrop-blur-xl border border-white/15 text-white hover:bg-white/20 hover:-translate-y-0.5 shadow-sm",
       },
       size: {
-        default: "h-10 px-4 py-2",
-        sm: "h-8 rounded px-3 text-xs",
-        lg: "h-11 rounded-md px-6 text-sm font-semibold",
-        icon: "h-9 w-9",
+        default: "h-11 px-6 py-2.5",
+        sm: "h-9 px-4 text-[11px]",
+        lg: "h-13 px-8 text-sm",
+        icon: "h-10 w-10 p-0 rounded-full",
       },
     },
     defaultVariants: {

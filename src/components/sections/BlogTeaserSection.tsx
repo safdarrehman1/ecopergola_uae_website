@@ -15,9 +15,10 @@ export function BlogTeaserSection() {
   const posts = getLocalizedBlog(locale);
 
   return (
-    <section className="py-20 md:py-28 bg-[#F8FAFC] relative overflow-hidden">
+    <section className="py-20 md:py-28 bg-[#070B14] text-white relative overflow-hidden">
       {/* Decorative ambient background */}
-      <div className="absolute top-1/3 left-10 w-80 h-80 bg-[#34AA49]/15 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/3 left-10 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-10 right-10 w-96 h-96 bg-[#34AA49]/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="container mx-auto px-4 max-w-7xl relative z-10">
         {/* Section Header */}
@@ -28,14 +29,10 @@ export function BlogTeaserSection() {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto space-y-4 mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/90 border border-emerald-300/80 text-[11px] font-mono tracking-widest text-emerald-950 font-semibold uppercase shadow-xs">
-            <span className="h-2 w-2 rounded-full bg-brass animate-pulse" />
-            <span>{tBlog("eyebrow")}</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-foreground tracking-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-white tracking-tight">
             {tBlog("title")}
           </h2>
-          <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+          <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
             {tBlog("subtitle")}
           </p>
         </motion.div>
@@ -49,11 +46,11 @@ export function BlogTeaserSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group rounded-3xl bg-white border border-stone-200/90 overflow-hidden shadow-sm hover:border-brass/70 hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
+              className="group rounded-3xl bg-[#0F172A] border border-white/10 overflow-hidden shadow-xl hover:border-emerald-500/50 hover:shadow-[0_20px_40px_rgba(0,0,0,0.6)] transition-all duration-300 flex flex-col justify-between"
             >
               <div>
                 {/* Featured Image */}
-                <div className="relative h-60 w-full overflow-hidden bg-muted">
+                <div className="relative h-60 w-full overflow-hidden bg-slate-900">
                   <Image
                     src={post.image}
                     alt={post.title}
@@ -61,48 +58,48 @@ export function BlogTeaserSection() {
                     sizes="(max-width: 768px) 100vw, 33vw"
                     className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-stone-950/40 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
 
                   <div className="absolute top-4 left-4 rtl:left-auto rtl:right-4 z-10">
-                    <Badge variant="brass" className="text-[10px] font-bold uppercase tracking-wider shadow-xs">
+                    <span className="inline-block px-3 py-1 rounded-full bg-slate-900/80 backdrop-blur-md text-emerald-400 border border-white/15 text-[10px] font-bold uppercase tracking-wider">
                       {locale === "ar" ? "العمارة والتصميم" : locale === "fr" ? "Architecture" : post.category}
-                    </Badge>
+                    </span>
                   </div>
                 </div>
 
                 {/* Article Header & Excerpt */}
                 <div className="p-6 space-y-3">
-                  <div className="flex items-center gap-3 text-xs text-muted-foreground">
+                  <div className="flex items-center gap-3 text-xs text-slate-400">
                     <span className="flex items-center gap-1">
-                      <Clock className="h-3.5 w-3.5 text-brass" />
+                      <Clock className="h-3.5 w-3.5 text-emerald-400" />
                       {post.readingTime}
                     </span>
                     <span>•</span>
                     <span className="flex items-center gap-1">
-                      <Calendar className="h-3.5 w-3.5 text-brass" />
+                      <Calendar className="h-3.5 w-3.5 text-emerald-400" />
                       {post.publishedAt}
                     </span>
                   </div>
 
-                  <h3 className="text-lg sm:text-xl font-bold font-display text-foreground group-hover:text-brass transition-colors leading-snug">
+                  <h3 className="text-lg sm:text-xl font-bold font-display text-white group-hover:text-emerald-400 transition-colors leading-snug">
                     {post.title}
                   </h3>
 
-                  <p className="text-xs sm:text-sm text-muted-foreground line-clamp-3 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-slate-300 line-clamp-3 leading-relaxed">
                     {post.excerpt}
                   </p>
                 </div>
               </div>
 
               {/* Author & Read More Link */}
-              <div className="p-6 pt-0 border-t border-stone-100 flex items-center justify-between">
-                <span className="text-xs text-muted-foreground font-medium truncate max-w-[150px]">
+              <div className="p-6 pt-0 border-t border-white/10 flex items-center justify-between">
+                <span className="text-xs text-slate-400 font-medium truncate max-w-[150px]">
                   {post.author.name}
                 </span>
 
                 <Link
                   href={`/blog/${post.slug}`}
-                  className="inline-flex items-center gap-1 text-xs font-bold text-brass group-hover:text-brass-dark uppercase tracking-wider transition-colors"
+                  className="inline-flex items-center gap-1 text-xs font-bold text-emerald-400 hover:text-emerald-300 uppercase tracking-wider transition-colors"
                 >
                   <span>{tBlog("readArticle")}</span>
                   <ArrowRight className="h-3.5 w-3.5 rtl:rotate-180 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform" />
@@ -118,7 +115,7 @@ export function BlogTeaserSection() {
             asChild
             variant="outline"
             size="lg"
-            className="rounded-xl font-semibold hover:border-brass border-stone-200 bg-white hover:bg-stone-50 text-stone-900 shadow-xs"
+            className="rounded-xl font-semibold border-white/20 bg-white/5 hover:bg-white/10 text-white shadow-xs"
           >
             <Link href="/blog">
               <span>{tBlog("viewAll")}</span>

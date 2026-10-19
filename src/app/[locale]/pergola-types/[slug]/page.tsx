@@ -129,12 +129,12 @@ export default async function PergolaDetailPage({
       />
 
       {/* Hero Header */}
-      <section className="relative pt-24 pb-16 md:pt-28 md:pb-20 lg:pt-32 bg-gradient-to-b from-[#F8FAFC] via-[#F1F5F9] to-[#FFFFFF] text-stone-900 border-b border-stone-200/60 overflow-hidden">
-        {/* Soft Ambient Architectural Light Rays & Grid Texture */}
+      <section className="relative pt-24 pb-16 md:pt-28 md:pb-20 lg:pt-32 bg-[#0B0F19] text-white border-b border-white/10 overflow-hidden">
+        {/* Architectural Ambient Glow & Grid Texture */}
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-[#34AA49]/15 rounded-full blur-[140px]" />
-          <div className="absolute -bottom-20 -left-20 w-[400px] h-[400px] bg-stone-300/30 rounded-full blur-[120px]" />
-          <div className="absolute inset-0 bg-[radial-gradient(#d6cfc4_1px,transparent_1px)] [background-size:28px_28px] opacity-40" />
+          <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-[140px]" />
+          <div className="absolute -bottom-20 -left-20 w-[400px] h-[400px] bg-[#34AA49]/10 rounded-full blur-[120px]" />
+          <div className="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:28px_28px] opacity-35" />
         </div>
 
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
@@ -148,22 +148,10 @@ export default async function PergolaDetailPage({
           </div>
 
           <div className="max-w-3xl space-y-4">
-            <div className="flex items-center gap-2">
-              <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/90 border border-emerald-300/80 text-[11px] font-mono tracking-widest uppercase text-emerald-950 font-semibold shadow-xs">
-                <span className="h-2 w-2 rounded-full bg-brass animate-pulse" />
-                {locale === "ar" ? "طراز مظلة مخصص" : locale === "fr" ? "Modèle de Pergola sur Mesure" : "Custom Pergola Style"}
-              </span>
-              {badge && (
-                <Badge variant="brass" className="text-[10px] font-bold">
-                  {badge}
-                </Badge>
-              )}
-            </div>
-
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-display text-stone-900 leading-tight min-w-0 break-words text-balance">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-display text-white leading-tight min-w-0 break-words text-balance">
               {name}
             </h1>
-            <p className="text-base sm:text-lg text-stone-600 leading-relaxed max-w-2xl">
+            <p className="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl">
               {description}
             </p>
           </div>
@@ -218,7 +206,7 @@ export default async function PergolaDetailPage({
 
               {/* Key Features */}
               {pergola.features && pergola.features.length > 0 && (
-                <div className="space-y-5 p-6 sm:p-8 rounded-3xl bg-[#F8FAFC] border border-stone-200/90 shadow-sm">
+                <div className="space-y-5 p-6 sm:p-8 rounded-3xl bg-card  shadow-sm">
                   <h3 className="text-xl font-bold font-display text-foreground">
                     {tDetails("keyFeatures")}
                   </h3>

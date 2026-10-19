@@ -4,11 +4,10 @@ import { useState } from "react";
 import Image from "next/image";
 import { Link, usePathname } from "@/i18n/routing";
 import { useLocale } from "next-intl";
-import { Menu, ArrowRight, X, ChevronDown, Layers, Building2, SlidersHorizontal } from "lucide-react";
+import { Menu, ArrowRight, Sliders, SunDim, Shield, Layers } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { LanguageSwitcher } from "@/components/layout/LanguageSwitcher";
-import { siteConfig } from "@/lib/siteConfig";
 import { cn } from "@/lib/utils";
 import {
   NavigationMenu,
@@ -30,15 +29,15 @@ export function Header() {
   const quoteCta = isAr ? "طلب عرض سعر" : isFr ? "Demander un Devis" : "Request a Quote";
 
   return (
-    <header className="w-full bg-white border-b border-stone-200 transition-all duration-200 sticky top-0 z-50">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl flex items-center justify-between h-16 sm:h-18">
-        {/* Architectural Brand Logo */}
+    <header className="w-full bg-[#0A0F1D]/95 backdrop-blur-xl border-b border-white/10 text-white transition-all duration-200 sticky top-0 z-50">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl flex items-center justify-between h-16 sm:h-20">
+        {/* Prominent Architectural Brand Logo */}
         <Link
           href="/"
           aria-label="Eco Pergola"
-          className="flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md group"
+          className="flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-[#34AA49] rounded-2xl group transition-transform hover:scale-[1.03]"
         >
-          <div className="relative h-12 w-12 sm:h-14 sm:w-14 rounded-md overflow-hidden bg-white border border-stone-200 flex items-center justify-center p-1 shadow-xs group-hover:border-[#34AA49] transition-colors">
+          <div className="relative h-12 w-12 sm:h-14 sm:w-14 rounded-2xl overflow-hidden bg-white border border-white/20 flex items-center justify-center p-1 shadow-lg group-hover:border-[#34AA49] transition-all duration-300">
             <Image
               src="/images/logo.jpeg"
               alt="Eco Pergola"
@@ -53,14 +52,15 @@ export function Header() {
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center space-x-1 rtl:space-x-reverse" aria-label="Main Navigation">
           <NavigationMenu>
-            <NavigationMenuList>
+            <NavigationMenuList className="text-white">
               {/* Home */}
               <NavigationMenuItem>
                 <Link href="/#" legacyBehavior passHref>
                   <NavigationMenuLink
                     className={cn(
                       navigationMenuTriggerStyle(),
-                      pathname === "/" && "text-brass font-semibold"
+                      "bg-transparent text-white/80 hover:text-white hover:bg-white/10 font-bold text-xs uppercase tracking-wider rounded-xl transition-colors",
+                      pathname === "/" && "text-[#48C35F] bg-white/10"
                     )}
                   >
                     {isAr ? "الرئيسية" : isFr ? "Accueil" : "Home"}
@@ -73,86 +73,137 @@ export function Header() {
                 <NavigationMenuTrigger
                   className={cn(
                     navigationMenuTriggerStyle(),
-                    pathname.startsWith("/pergola-types") && "text-brass font-semibold"
+                    "bg-transparent text-white/80 hover:text-white hover:bg-white/10 font-bold text-xs uppercase tracking-wider rounded-xl transition-colors",
+                    pathname.startsWith("/pergola-types") && "text-[#48C35F] bg-white/10"
                   )}
                 >
                   {isAr ? "أنواع البرجولات" : isFr ? "Types de Pergolas" : "Pergola Types"}
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <div className="w-[500px] p-5 grid grid-cols-2 gap-4 bg-white rounded-md border border-stone-200 shadow-md">
-                    <div className="space-y-2">
-                      <div className="text-xs font-bold uppercase tracking-wider text-brass px-2">
-                        {isAr ? "حسب نوع السقف" : isFr ? "Par Mécanisme" : "By Mechanism"}
+                  <div className="w-[740px] p-6 grid grid-cols-12 gap-6 bg-slate-900/98 backdrop-blur-2xl rounded-3xl border border-white/15 text-white shadow-[0_25px_70px_rgba(0,0,0,0.8)]">
+                    {/* Mechanism Systems (5 cols) */}
+                    <div className="col-span-5 space-y-2">
+                      <div className="text-[11px] font-mono font-bold uppercase tracking-widest text-[#34AA49] px-2 flex items-center gap-1.5 mb-2">
+                        <Sliders className="h-3.5 w-3.5 text-[#34AA49]" />
+                        <span>{isAr ? "الأنظمة الذكية والمتحركة" : isFr ? "Mécanismes Motorisés" : "Smart Mechanisms"}</span>
                       </div>
                       <Link
                         href="/pergola-types/louvered-pergola"
-                        className="block p-2 rounded-lg hover:bg-muted text-xs transition-colors"
+                        className="group/item flex items-start gap-3 p-2.5 rounded-2xl hover:bg-white/5 border border-transparent hover:border-white/10 transition-all"
                       >
-                        <div className="font-semibold text-foreground">
-                          {isAr ? "برجولا شرائح ذكية" : isFr ? "Bioclimatique à Lames" : "Bio-Climatic Louvered"}
+                        <div className="h-9 w-9 rounded-xl bg-slate-800 flex items-center justify-center shrink-0 border border-white/10 group-hover/item:border-[#34AA49] group-hover/item:text-[#34AA49] transition-colors">
+                          <Sliders className="h-4 w-4" />
                         </div>
-                        <div className="text-muted-foreground text-[11px] mt-0.5">
-                          {isAr ? "دوران 0°-140° بمحركات ذكية" : isFr ? "Lames motorisées orientables" : "Motorized 0°-140° rotation"}
+                        <div>
+                          <div className="text-xs font-bold text-white group-hover/item:text-[#34AA49] transition-colors flex items-center gap-1.5">
+                            <span>{isAr ? "برجولا بيوكليماتيك ذكية" : isFr ? "Bioclimatique à Lames" : "Bio-Climatic Louvered"}</span>
+                            <span className="text-[9px] font-mono px-1.5 py-0.5 bg-[#34AA49]/20 text-[#34AA49] rounded-full border border-[#34AA49]/40">Popular</span>
+                          </div>
+                          <div className="text-slate-400 text-[11px] mt-0.5 leading-snug">
+                            {isAr ? "دوران 0°-140° بمحركات أوروبية ذكية" : isFr ? "Lames motorisées orientables" : "Motorized 0°-140° louver rotation"}
+                          </div>
                         </div>
                       </Link>
+
                       <Link
                         href="/pergola-types/retractable-pergola"
-                        className="block p-2 rounded-lg hover:bg-muted text-xs transition-colors"
+                        className="group/item flex items-start gap-3 p-2.5 rounded-2xl hover:bg-white/5 border border-transparent hover:border-white/10 transition-all"
                       >
-                        <div className="font-semibold text-foreground">
-                          {isAr ? "سقف قماشي متحرك" : isFr ? "Toile Rétractable" : "Retractable Canopy"}
+                        <div className="h-9 w-9 rounded-xl bg-slate-800 flex items-center justify-center shrink-0 border border-white/10 group-hover/item:border-[#34AA49] group-hover/item:text-[#34AA49] transition-colors">
+                          <SunDim className="h-4 w-4" />
                         </div>
-                        <div className="text-muted-foreground text-[11px] mt-0.5">
-                          {isAr ? "طي وفتح بلمسة زر" : isFr ? "Ouverture complète motorisée" : "Motorized sliding canopy"}
+                        <div>
+                          <div className="text-xs font-bold text-white group-hover/item:text-[#34AA49] transition-colors">
+                            {isAr ? "سقف قماشي متحرك" : isFr ? "Toile Rétractable" : "Retractable Canopy"}
+                          </div>
+                          <div className="text-slate-400 text-[11px] mt-0.5 leading-snug">
+                            {isAr ? "طي وفتح كهربائي بلمسة زر" : isFr ? "Ouverture complète motorisée" : "Motorized sliding waterproof fabric"}
+                          </div>
                         </div>
                       </Link>
+
                       <Link
                         href="/pergola-types/fixed-roof-pergola"
-                        className="block p-2 rounded-lg hover:bg-muted text-xs transition-colors"
+                        className="group/item flex items-start gap-3 p-2.5 rounded-2xl hover:bg-white/5 border border-transparent hover:border-white/10 transition-all"
                       >
-                        <div className="font-semibold text-foreground">
-                          {isAr ? "سقف ثابت معزول" : isFr ? "Toiture Fixe Isolée" : "Fixed Insulated Roof"}
+                        <div className="h-9 w-9 rounded-xl bg-slate-800 flex items-center justify-center shrink-0 border border-white/10 group-hover/item:border-[#34AA49] group-hover/item:text-[#34AA49] transition-colors">
+                          <Shield className="h-4 w-4" />
                         </div>
-                        <div className="text-muted-foreground text-[11px] mt-0.5">
-                          {isAr ? "عزل حراري وحماية كاملة" : isFr ? "Protection solaire totale" : "Continuous solid shade"}
+                        <div>
+                          <div className="text-xs font-bold text-white group-hover/item:text-[#34AA49] transition-colors">
+                            {isAr ? "سقف ثابت عازل حرارياً" : isFr ? "Toiture Fixe Isolée" : "Fixed Insulated Roof"}
+                          </div>
+                          <div className="text-slate-400 text-[11px] mt-0.5 leading-snug">
+                            {isAr ? "حماية كاملة من الشمس والأمطار" : isFr ? "Isolation thermique totale" : "Continuous insulated shade panels"}
+                          </div>
                         </div>
                       </Link>
                     </div>
 
-                    <div className="space-y-2">
-                      <div className="text-xs font-bold uppercase tracking-wider text-brass px-2">
-                        {isAr ? "حسب المادة" : isFr ? "Par Matériau" : "By Material"}
+                    {/* Materials & Typologies (4 cols) */}
+                    <div className="col-span-4 space-y-2">
+                      <div className="text-[11px] font-mono font-bold uppercase tracking-widest text-[#34AA49] px-2 flex items-center gap-1.5 mb-2">
+                        <Layers className="h-3.5 w-3.5 text-[#34AA49]" />
+                        <span>{isAr ? "المواد والقطاعات" : isFr ? "Matériaux Nobles" : "Materials & Builds"}</span>
                       </div>
                       <Link
                         href="/pergola-types/aluminum-pergola"
-                        className="block p-2 rounded-lg hover:bg-muted text-xs transition-colors"
+                        className="group/item block p-2.5 rounded-2xl hover:bg-white/5 border border-transparent hover:border-white/10 transition-all"
                       >
-                        <div className="font-semibold text-foreground">
-                          {isAr ? "ألمنيوم 6063-T6" : isFr ? "Aluminium 6063-T6" : "Structural Aluminum"}
+                        <div className="text-xs font-bold text-white group-hover/item:text-[#34AA49] transition-colors">
+                          {isAr ? "ألمنيوم 6063-T6 بحري" : isFr ? "Aluminium Marine 6063-T6" : "6063-T6 Marine Alloy"}
                         </div>
-                        <div className="text-muted-foreground text-[11px] mt-0.5">
-                          {isAr ? "مقاوم للصدأ وبدون صيانة" : isFr ? "Sans entretien, anticorrosion" : "Rust-proof, marine grade"}
-                        </div>
-                      </Link>
-                      <Link
-                        href="/pergola-types/wooden-pergola"
-                        className="block p-2 rounded-lg hover:bg-muted text-xs transition-colors"
-                      >
-                        <div className="font-semibold text-foreground">
-                          {isAr ? "خشب طبيعي فاخر" : isFr ? "Bois Noble (Teck)" : "Luxury Hardwood"}
-                        </div>
-                        <div className="text-muted-foreground text-[11px] mt-0.5">
-                          {isAr ? "أخشاب تيك وإيروكو معالجة" : isFr ? "Teck et Iroko traités" : "Teak & Iroko timber"}
+                        <div className="text-slate-400 text-[11px] mt-0.5 leading-snug">
+                          {isAr ? "مقاوم للصدأ والرطوبة والملوحة" : isFr ? "Zéro corrosion, garanti 10 ans" : "Seaside Qualicoat Class 2 finish"}
                         </div>
                       </Link>
 
-                      <div className="pt-2 border-t border-border/60">
+                      <Link
+                        href="/pergola-types/wooden-pergola"
+                        className="group/item block p-2.5 rounded-2xl hover:bg-white/5 border border-transparent hover:border-white/10 transition-all"
+                      >
+                        <div className="text-xs font-bold text-white group-hover/item:text-[#34AA49] transition-colors">
+                          {isAr ? "خشب طبيعي فاخر هجين" : isFr ? "Bois Noble & Teck" : "Natural Hardwood Hybrid"}
+                        </div>
+                        <div className="text-slate-400 text-[11px] mt-0.5 leading-snug">
+                          {isAr ? "أخشاب تيك وإيروكو معالجة للحرارة" : isFr ? "Teck et Iroko haute résistance" : "Treated teak & iroko accents"}
+                        </div>
+                      </Link>
+
+                      <Link
+                        href="/pergola-types/cantilever-pergola"
+                        className="group/item block p-2.5 rounded-2xl hover:bg-white/5 border border-transparent hover:border-white/10 transition-all"
+                      >
+                        <div className="text-xs font-bold text-white group-hover/item:text-[#34AA49] transition-colors">
+                          {isAr ? "برجولا معلقة بدون أعمدة" : isFr ? "Pergola Suspendue" : "Cantilevered Floating"}
+                        </div>
+                        <div className="text-slate-400 text-[11px] mt-0.5 leading-snug">
+                          {isAr ? "تصميم معلق يمنح مساحة مفتوحة" : isFr ? "Sans poteaux au sol" : "Zero ground posts for open views"}
+                        </div>
+                      </Link>
+                    </div>
+
+                    {/* Spotlight Showcase (3 cols) */}
+                    <div className="col-span-3 flex flex-col justify-between p-4 rounded-2xl bg-slate-800/80 border border-white/10 text-white">
+                      <div className="space-y-2">
+                        <span className="text-[10px] font-mono uppercase tracking-widest text-emerald-400 font-bold block">
+                          Catalog Edition
+                        </span>
+                        <div className="text-xs font-bold text-white">
+                          {isAr ? "دليل الـ 19 نموذج معتمد" : isFr ? "19 Modèles Homologués" : "19 Engineered Typologies"}
+                        </div>
+                        <p className="text-[11px] text-slate-400 leading-snug">
+                          {isAr ? "اطلع على كافة الأبعاد والخيارات التقنية للمشاريع." : isFr ? "Consultez toutes les fiches techniques pour villas." : "Compare full structural blueprints and specs."}
+                        </p>
+                      </div>
+
+                      <div className="pt-3 border-t border-white/10">
                         <Link
                           href="/pergola-types"
-                          className="inline-flex items-center text-xs font-semibold text-brass hover:text-brass-dark px-2"
+                          className="w-full py-2 px-3 rounded-xl bg-[#34AA49] hover:bg-[#268537] text-white text-[11px] font-bold uppercase tracking-wider flex items-center justify-between transition-colors shadow-sm"
                         >
-                          <span>{isAr ? "دليل البرجولات (19 نوع)" : isFr ? "Voir les 19 modèles" : "View All 19 Types"}</span>
-                          <ArrowRight className="h-3.5 w-3.5 ml-1 rtl:mr-1 rtl:ml-0 rtl:rotate-180" />
+                          <span>{isAr ? "دليل البرجولات" : isFr ? "Tout Voir" : "All 19 Types"}</span>
+                          <ArrowRight className="h-3 w-3 rtl:rotate-180" />
                         </Link>
                       </div>
                     </div>
@@ -166,7 +217,8 @@ export function Header() {
                   <NavigationMenuLink
                     className={cn(
                       navigationMenuTriggerStyle(),
-                      pathname.startsWith("/services") && "text-brass font-semibold"
+                      "bg-transparent text-white/80 hover:text-white hover:bg-white/10 font-bold text-xs uppercase tracking-wider rounded-xl transition-colors",
+                      pathname.startsWith("/services") && "text-[#48C35F] bg-white/10"
                     )}
                   >
                     {isAr ? "الخدمات" : isFr ? "Services" : "Services"}
@@ -180,7 +232,8 @@ export function Header() {
                   <NavigationMenuLink
                     className={cn(
                       navigationMenuTriggerStyle(),
-                      pathname.startsWith("/products") && "text-brass font-semibold"
+                      "bg-transparent text-white/80 hover:text-white hover:bg-white/10 font-bold text-xs uppercase tracking-wider rounded-xl transition-colors",
+                      pathname.startsWith("/products") && "text-[#48C35F] bg-white/10"
                     )}
                   >
                     {isAr ? "المنتجات" : isFr ? "Produits" : "Products"}
@@ -194,7 +247,8 @@ export function Header() {
                   <NavigationMenuLink
                     className={cn(
                       navigationMenuTriggerStyle(),
-                      pathname.startsWith("/projects") && "text-brass font-semibold"
+                      "bg-transparent text-white/80 hover:text-white hover:bg-white/10 font-bold text-xs uppercase tracking-wider rounded-xl transition-colors",
+                      pathname.startsWith("/projects") && "text-[#48C35F] bg-white/10"
                     )}
                   >
                     {isAr ? "المشاريع" : isFr ? "Réalisations" : "Portfolio"}
@@ -208,7 +262,8 @@ export function Header() {
                   <NavigationMenuLink
                     className={cn(
                       navigationMenuTriggerStyle(),
-                      pathname === "/about" && "text-brass font-semibold"
+                      "bg-transparent text-white/80 hover:text-white hover:bg-white/10 font-bold text-xs uppercase tracking-wider rounded-xl transition-colors",
+                      pathname === "/about" && "text-[#48C35F] bg-white/10"
                     )}
                   >
                     {isAr ? "من نحن" : isFr ? "À Propos" : "About"}
@@ -222,7 +277,8 @@ export function Header() {
                   <NavigationMenuLink
                     className={cn(
                       navigationMenuTriggerStyle(),
-                      pathname === "/contact" && "text-brass font-semibold"
+                      "bg-transparent text-white/80 hover:text-white hover:bg-white/10 font-bold text-xs uppercase tracking-wider rounded-xl transition-colors",
+                      pathname === "/contact" && "text-[#48C35F] bg-white/10"
                     )}
                   >
                     {isAr ? "اتصل بنا" : isFr ? "Contact" : "Contact"}
@@ -233,19 +289,19 @@ export function Header() {
           </NavigationMenu>
         </nav>
 
-        {/* Right CTA Actions: Language Switcher & One Prominent "Request a Quote" Button */}
+        {/* Right CTA Actions: Language Switcher & One Pill Button */}
         <div className="flex items-center gap-3">
-          <div className="hidden sm:block">
+          <div className="hidden sm:block text-stone-300">
             <LanguageSwitcher />
           </div>
 
           <Button
             asChild
-            className="h-10 px-5 rounded-md bg-primary hover:bg-[#268537] text-white font-medium text-xs sm:text-sm shadow-xs transition-colors"
+            className="h-11 px-6 rounded-full bg-gradient-to-r from-[#268537] via-[#34AA49] to-[#48C35F] hover:brightness-110 text-white font-bold text-xs sm:text-sm uppercase tracking-wider shadow-lg shadow-[#34AA49]/30 transition-all hover:scale-105 active:scale-95"
           >
             <Link href="/contact">
               <span>{quoteCta}</span>
-              <ArrowRight className="h-3.5 w-3.5 ml-1.5 rtl:mr-1.5 rtl:ml-0 rtl:rotate-180 hidden sm:inline" />
+              <ArrowRight className="h-4 w-4 ml-1.5 rtl:mr-1.5 rtl:ml-0 rtl:rotate-180 hidden sm:inline" />
             </Link>
           </Button>
 
@@ -256,23 +312,23 @@ export function Header() {
                 variant="outline"
                 size="icon"
                 aria-label="Open Mobile Navigation Menu"
-                className="h-10 w-10 lg:hidden rounded-md border-stone-200"
+                className="h-10 w-10 lg:hidden rounded-xl border-white/20 text-white bg-white/10 hover:bg-white/20"
               >
                 <Menu className="h-5 w-5" />
               </Button>
             </SheetTrigger>
-            <SheetContent side={isAr ? "right" : "left"} className="w-[300px] p-6 flex flex-col justify-between">
+            <SheetContent side={isAr ? "right" : "left"} className="w-[300px] p-6 flex flex-col justify-between bg-[#0A0F1D] text-white border-white/10">
               <div className="space-y-6">
-                <div className="flex items-center justify-between pb-4 border-b border-stone-200">
+                <div className="flex items-center justify-between pb-4 border-b border-white/10">
                   <div className="flex items-center">
-                    <div className="h-12 w-12 rounded-md overflow-hidden border border-stone-200 p-1 bg-white shadow-xs">
+                    <div className="h-12 w-12 rounded-xl overflow-hidden border border-white/20 p-1 bg-white shadow-md">
                       <Image src="/images/logo.jpeg" alt="Eco Pergola" width={48} height={48} className="object-contain w-full h-full" />
                     </div>
                   </div>
                 </div>
 
                 {/* Mobile Links */}
-                <div className="flex flex-col space-y-1 text-sm font-medium">
+                <div className="flex flex-col space-y-1 text-sm font-bold">
                   {[
                     { href: "/", label: isAr ? "الرئيسية" : isFr ? "Accueil" : "Home" },
                     { href: "/pergola-types", label: isAr ? "أنواع البرجولات (19 نوع)" : isFr ? "Types de Pergolas" : "Pergola Types" },
@@ -287,8 +343,8 @@ export function Header() {
                       href={item.href}
                       onClick={() => setMobileOpen(false)}
                       className={cn(
-                        "px-3 py-2 rounded-md transition-colors hover:bg-stone-100 text-stone-800",
-                        pathname === item.href && "bg-stone-100 text-primary font-semibold"
+                        "px-3.5 py-2.5 rounded-xl transition-colors hover:bg-white/10 text-stone-200",
+                        pathname === item.href && "bg-white/10 text-[#48C35F]"
                       )}
                     >
                       {item.label}
@@ -298,9 +354,9 @@ export function Header() {
               </div>
 
               {/* Mobile Sheet Footer */}
-              <div className="pt-6 border-t border-stone-200 space-y-3">
+              <div className="pt-6 border-t border-white/10 space-y-3">
                 <LanguageSwitcher />
-                <Button asChild className="w-full h-10 rounded-md bg-primary hover:bg-[#268537] text-white font-medium text-xs">
+                <Button asChild className="w-full h-11 rounded-full bg-gradient-to-r from-[#268537] via-[#34AA49] to-[#48C35F] text-white font-bold text-xs uppercase tracking-wider">
                   <Link href="/contact" onClick={() => setMobileOpen(false)}>
                     {quoteCta}
                   </Link>

@@ -1,133 +1,149 @@
 "use client";
 
+import { useRef, useState } from "react";
 import Image from "next/image";
 import { Link } from "@/i18n/routing";
 import { useLocale } from "next-intl";
-import { motion } from "framer-motion";
-import { MapPin, ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { sectionVariants, itemFadeUp } from "@/lib/motion";
+import { MapPin, ArrowUpRight, ArrowLeft, ArrowRight, Layers } from "lucide-react";
 import type { Project } from "@/lib/content/schemas";
 
-interface ProjectsSectionProps {
-  projects?: Project[];
-  showAll?: boolean;
-}
+export function ProjectsSection({ projects = [], showAll = false }: { projects?: Project[]; showAll?: boolean }) {
+  const currentLocale = useLocale();
+  const isArabic = currentLocale === "ar";
+  const isFrench = currentLocale === "fr";
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [cardIndex, setCardIndex] = useState(0);
 
-export function ProjectsSection({ projects = [], showAll = false }: ProjectsSectionProps) {
-  const locale = useLocale();
-  const isAr = locale === "ar";
-  const isFr = locale === "fr";
+  const projectItems = showAll ? projects : projects.slice(0, 6);
 
-  const featuredProjects = showAll ? projects : projects.slice(0, 3);
-
-  const eyebrow = isAr ? "مشاريع مميزة تم تنفيذها" : isFr ? "Études de Cas Réalisées" : "Featured Case Studies";
-  const title = isAr
-    ? "مشاريع حقيقية تم تسليمها في دبي والإمارات"
-    : isFr
-    ? "Projets réels livrés avec succès à Dubaï"
-    : "Identifiable architectural projects delivered in Dubai";
-  const subtitle = isAr
-    ? "دراسات حالة موثقة تبرز نطاق الأعمال، المواد المستخدمة، والدقة الهندسية في الفلل والأبراج."
-    : isFr
-    ? "Des réalisations documentées mettant en avant le périmètre technique, les matériaux et la qualité d'exécution."
-    : "Documented case studies detailing structural scope, materials specified, and completed installations across premier UAE addresses.";
+  const navigateTrack = (direction: "left" | "right") => {
+    if (!scrollRef.current) return;
+    const scrollStep = 520;
+    const delta = direction === "right" ? scrollStep : -scrollStep;
+    scrollRef.current.scrollBy({
+      left: isArabic ? -delta : delta,
+      behavior: "smooth",
+    });
+    setCardIndex((curr) => (direction === "right" ? Math.min(curr + 1, projectItems.length - 1) : Math.max(curr - 1, 0)));
+  };
 
   return (
-    <section id="projects" className="py-16 sm:py-20 lg:py-24 bg-[#FAF8F5] border-b border-stone-200">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-        {/* Centered Section Header */}
-        <motion.div
-          variants={sectionVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-40px" }}
-          className="text-center max-w-3xl mx-auto mb-12 sm:mb-14"
-        >
-          <span className="inline-block text-xs font-semibold tracking-wider uppercase text-[#34AA49] mb-2">
-            {eyebrow}
-          </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold font-display text-stone-900 leading-tight">
-            {title}
-          </h2>
-          <p className="mt-3 text-sm sm:text-base text-stone-600 leading-relaxed">
-            {subtitle}
-          </p>
+    <section id="projects" className="py-24 bg-[#0F172A] text-white overflow-hidden relative border-t border-white/5">
+      {/* Dynamic ambient halo */}
+      <div className="absolute top-10 left-1/3 w-[500px] h-[250px] bg-teal-500/10 rounded-full blur-[140px] pointer-events-none" />
 
-          {!showAll && (
-            <div className="mt-6 flex justify-center">
-              <Button
-                asChild
-                variant="outline"
-                className="h-9 px-4 rounded-md border-stone-300 hover:border-[#34AA49] hover:text-[#34AA49] text-stone-800 text-xs font-semibold uppercase tracking-wider transition-colors"
+      <div className="container mx-auto px-4 sm:px-6 lg:px-12 max-w-7xl relative z-10">
+        
+        {/* Carousel Header Bar */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-14">
+          <div className="space-y-3 max-w-xl">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-display text-white tracking-tight">
+              {isArabic ? "مشاريع معمارية رائدة في دبي" : isFrench ? "Réalisations d'Exception à Dubaï" : "Signature Projects Across Dubai"}
+            </h2>
+
+            <p className="text-sm sm:text-base text-slate-400">
+              {isArabic
+                ? "نماذج موثقة للفلل السكنية الفاخرة والمشاريع التجارية مع أعلى معايير التشطيب."
+                : isFrench
+                ? "Découvrez nos structures installées à Palm Jumeirah, Emirates Hills et Dubai Hills."
+                : "Explore our recently completed custom installations spanning Palm Jumeirah to Dubai Hills."}
+            </p>
+          </div>
+
+          {/* Slider Arrow Controls */}
+          <div className="flex items-center gap-4 self-start md:self-end">
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={() => navigateTrack("left")}
+                aria-label="Previous Project"
+                className="h-12 w-12 rounded-full bg-slate-900 border border-white/10 hover:border-teal-400 hover:bg-teal-500/10 text-white flex items-center justify-center transition-all cursor-pointer shadow-md"
               >
-                <Link href="/projects">
-                  <span>{isAr ? "عرض كل المشاريع" : isFr ? "Toutes les Réalisations" : "View Full Portfolio"}</span>
-                  <ArrowRight className="h-3.5 w-3.5 ml-1.5 rtl:mr-1.5 rtl:ml-0 rtl:rotate-180" />
-                </Link>
-              </Button>
+                <ArrowLeft className="h-5 w-5 rtl:rotate-180" />
+              </button>
+              <button
+                type="button"
+                onClick={() => navigateTrack("right")}
+                aria-label="Next Project"
+                className="h-12 w-12 rounded-full bg-slate-900 border border-white/10 hover:border-teal-400 hover:bg-teal-500/10 text-white flex items-center justify-center transition-all cursor-pointer shadow-md"
+              >
+                <ArrowRight className="h-5 w-5 rtl:rotate-180" />
+              </button>
             </div>
-          )}
-        </motion.div>
 
-        {/* 3-Column Structured Card Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {featuredProjects.map((project, idx) => {
-            const projectTitle = project.title[locale as "en" | "ar" | "fr"] || project.title.en;
-            const projectLocation = project.location[locale as "en" | "ar" | "fr"] || project.location.en;
-            const projectSummary = project.summary[locale as "en" | "ar" | "fr"] || project.summary.en;
+            {!showAll && (
+              <Link
+                href="/projects"
+                className="h-12 px-6 rounded-full bg-slate-800 hover:bg-slate-700 border border-white/10 text-white text-xs font-bold uppercase tracking-wider inline-flex items-center gap-2 transition-colors"
+              >
+                <span>{isArabic ? "كل المشاريع" : isFrench ? "Tout Voir" : "All Case Studies"}</span>
+                <ArrowUpRight className="h-4 w-4 rtl:rotate-270" />
+              </Link>
+            )}
+          </div>
+        </div>
+
+        {/* Snap Track Area */}
+        <div
+          ref={scrollRef}
+          className="flex gap-6 sm:gap-8 overflow-x-auto snap-x snap-mandatory scrollbar-none pb-4 -mx-4 px-4 sm:-mx-6 sm:px-6 lg:-mx-12 lg:px-12"
+          style={{ scrollbarWidth: "none" }}
+        >
+          {projectItems.map((item, i) => {
+            const heading = item.title[currentLocale as "en" | "ar" | "fr"] || item.title.en;
+            const place = item.location[currentLocale as "en" | "ar" | "fr"] || item.location.en;
+            const excerpt = item.summary[currentLocale as "en" | "ar" | "fr"] || item.summary.en;
 
             return (
-              <motion.article
-                key={project.id}
-                variants={itemFadeUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-30px" }}
-                transition={{ delay: idx * 0.06 }}
-                className="group rounded-md bg-white border border-stone-200 overflow-hidden shadow-xs hover:border-stone-300 hover:shadow-sm transition-all duration-200 flex flex-col justify-between"
+              <div
+                key={item.id}
+                className="w-[84vw] sm:w-[460px] lg:w-[520px] shrink-0 snap-start rounded-[28px] bg-slate-900 border border-white/10 hover:border-teal-400/50 p-6 flex flex-col justify-between shadow-2xl transition-all duration-300 group"
               >
-                <div>
-                  <div className="relative aspect-[16/10] w-full overflow-hidden bg-stone-100">
+                <div className="space-y-5">
+                  {/* Photo with Tag */}
+                  <div className="relative aspect-[16/10] w-full rounded-2xl overflow-hidden bg-slate-800">
                     <Image
-                      src={project.image.src}
-                      alt={project.image.alt[locale as "en" | "ar" | "fr"] || project.image.alt.en || projectTitle}
+                      src={item.image.src}
+                      alt={item.image.alt[currentLocale as "en" | "ar" | "fr"] || item.image.alt.en || heading}
                       fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      className="object-cover"
+                      sizes="(max-width: 640px) 85vw, 520px"
+                      className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                     />
-                    <div className="absolute top-3 left-3 rtl:left-auto rtl:right-3 z-10">
-                      <span className="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-wider px-2 py-0.5 rounded bg-white/95 text-stone-800 font-semibold border border-stone-200 shadow-xs">
-                        <MapPin className="h-2.5 w-2.5 text-[#34AA49]" />
-                        <span>{projectLocation}</span>
-                      </span>
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
+                    
+                    <div className="absolute top-3 left-3 rtl:left-auto rtl:right-3 flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-950/80 backdrop-blur-md border border-white/10 text-teal-300 text-xs font-mono font-bold">
+                      <MapPin className="h-3 w-3 text-teal-400" />
+                      <span>{place}</span>
+                    </div>
+
+                    <div className="absolute bottom-3 right-3 rtl:right-auto rtl:left-3 px-2.5 py-1 rounded-full bg-slate-900/90 text-[11px] font-mono text-slate-300 border border-white/10">
+                      {item.year}
                     </div>
                   </div>
 
-                  <div className="p-5 space-y-2">
-                    <div className="text-[11px] text-[#34AA49] uppercase tracking-wider font-semibold">
-                      Case Study 0{idx + 1} • {project.year}
-                    </div>
-
-                    <h3 className="text-base font-bold text-stone-900 group-hover:text-[#34AA49] transition-colors line-clamp-1">
-                      {projectTitle}
+                  <div className="space-y-2">
+                    <span className="text-xs font-mono text-teal-400 uppercase tracking-widest font-bold">
+                      PROJECT 0{i + 1}
+                    </span>
+                    <h3 className="text-xl sm:text-2xl font-bold font-display text-white group-hover:text-teal-300 transition-colors line-clamp-1">
+                      {heading}
                     </h3>
-                    <p className="text-xs sm:text-sm text-stone-600 leading-relaxed line-clamp-2">
-                      {projectSummary}
+                    <p className="text-xs sm:text-sm text-slate-400 leading-relaxed line-clamp-2">
+                      {excerpt}
                     </p>
                   </div>
                 </div>
 
-                <div className="p-5 pt-0">
+                <div className="pt-6 mt-4 border-t border-white/10">
                   <Link
-                    href={`/projects/${project.slug}`}
-                    className="w-full py-2 px-3.5 rounded-md bg-stone-50 hover:bg-[#34AA49] hover:text-white border border-stone-200 hover:border-[#34AA49] text-stone-800 text-xs font-medium transition-colors flex items-center justify-between group/btn shadow-xs"
+                    href={`/projects/${item.slug}`}
+                    className="w-full py-3 px-5 rounded-xl bg-slate-800 hover:bg-[#34AA49] text-white border border-white/10 hover:border-[#34AA49] text-xs font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-between"
                   >
-                    <span>{isAr ? "دراسة الحالة الكاملة" : isFr ? "Lire l'Étude de Cas" : "Read Full Case Study"}</span>
-                    <ArrowRight className="h-3.5 w-3.5 text-stone-400 group-hover/btn:text-white rtl:rotate-180 transition-colors" />
+                    <span>{isArabic ? "تفاصيل المشروع" : isFrench ? "Détails de l'Étude" : "View Project Specs"}</span>
+                    <ArrowRight className="h-4 w-4 text-teal-400 rtl:rotate-180 group-hover:text-white" />
                   </Link>
                 </div>
-              </motion.article>
+              </div>
             );
           })}
         </div>

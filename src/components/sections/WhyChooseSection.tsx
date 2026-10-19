@@ -87,28 +87,28 @@ export function WhyChooseSection() {
     : "Specific manufacturing and material specifications proven to perform in Dubai's coastal and desert conditions.";
 
   return (
-    <section className="py-16 sm:py-20 lg:py-24 bg-white border-b border-stone-200">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-        {/* Centered Section Header */}
+    <section className="py-16 sm:py-20 lg:py-24 bg-[#070B14] text-white relative border-y border-white/5">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-12 max-w-[1280px]">
+        {/* Section Header */}
         <motion.div
           variants={sectionVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-40px" }}
-          className="text-center max-w-3xl mx-auto space-y-3 mb-12 sm:mb-16"
+          className="text-center max-w-2xl mx-auto space-y-3 mb-12 sm:mb-16"
         >
-          <span className="inline-block text-xs font-semibold tracking-wider uppercase text-[#34AA49]">
+          <span className="text-[11px] sm:text-[12px] font-mono tracking-widest uppercase text-teal-400 font-bold">
             {eyebrow}
           </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold font-display text-stone-900 leading-tight">
+          <h2 className="text-[28px] sm:text-[36px] md:text-[44px] font-extrabold font-display text-white leading-[1.12] tracking-tight">
             {title}
           </h2>
-          <p className="text-sm sm:text-base text-stone-600 leading-relaxed">
+          <p className="text-[14px] sm:text-[15px] text-slate-300 leading-relaxed">
             {subtitle}
           </p>
         </motion.div>
 
-        {/* 6 Clean Structured Cards Grid */}
+        {/* 6 Supportable Reasons Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {reasons.map((r, idx) => {
             const Icon = r.icon;
@@ -119,16 +119,16 @@ export function WhyChooseSection() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-30px" }}
-                transition={{ delay: idx * 0.05 }}
-                className="rounded-md border border-stone-200 bg-white p-6 space-y-3 shadow-xs hover:border-stone-300 hover:shadow-sm transition-all duration-200"
+                transition={{ delay: idx * 0.06 }}
+                className="rounded-3xl border border-white/10 bg-slate-900/80 p-6 sm:p-7 space-y-4 shadow-xl hover:shadow-[0_20px_50px_rgba(13,148,136,0.12)] hover:border-teal-500/50 transition-all duration-300"
               >
-                <div className="h-10 w-10 rounded-md bg-stone-50 text-[#34AA49] flex items-center justify-center border border-stone-200">
-                  <Icon className="h-5 w-5" />
+                <div className="h-12 w-12 rounded-2xl bg-gradient-to-br from-teal-500/20 to-[#34AA49]/20 text-teal-400 flex items-center justify-center border border-teal-500/30 shadow-xs">
+                  <Icon className="h-6 w-6" />
                 </div>
-                <h3 className="text-base font-bold text-stone-900 leading-snug">
+                <h3 className="text-base font-bold text-white leading-snug">
                   {r.title}
                 </h3>
-                <p className="text-xs sm:text-sm text-stone-600 leading-relaxed">
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
                   {r.desc}
                 </p>
               </motion.div>

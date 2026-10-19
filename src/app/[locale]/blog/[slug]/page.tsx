@@ -114,12 +114,12 @@ export default async function BlogPostPage({
       />
 
       {/* Header */}
-      <section className="relative pt-24 pb-16 md:pt-28 md:pb-20 lg:pt-32 bg-gradient-to-b from-[#F8FAFC] via-[#F1F5F9] to-[#FFFFFF] text-stone-900 border-b border-stone-200/60 overflow-hidden">
-        {/* Soft Ambient Architectural Light Rays & Grid Texture */}
+      <section className="relative pt-24 pb-16 md:pt-28 md:pb-20 lg:pt-32 bg-[#0B0F19] text-white border-b border-white/10 overflow-hidden">
+        {/* Architectural Ambient Glow & Grid Texture */}
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-[#34AA49]/15 rounded-full blur-[140px]" />
-          <div className="absolute -bottom-20 -left-20 w-[400px] h-[400px] bg-stone-300/30 rounded-full blur-[120px]" />
-          <div className="absolute inset-0 bg-[radial-gradient(#d6cfc4_1px,transparent_1px)] [background-size:28px_28px] opacity-40" />
+          <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-[140px]" />
+          <div className="absolute -bottom-20 -left-20 w-[400px] h-[400px] bg-[#34AA49]/10 rounded-full blur-[120px]" />
+          <div className="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:28px_28px] opacity-35" />
         </div>
 
         <div className="container mx-auto px-4 max-w-5xl relative z-10">
@@ -133,27 +133,27 @@ export default async function BlogPostPage({
           </div>
 
           <div className="space-y-4 max-w-3xl">
-            <Badge variant="brass" className="text-[10px] font-bold uppercase tracking-wider">
+            <span className="inline-block px-3 py-1 rounded-full bg-white/5 border border-white/15 text-emerald-400 text-[11px] font-mono tracking-widest uppercase font-semibold">
               {locale === "ar" ? "العمارة والتصميم" : locale === "fr" ? "Architecture" : post.category}
-            </Badge>
+            </span>
 
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-display text-stone-900 leading-tight min-w-0 break-words text-balance">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-display text-white leading-tight min-w-0 break-words text-balance">
               {post.title}
             </h1>
 
-            <div className="flex flex-wrap items-center gap-4 text-xs text-stone-600 pt-2 border-t border-stone-200/80">
+            <div className="flex flex-wrap items-center gap-4 text-xs text-slate-400 pt-2 border-t border-white/10">
               <span className="flex items-center gap-1.5">
-                <User className="h-3.5 w-3.5 text-brass" />
+                <User className="h-3.5 w-3.5 text-emerald-400" />
                 <span className="font-medium">{post.author.name}</span>
               </span>
               <span>•</span>
               <span className="flex items-center gap-1.5">
-                <Calendar className="h-3.5 w-3.5 text-brass" />
+                <Calendar className="h-3.5 w-3.5 text-emerald-400" />
                 <span>{post.publishedAt}</span>
               </span>
               <span>•</span>
               <span className="flex items-center gap-1.5">
-                <Clock className="h-3.5 w-3.5 text-brass" />
+                <Clock className="h-3.5 w-3.5 text-emerald-400" />
                 <span>{post.readingTime}</span>
               </span>
             </div>

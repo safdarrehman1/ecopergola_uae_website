@@ -3,23 +3,11 @@
 import { useLocale } from "next-intl";
 import { Link } from "@/i18n/routing";
 import { motion } from "framer-motion";
-import {
-  Compass,
-  FileCheck,
-  Wrench,
-  Hammer,
-  ShieldCheck,
-  CheckCircle2,
-  ArrowRight,
-  Clock,
-  Sparkles,
-  Award,
-} from "lucide-react";
-import { sectionVariants, itemFadeUp } from "@/lib/motion";
+import { Compass, FileCheck, Wrench, Hammer, ShieldCheck, ArrowRight, Zap, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { ProcessStep } from "@/lib/content/schemas";
 
-const iconMap: Record<string, React.ElementType> = {
+const stageIcons: Record<string, React.ElementType> = {
   Compass,
   FileCheck,
   Wrench,
@@ -36,244 +24,152 @@ export function ProcessSection({ steps = [] }: ProcessSectionProps) {
   const isAr = locale === "ar";
   const isFr = locale === "fr";
 
-  const eyebrow = isAr ? "منهجية العمل الهندسي" : isFr ? "Méthodologie d'Ingénierie" : "Engineering Methodology";
-  const title = isAr
-    ? "مسار هندسي منظم من الاستشارة الأولى حتى التسليم"
-    : isFr
-    ? "Un processus rigoureux de la première visite à la réception"
-    : "A disciplined process from consultation to handover";
-  const subtitle = isAr
-    ? "خمس مراحل تشغيلية واضحة تضمن الدقة الإنشائية وسرعة الإنجاز بدون أي إزعاج في موقع الفيلا."
-    : isFr
-    ? "Cinq étapes maîtrisées garantissant la conformité structurelle et une installation soignée."
-    : "Five predictable stages ensuring structural integrity, municipality compliance, and tidy on-site installation.";
-
-  // Rich fallback / enrichment steps with deliverables and timeframes
-  const defaultStepsMetadata = [
+  const workflowStages = [
     {
-      timeframe: isAr ? "خلال 24-48 ساعة" : isFr ? "24 à 48 heures" : "24–48 Hours",
-      deliverable: isAr ? "رفع ليزري + تصميم 3D واقعي" : isFr ? "Relevé Laser & Rendu 3D" : "Laser Scan & 3D Spatial Render",
-      fallbackTitle: {
-        en: "On-Site Consultation & 3D Modeling",
-        ar: "الاستشارة الميدانية والنمذجة ثلاثية الأبعاد",
-        fr: "Consultation sur Site & Modélisation 3D",
-      },
-      fallbackSummary: {
-        en: "Technical property inspection, architectural laser scanning, and preliminary 3D visualization tailored to your villa exterior.",
-        ar: "معاينة هندسية دقيقة للموقع، رفع مساحي بالليزر، ونمذجة ثلاثية الأبعاد واقعية توضح انسجام البرجولا مع طراز فيلتك.",
-        fr: "Visite technique détaillée, relevé laser 3D sur site et modélisation photoréaliste personnalisée de votre extérieur.",
-      },
-      iconName: "Compass",
+      num: "01",
+      icon: Compass,
+      duration: isAr ? "خلال 24-48 ساعة" : isFr ? "24-48 heures" : "24–48 Hours",
+      title: isAr ? "المسح الليزري والنمذجة ثلاثية الأبعاد" : isFr ? "Relevé Laser 3D & Étude" : "Laser Survey & 3D Spatial Render",
+      desc: isAr
+        ? "معاينة هندسية دقيقة للموقع بأجهزة ليزر متطورة وإعداد تصور واقعي ثلاثي الأبعاد يوضح ملاءمة البرجولا لمساحة فيلتك."
+        : isFr
+        ? "Relevé laser millimétrique de votre terrasse et rendu 3D haute résolution intégré à l'architecture de votre villa."
+        : "Precise on-site laser scanning and 3D architectural rendering showing the pergola integrated into your actual space.",
+      deliverable: isAr ? "رفع مساحي رقمي + مخطط أبعاد" : isFr ? "Scan Numérique & Rendu 3D" : "Digital CAD Survey & 3D Model",
     },
     {
-      timeframe: isAr ? "2 إلى 3 أيام" : isFr ? "2 à 3 jours" : "2–3 Days",
-      deliverable: isAr ? "حسابات أحمال الرياح + اعتماد البلدية" : isFr ? "Calculs de Structure & Permis" : "Structural Calcs & Permit Drawings",
-      fallbackTitle: {
-        en: "Engineering Verification & Approvals",
-        ar: "الحسابات الإنشائية والتراخيص الحكومية",
-        fr: "Ingénierie & Autorisations Officielles",
-      },
-      fallbackSummary: {
-        en: "Structural engineering calculations verified for UAE wind zones (4.5 kPa), and preparation of Dubai Municipality / developer submission packages.",
-        ar: "تدقيق الحسابات الإنشائية لتحمل سرعات الرياح (4.5 كيلو باسكال)، وتجهيز ملفات الاعتماد لبلدية دبي وإدارة المطورين العقاريين.",
-        fr: "Calculs de résistance aux vents extrêmes (4.5 kPa) et préparation complète des dossiers d'approbation municipale.",
-      },
-      iconName: "FileCheck",
+      num: "02",
+      icon: FileCheck,
+      duration: isAr ? "2-3 أيام عمل" : isFr ? "2-3 jours ouvrés" : "2–3 Business Days",
+      title: isAr ? "الحسابات الإنشائية واعتمادات البلدية" : isFr ? "Calculs de Structure & Permis" : "Engineering Calculations & Permitting",
+      desc: isAr
+        ? "تدقيق معايير مقاومة الرياح حتى 4.5 kPa وفق اشتراطات كود دبي للبناء وتجهيز كافة الرسومات لاعتماد المطور والبلدية."
+        : isFr
+        ? "Vérification des calculs de charge au vent (jusqu'à 4.5 kPa) et constitution du dossier d'approbation dubaïote."
+        : "Wind load verification up to 4.5 kPa compliant with Dubai Building Code and developer authority packages.",
+      deliverable: isAr ? "مخطط معتمد بختم هندسي" : isFr ? "Dossier Technique Validé" : "Stamped Engineering Package",
     },
     {
-      timeframe: isAr ? "10 إلى 14 يوم" : isFr ? "10 à 14 jours" : "10–14 Days",
-      deliverable: isAr ? "قص CNC + طلاء كواليكوت معتمد" : isFr ? "Usinage CNC & Finition Certifiée" : "CNC Milling & Qualicoat Certificate",
-      fallbackTitle: {
-        en: "Precision CNC Fabrication",
-        ar: "التصنيع الآلي CNC والطلاء الحراري",
-        fr: "Fabrication de Précision CNC",
-      },
-      fallbackSummary: {
-        en: "Extruded 6063-T6 aluminum components cut with ±0.5mm tolerance on automated CNC machining centers, followed by Qualicoat Seaside Class 2 powder coating.",
-        ar: "تصنيع قطاعات ألمنيوم 6063-T6 بدقة ±0.5 مم على ماكينات CNC متقدمة، متبوعة بطلاء كواليكوت فئة 2 البحري في أفران حرارية.",
-        fr: "Découpe laser et usinage numérique avec tolérance ±0.5mm, suivi d'un thermolaquage certifié Qualicoat Classe 2.",
-      },
-      iconName: "Wrench",
+      num: "03",
+      icon: Wrench,
+      duration: isAr ? "7-10 أيام" : isFr ? "7-10 jours" : "7–10 Days",
+      title: isAr ? "التصنيع الآلي CNC والطلاء الحراري" : isFr ? "Usinage CNC & Finition Poudre" : "Automated CNC Milling & Coating",
+      desc: isAr
+        ? "قص قطاعات الألمنيوم 6063-T6 بتفاوت ±0.5 مم على ماكينات CNC أوروبية وطلاء بودرة حراري Qualicoat Class 2."
+        : isFr
+        ? "Découpe numérique 5 axes et thermolaquage certifié Qualicoat Classe 2 résistant aux embruns salins et UV intenses."
+        : "European 5-axis CNC machining of 6063-T6 marine alloy, finished with seaside-grade Qualicoat Class 2 powder coating.",
+      deliverable: isAr ? "شهادة فحص الجودة المصنعية" : isFr ? "Contrôle Qualité Usine" : "Factory QA Inspection Sheet",
     },
     {
-      timeframe: isAr ? "1 إلى 2 يوم" : isFr ? "1 à 2 jours" : "1–2 Days",
-      deliverable: isAr ? "تركيب نظيف بدون أعمال قص موقعية" : isFr ? "Pose Silencieuse et Propre" : "Bolt-together Assembly & Zero Site Debris",
-      fallbackTitle: {
-        en: "Turnkey On-Site Assembly",
-        ar: "التركيب النظيف بدون إزعاج",
-        fr: "Pose Clé en Main & Finitions",
-      },
-      fallbackSummary: {
-        en: "Silent, bolt-together erection by our full-time in-house certified technicians. Zero welding, zero grinder sparks, and zero debris left on your patio.",
-        ar: "تركيب صامت ومتقن بواسطة فرقنا الفنية المعتمدة دون أي استعانة بمقاولين من الباطن، وبدون أي أعمال لحام أو قص داخل موقعك.",
-        fr: "Assemblage mécanique silencieux par nos équipes internes certifiées, sans découpe ni soudure sur votre propriété.",
-      },
-      iconName: "Hammer",
+      num: "04",
+      icon: Hammer,
+      duration: isAr ? "1-3 أيام في الموقع" : isFr ? "1-3 jours sur site" : "1–3 Days Installation",
+      title: isAr ? "التركيب الميكانيكي النظيف" : isFr ? "Assemblage Mécanique Propre" : "Clean Bolt-Together Installation",
+      desc: isAr
+        ? "تجميع الوحدات المسبقة الصنع عبر مسامير فولاذية غير قابلة للصدأ دون أي أعمال لحام أو قطع يدوية مزعجة داخل فيلتك."
+        : isFr
+        ? "Montage rapide de structures pré-ajustées en usine, sans poussière, sans bruit excessif ni soudure sur place."
+        : "Silent erection of factory-prefitted modules using A4 stainless fasteners. Zero grinding, welding, or dust on site.",
+      deliverable: isAr ? "تركيب مطابق للمواصفات الهندسية" : isFr ? "Installation Certifiée Conforme" : "Site Acceptance Report",
     },
     {
-      timeframe: isAr ? "تسليم فوري" : isFr ? "Remise Immédiate" : "Handover Day",
-      deliverable: isAr ? "شهادة ضمان 10 سنوات + تدريب الذكاء" : isFr ? "Garantie 10 Ans & Manuel Somfy" : "10-Yr Warranty Bond & Somfy Setup",
-      fallbackTitle: {
-        en: "Testing, Commissioning & Warranty",
-        ar: "الفحص التشغيلي وتسليم شهادة الضمان",
-        fr: "Essais, Mise en Service & Garantie",
-      },
-      fallbackSummary: {
-        en: "Full operational testing of motorized louvers, LED dimming, and Somfy automation, finalized by delivering the 10-year official warranty certificate.",
-        ar: "فحص كامل لحركة الشرائح، تصريف المياه، إضاءات LED الذكية، وتسليم سند الضمان الإنشائي الرسمي لمدة 10 سنوات مع خدمة ما بعد البيع.",
-        fr: "Vérification complète de la motorisation, des capteurs de pluie et d'éclairage LED, remise de la garantie décennale.",
-      },
-      iconName: "ShieldCheck",
+      num: "05",
+      icon: ShieldCheck,
+      duration: isAr ? "يوم التسليم" : isFr ? "Jour de Réception" : "Handover Day",
+      title: isAr ? "الفحص والتشغيل وسند الضمان 10 سنوات" : isFr ? "Mise en Service & Garantie 10 Ans" : "Commissioning & 10-Year Warranty",
+      desc: isAr
+        ? "معايرة محركات Somfy وأنظمة الإضاءة الذكية وتسليم شهادة الضمان الهيكلي الشامل لمدة 10 سنوات مع كتيب الصيانة."
+        : isFr
+        ? "Programmation domotique, test d'étanchéité et remise officielle du certificat de garantie décennale structurelle."
+        : "Motor calibration, smart home integration, water-drainage testing, and issuance of the 10-year warranty bond.",
+      deliverable: isAr ? "شهادة الضمان 10 سنوات الرسمية" : isFr ? "Certificat Décennal Officiel" : "Official 10-Yr Warranty Bond",
     },
   ];
 
-  const resolvedSteps = defaultStepsMetadata.map((meta, idx) => {
-    const existing = steps[idx];
-    return {
-      id: existing?.id || `step-${idx + 1}`,
-      stepNumber: existing?.stepNumber || idx + 1,
-      title:
-        existing?.title?.[locale as "en" | "ar" | "fr"] ||
-        existing?.title?.en ||
-        meta.fallbackTitle[locale as "en" | "ar" | "fr"] ||
-        meta.fallbackTitle.en,
-      summary:
-        existing?.summary?.[locale as "en" | "ar" | "fr"] ||
-        existing?.summary?.en ||
-        meta.fallbackSummary[locale as "en" | "ar" | "fr"] ||
-        meta.fallbackSummary.en,
-      timeframe: meta.timeframe,
-      deliverable: meta.deliverable,
-      iconName: meta.iconName,
-    };
-  });
-
   return (
-    <section id="process" className="py-16 sm:py-20 lg:py-24 bg-white border-b border-stone-200">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-        
-        {/* Centered Section Header */}
-        <motion.div
-          variants={sectionVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-40px" }}
-          className="text-center max-w-3xl mx-auto space-y-3 mb-12 sm:mb-16"
-        >
-          <span className="inline-block text-xs font-semibold tracking-wider uppercase text-[#34AA49]">
-            {eyebrow}
-          </span>
-
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold font-display text-stone-900 leading-tight">
-            {title}
+    <section id="process" className="py-20 lg:py-28 bg-[#070B14] text-white relative overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-12 max-w-5xl relative z-10">
+        {/* Header Block */}
+        <div className="text-center max-w-2xl mx-auto space-y-3 mb-16 sm:mb-20">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-display text-white tracking-tight">
+            {isAr
+              ? "مسار دقيق من الرفع الهندسي إلى الضمان العشري"
+              : isFr
+              ? "De l'étude géométrique à la garantie décennale"
+              : "From Precision Scanning to 10-Year Handover"}
           </h2>
-
-          <p className="text-sm sm:text-base text-stone-600 leading-relaxed max-w-2xl mx-auto">
-            {subtitle}
+          <p className="text-sm sm:text-base text-slate-400 leading-relaxed">
+            {isAr
+              ? "بروتوكول هندسي منضبط يضمن سرعة الإنجاز ودقة المليمتر دون أي فوضى داخل حديقتك."
+              : isFr
+              ? "Un protocole strict sans improvisation : pré-fabrication en atelier pour une pose silencieuse."
+              : "Disciplined fabrication protocols ensuring millimeter precision and predictable timelines."}
           </p>
-        </motion.div>
+        </div>
 
-        {/* 5-Step Process Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-6">
-          {resolvedSteps.map((step, idx) => {
-            const Icon = iconMap[step.iconName] || CheckCircle2;
+        {/* Vertical Staggered Timeline */}
+        <div className="relative border-l-2 rtl:border-r-2 rtl:border-l-0 border-teal-500/30 ml-4 sm:ml-8 rtl:mr-4 rtl:sm:mr-8 rtl:ml-0 space-y-12">
+          {workflowStages.map((stage, idx) => {
+            const Icon = stage.icon;
 
             return (
               <motion.div
-                key={step.id}
-                variants={itemFadeUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-30px" }}
-                transition={{ delay: idx * 0.05 }}
-                className="rounded-md bg-white border border-stone-200 p-5 flex flex-col justify-between shadow-xs hover:border-stone-300 hover:shadow-sm transition-all duration-200"
+                key={stage.num}
+                initial={{ opacity: 0, x: isAr ? 30 : -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                className="relative pl-8 sm:pl-12 rtl:pr-8 rtl:sm:pr-12 rtl:pl-0 group"
               >
-                <div className="space-y-3.5">
-                  {/* Step Number & Icon */}
-                  <div className="flex items-center justify-between">
-                    <span className="text-lg font-bold font-mono text-[#34AA49]">
-                      0{step.stepNumber}
+                {/* Glowing Node on Timeline */}
+                <div className="absolute -left-[17px] rtl:-right-[17px] rtl:left-auto top-1.5 h-8 w-8 rounded-full bg-slate-950 border-2 border-teal-400 flex items-center justify-center text-teal-400 shadow-[0_0_15px_rgba(20,184,166,0.5)] group-hover:bg-teal-400 group-hover:text-slate-950 transition-colors">
+                  <span className="text-[11px] font-mono font-bold">{stage.num}</span>
+                </div>
+
+                {/* Stage Card */}
+                <div className="rounded-2xl bg-slate-900/80 border border-white/10 p-6 sm:p-8 hover:border-teal-500/40 transition-all duration-300 shadow-xl space-y-4">
+                  <div className="flex flex-wrap items-center justify-between gap-3">
+                    <div className="flex items-center gap-3">
+                      <div className="h-10 w-10 rounded-xl bg-teal-500/10 border border-teal-500/20 text-teal-400 flex items-center justify-center shrink-0">
+                        <Icon className="h-5 w-5" />
+                      </div>
+                      <h3 className="text-xl sm:text-2xl font-bold font-display text-white group-hover:text-teal-300 transition-colors">
+                        {stage.title}
+                      </h3>
+                    </div>
+
+                    <span className="px-3 py-1 rounded-full bg-slate-800 border border-white/10 text-xs font-mono text-teal-300">
+                      {stage.duration}
                     </span>
-                    <div className="h-9 w-9 rounded-md bg-stone-50 text-[#34AA49] flex items-center justify-center border border-stone-200">
-                      <Icon className="h-4 w-4" />
-                    </div>
                   </div>
 
-                  {/* Timeframe Chip */}
-                  <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-stone-100 border border-stone-200 text-[10px] font-mono text-stone-600 font-medium">
-                    <Clock className="h-3 w-3 text-[#34AA49]" />
-                    <span>{step.timeframe}</span>
-                  </div>
+                  <p className="text-sm text-slate-300 leading-relaxed">
+                    {stage.desc}
+                  </p>
 
-                  {/* Title & Summary */}
-                  <div className="space-y-1.5">
-                    <h3 className="text-sm sm:text-base font-bold text-stone-900 leading-snug">
-                      {step.title}
-                    </h3>
-                    <p className="text-xs text-stone-600 leading-relaxed">
-                      {step.summary}
-                    </p>
+                  <div className="pt-3 border-t border-white/10 flex items-center gap-2 text-xs font-mono text-slate-400">
+                    <CheckCircle2 className="h-4 w-4 text-[#34AA49] shrink-0" />
+                    <span>{stage.deliverable}</span>
                   </div>
                 </div>
-
-                {/* Milestone Deliverable Box */}
-                <div className="mt-4 pt-3 border-t border-stone-100">
-                  <div className="p-2 rounded bg-stone-50 border border-stone-200 space-y-0.5">
-                    <div className="text-[10px] uppercase tracking-wider text-[#34AA49] font-bold flex items-center gap-1">
-                      <Sparkles className="h-3 w-3" />
-                      <span>{isAr ? "مخرجات المرحلة" : isFr ? "Livrable Clé" : "Milestone Deliverable"}</span>
-                    </div>
-                    <div className="text-[11px] font-semibold text-stone-800 leading-tight">
-                      {step.deliverable}
-                    </div>
-                  </div>
-                </div>
-
               </motion.div>
             );
           })}
         </div>
 
-        {/* Quality Assurance Strip */}
-        <motion.div
-          variants={itemFadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-20px" }}
-          className="mt-12 p-6 rounded-md bg-[#FAF8F5] border border-stone-200 shadow-xs flex flex-col lg:flex-row items-center justify-between gap-6"
-        >
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 text-left rtl:text-right">
-            <div className="h-11 w-11 rounded-md bg-white text-[#34AA49] flex items-center justify-center shrink-0 border border-stone-200 shadow-xs">
-              <Award className="h-5 w-5" />
-            </div>
-            <div className="space-y-1 max-w-2xl">
-              <div className="flex items-center gap-2">
-                <span className="text-xs uppercase tracking-wider text-[#34AA49] font-bold">
-                  {isAr ? "ضمان التصنيع الداخلي في دبي" : isFr ? "Contrôle Qualité Intégré" : "Dubai In-House Fabrication"}
-                </span>
-                <span className="h-1.5 w-1.5 rounded-full bg-[#34AA49]" />
-              </div>
-              <p className="text-xs sm:text-sm text-stone-600 leading-relaxed">
-                {isAr
-                  ? "يتم تجميع كافة الهياكل مسبقاً وفحصها بدقة في مصنعنا بدبي قبل نقلها للموقع، مما يضمن تركيباً صامتاً ونظيفاً دون أي عمليات قص أو لحام داخل فيلتك."
-                  : isFr
-                  ? "Chaque pergola est entièrement pré-assemblée et testée dans notre atelier à Dubaï avant expédition. Aucun travail lourd de découpe ou soudure sur votre terrain."
-                  : "Every pergola bay is 100% pre-assembled and quality-tested in our Dubai facility prior to dispatch. Zero cutting, grinding, or painting is ever conducted on your property."}
-              </p>
-            </div>
-          </div>
-
+        {/* Action Button at end of timeline */}
+        <div className="mt-16 text-center">
           <Button
             asChild
-            className="h-10 px-5 rounded-md bg-[#34AA49] hover:bg-[#268537] text-white font-medium text-xs uppercase tracking-wider shadow-xs transition-colors shrink-0"
+            className="h-12 px-8 rounded-full bg-gradient-to-r from-[#34AA49] to-teal-500 hover:from-[#268537] hover:to-teal-600 text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-teal-500/20"
           >
             <Link href="#contact">
-              <span>{isAr ? "احجز معاينة ميدانية مجانية" : isFr ? "Réserver une Visite sur Site" : "Schedule Free Site Survey"}</span>
-              <ArrowRight className="h-3.5 w-3.5 ml-1.5 rtl:mr-1.5 rtl:ml-0 rtl:rotate-180" />
+              <span>{isAr ? "ابدأ استشارتك الهندسية المجانية" : isFr ? "Planifier Votre Étude Gratuite" : "Schedule Technical Consultation"}</span>
+              <ArrowRight className="h-4 w-4 ml-2 rtl:mr-2 rtl:ml-0 rtl:rotate-180" />
             </Link>
           </Button>
-        </motion.div>
-
+        </div>
       </div>
     </section>
   );

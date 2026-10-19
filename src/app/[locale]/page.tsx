@@ -9,7 +9,6 @@ import {
 
 import { HeroSection } from "@/components/sections/HeroSection";
 import { IntroductionSection } from "@/components/sections/IntroductionSection";
-import { ThreeDViewerSection } from "@/components/sections/ThreeDViewerSection";
 import { ServicesSection } from "@/components/sections/ServicesSection";
 import { ProductsGallerySection } from "@/components/sections/ProductsGallerySection";
 import { PergolaTypesSection } from "@/components/sections/PergolaTypesSection";
@@ -119,9 +118,6 @@ export default async function HomePage({
 
       {/* 2. Introduction: Concise Split Layout & Verified Metrics */}
       <IntroductionSection stats={stats} />
-
-      {/* 3D Architectural Model Preview Card */}
-      <ThreeDViewerSection />
 
       {/* 3. Specialized Services: Curated Selection from JSON */}
       <ServicesSection services={services} />
