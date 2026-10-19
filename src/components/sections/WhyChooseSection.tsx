@@ -74,7 +74,7 @@ export function WhyChooseSection() {
     },
   ];
 
-  const eyebrow = isAr ? "معايير الثقة والاعتمادية" : isFr ? "Engagements & Spécifications" : "Engineering & Quality Standards";
+  const eyebrow = isAr ? "معايير الثقة والاعتمادية" : isFr ? "Engagements & Spécifications" : "Architectural Standards & Integrity";
   const title = isAr
     ? "مواصفات حقيقية مدعومة بالشهادات الهندسية"
     : isFr
@@ -87,29 +87,29 @@ export function WhyChooseSection() {
     : "Specific manufacturing and material specifications proven to perform in Dubai's coastal and desert conditions.";
 
   return (
-    <section className="py-16 sm:py-20 lg:py-24 bg-white border-b border-stone-200">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-        {/* Centered Section Header */}
+    <section className="py-20 sm:py-28 lg:py-36 bg-white relative border-b border-stone-200">
+      <div className="container mx-auto px-6 sm:px-10 lg:px-16 max-w-[1400px]">
+        {/* Section Header */}
         <motion.div
           variants={sectionVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-40px" }}
-          className="text-center max-w-3xl mx-auto space-y-3 mb-12 sm:mb-16"
+          className="text-center max-w-2xl mx-auto space-y-3 mb-14 sm:mb-20"
         >
-          <span className="inline-block text-xs font-semibold tracking-wider uppercase text-[#34AA49]">
+          <span className="text-[11px] font-mono tracking-[0.25em] uppercase text-[#B38E5D] font-semibold">
             {eyebrow}
           </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold font-display text-stone-900 leading-tight">
+          <h2 className="text-[28px] sm:text-[38px] md:text-[46px] font-normal font-display text-stone-900 leading-[1.12] tracking-tight">
             {title}
           </h2>
-          <p className="text-sm sm:text-base text-stone-600 leading-relaxed">
+          <p className="text-[14px] sm:text-[15px] text-stone-600 font-light leading-relaxed">
             {subtitle}
           </p>
         </motion.div>
 
-        {/* 6 Clean Structured Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        {/* 6 Reasons Hairline Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {reasons.map((r, idx) => {
             const Icon = r.icon;
             return (
@@ -119,16 +119,16 @@ export function WhyChooseSection() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-30px" }}
-                transition={{ delay: idx * 0.05 }}
-                className="rounded-md border border-stone-200 bg-white p-6 space-y-3 shadow-xs hover:border-stone-300 hover:shadow-sm transition-all duration-200"
+                transition={{ delay: idx * 0.06 }}
+                className="rounded-[2px] border border-stone-200 bg-[#FAF8F5] p-7 sm:p-8 space-y-4 shadow-none hover:border-stone-400 transition-colors duration-300"
               >
-                <div className="h-10 w-10 rounded-md bg-stone-50 text-[#34AA49] flex items-center justify-center border border-stone-200">
+                <div className="h-10 w-10 rounded-[2px] bg-white text-[#B38E5D] flex items-center justify-center border border-stone-200">
                   <Icon className="h-5 w-5" />
                 </div>
-                <h3 className="text-base font-bold text-stone-900 leading-snug">
+                <h3 className="text-base font-normal font-display text-stone-900 leading-snug">
                   {r.title}
                 </h3>
-                <p className="text-xs sm:text-sm text-stone-600 leading-relaxed">
+                <p className="text-xs sm:text-[13px] text-stone-500 font-light leading-relaxed">
                   {r.desc}
                 </p>
               </motion.div>

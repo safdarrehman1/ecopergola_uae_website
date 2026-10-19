@@ -4,9 +4,8 @@ import Image from "next/image";
 import { Link } from "@/i18n/routing";
 import { useLocale, useTranslations } from "next-intl";
 import { motion } from "framer-motion";
-import { ArrowRight, Clock, Calendar, Sparkles } from "lucide-react";
+import { ArrowRight, Clock, Calendar } from "lucide-react";
 import { getLocalizedBlog } from "@/data/localizedData";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
 export function BlogTeaserSection() {
@@ -15,27 +14,24 @@ export function BlogTeaserSection() {
   const posts = getLocalizedBlog(locale);
 
   return (
-    <section className="py-20 md:py-28 bg-[#F8FAFC] relative overflow-hidden">
-      {/* Decorative ambient background */}
-      <div className="absolute top-1/3 left-10 w-80 h-80 bg-[#34AA49]/15 rounded-full blur-3xl pointer-events-none" />
-
-      <div className="container mx-auto px-4 max-w-7xl relative z-10">
+    <section className="py-20 sm:py-28 lg:py-36 bg-[#FAF8F5] relative overflow-hidden border-b border-stone-200">
+      <div className="container mx-auto px-6 sm:px-10 lg:px-16 max-w-[1400px] relative z-10">
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 25 }}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto space-y-4 mb-16"
+          className="text-center max-w-3xl mx-auto space-y-4 mb-16 sm:mb-20"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/90 border border-emerald-300/80 text-[11px] font-mono tracking-widest text-emerald-950 font-semibold uppercase shadow-xs">
-            <span className="h-2 w-2 rounded-full bg-brass animate-pulse" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-[2px] bg-white border border-stone-200 text-[10px] sm:text-[11px] font-mono tracking-[0.2em] text-[#B38E5D] font-semibold uppercase shadow-none">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#B38E5D]" />
             <span>{tBlog("eyebrow")}</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-foreground tracking-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-normal font-display text-stone-900 tracking-tight">
             {tBlog("title")}
           </h2>
-          <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+          <p className="text-sm sm:text-base text-stone-600 font-light leading-relaxed">
             {tBlog("subtitle")}
           </p>
         </motion.div>
@@ -45,67 +41,65 @@ export function BlogTeaserSection() {
           {posts.map((post, index) => (
             <motion.article
               key={post.id}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group rounded-3xl bg-white border border-stone-200/90 overflow-hidden shadow-sm hover:border-brass/70 hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
+              className="group rounded-[2px] bg-white border border-stone-200 overflow-hidden shadow-none hover:border-stone-400 transition-all duration-300 flex flex-col justify-between"
             >
               <div>
                 {/* Featured Image */}
-                <div className="relative h-60 w-full overflow-hidden bg-muted">
+                <div className="relative h-60 w-full overflow-hidden bg-stone-100">
                   <Image
                     src={post.image}
                     alt={post.title}
                     fill
                     sizes="(max-width: 768px) 100vw, 33vw"
-                    className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                    className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-stone-950/40 via-transparent to-transparent" />
-
-                  <div className="absolute top-4 left-4 rtl:left-auto rtl:right-4 z-10">
-                    <Badge variant="brass" className="text-[10px] font-bold uppercase tracking-wider shadow-xs">
+                  <div className="absolute top-3 left-3 rtl:left-auto rtl:right-3 z-10">
+                    <span className="text-[10px] font-mono uppercase tracking-widest px-2.5 py-1 rounded-[2px] bg-white/95 text-stone-700 border border-stone-200">
                       {locale === "ar" ? "العمارة والتصميم" : locale === "fr" ? "Architecture" : post.category}
-                    </Badge>
+                    </span>
                   </div>
                 </div>
 
                 {/* Article Header & Excerpt */}
-                <div className="p-6 space-y-3">
-                  <div className="flex items-center gap-3 text-xs text-muted-foreground">
+                <div className="p-6 sm:p-7 space-y-3">
+                  <div className="flex items-center gap-3 text-xs text-stone-400 font-mono">
                     <span className="flex items-center gap-1">
-                      <Clock className="h-3.5 w-3.5 text-brass" />
+                      <Clock className="h-3 w-3 text-[#B38E5D]" />
                       {post.readingTime}
                     </span>
-                    <span>•</span>
+                    <span>/</span>
                     <span className="flex items-center gap-1">
-                      <Calendar className="h-3.5 w-3.5 text-brass" />
+                      <Calendar className="h-3 w-3 text-[#B38E5D]" />
                       {post.publishedAt}
                     </span>
                   </div>
 
-                  <h3 className="text-lg sm:text-xl font-bold font-display text-foreground group-hover:text-brass transition-colors leading-snug">
+                  <h3 className="text-lg font-normal font-display text-stone-900 group-hover:text-[#34AA49] transition-colors leading-snug">
                     {post.title}
                   </h3>
 
-                  <p className="text-xs sm:text-sm text-muted-foreground line-clamp-3 leading-relaxed">
+                  <p className="text-xs sm:text-[13px] text-stone-500 font-light line-clamp-3 leading-relaxed">
                     {post.excerpt}
                   </p>
                 </div>
               </div>
 
               {/* Author & Read More Link */}
-              <div className="p-6 pt-0 border-t border-stone-100 flex items-center justify-between">
-                <span className="text-xs text-muted-foreground font-medium truncate max-w-[150px]">
+              <div className="p-6 sm:p-7 pt-0 border-t border-stone-100 flex items-center justify-between">
+                <span className="text-xs text-stone-400 font-light truncate max-w-[150px]">
                   {post.author.name}
                 </span>
 
                 <Link
                   href={`/blog/${post.slug}`}
-                  className="inline-flex items-center gap-1 text-xs font-bold text-brass group-hover:text-brass-dark uppercase tracking-wider transition-colors"
+                  className="inline-flex items-center gap-1 text-xs font-semibold text-stone-900 group-hover:text-[#34AA49] uppercase tracking-wider transition-colors"
                 >
                   <span>{tBlog("readArticle")}</span>
-                  <ArrowRight className="h-3.5 w-3.5 rtl:rotate-180 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform" />
+                  <ArrowRight className="h-3.5 w-3.5 rtl:rotate-180 text-[#B38E5D] group-hover:text-[#34AA49] group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-all" />
                 </Link>
               </div>
             </motion.article>
@@ -118,11 +112,11 @@ export function BlogTeaserSection() {
             asChild
             variant="outline"
             size="lg"
-            className="rounded-xl font-semibold hover:border-brass border-stone-200 bg-white hover:bg-stone-50 text-stone-900 shadow-xs"
+            className="rounded-[2px] font-semibold border-stone-300 bg-white hover:bg-stone-50 text-stone-900 uppercase tracking-wider text-xs"
           >
             <Link href="/blog">
               <span>{tBlog("viewAll")}</span>
-              <ArrowRight className="h-4 w-4 rtl:rotate-180 ml-1.5 rtl:mr-1.5 rtl:ml-0" />
+              <ArrowRight className="h-3.5 w-3.5 rtl:rotate-180 ml-2 rtl:mr-2 rtl:ml-0" />
             </Link>
           </Button>
         </div>
@@ -131,3 +125,4 @@ export function BlogTeaserSection() {
   );
 }
 
+export default BlogTeaserSection;

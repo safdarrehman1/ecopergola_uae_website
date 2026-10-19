@@ -29,7 +29,7 @@ export function LanguageSwitcher({ className }: { className?: string }) {
   return (
     <div className={className}>
       <Select value={currentLocale} onValueChange={handleLanguageChange}>
-        <SelectTrigger className="h-9 w-[130px] rounded-lg border-border/60 bg-background/40 backdrop-blur-md px-3 text-xs font-medium focus:ring-1 focus:ring-brass">
+        <SelectTrigger className="h-9 w-[100px] sm:w-[130px] rounded-lg border-border/60 bg-background/40 backdrop-blur-md px-2.5 sm:px-3 text-xs font-medium focus:ring-1 focus:ring-brass">
           <div className="flex items-center gap-2">
             <Globe className="h-3.5 w-3.5 text-brass" />
             <SelectValue placeholder="Language" />

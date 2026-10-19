@@ -1,22 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import { Link } from "@/i18n/routing";
 import { useLocale } from "next-intl";
-import { motion } from "framer-motion";
-import { ArrowRight, Building2, Sliders, Shield, SunDim, Wrench, Sparkles } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { sectionVariants, itemFadeUp } from "@/lib/motion";
+import { ArrowUpRight } from "lucide-react";
 import type { Service } from "@/lib/content/schemas";
-
-const iconMap: Record<string, React.ElementType> = {
-  "facade-design-fabrication": Building2,
-  "minimal-sliding-doors": Sliders,
-  "sustainable-building-solutions": SunDim,
-  "glass-room-extensions": Sparkles,
-  "glass-railings-balustrades": Shield,
-  "bespoke-aluminum-fabrication": Wrench,
-};
 
 interface ServicesSectionProps {
   services?: Service[];
@@ -28,115 +15,100 @@ export function ServicesSection({ services = [], showAll = false }: ServicesSect
   const isAr = locale === "ar";
   const isFr = locale === "fr";
 
-  // Template 1 rule: uniform 3-column cards
-  const displayedServices = showAll ? services : services.slice(0, 3);
+  const list = showAll ? services : services.slice(0, 5);
 
-  const eyebrow = isAr ? "خدماتنا الهندسية المتخصصة" : isFr ? "Nos Domaines d'Expertise" : "Specialized Engineering Services";
+  const eyebrow = isAr ? "فهرس الخدمات الهندسية" : isFr ? "Répertoire des Compétences" : "Engineering Capabilities";
   const title = isAr
-    ? "حلول معمارية متكاملة للفلل والمشاريع الفاخرة"
+    ? "خدمات متخصصة في التصنيع والتركيب المعماري"
     : isFr
-    ? "Solutions architecturales complètes pour villas et projets de prestige"
-    : "Engineered architectural systems for luxury properties";
-  const subtitle = isAr
-    ? "من واجهات المباني الزجاجية إلى أنظمة الأبواب المنزلقة الدقيقة، نصمم ونفذ بأعلى مواصفات الجودة والمتانة."
+    ? "Prestations Spécialisées en Enveloppe & Métallerie"
+    : "Architectural Envelope & Glazing Disciplines";
+  const intro = isAr
+    ? "خبرة ممتدة في قطاعات الألمنيوم الفاخرة، الأبواب المنزلقة الدقيقة، وتطوير الواجهات لفلل الإمارات."
     : isFr
-    ? "De la conception de façades aux baies coulissantes minimales, une expertise de pointe aux Émirats."
-    : "From structural curtain walls to minimal 20mm sliding doors, we engineer bespoke solutions for Dubai's architectural standards.";
-  const viewAllText = isAr ? "عرض جميع الخدمات" : isFr ? "Voir Tous les Services" : "View All Services";
+    ? "Un atelier d'ingénierie dédié aux profilés minimaux, façades vitrées et structures architecturales."
+    : "Comprehensive in-house manufacturing in Dubai covering structural curtain walls, minimal doors, and custom pergolas.";
 
   return (
-    <section id="services" className="py-16 sm:py-20 lg:py-24 bg-white border-b border-stone-200">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-        {/* Centered Section Header */}
-        <motion.div
-          variants={sectionVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-40px" }}
-          className="text-center max-w-3xl mx-auto mb-12 sm:mb-14"
-        >
-          <span className="inline-block text-xs font-semibold tracking-wider uppercase text-[#34AA49] mb-2">
-            {eyebrow}
-          </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold font-display text-stone-900 leading-tight">
-            {title}
-          </h2>
-          <p className="mt-3 text-sm sm:text-base text-stone-600 leading-relaxed">
-            {subtitle}
-          </p>
+    <section id="services" className="py-20 lg:py-28 bg-[#FAF8F5] text-stone-900 border-b border-stone-200">
+      <div className="container mx-auto px-6 sm:px-10 lg:px-16 max-w-[1360px]">
+        
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 pb-6 border-b border-stone-200">
+          <div className="space-y-3 max-w-2xl">
+            <span className="text-[11px] font-mono tracking-[0.25em] uppercase text-[#B38E5D] font-medium block">
+              {eyebrow}
+            </span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal font-display text-stone-900 tracking-tight leading-[1.12]">
+              {title}
+            </h2>
+            <p className="text-sm text-stone-600 font-light leading-relaxed">
+              {intro}
+            </p>
+          </div>
 
           {!showAll && (
-            <div className="mt-6 flex justify-center">
-              <Button
-                asChild
-                variant="outline"
-                className="h-9 px-4 rounded-md border-stone-300 hover:border-[#34AA49] hover:text-[#34AA49] text-stone-800 text-xs font-semibold uppercase tracking-wider transition-colors"
-              >
-                <Link href="/services">
-                  <span>{viewAllText}</span>
-                  <ArrowRight className="h-3.5 w-3.5 ml-1.5 rtl:mr-1.5 rtl:ml-0 rtl:rotate-180" />
-                </Link>
-              </Button>
-            </div>
+            <Link
+              href="/services"
+              className="self-start md:self-end text-xs font-mono tracking-[0.2em] uppercase text-stone-900 hover:text-[#B38E5D] transition-colors border-b border-stone-900 hover:border-[#B38E5D] pb-1 inline-flex items-center gap-2 shrink-0"
+            >
+              <span>{isAr ? "جميع الخدمات" : isFr ? "Toutes les Prestations" : "Full Discipline Index"}</span>
+              <ArrowUpRight className="h-3.5 w-3.5 rtl:rotate-270" />
+            </Link>
           )}
-        </motion.div>
+        </div>
 
-        {/* Uniform 3-Column Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {displayedServices.map((service, idx) => {
-            const Icon = iconMap[service.slug] || Building2;
-            const serviceTitle = service.title[locale as "en" | "ar" | "fr"] || service.title.en;
-            const serviceSummary = service.summary[locale as "en" | "ar" | "fr"] || service.summary.en;
+        {/* Numbered Text List with Hairlines */}
+        <div className="divide-y divide-stone-200 border-y border-stone-200">
+          {list.map((item, idx) => {
+            const heading = item.title[locale as "en" | "ar" | "fr"] || item.title.en;
+            const summary = item.summary[locale as "en" | "ar" | "fr"] || item.summary.en;
+            const itemCode = `DISCIPLINE // 0${idx + 1}`;
 
             return (
-              <motion.article
-                key={service.id}
-                variants={itemFadeUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-30px" }}
-                transition={{ delay: idx * 0.05 }}
-                className="group rounded-md bg-white border border-stone-200 overflow-hidden shadow-xs hover:border-stone-300 hover:shadow-sm transition-all duration-200 flex flex-col justify-between"
+              <div
+                key={item.id}
+                className="py-8 sm:py-10 grid grid-cols-1 md:grid-cols-12 gap-6 items-baseline group hover:bg-stone-100/50 transition-colors px-2 sm:px-4"
               >
-                <div>
-                  <div className="relative aspect-[16/10] w-full overflow-hidden bg-stone-100">
-                    <Image
-                      src={service.image.src}
-                      alt={service.image.alt[locale as "en" | "ar" | "fr"] || service.image.alt.en || serviceTitle}
-                      fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      className="object-cover"
-                    />
-                  </div>
+                {/* Index Code */}
+                <div className="md:col-span-2">
+                  <span className="text-xs font-mono tracking-widest text-[#B38E5D]">
+                    {itemCode}
+                  </span>
+                </div>
 
-                  <div className="p-6 space-y-2.5">
-                    <div className="flex items-center gap-1.5 text-[#34AA49]">
-                      <Icon className="h-4 w-4" />
-                      <span className="text-[11px] font-semibold uppercase tracking-wider">Service 0{idx + 1}</span>
-                    </div>
-
-                    <h3 className="text-lg font-bold text-stone-900 group-hover:text-[#34AA49] transition-colors line-clamp-1">
-                      {serviceTitle}
-                    </h3>
-                    <p className="text-xs sm:text-sm text-stone-600 leading-relaxed line-clamp-3">
-                      {serviceSummary}
-                    </p>
+                {/* Title and Category */}
+                <div className="md:col-span-4 space-y-1">
+                  <h3 className="text-xl sm:text-2xl font-normal font-display text-stone-900 group-hover:text-[#B38E5D] transition-colors">
+                    {heading}
+                  </h3>
+                  <div className="text-[10px] font-mono tracking-wider uppercase text-stone-600">
+                    {isAr ? "دبي • معايير كواليكوت" : isFr ? "Fabrication Dubaï" : "Dubai Fabrication • Class 2"}
                   </div>
                 </div>
 
-                <div className="p-6 pt-0">
+                {/* Description Narrative */}
+                <div className="md:col-span-4">
+                  <p className="text-xs sm:text-sm text-stone-600 font-light leading-relaxed">
+                    {summary}
+                  </p>
+                </div>
+
+                {/* Action Link */}
+                <div className="md:col-span-2 md:text-right rtl:md:text-left">
                   <Link
-                    href={`/services/${service.slug}`}
-                    className="w-full py-2.5 px-4 rounded-md bg-stone-50 hover:bg-[#34AA49] hover:text-white border border-stone-200 hover:border-[#34AA49] text-stone-800 text-xs font-semibold transition-colors flex items-center justify-between group/btn shadow-xs"
+                    href={`/services/${item.slug}`}
+                    className="inline-flex items-center gap-2 text-xs font-mono tracking-widest uppercase text-stone-900 group-hover:text-[#34AA49] transition-colors border-b border-transparent group-hover:border-[#34AA49] pb-0.5"
                   >
-                    <span>{isAr ? "المواصفات التقنية" : isFr ? "Spécifications" : "View Specifications"}</span>
-                    <ArrowRight className="h-3.5 w-3.5 text-stone-400 group-hover/btn:text-white rtl:rotate-180 transition-colors" />
+                    <span>{isAr ? "المواصفات" : isFr ? "Détails" : "Specifications"}</span>
+                    <ArrowUpRight className="h-3 w-3 rtl:rotate-270" />
                   </Link>
                 </div>
-              </motion.article>
+              </div>
             );
           })}
         </div>
+
       </div>
     </section>
   );

@@ -4,30 +4,30 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 cursor-pointer select-none",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[2px] text-xs font-semibold uppercase tracking-wider transition-all duration-300 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-3.5 shrink-0 cursor-pointer select-none",
   {
     variants: {
       variant: {
         default:
-          "bg-primary text-primary-foreground hover:bg-[#268537] shadow-xs active:translate-y-px",
+          "bg-[#34AA49] text-white hover:bg-[#268537] shadow-none active:scale-[0.99]",
         brass:
-          "bg-brass text-white font-semibold hover:bg-brass-dark shadow-xs active:translate-y-px",
+          "bg-[#B38E5D] text-white hover:bg-[#8C6D46] shadow-none active:scale-[0.99]",
         destructive:
-          "bg-destructive text-destructive-foreground hover:bg-destructive/90 shadow-xs",
+          "bg-destructive text-destructive-foreground hover:bg-destructive/90 shadow-none",
         outline:
-          "border border-stone-300 bg-white text-stone-800 hover:bg-stone-50 hover:border-stone-400 active:translate-y-px",
+          "border border-stone-300 bg-transparent hover:bg-stone-100/60 text-stone-900 active:scale-[0.99]",
         secondary:
-          "bg-secondary text-secondary-foreground hover:bg-[#EAE4D9]",
-        ghost: "hover:bg-stone-100 hover:text-stone-900",
-        link: "text-primary underline-offset-4 hover:underline",
+          "bg-secondary text-secondary-foreground hover:bg-stone-200/60",
+        ghost: "hover:bg-stone-100 text-stone-900",
+        link: "text-[#34AA49] underline-offset-4 hover:underline lowercase tracking-normal",
         glass:
-          "bg-white/80 border border-stone-200 text-stone-800 hover:bg-white active:translate-y-px",
+          "bg-white/70 backdrop-blur-md border border-white/40 text-stone-900 hover:bg-white/90 active:scale-[0.99]",
       },
       size: {
-        default: "h-10 px-4 py-2",
-        sm: "h-8 rounded px-3 text-xs",
-        lg: "h-11 rounded-md px-6 text-sm font-semibold",
-        icon: "h-9 w-9",
+        default: "h-11 px-6 py-2.5",
+        sm: "h-9 px-4 text-[11px]",
+        lg: "h-13 px-8 text-sm",
+        icon: "h-10 w-10",
       },
     },
     defaultVariants: {

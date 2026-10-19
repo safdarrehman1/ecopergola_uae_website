@@ -1,189 +1,116 @@
 "use client";
 
-import { useState, useMemo } from "react";
 import Image from "next/image";
 import { Link } from "@/i18n/routing";
 import { useLocale } from "next-intl";
-import { motion } from "framer-motion";
-import { ArrowRight, RotateCcw } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { sectionVariants, itemFadeUp } from "@/lib/motion";
-import type { PergolaType, Material } from "@/lib/content/schemas";
+import { ArrowUpRight } from "lucide-react";
+import type { PergolaType } from "@/lib/content/schemas";
 
-interface PergolaTypesSectionProps {
+export function PergolaTypesSection({
+  pergolas = [],
+  showAll = false,
+}: {
   pergolas?: PergolaType[];
-  materials?: Material[];
+  materials?: unknown[];
   showAll?: boolean;
-}
-
-export function PergolaTypesSection({ pergolas = [], materials = [], showAll = false }: PergolaTypesSectionProps) {
-  const [materialFilter, setMaterialFilter] = useState<string>("all");
-  const [roofFilter, setRoofFilter] = useState<string>("all");
-  const locale = useLocale();
-  const isAr = locale === "ar";
-  const isFr = locale === "fr";
-
-  const filteredPergolas = useMemo(() => {
-    return pergolas.filter((item) => {
-      const matchMaterial = materialFilter === "all" || item.material.includes(materialFilter as never);
-      const matchRoof = roofFilter === "all" || item.roofType === roofFilter;
-      return matchMaterial && matchRoof;
-    });
-  }, [pergolas, materialFilter, roofFilter]);
-
-  const displayedItems = showAll ? filteredPergolas : filteredPergolas.slice(0, 6);
-  const isFiltered = materialFilter !== "all" || roofFilter !== "all";
-
-  const handleReset = () => {
-    setMaterialFilter("all");
-    setRoofFilter("all");
-  };
-
-  const eyebrow = isAr ? "أنواع وهياكل البرجولات" : isFr ? "Typologies & Matériaux" : "Pergola Types & Materials";
-  const title = isAr
-    ? "اختر نظام البرجولا الأنسب لمساحتك وميزانيتك"
-    : isFr
-    ? "Choisissez le système de pergola idéal pour votre espace"
-    : "Find the engineered pergola system for your space";
-  const subtitle = isAr
-    ? "قارن بين المواد وأنظمة الأسقف الدوارة والمتحركة والثابتة المصممة خصيصاً لمقاومة شمس ورطوبة دبي."
-    : isFr
-    ? "Comparez les matériaux et mécanismes (lames orientables, toiles rétractables, toitures pleines) adaptés aux Émirats."
-    : "Compare structural materials, bioclimatic louvers, and roof mechanisms engineered for high wind loads and intense sun.";
+}) {
+  const activeLang = useLocale();
+  const arMode = activeLang === "ar";
+  const frMode = activeLang === "fr";
+  const items = showAll ? pergolas : pergolas.slice(0, 8);
 
   return (
-    <section id="pergola-types" className="py-16 sm:py-20 lg:py-24 bg-[#FAF8F5] border-b border-stone-200">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-        {/* Centered Section Header for Classic Clean style */}
-        <motion.div
-          variants={sectionVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-40px" }}
-          className="text-center max-w-3xl mx-auto mb-10"
-        >
-          <span className="inline-block text-xs font-semibold tracking-wider uppercase text-[#34AA49] mb-2">
-            {eyebrow}
-          </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold font-display text-stone-900 leading-tight">
-            {title}
-          </h2>
-          <p className="mt-3 text-sm sm:text-base text-stone-600 leading-relaxed">
-            {subtitle}
-          </p>
-
-          {!showAll && (
-            <div className="mt-6 flex justify-center">
-              <Button
-                asChild
-                variant="outline"
-                className="h-9 px-4 rounded-md border-stone-300 hover:border-[#34AA49] hover:text-[#34AA49] text-stone-800 text-xs font-semibold uppercase tracking-wider transition-colors"
-              >
-                <Link href="/pergola-types">
-                  <span>{isAr ? "دليل البرجولات الكامل (19)" : isFr ? "Explorer les 19 Types" : "Explore All 19 Types"}</span>
-                  <ArrowRight className="h-3.5 w-3.5 ml-1.5 rtl:mr-1.5 rtl:ml-0 rtl:rotate-180" />
-                </Link>
-              </Button>
-            </div>
-          )}
-        </motion.div>
-
-        {/* Clean Filter Chips */}
-        <div className="flex flex-wrap items-center justify-center gap-3 mb-10 pb-5 border-b border-stone-200/80">
-          <div className="flex flex-wrap items-center justify-center gap-2">
-            <span className="text-xs font-medium uppercase tracking-wider text-stone-500 mr-1">Roof:</span>
-            {["all", "louvered", "retractable", "fixed"].map((roof) => (
-              <button
-                key={roof}
-                type="button"
-                onClick={() => setRoofFilter(roof)}
-                className={`px-3 py-1.5 rounded-md text-xs font-medium transition-colors ${
-                  roofFilter === roof
-                    ? "bg-[#34AA49] text-white shadow-xs"
-                    : "bg-white border border-stone-200 text-stone-700 hover:bg-stone-50"
-                }`}
-              >
-                {roof === "all" ? "All Roofs" : roof.charAt(0).toUpperCase() + roof.slice(1)}
-              </button>
-            ))}
+    <section id="pergolas" className="py-24 bg-[#FAF8F5] text-stone-900 border-b border-stone-200">
+      <div className="container mx-auto px-6 sm:px-10 lg:px-16 max-w-[1400px]">
+        
+        {/* Minimalist Editorial Headline */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 pb-6 border-b border-stone-200">
+          <div className="space-y-3 max-w-2xl">
+            <span className="text-[11px] font-mono tracking-[0.25em] uppercase text-[#B38E5D] font-medium block">
+              {arMode ? "النماذج الهندسية للبرجولات" : frMode ? "Typologies Architecturales" : "Architectural Typologies"}
+            </span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal font-display text-stone-900 tracking-tight leading-[1.12]">
+              {arMode
+                ? "مجموعة البرجولات المعمارية المخصصة للفلل"
+                : frMode
+                ? "Catalogue des Structures Extérieures sur Mesure"
+                : "Curated Architectural Pergola Systems"}
+            </h2>
+            <p className="text-sm text-stone-600 font-light leading-relaxed">
+              {arMode
+                ? "تصاميم حصرية تم تطويرها لتلائم الظروف المناخية في دولة الإمارات وتتناغم مع الطراز المعماري الحديث."
+                : frMode
+                ? "Conçues pour résister aux températures extrêmes tout en sublimant les lignes épurées de votre propriété."
+                : "Bespoke aluminum geometries engineered to endure Gulf climates while elevating contemporary villa architecture."}
+            </p>
           </div>
 
-          {isFiltered && (
-            <button
-              type="button"
-              onClick={handleReset}
-              className="inline-flex items-center gap-1.5 text-xs text-[#34AA49] hover:text-[#268537] font-medium transition-colors ml-2"
-            >
-              <RotateCcw className="h-3 w-3" />
-              <span>Reset</span>
-            </button>
-          )}
+          <Link
+            href="/pergola-types"
+            className="self-start md:self-end text-xs font-mono tracking-[0.2em] uppercase text-stone-900 hover:text-[#B38E5D] transition-colors border-b border-stone-900 hover:border-[#B38E5D] pb-1 inline-flex items-center gap-2 shrink-0"
+          >
+            <span>{arMode ? "استعراض كافة النماذج" : frMode ? "Voir la Collection" : "View Entire Index"}</span>
+            <ArrowUpRight className="h-3.5 w-3.5 rtl:rotate-270" />
+          </Link>
         </div>
 
-        {/* 3-Column Structured Card Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {displayedItems.map((item, idx) => {
-            const name = item.name[locale as "en" | "ar" | "fr"] || item.name.en;
-            const desc = item.description[locale as "en" | "ar" | "fr"] || item.description.en;
+        {/* Horizontal Borderless Image Plates */}
+        <div className="flex gap-8 lg:gap-10 overflow-x-auto scrollbar-none pb-6 -mx-6 px-6 sm:-mx-10 sm:px-10 lg:-mx-16 lg:px-16" style={{ scrollbarWidth: "none" }}>
+          {items.map((p, i) => {
+            const pTitle = p.name[activeLang as "en" | "ar" | "fr"] || p.name.en;
+            const pSummary = p.description[activeLang as "en" | "ar" | "fr"] || p.description.en;
 
             return (
-              <motion.article
-                key={item.id}
-                variants={itemFadeUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-30px" }}
-                transition={{ delay: idx * 0.04 }}
-                className="group rounded-md bg-white border border-stone-200 overflow-hidden shadow-xs hover:border-stone-300 hover:shadow-sm transition-all duration-200 flex flex-col justify-between"
+              <div
+                key={p.id}
+                className="shrink-0 w-[290px] sm:w-[350px] md:w-[390px] group flex flex-col justify-between"
               >
                 <div>
-                  {/* Clean Image Area */}
-                  <div className="relative aspect-[16/10] w-full overflow-hidden bg-stone-100">
+                  <div className="relative aspect-[3/4] w-full overflow-hidden bg-stone-200">
                     <Image
-                      src={item.image.src}
-                      alt={item.image.alt[locale as "en" | "ar" | "fr"] || item.image.alt.en || name}
+                      src={p.image.src}
+                      alt={p.image.alt[activeLang as "en" | "ar" | "fr"] || p.image.alt.en || pTitle}
                       fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      className="object-cover"
+                      sizes="(max-width: 640px) 300px, 400px"
+                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                     />
-                    <div className="absolute top-3 left-3 rtl:left-auto rtl:right-3 z-10">
-                      <span className="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded bg-white/95 text-stone-800 font-semibold border border-stone-200 shadow-xs">
-                        {item.placement || "Freestanding"}
+                    
+                    <div className="absolute top-4 left-4 rtl:left-auto rtl:right-4">
+                      <span className="text-[10px] font-mono tracking-widest text-stone-900 uppercase bg-white/95 px-2.5 py-1 border border-stone-200">
+                        0{i + 1}
                       </span>
                     </div>
                   </div>
 
-                  {/* Clean Content Area */}
-                  <div className="p-5 space-y-2">
-                    <div className="flex items-center gap-2 text-xs text-stone-500 font-medium">
-                      <span className="uppercase text-[#34AA49] font-semibold">{item.material?.[0] || "Aluminum"}</span>
-                      <span>•</span>
-                      <span className="capitalize">{item.roofType} Roof</span>
+                  <div className="pt-4 space-y-1.5">
+                    <div className="text-[10px] font-mono tracking-[0.2em] text-[#B38E5D] uppercase">
+                      {arMode ? "نظام ألمنيوم 6063-T6" : frMode ? "Système Aluminium 6063-T6" : "6063-T6 Marine System"}
                     </div>
-
-                    <h3 className="text-base font-bold text-stone-900 group-hover:text-[#34AA49] transition-colors line-clamp-1">
-                      {name}
+                    
+                    <h3 className="text-xl sm:text-2xl font-normal font-display text-stone-900 group-hover:text-[#B38E5D] transition-colors">
+                      {pTitle}
                     </h3>
-                    <p className="text-xs sm:text-sm text-stone-600 leading-relaxed line-clamp-2">
-                      {desc}
+
+                    <p className="text-xs sm:text-[13px] text-stone-600 font-light leading-relaxed line-clamp-3">
+                      {pSummary}
                     </p>
                   </div>
                 </div>
 
-                {/* Classic Button Link */}
-                <div className="p-5 pt-0">
+                <div className="pt-3">
                   <Link
-                    href={`/pergola-types/${item.slug}`}
-                    className="w-full py-2 px-3.5 rounded-md bg-stone-50 hover:bg-[#34AA49] hover:text-white border border-stone-200 hover:border-[#34AA49] text-stone-800 text-xs font-medium transition-colors flex items-center justify-between group/btn shadow-xs"
+                    href={`/pergola-types/${p.slug}`}
+                    className="inline-flex items-center gap-2 text-xs font-mono tracking-wider uppercase text-stone-800 hover:text-[#34AA49] transition-colors border-b border-transparent hover:border-[#34AA49] pb-0.5"
                   >
-                    <span>{isAr ? "استكشف المواصفات" : isFr ? "Voir le Modèle" : "Explore System"}</span>
-                    <ArrowRight className="h-3.5 w-3.5 text-stone-400 group-hover/btn:text-white rtl:rotate-180 transition-colors" />
+                    <span>{arMode ? "تفاصيل المواصفات" : frMode ? "Fiche Technique" : "Architectural Sheet"}</span>
+                    <ArrowUpRight className="h-3 w-3 rtl:rotate-270" />
                   </Link>
                 </div>
-              </motion.article>
+              </div>
             );
           })}
         </div>
+
       </div>
     </section>
   );

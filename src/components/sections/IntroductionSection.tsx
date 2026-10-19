@@ -64,18 +64,11 @@ export function IntroductionSection({ stats = [] }: IntroductionSectionProps) {
   ];
 
   return (
-    <section className="py-16 sm:py-20 lg:py-28 bg-gradient-to-b from-[#F8FAFC] via-white to-[#F8FAFC] relative overflow-hidden">
-      {/* Subtle Architectural Grid Pattern & Coordinate Accents */}
-      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-[#34AA49]/15 rounded-full blur-[130px]" />
-        <div className="absolute bottom-10 left-0 w-[450px] h-[450px] bg-stone-200/40 rounded-full blur-[120px]" />
-        <div className="absolute inset-0 bg-[radial-gradient(#d6cfc4_1px,transparent_1px)] [background-size:32px_32px] opacity-35" />
-      </div>
-
-      <div className="container mx-auto px-4 sm:px-6 lg:px-12 max-w-[1320px] relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+    <section className="py-20 sm:py-28 lg:py-36 bg-white relative overflow-hidden border-b border-stone-200">
+      <div className="container mx-auto px-6 sm:px-10 lg:px-16 max-w-[1400px] relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
           
-          {/* Left Column: Layered Architectural Visual Showcase */}
+          {/* Left Column: Architectural Photography Frame with Square Border */}
           <motion.div
             variants={sectionVariants}
             initial="hidden"
@@ -83,99 +76,53 @@ export function IntroductionSection({ stats = [] }: IntroductionSectionProps) {
             viewport={{ once: true, margin: "-40px" }}
             className="lg:col-span-5 relative"
           >
-            {/* Outer Architectural Frame with Blueprint Hairlines */}
-            <div className="relative p-2.5 sm:p-3 rounded-[2rem] bg-white/80 border border-stone-200/90 shadow-[0_24px_50px_-12px_rgba(28,25,23,0.12)] backdrop-blur-xl group">
-              
-              {/* CAD Crosshairs on Corners */}
-              <div className="absolute -top-2.5 -left-2.5 w-5 h-5 flex items-center justify-center text-brass/70 font-mono text-xs select-none pointer-events-none">
-                +
-              </div>
-              <div className="absolute -top-2.5 -right-2.5 w-5 h-5 flex items-center justify-center text-brass/70 font-mono text-xs select-none pointer-events-none">
-                +
-              </div>
-              <div className="absolute -bottom-2.5 -left-2.5 w-5 h-5 flex items-center justify-center text-brass/70 font-mono text-xs select-none pointer-events-none">
-                +
-              </div>
-              <div className="absolute -bottom-2.5 -right-2.5 w-5 h-5 flex items-center justify-center text-brass/70 font-mono text-xs select-none pointer-events-none">
-                +
-              </div>
-
-              {/* Main Image Container */}
-              <div className="relative aspect-[4/5] sm:aspect-[4/4.8] lg:aspect-[4/5] rounded-md overflow-hidden bg-stone-100 border border-stone-200">
+            <div className="relative p-2 rounded-[2px] bg-stone-100/60 border border-stone-200 shadow-none group">
+              <div className="relative aspect-[4/5] rounded-[2px] overflow-hidden bg-stone-100">
                 <Image
                   src="https://images.unsplash.com/photo-1600585154363-67eb9e2e2099?w=1200&q=85&auto=format&fit=crop"
                   alt="Modern architectural pergola and luxury minimal glass sliding facade in Dubai"
                   fill
                   sizes="(max-width: 1024px) 100vw, 42vw"
-                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  className="object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
                   priority={false}
                 />
                 
-                {/* Architectural Gradient Film */}
-                <div className="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-stone-950/20 to-transparent z-10" />
+                <div className="absolute inset-0 bg-stone-900/10 group-hover:bg-transparent transition-colors" />
 
-                {/* Top Badge: Wind Load Certification */}
+                {/* Top Badge */}
                 <div className="absolute top-4 left-4 right-4 z-20 flex items-center justify-between pointer-events-none">
-                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-white/95 backdrop-blur-md border border-stone-200 shadow-xs text-stone-900 text-[11px] font-mono">
-                    <Wind className="h-3.5 w-3.5 text-[#34AA49] shrink-0" />
-                    <span className="font-semibold tracking-wide">
-                      {isAr ? "مقاومة رياح حتى 4.5 kPa" : isFr ? "Résistance au vent 4.5 kPa" : "Wind Load: 4.5 kPa (160 km/h)"}
-                    </span>
-                  </div>
-
-                  <div className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-stone-900/80 backdrop-blur-md text-white text-[10px] font-mono tracking-wider border border-white/20">
-                    <Sparkles className="h-3 w-3 text-[#34AA49]" />
-                    <span>UAE CODE</span>
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-[2px] bg-white/95 border border-stone-200 text-stone-900 text-[11px] font-mono shadow-none">
+                    <Wind className="h-3.5 w-3.5 text-[#B38E5D] shrink-0" />
+                    <span>{isAr ? "مقاومة رياح 4.5 kPa" : isFr ? "Résistance au vent 4.5 kPa" : "Wind Load: 4.5 kPa (160 km/h)"}</span>
                   </div>
                 </div>
 
-                {/* Bottom Overlay: Material Specs Card */}
-                <div className="absolute bottom-4 left-4 right-4 z-20 p-4 sm:p-5 rounded-md bg-white/95 backdrop-blur-md border border-stone-200 shadow-sm text-stone-900 space-y-2.5">
+                {/* Bottom Overlay Info Card */}
+                <div className="absolute bottom-4 left-4 right-4 z-20 p-4 rounded-[2px] bg-white/95 backdrop-blur-md border border-stone-200 shadow-none text-stone-900 space-y-2">
                   <div className="flex items-center justify-between border-b border-stone-200 pb-2">
-                    <span className="text-[10px] tracking-widest uppercase text-[#34AA49] font-bold flex items-center gap-1.5">
-                      <Compass className="h-3.5 w-3.5" />
+                    <span className="text-[10px] font-mono tracking-widest uppercase text-[#B38E5D] font-semibold flex items-center gap-1.5">
+                      <Compass className="h-3 w-3" />
                       {isAr ? "المعايير الهندسية الدقيقة" : isFr ? "Précision & Matériaux" : "Bespoke Engineering"}
                     </span>
-                    <span className="text-[10px] font-mono text-stone-500 font-semibold">
-                      ±1.5mm TOLERANCE
-                    </span>
+                    <span className="text-[10px] font-mono text-stone-500">±1.5mm TOLERANCE</span>
                   </div>
                   
-                  <div className="grid grid-cols-2 gap-2 text-xs font-semibold text-stone-800">
-                    <div className="flex items-center gap-2 bg-stone-50 rounded p-2 border border-stone-200">
+                  <div className="grid grid-cols-2 gap-2 text-xs text-stone-700">
+                    <div className="flex items-center gap-1.5 bg-stone-50 p-2 border border-stone-200/60 rounded-[2px]">
                       <div className="w-1.5 h-1.5 rounded-full bg-[#34AA49] shrink-0" />
-                      <span className="text-[11px] leading-tight">
-                        {isAr ? "ألمنيوم 6063-T6 بحري" : isFr ? "Alu 6063-T6 Marine" : "6063-T6 Marine Alloy"}
-                      </span>
+                      <span className="text-[11px]">{isAr ? "ألمنيوم 6063-T6 بحري" : isFr ? "Alu 6063-T6 Marine" : "6063-T6 Marine Alloy"}</span>
                     </div>
-                    <div className="flex items-center gap-2 bg-stone-50 rounded p-2 border border-stone-200">
-                      <div className="w-1.5 h-1.5 rounded-full bg-[#34AA49] shrink-0" />
-                      <span className="text-[11px] leading-tight">
-                        {isAr ? "طلاء كواليكوت فئة 2" : isFr ? "Qualicoat Classe 2" : "Qualicoat Class 2"}
-                      </span>
+                    <div className="flex items-center gap-1.5 bg-stone-50 p-2 border border-stone-200/60 rounded-[2px]">
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#B38E5D] shrink-0" />
+                      <span className="text-[11px]">{isAr ? "طلاء كواليكوت فئة 2" : isFr ? "Qualicoat Classe 2" : "Qualicoat Class 2"}</span>
                     </div>
                   </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Floating Trust Badge */}
-            <div className="absolute -bottom-4 -right-2 sm:-right-4 z-30 inline-flex items-center gap-2.5 px-3.5 py-2 rounded-md bg-stone-900 text-white shadow-md border border-stone-700">
-              <div className="h-6 w-6 rounded bg-[#34AA49] text-white flex items-center justify-center font-bold shrink-0">
-                <ShieldCheck className="h-3.5 w-3.5" />
-              </div>
-              <div className="leading-tight">
-                <div className="text-[9px] uppercase tracking-wider text-[#48C35F]">
-                  {isAr ? "ضمان مباشر" : isFr ? "Garantie Décennale" : "Direct Coverage"}
-                </div>
-                <div className="text-xs font-bold">
-                  {isAr ? "10 سنوات ضمان هيكلي" : isFr ? "Garantie 10 Ans" : "10-Year Structural"}
                 </div>
               </div>
             </div>
           </motion.div>
 
-          {/* Right Column: Editorial Narrative, Interactive Pillars & Metrics */}
+          {/* Right Column: Editorial Narrative & Pillars */}
           <motion.div
             variants={sectionVariants}
             initial="hidden"
@@ -184,13 +131,13 @@ export function IntroductionSection({ stats = [] }: IntroductionSectionProps) {
             className="lg:col-span-7 space-y-8"
           >
             {/* Header Block */}
-            <div className="space-y-3.5">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-stone-100 border border-stone-200 text-xs font-semibold uppercase tracking-wider text-[#34AA49]">
-                <span className="w-2 h-2 rounded-full bg-[#34AA49]" />
-                <span>{isAr ? "عن إيكو برجولا · تميز هندسي" : isFr ? "À Propos d'Eco Pergola" : "About Eco Pergola · Engineered in Dubai"}</span>
+            <div className="space-y-4">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-[2px] bg-stone-100 border border-stone-200 text-[10px] sm:text-[11px] font-mono tracking-[0.2em] uppercase text-stone-600 font-medium">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#B38E5D]" />
+                <span>{isAr ? "عن إيكو برجولا · تميز هندسي" : isFr ? "À Propos d'Eco Pergola" : "About Eco Pergola · Studio & Craft"}</span>
               </div>
               
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold font-display text-stone-900 leading-tight">
+              <h2 className="text-[28px] sm:text-[38px] md:text-[46px] font-normal font-display text-stone-900 leading-[1.12] tracking-tight text-balance">
                 {isAr
                   ? "حلول تظليل وهندسة واجهات مصممة خصيصاً لمناخ الإمارات"
                   : isFr
@@ -198,7 +145,7 @@ export function IntroductionSection({ stats = [] }: IntroductionSectionProps) {
                   : "Precision outdoor shade & architectural glazing built for the UAE climate"}
               </h2>
 
-              <p className="text-sm sm:text-base text-stone-600 leading-relaxed max-w-2xl">
+              <p className="text-[14px] sm:text-[15px] text-stone-600 font-light leading-relaxed max-w-2xl">
                 {isAr
                   ? "نجمع بين متانة الحسابات الإنشائية وجماليات التصميم المعماري المعاصر، لنبتكر مساحات معيشية خارجية تدوم طويلاً وتتحمل حرارة ورطوبة ورياح الخليج العربي."
                   : isFr
@@ -207,7 +154,7 @@ export function IntroductionSection({ stats = [] }: IntroductionSectionProps) {
               </p>
             </div>
 
-            {/* Three Explanatory Pillars with Clean Cards */}
+            {/* Three Explanatory Pillars with Hairline Cards */}
             <div className="space-y-3.5">
               {pillars.map((p, idx) => {
                 const Icon = p.icon;
@@ -215,22 +162,22 @@ export function IntroductionSection({ stats = [] }: IntroductionSectionProps) {
                   <motion.div
                     key={idx}
                     variants={itemFadeUp}
-                    className="p-4 sm:p-5 rounded-md bg-white border border-stone-200 shadow-xs hover:border-stone-300 transition-colors flex flex-col sm:flex-row gap-4 items-start group"
+                    className="p-5 rounded-[2px] bg-[#FAF8F5] border border-stone-200 hover:border-stone-400 transition-colors duration-300 flex flex-col sm:flex-row gap-4 items-start group"
                   >
-                    <div className="h-10 w-10 rounded-md bg-stone-50 text-[#34AA49] flex items-center justify-center shrink-0 border border-stone-200">
+                    <div className="h-10 w-10 rounded-[2px] bg-white text-[#B38E5D] flex items-center justify-center shrink-0 border border-stone-200">
                       <Icon className="h-5 w-5" />
                     </div>
                     
-                    <div className="space-y-1.5 flex-1">
+                    <div className="space-y-1 flex-1">
                       <div className="flex flex-wrap items-center justify-between gap-2">
-                        <h3 className="text-sm sm:text-base font-bold text-stone-900 group-hover:text-[#34AA49] transition-colors">
+                        <h3 className="text-base font-normal font-display text-stone-900 group-hover:text-[#34AA49] transition-colors">
                           {p.title}
                         </h3>
-                        <span className="text-[10px] tracking-wide text-[#34AA49] font-semibold px-2 py-0.5 rounded bg-stone-50 border border-stone-200">
+                        <span className="text-[10px] font-mono text-stone-500 uppercase tracking-wider">
                           {p.tag}
                         </span>
                       </div>
-                      <p className="text-xs sm:text-sm text-stone-600 leading-relaxed">
+                      <p className="text-xs sm:text-[13px] text-stone-600 leading-relaxed font-light">
                         {p.desc}
                       </p>
                     </div>
@@ -239,17 +186,17 @@ export function IntroductionSection({ stats = [] }: IntroductionSectionProps) {
               })}
             </div>
 
-            {/* Verified Business Metrics Ribbon */}
+            {/* Verified Business Metrics */}
             {verifiedStats.length > 0 && (
-              <div className="pt-4 border-t border-stone-200">
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4 rounded-md border border-stone-200 bg-stone-50/60 shadow-xs">
+              <div className="pt-6 border-t border-stone-200">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-5 rounded-[2px] bg-stone-50 border border-stone-200">
                   {verifiedStats.slice(0, 4).map((stat) => (
-                    <div key={stat.id} className="space-y-1">
-                      <div className="text-xl sm:text-2xl font-bold font-mono text-stone-900 tracking-tight flex items-baseline gap-0.5">
+                    <div key={stat.id} className="space-y-0.5">
+                      <div className="text-2xl sm:text-3xl font-light font-display text-stone-900 tracking-tight flex items-baseline gap-0.5">
                         <span className="text-[#34AA49]">{stat.value}</span>
-                        <span className="text-stone-700 text-base sm:text-lg font-bold">{stat.suffix}</span>
+                        <span className="text-[#B38E5D] text-lg font-normal">{stat.suffix}</span>
                       </div>
-                      <div className="text-[11px] sm:text-xs text-stone-600 font-medium leading-tight">
+                      <div className="text-[11px] text-stone-500 leading-tight">
                         {stat.label[locale as "en" | "ar" | "fr"] || stat.label.en}
                       </div>
                     </div>
@@ -258,14 +205,14 @@ export function IntroductionSection({ stats = [] }: IntroductionSectionProps) {
               </div>
             )}
 
-            {/* Direct CTA Link */}
+            {/* Direct CTA */}
             <div className="flex items-center gap-4 pt-1">
               <Link
                 href="/projects"
-                className="inline-flex items-center gap-2 text-xs font-semibold text-stone-900 hover:text-brass uppercase tracking-wider transition-colors group"
+                className="inline-flex items-center gap-2 text-xs font-semibold text-stone-900 hover:text-[#34AA49] uppercase tracking-widest transition-colors group"
               >
                 <span>{isAr ? "استعرض معرض المشاريع المنفذة في دبي" : isFr ? "Découvrir nos réalisations à Dubaï" : "Explore Featured Dubai Projects"}</span>
-                <ArrowRight className="h-4 w-4 text-brass group-hover:translate-x-1 rtl:group-hover:-translate-x-1 rtl:rotate-180 transition-transform" />
+                <ArrowRight className="h-3.5 w-3.5 text-[#B38E5D] group-hover:translate-x-1 rtl:group-hover:-translate-x-1 rtl:rotate-180 transition-transform" />
               </Link>
             </div>
 
@@ -277,4 +224,3 @@ export function IntroductionSection({ stats = [] }: IntroductionSectionProps) {
 }
 
 export default IntroductionSection;
-

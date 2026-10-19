@@ -4,8 +4,7 @@ import Image from "next/image";
 import { Link } from "@/i18n/routing";
 import { useLocale } from "next-intl";
 import { motion } from "framer-motion";
-import { ArrowRight, ShieldCheck, Award, Ruler, CheckCircle2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ArrowUpRight, Compass, ShieldCheck } from "lucide-react";
 import type { Settings } from "@/lib/content/schemas";
 
 interface HeroSectionProps {
@@ -17,116 +16,116 @@ export function HeroSection({ settings }: HeroSectionProps) {
   const isAr = locale === "ar";
   const isFr = locale === "fr";
 
-  const stats = [
-    { label: isAr ? "سنوات خبرة في دبي" : isFr ? "Années d'Expérience" : "Years in UAE", value: "12+" },
-    { label: isAr ? "مشروع فيلا منجز" : isFr ? "Villas Équipées" : "Villas Completed", value: "850+" },
-    { label: isAr ? "ضمان هيكلي شامل" : isFr ? "Garantie Décennale" : "Structural Warranty", value: "10 Yrs" },
-    { label: isAr ? "دقة التصنيع" : isFr ? "Tolérance d'Usinage" : "Precision Tolerance", value: "±1.5mm" },
-  ];
+  const mainHeading = isAr
+    ? "هندسة معمارية نقية للمساحات الخارجية الراقية"
+    : isFr
+    ? "L'Art de Vivre Extérieur, Conçu avec Pureté"
+    : "Outdoor Architecture, Purely Engineered";
+
+  const leadCopy = isAr
+    ? "أنظمة برجولات بيوكليماتيكية مخصصة وواجهات زجاجية رقيقة صممت وفق أدق المعايير الهندسية في دبي مع ضمان 10 سنوات."
+    : isFr
+    ? "Structures bioclimatiques d'exception et baies vitrées ultra-fines pour résidences de prestige à Dubaï. Garantie décennale."
+    : "Custom bio-climatic pergola systems and minimal glass envelopes engineered for premier UAE residences with a 10-year warranty.";
+
+  const discoverLink = isAr ? "استكشف الكتالوج المعماري" : isFr ? "Explorer les Collections" : "Explore Collections";
+  const quoteLink = isAr ? "طلب استشارة معمارية" : isFr ? "Demande de Devis Atelier" : "Request Private Consultation";
 
   return (
-    <section className="relative min-h-[78vh] lg:min-h-[84vh] flex items-center justify-center overflow-hidden">
-      {/* Full-width Background Photography with Dark Architectural Vignette */}
-      <div className="absolute inset-0 z-0">
+    <section className="relative w-full h-[92vh] min-h-[640px] max-h-[960px] flex items-end overflow-hidden bg-stone-950">
+      {/* Edge-to-Edge Architectural Photography Background */}
+      <div className="absolute inset-0">
         <Image
-          src="/images/gallery/gallery-1.webp"
-          alt="Luxury architectural pergola installation in Dubai"
+          src="/images/gallery/gallery-2.webp"
+          alt="Eco Pergola Architectural Aluminum Villa Installation"
           fill
           priority
           sizes="100vw"
           className="object-cover object-center"
         />
-        <div className="absolute inset-0 bg-stone-950/65" />
+        {/* Subtle Architectural Vignette & Gradient for High Contrast */}
+        <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-950/50 to-stone-950/20" />
+        <div className="absolute inset-0 bg-black/20" />
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl relative z-10 py-16 sm:py-24 text-center">
-        {/* Eyebrow Pill */}
-        <motion.div
-          initial={{ opacity: 0, y: -12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-xs text-white font-medium mb-6"
-        >
-          <span className="h-2 w-2 rounded-full bg-[#34AA49] animate-pulse" />
-          <span>{isAr ? "تصنيع وتركيب في دبي والإمارات" : isFr ? "Conception & Pose à Dubaï" : "Engineered & Fabricated in Dubai"}</span>
-        </motion.div>
+      {/* Foreground Content: Anchored at Bottom-Left */}
+      <div className="relative z-10 w-full container mx-auto px-6 sm:px-10 lg:px-16 max-w-[1400px] pb-14 sm:pb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
+          
+          {/* Main Headline & Text Link Block (Bottom-Left) */}
+          <div className="lg:col-span-8 space-y-6">
+            
+            {/* Atelier Eyebrow */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="inline-flex items-center gap-3 text-[11px] font-mono tracking-[0.3em] uppercase text-stone-300"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-[#B38E5D]" />
+              <span>{isAr ? "دبي • تصنيع معماري متخصص" : isFr ? "Dubaï • Manufacture Architecturale" : "Dubai • Architectural Manufacture"}</span>
+            </motion.div>
 
-        {/* Centered Headline */}
-        <motion.h1
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-3xl sm:text-5xl lg:text-6xl font-bold font-display text-white tracking-tight leading-[1.12] mb-6 text-balance"
-        >
-          {isAr
-            ? "مساحات خارجية، بهندسة معمارية متقنة"
-            : isFr
-            ? "Des espaces extérieurs pensés et conçus avec précision"
-            : "Outdoor spaces, thoughtfully engineered"}
-        </motion.h1>
+            {/* Large Minimal Serif Headline */}
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.15 }}
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal font-display text-white tracking-tight leading-[1.06] text-balance max-w-4xl"
+            >
+              {mainHeading}
+            </motion.h1>
 
-        {/* Centered Subheadline */}
-        <motion.p
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-base sm:text-lg text-stone-200 leading-relaxed max-w-2xl mx-auto mb-8 font-normal"
-        >
-          {isAr
-            ? "برجولات بيوكليماتيكية ذكية، أبواب منزلقة دقيقة، وواجهات زجاجية مخصصة لمناخ دبي والإمارات مع ضمان هيكلي 10 سنوات."
-            : isFr
-            ? "Pergolas bioclimatiques motorisées, baies coulissantes minimales et façades architecturales conçues pour le climat de Dubaï avec garantie décennale."
-            : "Custom bio-climatic pergolas, minimal sliding glass systems, and architectural facades engineered for Dubai's climate with 10-year structural warranty."}
-        </motion.p>
+            {/* Refined Supporting Narrative */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="text-sm sm:text-base text-stone-300 font-light leading-relaxed max-w-2xl text-balance"
+            >
+              {leadCopy}
+            </motion.p>
 
-        {/* Two Centered Action Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14"
-        >
-          <Button
-            asChild
-            size="lg"
-            className="w-full sm:w-auto h-12 px-7 rounded-md bg-[#34AA49] hover:bg-[#268537] text-white font-semibold text-sm shadow-md transition-all"
-          >
-            <Link href="/contact">
-              <span>{isAr ? "طلب عرض سعر مجاني" : isFr ? "Demander un Devis" : "Request Free Quote"}</span>
-              <ArrowRight className="h-4 w-4 ml-2 rtl:mr-2 rtl:ml-0 rtl:rotate-180" />
-            </Link>
-          </Button>
+            {/* Elegant Minimalist Text Link CTAs */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.45 }}
+              className="flex flex-wrap items-center gap-8 pt-2"
+            >
+              <Link
+                href="/contact"
+                className="group inline-flex items-center gap-3 text-xs sm:text-sm font-mono tracking-[0.2em] uppercase text-white hover:text-[#B38E5D] transition-colors border-b border-white/60 hover:border-[#B38E5D] pb-1.5"
+              >
+                <span>{quoteLink}</span>
+                <ArrowUpRight className="h-4 w-4 rtl:rotate-270 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              </Link>
 
-          <Button
-            asChild
-            variant="outline"
-            size="lg"
-            className="w-full sm:w-auto h-12 px-7 rounded-md bg-white/10 hover:bg-white/20 text-white border-white/40 backdrop-blur-sm text-sm font-semibold transition-all"
-          >
-            <Link href="/pergola-types">
-              <span>{isAr ? "استكشف البرجولات" : isFr ? "Découvrir les Pergolas" : "Explore Pergola Catalog"}</span>
-            </Link>
-          </Button>
-        </motion.div>
+              <Link
+                href="/pergola-types"
+                className="text-xs sm:text-sm font-mono tracking-[0.2em] uppercase text-stone-300 hover:text-white transition-colors border-b border-transparent hover:border-stone-400 pb-1.5"
+              >
+                <span>{discoverLink}</span>
+              </Link>
+            </motion.div>
+          </div>
 
-        {/* Integrated Stats Row */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="pt-8 border-t border-white/20 grid grid-cols-2 md:grid-cols-4 gap-6"
-        >
-          {stats.map((item, idx) => (
-            <div key={idx} className="space-y-1 text-center">
-              <div className="text-2xl sm:text-3xl font-bold font-mono text-white">
-                {item.value}
-              </div>
-              <div className="text-xs text-stone-300 font-medium">
-                {item.label}
-              </div>
+          {/* Bottom Right: Architectural Coordinates & Specs */}
+          <div className="lg:col-span-4 lg:text-right rtl:lg:text-left space-y-3 pt-4 border-t border-stone-700/60 lg:border-t-0">
+            <div className="flex items-center lg:justify-end rtl:lg:justify-start gap-2 text-xs font-mono text-stone-400 uppercase tracking-widest">
+              <Compass className="h-3.5 w-3.5 text-[#B38E5D]" />
+              <span>25.2048° N, 55.2708° E</span>
             </div>
-          ))}
-        </motion.div>
+            <div className="flex items-center lg:justify-end rtl:lg:justify-start gap-2 text-xs font-mono text-stone-400 uppercase tracking-widest">
+              <ShieldCheck className="h-3.5 w-3.5 text-[#B38E5D]" />
+              <span>10-Year Structural Guarantee</span>
+            </div>
+            <p className="text-[11px] font-mono text-stone-500 uppercase tracking-wider">
+              Qualicoat Seaside Class 2 Finish
+            </p>
+          </div>
+
+        </div>
       </div>
     </section>
   );

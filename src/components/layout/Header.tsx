@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { Link, usePathname } from "@/i18n/routing";
 import { useLocale } from "next-intl";
-import { Menu, ArrowRight, X, ChevronDown, Layers, Building2, SlidersHorizontal } from "lucide-react";
+import { Menu, ArrowRight, X, ChevronDown, Layers, Building2, SlidersHorizontal, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
 import { LanguageSwitcher } from "@/components/layout/LanguageSwitcher";
@@ -27,280 +27,191 @@ export function Header() {
   const isAr = locale === "ar";
   const isFr = locale === "fr";
 
-  const quoteCta = isAr ? "طلب عرض سعر" : isFr ? "Demander un Devis" : "Request a Quote";
+  const quoteCta = isAr ? "طلب عرض سعر" : isFr ? "Demander un Devis" : "Request Quote";
 
   return (
-    <header className="w-full bg-white border-b border-stone-200 transition-all duration-200 sticky top-0 z-50">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl flex items-center justify-between h-16 sm:h-18">
-        {/* Architectural Brand Logo */}
+    <header className="w-full bg-[#FAF8F5]/90 backdrop-blur-md border-b border-stone-200/80 transition-all duration-300">
+      <div className="container mx-auto px-4 sm:px-8 lg:px-16 max-w-[1400px] flex items-center justify-between h-20 sm:h-24">
+        {/* Architectural Brand Logo with Minimal Sharp Frame */}
         <Link
           href="/"
           aria-label="Eco Pergola"
-          className="flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md group"
+          className="flex items-center gap-2.5 sm:gap-3.5 focus:outline-none focus-visible:ring-1 focus-visible:ring-stone-400 group transition-opacity hover:opacity-85 shrink-0"
         >
-          <div className="relative h-12 w-12 sm:h-14 sm:w-14 rounded-md overflow-hidden bg-white border border-stone-200 flex items-center justify-center p-1 shadow-xs group-hover:border-[#34AA49] transition-colors">
+          <div className="relative h-11 w-11 sm:h-14 sm:w-14 rounded-[2px] overflow-hidden bg-white border border-stone-200 p-1 flex items-center justify-center shadow-none group-hover:border-stone-400 transition-colors">
             <Image
               src="/images/logo.jpeg"
               alt="Eco Pergola"
-              width={56}
-              height={56}
+              width={60}
+              height={60}
               className="h-full w-full object-contain"
               priority
             />
           </div>
+          <div className="hidden sm:block">
+            <span className="font-display text-lg tracking-wider font-normal text-stone-900 block leading-tight">
+              ECO PERGOLA
+            </span>
+            <span className="text-[9px] uppercase tracking-[0.25em] text-stone-400 font-mono block">
+              Architectural Dubai
+            </span>
+          </div>
         </Link>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center space-x-1 rtl:space-x-reverse" aria-label="Main Navigation">
-          <NavigationMenu>
-            <NavigationMenuList>
-              {/* Home */}
-              <NavigationMenuItem>
-                <Link href="/#" legacyBehavior passHref>
-                  <NavigationMenuLink
-                    className={cn(
-                      navigationMenuTriggerStyle(),
-                      pathname === "/" && "text-brass font-semibold"
-                    )}
-                  >
-                    {isAr ? "الرئيسية" : isFr ? "Accueil" : "Home"}
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
+        {/* Desktop Minimal Navigation */}
+        <nav className="hidden lg:flex items-center space-x-8 rtl:space-x-reverse" aria-label="Main Navigation">
+          <Link
+            href="/"
+            className={cn(
+              "text-[11px] uppercase tracking-widest transition-colors font-medium",
+              pathname === "/" ? "text-[#34AA49] font-semibold" : "text-stone-600 hover:text-stone-900"
+            )}
+          >
+            {isAr ? "الرئيسية" : isFr ? "Accueil" : "Overview"}
+          </Link>
 
-              {/* Pergola Types Menu */}
-              <NavigationMenuItem>
-                <NavigationMenuTrigger
-                  className={cn(
-                    navigationMenuTriggerStyle(),
-                    pathname.startsWith("/pergola-types") && "text-brass font-semibold"
-                  )}
-                >
-                  {isAr ? "أنواع البرجولات" : isFr ? "Types de Pergolas" : "Pergola Types"}
-                </NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <div className="w-[500px] p-5 grid grid-cols-2 gap-4 bg-white rounded-md border border-stone-200 shadow-md">
-                    <div className="space-y-2">
-                      <div className="text-xs font-bold uppercase tracking-wider text-brass px-2">
-                        {isAr ? "حسب نوع السقف" : isFr ? "Par Mécanisme" : "By Mechanism"}
-                      </div>
-                      <Link
-                        href="/pergola-types/louvered-pergola"
-                        className="block p-2 rounded-lg hover:bg-muted text-xs transition-colors"
-                      >
-                        <div className="font-semibold text-foreground">
-                          {isAr ? "برجولا شرائح ذكية" : isFr ? "Bioclimatique à Lames" : "Bio-Climatic Louvered"}
-                        </div>
-                        <div className="text-muted-foreground text-[11px] mt-0.5">
-                          {isAr ? "دوران 0°-140° بمحركات ذكية" : isFr ? "Lames motorisées orientables" : "Motorized 0°-140° rotation"}
-                        </div>
-                      </Link>
-                      <Link
-                        href="/pergola-types/retractable-pergola"
-                        className="block p-2 rounded-lg hover:bg-muted text-xs transition-colors"
-                      >
-                        <div className="font-semibold text-foreground">
-                          {isAr ? "سقف قماشي متحرك" : isFr ? "Toile Rétractable" : "Retractable Canopy"}
-                        </div>
-                        <div className="text-muted-foreground text-[11px] mt-0.5">
-                          {isAr ? "طي وفتح بلمسة زر" : isFr ? "Ouverture complète motorisée" : "Motorized sliding canopy"}
-                        </div>
-                      </Link>
-                      <Link
-                        href="/pergola-types/fixed-roof-pergola"
-                        className="block p-2 rounded-lg hover:bg-muted text-xs transition-colors"
-                      >
-                        <div className="font-semibold text-foreground">
-                          {isAr ? "سقف ثابت معزول" : isFr ? "Toiture Fixe Isolée" : "Fixed Insulated Roof"}
-                        </div>
-                        <div className="text-muted-foreground text-[11px] mt-0.5">
-                          {isAr ? "عزل حراري وحماية كاملة" : isFr ? "Protection solaire totale" : "Continuous solid shade"}
-                        </div>
-                      </Link>
-                    </div>
+          <Link
+            href="/pergola-types"
+            className={cn(
+              "text-[11px] uppercase tracking-widest transition-colors font-medium",
+              pathname.startsWith("/pergola-types") ? "text-[#34AA49] font-semibold" : "text-stone-600 hover:text-stone-900"
+            )}
+          >
+            {isAr ? "البرجولات" : isFr ? "Pergolas" : "Pergolas"}
+          </Link>
 
-                    <div className="space-y-2">
-                      <div className="text-xs font-bold uppercase tracking-wider text-brass px-2">
-                        {isAr ? "حسب المادة" : isFr ? "Par Matériau" : "By Material"}
-                      </div>
-                      <Link
-                        href="/pergola-types/aluminum-pergola"
-                        className="block p-2 rounded-lg hover:bg-muted text-xs transition-colors"
-                      >
-                        <div className="font-semibold text-foreground">
-                          {isAr ? "ألمنيوم 6063-T6" : isFr ? "Aluminium 6063-T6" : "Structural Aluminum"}
-                        </div>
-                        <div className="text-muted-foreground text-[11px] mt-0.5">
-                          {isAr ? "مقاوم للصدأ وبدون صيانة" : isFr ? "Sans entretien, anticorrosion" : "Rust-proof, marine grade"}
-                        </div>
-                      </Link>
-                      <Link
-                        href="/pergola-types/wooden-pergola"
-                        className="block p-2 rounded-lg hover:bg-muted text-xs transition-colors"
-                      >
-                        <div className="font-semibold text-foreground">
-                          {isAr ? "خشب طبيعي فاخر" : isFr ? "Bois Noble (Teck)" : "Luxury Hardwood"}
-                        </div>
-                        <div className="text-muted-foreground text-[11px] mt-0.5">
-                          {isAr ? "أخشاب تيك وإيروكو معالجة" : isFr ? "Teck et Iroko traités" : "Teak & Iroko timber"}
-                        </div>
-                      </Link>
+          <Link
+            href="/services"
+            className={cn(
+              "text-[11px] uppercase tracking-widest transition-colors font-medium",
+              pathname.startsWith("/services") ? "text-[#34AA49] font-semibold" : "text-stone-600 hover:text-stone-900"
+            )}
+          >
+            {isAr ? "الخدمات" : isFr ? "Services" : "Engineering"}
+          </Link>
 
-                      <div className="pt-2 border-t border-border/60">
-                        <Link
-                          href="/pergola-types"
-                          className="inline-flex items-center text-xs font-semibold text-brass hover:text-brass-dark px-2"
-                        >
-                          <span>{isAr ? "دليل البرجولات (19 نوع)" : isFr ? "Voir les 19 modèles" : "View All 19 Types"}</span>
-                          <ArrowRight className="h-3.5 w-3.5 ml-1 rtl:mr-1 rtl:ml-0 rtl:rotate-180" />
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
+          <Link
+            href="/products"
+            className={cn(
+              "text-[11px] uppercase tracking-widest transition-colors font-medium",
+              pathname.startsWith("/products") ? "text-[#34AA49] font-semibold" : "text-stone-600 hover:text-stone-900"
+            )}
+          >
+            {isAr ? "المنتجات" : isFr ? "Produits" : "Systems"}
+          </Link>
 
-              {/* Services */}
-              <NavigationMenuItem>
-                <Link href="/services" legacyBehavior passHref>
-                  <NavigationMenuLink
-                    className={cn(
-                      navigationMenuTriggerStyle(),
-                      pathname.startsWith("/services") && "text-brass font-semibold"
-                    )}
-                  >
-                    {isAr ? "الخدمات" : isFr ? "Services" : "Services"}
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
+          <Link
+            href="/projects"
+            className={cn(
+              "text-[11px] uppercase tracking-widest transition-colors font-medium",
+              pathname.startsWith("/projects") ? "text-[#34AA49] font-semibold" : "text-stone-600 hover:text-stone-900"
+            )}
+          >
+            {isAr ? "المشاريع" : isFr ? "Réalisations" : "Portfolio"}
+          </Link>
 
-              {/* Products */}
-              <NavigationMenuItem>
-                <Link href="/products" legacyBehavior passHref>
-                  <NavigationMenuLink
-                    className={cn(
-                      navigationMenuTriggerStyle(),
-                      pathname.startsWith("/products") && "text-brass font-semibold"
-                    )}
-                  >
-                    {isAr ? "المنتجات" : isFr ? "Produits" : "Products"}
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
+          <Link
+            href="/about"
+            className={cn(
+              "text-[11px] uppercase tracking-widest transition-colors font-medium",
+              pathname === "/about" ? "text-[#34AA49] font-semibold" : "text-stone-600 hover:text-stone-900"
+            )}
+          >
+            {isAr ? "عن الشركة" : isFr ? "À Propos" : "About"}
+          </Link>
 
-              {/* Portfolio */}
-              <NavigationMenuItem>
-                <Link href="/projects" legacyBehavior passHref>
-                  <NavigationMenuLink
-                    className={cn(
-                      navigationMenuTriggerStyle(),
-                      pathname.startsWith("/projects") && "text-brass font-semibold"
-                    )}
-                  >
-                    {isAr ? "المشاريع" : isFr ? "Réalisations" : "Portfolio"}
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
-
-              {/* About */}
-              <NavigationMenuItem>
-                <Link href="/about" legacyBehavior passHref>
-                  <NavigationMenuLink
-                    className={cn(
-                      navigationMenuTriggerStyle(),
-                      pathname === "/about" && "text-brass font-semibold"
-                    )}
-                  >
-                    {isAr ? "من نحن" : isFr ? "À Propos" : "About"}
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
-
-              {/* Contact */}
-              <NavigationMenuItem>
-                <Link href="/contact" legacyBehavior passHref>
-                  <NavigationMenuLink
-                    className={cn(
-                      navigationMenuTriggerStyle(),
-                      pathname === "/contact" && "text-brass font-semibold"
-                    )}
-                  >
-                    {isAr ? "اتصل بنا" : isFr ? "Contact" : "Contact"}
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
-            </NavigationMenuList>
-          </NavigationMenu>
+          <Link
+            href="/contact"
+            className={cn(
+              "text-[11px] uppercase tracking-widest transition-colors font-medium",
+              pathname === "/contact" ? "text-[#34AA49] font-semibold" : "text-stone-600 hover:text-stone-900"
+            )}
+          >
+            {isAr ? "تواصل" : isFr ? "Contact" : "Contact"}
+          </Link>
         </nav>
 
-        {/* Right CTA Actions: Language Switcher & One Prominent "Request a Quote" Button */}
-        <div className="flex items-center gap-3">
-          <div className="hidden sm:block">
+        {/* Right CTA Actions: Language, Primary Quote Button & Luxury Overlay Menu */}
+        <div className="flex items-center gap-2 sm:gap-4 shrink-0">
+          <div className="shrink-0">
             <LanguageSwitcher />
           </div>
 
           <Button
             asChild
-            className="h-10 px-5 rounded-md bg-primary hover:bg-[#268537] text-white font-medium text-xs sm:text-sm shadow-xs transition-colors"
+            className="h-9 sm:h-10 px-2.5 sm:px-5 rounded-[2px] bg-[#34AA49] hover:bg-[#268537] text-white font-semibold text-xs tracking-wider uppercase transition-all duration-300 shrink-0"
           >
-            <Link href="/contact">
-              <span>{quoteCta}</span>
-              <ArrowRight className="h-3.5 w-3.5 ml-1.5 rtl:mr-1.5 rtl:ml-0 rtl:rotate-180 hidden sm:inline" />
+            <Link href="/contact" aria-label={quoteCta}>
+              <span className="hidden sm:inline">{quoteCta}</span>
+              <ArrowRight className="h-3.5 w-3.5 sm:ml-1.5 rtl:sm:mr-1.5 rtl:rotate-180" />
             </Link>
           </Button>
 
-          {/* Accessible Mobile Menu Sheet Trigger */}
+          {/* Minimalist Overlay Menu Trigger: visible below lg, hidden on lg+ */}
           <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
             <SheetTrigger asChild>
               <Button
                 variant="outline"
                 size="icon"
-                aria-label="Open Mobile Navigation Menu"
-                className="h-10 w-10 lg:hidden rounded-md border-stone-200"
+                aria-label="Open Navigation Drawer"
+                className="lg:hidden h-9 w-9 sm:h-10 sm:w-10 rounded-[2px] border-stone-300 hover:border-stone-500 bg-white/60 shrink-0"
               >
-                <Menu className="h-5 w-5" />
+                <Menu className="h-4 w-4 text-stone-800" />
               </Button>
             </SheetTrigger>
-            <SheetContent side={isAr ? "right" : "left"} className="w-[300px] p-6 flex flex-col justify-between">
-              <div className="space-y-6">
-                <div className="flex items-center justify-between pb-4 border-b border-stone-200">
-                  <div className="flex items-center">
-                    <div className="h-12 w-12 rounded-md overflow-hidden border border-stone-200 p-1 bg-white shadow-xs">
+            <SheetContent side={isAr ? "right" : "left"} className="w-[340px] sm:w-[400px] p-8 sm:p-10 bg-[#FAF8F5] border-stone-200 flex flex-col justify-between">
+              <div className="space-y-8">
+                <div className="flex items-center justify-between pb-6 border-b border-stone-200/80">
+                  <div className="flex items-center gap-3">
+                    <div className="h-12 w-12 rounded-[2px] overflow-hidden border border-stone-200 p-1 bg-white">
                       <Image src="/images/logo.jpeg" alt="Eco Pergola" width={48} height={48} className="object-contain w-full h-full" />
+                    </div>
+                    <div>
+                      <span className="font-display text-base tracking-wider font-normal text-stone-900 block leading-tight">
+                        ECO PERGOLA
+                      </span>
+                      <span className="text-[9px] uppercase tracking-[0.2em] text-stone-400 font-mono block">
+                        Architecture Studio
+                      </span>
                     </div>
                   </div>
                 </div>
 
-                {/* Mobile Links */}
-                <div className="flex flex-col space-y-1 text-sm font-medium">
+                {/* Editorial Navigation Links */}
+                <div className="flex flex-col space-y-4">
                   {[
-                    { href: "/", label: isAr ? "الرئيسية" : isFr ? "Accueil" : "Home" },
-                    { href: "/pergola-types", label: isAr ? "أنواع البرجولات (19 نوع)" : isFr ? "Types de Pergolas" : "Pergola Types" },
-                    { href: "/services", label: isAr ? "الخدمات الهندسية" : isFr ? "Services" : "Specialized Services" },
-                    { href: "/products", label: isAr ? "المنتجات المعمارية" : isFr ? "Produits" : "Products Gallery" },
-                    { href: "/projects", label: isAr ? "معرض المشاريع" : isFr ? "Réalisations" : "Portfolio Projects" },
-                    { href: "/about", label: isAr ? "عن الشركة" : isFr ? "À Propos" : "About Us" },
-                    { href: "/contact", label: isAr ? "طلب عرض سعر وتواصل" : isFr ? "Contact & Devis" : "Contact & Consultation" },
+                    { href: "/", label: isAr ? "الرئيسية" : isFr ? "Accueil" : "Overview", num: "01" },
+                    { href: "/pergola-types", label: isAr ? "أنواع البرجولات (19 نوع)" : isFr ? "Types de Pergolas" : "Pergola Collection", num: "02" },
+                    { href: "/services", label: isAr ? "الخدمات الهندسية" : isFr ? "Services d'Ingénierie" : "Engineering Services", num: "03" },
+                    { href: "/products", label: isAr ? "الأنظمة المعمارية" : isFr ? "Systèmes Vitrés" : "Architectural Systems", num: "04" },
+                    { href: "/projects", label: isAr ? "معرض المشاريع" : isFr ? "Réalisations d'Exception" : "Selected Projects", num: "05" },
+                    { href: "/about", label: isAr ? "عن الشركة" : isFr ? "À Propos du Studio" : "Studio & Craft", num: "06" },
+                    { href: "/contact", label: isAr ? "استشارة ومعاينة ميدانية" : isFr ? "Consultation & Visite" : "Inquiries & Survey", num: "07" },
                   ].map((item) => (
                     <Link
                       key={item.href}
                       href={item.href}
                       onClick={() => setMobileOpen(false)}
                       className={cn(
-                        "px-3 py-2 rounded-md transition-colors hover:bg-stone-100 text-stone-800",
-                        pathname === item.href && "bg-stone-100 text-primary font-semibold"
+                        "flex items-baseline justify-between py-1 transition-colors text-stone-700 hover:text-stone-950 group",
+                        pathname === item.href && "text-[#34AA49] font-medium"
                       )}
                     >
-                      {item.label}
+                      <span className="font-display text-lg sm:text-xl font-normal group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform">
+                        {item.label}
+                      </span>
+                      <span className="text-[10px] font-mono text-stone-400">
+                        {item.num}
+                      </span>
                     </Link>
                   ))}
                 </div>
               </div>
 
-              {/* Mobile Sheet Footer */}
-              <div className="pt-6 border-t border-stone-200 space-y-3">
+              {/* Drawer Footer */}
+              <div className="pt-8 border-t border-stone-200/80 space-y-4">
                 <LanguageSwitcher />
-                <Button asChild className="w-full h-10 rounded-md bg-primary hover:bg-[#268537] text-white font-medium text-xs">
+                <Button asChild className="w-full h-11 rounded-[2px] bg-[#34AA49] hover:bg-[#268537] text-white font-semibold text-xs tracking-wider uppercase">
                   <Link href="/contact" onClick={() => setMobileOpen(false)}>
                     {quoteCta}
                   </Link>
@@ -313,3 +224,5 @@ export function Header() {
     </header>
   );
 }
+
+export default Header;
