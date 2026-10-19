@@ -1,10 +1,9 @@
-import { Inter, Plus_Jakarta_Sans, IBM_Plex_Sans_Arabic } from "next/font/google";
+import { Playfair_Display, Inter, Cairo, IBM_Plex_Sans_Arabic } from "next/font/google";
 
-export const fontDisplay = Plus_Jakarta_Sans({
+export const fontDisplay = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-display",
   display: "swap",
-  weight: ["500", "600", "700", "800"],
 });
 
 export const fontBody = Inter({
@@ -13,9 +12,8 @@ export const fontBody = Inter({
   display: "swap",
 });
 
-export const fontArabicDisplay = IBM_Plex_Sans_Arabic({
+export const fontArabicDisplay = Cairo({
   subsets: ["arabic", "latin"],
-  weight: ["500", "600", "700"],
   variable: "--font-arabic-display",
   display: "swap",
 });

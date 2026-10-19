@@ -9,11 +9,11 @@ import {
 
 import { HeroSection } from "@/components/sections/HeroSection";
 import { IntroductionSection } from "@/components/sections/IntroductionSection";
-import { ThreeDViewerSection } from "@/components/sections/ThreeDViewerSection";
 import { ServicesSection } from "@/components/sections/ServicesSection";
 import { ProductsGallerySection } from "@/components/sections/ProductsGallerySection";
 import { PergolaTypesSection } from "@/components/sections/PergolaTypesSection";
 import { ProjectsSection } from "@/components/sections/ProjectsSection";
+import { ThreeDViewerSection } from "@/components/sections/ThreeDViewerSection";
 import { WhyChooseSection } from "@/components/sections/WhyChooseSection";
 import { ProcessSection } from "@/components/sections/ProcessSection";
 import { FaqSection } from "@/components/sections/FaqSection";
@@ -120,9 +120,6 @@ export default async function HomePage({
       {/* 2. Introduction: Concise Split Layout & Verified Metrics */}
       <IntroductionSection stats={stats} />
 
-      {/* 3D Architectural Model Preview Card */}
-      <ThreeDViewerSection />
-
       {/* 3. Specialized Services: Curated Selection from JSON */}
       <ServicesSection services={services} />
 
@@ -134,6 +131,9 @@ export default async function HomePage({
 
       {/* 6. Featured Projects: Real Identifiable Case Studies */}
       <ProjectsSection projects={projects} />
+
+      {/* Full-Bleed 3D Architectural Viewer with Metadata Bar */}
+      <ThreeDViewerSection />
 
       {/* 7. Why Choose Eco Pergola: Supportable Engineering Standards */}
       <WhyChooseSection />
